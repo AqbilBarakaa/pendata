@@ -1,113 +1,126 @@
 <!DOCTYPE html>
 <html lang="en" data-content_root="./">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Penambahan Data D</title>
-  
-    <script data-cfasync="false">
-      document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-      document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
-    </script>
-    
-    <noscript>
-      <style>
-        .pst-js-only { display: none !important; }
-      </style>
-    </noscript>
-    
-    <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-    <link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
-  
-    <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
-    <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-    <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aqbil Baraka - Personal Page</title>
 
+    <!-- Mode/Theme Script -->
+    <script data-cfasync="false">
+        document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+        document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+    </script>
+
+    <!-- NoScript Styles -->
+    <noscript>
+        <style>
+            .pst-js-only { display: none !important; }
+        </style>
+    </noscript>
+
+    <!-- Core Styles -->
+    <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet">
+    <link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50">
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100">
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357">
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b">
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css">
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6">
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e">
+
+    <!-- Scripts -->
+    <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
     <script src="_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
-    <script>let toggleHintShow = 'Click to show';</script>
-    <script>let toggleHintHide = 'Click to hide';</script>
-    <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js?v=4a39c7ea"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
-  </head>
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-    <div id="pst-scroll-pixel-helper"></div>
-    
-    <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-      <i class="fa-solid fa-arrow-up"></i>Back to top
-    </button>
+    <script src="_static/sphinx-thebe.js?v=c100c467" async></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
-    <div class="bd-container">
-      <div class="bd-container__inner bd-page-width">
-        <div class="bd-main">
-          <div class="bd-content">
-            <div class="bd-article-container">
-              <article class="bd-article">
-                <section class="tex2jax_ignore mathjax_ignore" id="welcome-to-your-jupyter-book">
-                  <h1>Welcome my Lord<a class="headerlink" href="#welcome-to-your-jupyter-book" title="Link to this heading">👑</a></h1>
-                  <p>
-                    NIM: 230411100077 <br>
-                    Nama : Aqbil Baraka <br>
-                    Prodi : Teknik Informatika <br>
-                    Email : aqbiltilas@gmail.com <br>
-                    Belajarlah seakan-akan kau akan hidup selamanya, dan hiduplah seakan-akan kau akan mati besok.<br><br>
-                    <b>Penjelasan tentang Data Mining:</b><br>
-                    Data Mining adalah proses yang menggunakan teknik statistik, matematika, kecerdasan buatan, dan machine learning untuk mengekstraksi dan mengidentifikasi informasi yang bermanfaat serta pengetahuan yang terkait dari berbagai database besar (Turban dkk., 2005). Proses ini membantu dalam menemukan pola, tren, dan hubungan yang tersembunyi dalam data yang dapat digunakan untuk pengambilan keputusan.
-                    <br><br>
-                    Beberapa istilah lain yang memiliki makna sama dengan Data Mining adalah:
-                    <br><br>
-                    Knowledge Discovery in Databases (KDD): Proses menemukan pengetahuan dari database.
-                    <br><br>
-                    Ekstraksi Pengetahuan (Knowledge Extraction): Mengekstrak informasi berharga dari data.
-                    <br><br>
-                    Analisis Data/Pola (Data/Pattern Analysis): Menganalisis data untuk menemukan pola yang bermakna.
-                    <br><br>
-                    Kecerdasan Bisnis (Business Intelligence): Menggunakan data untuk mendukung keputusan bisnis.
-                    <br><br>
-                    Data Archaeology dan Data Dredging: Menjelajahi data untuk menemukan informasi yang relevan (Larose, 2005).
-                    <br><br>
-                    Untuk mempelajari lebih lanjut tentang Data Mining, Anda dapat mengunjungi link berikut: 
-                    <a class="reference external" href="https://moelaab.github.io/datamining/">Data Mining - Moelaab.</a>
-                  </p>
-                </section>
-              </article>
+    <!-- Toggle Button Configuration -->
+    <script>
+        let toggleHintShow = 'Click to show';
+        let toggleHintHide = 'Click to hide';
+        let toggleOpenOnPrint = 'true';
+        let togglebuttonSelector = '.toggle, .admonition.dropdown';
+        const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js";
+        const thebe_selector = ".thebe,.cell";
+        const thebe_selector_input = "pre";
+        const thebe_selector_output = ".output, .cell_output";
+        window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}};
+        DOCUMENTATION_OPTIONS.pagename = 'intro';
+    </script>
+</head>
+
+<body class="bg-gray-100">
+    <div class="container mx-auto px-4 py-8 max-w-3xl">
+        <!-- Skip Link -->
+        <div id="pst-skip-link" class="skip-link d-print-none">
+            <a href="#main-content">Skip to main content</a>
+        </div>
+
+        <div id="pst-scroll-pixel-helper"></div>
+        
+        <!-- Back to Top Button -->
+        <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+            <i class="fa-solid fa-arrow-up"></i>Back to top
+        </button>
+
+        <!-- Search Dialog -->
+        <dialog id="pst-search-dialog">
+            <form class="bd-search d-flex align-items-center" action="search.html" method="get">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="search" class="form-control" name="q" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+                <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+            </form>
+        </dialog>
+
+
+        <header class="bg-white rounded-lg shadow-lg p-6 mb-8">
+            <h1 class="text-3xl font-bold text-gray-800 mb-4">Welcome to My Page</h1>
+            <div class="space-y-2 text-gray-600">
+                <p><strong>NIM:</strong> 230411100077</p>
+                <p><strong>Nama:</strong> Aqbil Baraka</p>
+                <p><strong>Prodi:</strong> Teknik Informatika</p>
+                <p><strong>Email:</strong> aqbiltilas@gmail.com</p>
             </div>
-          </div>
-        </div>
-      </div>
+        </header>
+        <!-- Main Content -->
+        <main class="bg-white rounded-lg shadow-lg p-6">
+            <section>
+                <h2 class="text-2xl font-bold text-gray-800 mb-4">Penjelasan tentang Data Mining</h2>
+                <div class="space-y-4 text-gray-700">
+                    <p>Data Mining adalah proses yang menggunakan teknik statistik, matematika, kecerdasan buatan, dan machine learning untuk mengekstraksi dan mengidentifikasi informasi yang bermanfaat serta pengetahuan yang terkait dari berbagai database besar (Turban dkk., 2005).</p>
+                    
+                    <p>Beberapa istilah lain yang memiliki makna sama dengan Data Mining:</p>
+                    <ul class="list-disc pl-6 space-y-2">
+                        <li><strong>Knowledge Discovery in Databases (KDD):</strong> Proses menemukan pengetahuan dari database.</li>
+                        <li><strong>Ekstraksi Pengetahuan:</strong> Mengekstrak informasi berharga dari data.</li>
+                        <li><strong>Analisis Data/Pola:</strong> Menganalisis data untuk menemukan pola yang bermakna.</li>
+                        <li><strong>Kecerdasan Bisnis:</strong> Menggunakan data untuk mendukung keputusan bisnis.</li>
+                        <li><strong>Data Archaeology dan Data Dredging:</strong> Menjelajahi data untuk menemukan informasi yang relevan (Larose, 2005).</li>
+                    </ul>
+
+                    <p class="mt-6">
+                        Untuk mempelajari lebih lanjut tentang Data Mining, Anda dapat mengunjungi:
+                        <a href="https://moelaab.github.io/datamining/" class="text-blue-600 hover:text-blue-800 underline">Data Mining - Moelaab</a>
+                    </p>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="mt-8 text-center text-gray-600 text-sm">
+            <p>© 2025 Aqbil Baraka. All rights reserved.</p>
+        </footer>
     </div>
-
-    <footer class="bd-footer-content">
-      <div class="bd-footer-content__inner container">
-        <div class="footer-item">
-          <p class="component-author">By Aqbil Baraka</p>
-        </div>
-        <div class="footer-item">
-          <p class="copyright">© Copyright 2025.</p>
-        </div>
-      </div>
-    </footer>
-
+    <!-- Bootstrap and Theme Scripts -->
     <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
     <script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
-  </body>
+</body>
 </html>
