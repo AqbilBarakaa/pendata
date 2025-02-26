@@ -181,6 +181,8 @@
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Memahami Data dalam Penambangan Data</a></li>
 
+
+
 </ul>
 
     </div>
@@ -378,6 +380,8 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Memahami Data dalam Penambangan Data</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pengumpulan-data-terkait-dengan-iris-dataset">Pengumpulan data terkait dengan IRIS Dataset</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ekplorasi-data-set-iris">Ekplorasi data set IRIS</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#profiling-data-set-iris">Profiling data set IRIS</a></li>
 </ul>
 
             </nav>
@@ -403,21 +407,10 @@ document.write(`
 <section id="pengumpulan-data-terkait-dengan-iris-dataset">
 <h1>Pengumpulan data terkait dengan IRIS Dataset<a class="headerlink" href="#pengumpulan-data-terkait-dengan-iris-dataset" title="Link to this heading">#</a></h1>
 <p>Data iris berada di <a class="reference external" href="http://aiven.io">aiven.io</a> menggunakan 2 database mysql dan postgresql</p>
-<p>Berikut tahaapan proses pengumpulan data dari mysql dan postgre:</p>
+<p>Berikut tahapan proses pengumpulan data dari mysql:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">psycopg2</span>
-<span class="kn">import</span> <span class="nn">pymysql</span>
-
-<span class="c1"># Koneksi ke PostgreSQL</span>
-<span class="n">pg_conn</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
-    <span class="n">dbname</span><span class="o">=</span><span class="s2">&quot;defaultdb&quot;</span><span class="p">,</span>
-    <span class="n">user</span><span class="o">=</span><span class="s2">&quot;avnadmin&quot;</span><span class="p">,</span>
-    <span class="n">password</span><span class="o">=</span><span class="s2">&quot;AVNS_ghOdrdJb9YEAMyKNvOp&quot;</span><span class="p">,</span>
-    <span class="n">host</span><span class="o">=</span><span class="s2">&quot;pg-314e9d84-pendata-d.h.aivencloud.com&quot;</span><span class="p">,</span>
-    <span class="n">port</span><span class="o">=</span><span class="s2">&quot;24202&quot;</span>
-<span class="p">)</span>
-<span class="n">pg_cur</span> <span class="o">=</span> <span class="n">pg_conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pymysql</span>
 
 <span class="c1"># Koneksi ke MySQL</span>
 <span class="n">mysql_conn</span> <span class="o">=</span> <span class="n">pymysql</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
@@ -430,11 +423,6 @@ document.write(`
 <span class="p">)</span>
 <span class="n">mysql_cur</span> <span class="o">=</span> <span class="n">mysql_conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
 
-<span class="c1"># Eksekusi query untuk mengambil data dari PostgreSQL</span>
-<span class="n">query_pg</span> <span class="o">=</span> <span class="s2">&quot;SELECT * FROM pendatpostgres&quot;</span>
-<span class="n">pg_cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query_pg</span><span class="p">)</span>
-<span class="n">data_postgre</span> <span class="o">=</span> <span class="n">pg_cur</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
-
 <span class="c1"># Eksekusi query untuk mengambil data dari MySQL</span>
 <span class="n">query_mysql</span> <span class="o">=</span> <span class="s2">&quot;SELECT * FROM pendatmysql&quot;</span>
 <span class="n">mysql_cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query_mysql</span><span class="p">)</span>
@@ -446,8 +434,6 @@ document.write(`
     <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
 
 <span class="c1"># Tutup kursor dan koneksi</span>
-<span class="n">pg_cur</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-<span class="n">pg_conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 <span class="n">mysql_cur</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 <span class="n">mysql_conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
@@ -611,10 +597,31 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Menampilkan data dari PostgreSQL</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">psycopg2</span>
+
+<span class="c1"># Koneksi ke PostgreSQL</span>
+<span class="n">pg_conn</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
+    <span class="n">dbname</span><span class="o">=</span><span class="s2">&quot;defaultdb&quot;</span><span class="p">,</span>
+    <span class="n">user</span><span class="o">=</span><span class="s2">&quot;avnadmin&quot;</span><span class="p">,</span>
+    <span class="n">password</span><span class="o">=</span><span class="s2">&quot;AVNS_ghOdrdJb9YEAMyKNvOp&quot;</span><span class="p">,</span>
+    <span class="n">host</span><span class="o">=</span><span class="s2">&quot;pg-314e9d84-pendata-d.h.aivencloud.com&quot;</span><span class="p">,</span>
+    <span class="n">port</span><span class="o">=</span><span class="s2">&quot;24202&quot;</span>
+<span class="p">)</span>
+<span class="n">pg_cur</span> <span class="o">=</span> <span class="n">pg_conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+
+<span class="c1"># Eksekusi query untuk mengambil data dari PostgreSQL</span>
+<span class="n">query_pg</span> <span class="o">=</span> <span class="s2">&quot;SELECT * FROM pendatpostgres&quot;</span>
+<span class="n">pg_cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query_pg</span><span class="p">)</span>
+<span class="n">data_postgre</span> <span class="o">=</span> <span class="n">pg_cur</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+
+<span class="c1"># Menampilkan data dari PostgreSQL</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;DATA POSTGRESQL&quot;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">data_postgre</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+
+<span class="c1"># Tutup kursor dan koneksi</span>
+<span class="n">pg_cur</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">pg_conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -823,6 +830,121 @@ document.write(`
 </div>
 </div>
 </section>
+<section id="ekplorasi-data-set-iris">
+<h1>Ekplorasi data set IRIS<a class="headerlink" href="#ekplorasi-data-set-iris" title="Link to this heading">#</a></h1>
+<p>Import Library dan Load Data</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Load dataset Iris dari seaborn</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;iris&quot;</span><span class="p">)</span>
+
+<span class="c1"># Menampilkan 5 baris pertama</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   sepal_length  sepal_width  petal_length  petal_width species
+0           5.1          3.5           1.4          0.2  setosa
+1           4.9          3.0           1.4          0.2  setosa
+2           4.7          3.2           1.3          0.2  setosa
+3           4.6          3.1           1.5          0.2  setosa
+4           5.0          3.6           1.4          0.2  setosa
+</pre></div>
+</div>
+</div>
+</div>
+<p>Menampilkan Informasi Dataset</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Informasi dataset</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">())</span>
+
+<span class="c1"># Statistik deskriptif</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 150 entries, 0 to 149
+Data columns (total 5 columns):
+ #   Column        Non-Null Count  Dtype  
+---  ------        --------------  -----  
+ 0   sepal_length  150 non-null    float64
+ 1   sepal_width   150 non-null    float64
+ 2   petal_length  150 non-null    float64
+ 3   petal_width   150 non-null    float64
+ 4   species       150 non-null    object 
+dtypes: float64(4), object(1)
+memory usage: 6.0+ KB
+None
+       sepal_length  sepal_width  petal_length  petal_width
+count    150.000000   150.000000    150.000000   150.000000
+mean       5.843333     3.057333      3.758000     1.199333
+std        0.828066     0.435866      1.765298     0.762238
+min        4.300000     2.000000      1.000000     0.100000
+25%        5.100000     2.800000      1.600000     0.300000
+50%        5.800000     3.000000      4.350000     1.300000
+75%        6.400000     3.300000      5.100000     1.800000
+max        7.900000     4.400000      6.900000     2.500000
+</pre></div>
+</div>
+</div>
+</div>
+<p>Visualisasi Data</p>
+<ul class="simple">
+<li><p>Distribusi Fitur dengan Histogram</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/2ec84dce3375125f8f114f6bc5fa7fedd28262d8842c1a1383c50c2a48a7e20a.png" src="_images/2ec84dce3375125f8f114f6bc5fa7fedd28262d8842c1a1383c50c2a48a7e20a.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>Boxplot untuk Menemukan Outlier</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/4cb51e3ef3eacb66ed90cd3b5e6cb203fa7eaa5ec3bdd7374e1bccbe7d047b76.png" src="_images/4cb51e3ef3eacb66ed90cd3b5e6cb203fa7eaa5ec3bdd7374e1bccbe7d047b76.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>Visualisasi Hubungan Antar Fitur dengan Pairplot</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;species&quot;</span><span class="p">,</span> <span class="n">diag_kind</span><span class="o">=</span><span class="s2">&quot;kde&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/8c1492da1f79e1985f3211a98f18a919270cdeae617ea96a997c146782fca5ee.png" src="_images/8c1492da1f79e1985f3211a98f18a919270cdeae617ea96a997c146782fca5ee.png" />
+</div>
+</div>
+</section>
+<section id="profiling-data-set-iris">
+<h1>Profiling data set IRIS<a class="headerlink" href="#profiling-data-set-iris" title="Link to this heading">#</a></h1>
+<p>Silahkan ekplorasi data iris</p>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -881,6 +1003,8 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Memahami Data dalam Penambangan Data</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pengumpulan-data-terkait-dengan-iris-dataset">Pengumpulan data terkait dengan IRIS Dataset</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ekplorasi-data-set-iris">Ekplorasi data set IRIS</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#profiling-data-set-iris">Profiling data set IRIS</a></li>
 </ul>
 
   </nav></div>
