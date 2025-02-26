@@ -397,19 +397,431 @@ document.write(`
 <li><p><strong>Pengumpulan Data</strong>: Mengumpulkan data dari berbagai sumber yang relevan.</p></li>
 <li><p><strong>Profiling Data</strong>: Menganalisis struktur, tipe, dan kualitas data.</p></li>
 <li><p><strong>Eksplorasi Data</strong>: Melakukan analisis awal untuk memahami pola, distribusi, dan hubungan antar variabel dalam data.</p></li>
-<li><p><strong>Pembersihan Data</strong>: Menangani missing value, outlier, dan ketidakonsistenan dalam data.</p></li>
 </ol>
 <p>Pemahaman data merupakan langkah kritis dalam proses analisis data, karena tanpa pemahaman yang mendalam, interpretasi dan kesimpulan yang dihasilkan dapat menyesatkan atau tidak akurat. Oleh karena itu, seorang peneliti atau analis data harus memiliki kemampuan untuk tidak hanya mengolah data secara teknis, tetapi juga memahami konteks dan implikasi dari data tersebut.</p>
-<p>Pada materi ini. Saya menggunakan <a class="reference external" href="http://aiven.io">aiven.io</a>, sebagai platform cloud yang menyediakan layanan database dan teknologi open-source. Dan menggunakan DBeaver, sebagai alat database management tool berbasis GUI (Graphical User Interface) yang bersifat open-source. Untuk database yang digunakan yaitu;</p>
-<ul class="simple">
-<li><p>Database MySQL</p></li>
-<li><p>Database PostgreSQL</p></li>
-</ul>
 </section>
 <section id="pengumpulan-data-terkait-dengan-iris-dataset">
 <h1>Pengumpulan data terkait dengan IRIS Dataset<a class="headerlink" href="#pengumpulan-data-terkait-dengan-iris-dataset" title="Link to this heading">#</a></h1>
-<p>(Jelaskan dimana data yang harus anda kumpulkan dan berikan penjelasan bagaimana cara mengumpulkan data tersebut :)</p>
-<p>Data iris berada di …..</p>
+<p>Data iris berada di <a class="reference external" href="http://aiven.io">aiven.io</a> menggunakan 2 database mysql dan postgresql</p>
+<p>Berikut tahaapan proses pengumpulan data dari mysql dan postgre:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">psycopg2</span>
+<span class="kn">import</span> <span class="nn">pymysql</span>
+
+<span class="c1"># Koneksi ke PostgreSQL</span>
+<span class="n">pg_conn</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
+    <span class="n">dbname</span><span class="o">=</span><span class="s2">&quot;defaultdb&quot;</span><span class="p">,</span>
+    <span class="n">user</span><span class="o">=</span><span class="s2">&quot;avnadmin&quot;</span><span class="p">,</span>
+    <span class="n">password</span><span class="o">=</span><span class="s2">&quot;AVNS_ghOdrdJb9YEAMyKNvOp&quot;</span><span class="p">,</span>
+    <span class="n">host</span><span class="o">=</span><span class="s2">&quot;pg-314e9d84-pendata-d.h.aivencloud.com&quot;</span><span class="p">,</span>
+    <span class="n">port</span><span class="o">=</span><span class="s2">&quot;24202&quot;</span>
+<span class="p">)</span>
+<span class="n">pg_cur</span> <span class="o">=</span> <span class="n">pg_conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+
+<span class="c1"># Koneksi ke MySQL</span>
+<span class="n">mysql_conn</span> <span class="o">=</span> <span class="n">pymysql</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
+    <span class="n">host</span><span class="o">=</span><span class="s2">&quot;mysql-ab9f2e5-pendata-d.h.aivencloud.com&quot;</span><span class="p">,</span>
+    <span class="n">user</span><span class="o">=</span><span class="s2">&quot;avnadmin&quot;</span><span class="p">,</span>
+    <span class="n">password</span><span class="o">=</span><span class="s2">&quot;AVNS_iraqnLcleYqP_JZOqhA&quot;</span><span class="p">,</span>
+    <span class="n">database</span><span class="o">=</span><span class="s2">&quot;defaultdb&quot;</span><span class="p">,</span>
+    <span class="n">port</span><span class="o">=</span><span class="mi">24202</span><span class="p">,</span>
+    <span class="n">ssl</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;ssl&quot;</span><span class="p">:</span> <span class="p">{}}</span>
+<span class="p">)</span>
+<span class="n">mysql_cur</span> <span class="o">=</span> <span class="n">mysql_conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+
+<span class="c1"># Eksekusi query untuk mengambil data dari PostgreSQL</span>
+<span class="n">query_pg</span> <span class="o">=</span> <span class="s2">&quot;SELECT * FROM pendatpostgres&quot;</span>
+<span class="n">pg_cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query_pg</span><span class="p">)</span>
+<span class="n">data_postgre</span> <span class="o">=</span> <span class="n">pg_cur</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+
+<span class="c1"># Eksekusi query untuk mengambil data dari MySQL</span>
+<span class="n">query_mysql</span> <span class="o">=</span> <span class="s2">&quot;SELECT * FROM pendatmysql&quot;</span>
+<span class="n">mysql_cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query_mysql</span><span class="p">)</span>
+<span class="n">data_mysql</span> <span class="o">=</span> <span class="n">mysql_cur</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+
+<span class="c1"># Menampilkan data dari MySQL</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;DATA SQL&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">data_mysql</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+
+<span class="c1"># Tutup kursor dan koneksi</span>
+<span class="n">pg_cur</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">pg_conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">mysql_cur</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">mysql_conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DATA SQL
+(1, &#39;Iris-setosa&#39;, 1.4, 0.2)
+(2, &#39;Iris-setosa&#39;, 1.4, 0.2)
+(3, &#39;Iris-setosa&#39;, 1.3, 0.2)
+(4, &#39;Iris-setosa&#39;, 1.5, 0.2)
+(5, &#39;Iris-setosa&#39;, 1.4, 0.2)
+(6, &#39;Iris-setosa&#39;, 1.7, 0.4)
+(7, &#39;Iris-setosa&#39;, 1.4, 0.3)
+(8, &#39;Iris-setosa&#39;, 1.5, 0.2)
+(9, &#39;Iris-setosa&#39;, 1.4, 0.2)
+(10, &#39;Iris-setosa&#39;, 1.5, 0.1)
+(11, &#39;Iris-setosa&#39;, 1.5, 0.2)
+(12, &#39;Iris-setosa&#39;, 1.6, 0.2)
+(13, &#39;Iris-setosa&#39;, 1.4, 0.1)
+(14, &#39;Iris-setosa&#39;, 1.1, 0.1)
+(15, &#39;Iris-setosa&#39;, 1.2, 0.2)
+(16, &#39;Iris-setosa&#39;, 1.5, 0.4)
+(17, &#39;Iris-setosa&#39;, 1.3, 0.4)
+(18, &#39;Iris-setosa&#39;, 1.4, 0.3)
+(19, &#39;Iris-setosa&#39;, 1.7, 0.3)
+(20, &#39;Iris-setosa&#39;, 1.5, 0.3)
+(21, &#39;Iris-setosa&#39;, 1.7, 0.2)
+(22, &#39;Iris-setosa&#39;, 1.5, 0.4)
+(23, &#39;Iris-setosa&#39;, 1.0, 0.2)
+(24, &#39;Iris-setosa&#39;, 1.7, 0.5)
+(25, &#39;Iris-setosa&#39;, 1.9, 0.2)
+(26, &#39;Iris-setosa&#39;, 1.6, 0.2)
+(27, &#39;Iris-setosa&#39;, 1.6, 0.4)
+(28, &#39;Iris-setosa&#39;, 1.5, 0.2)
+(29, &#39;Iris-setosa&#39;, 1.4, 0.2)
+(30, &#39;Iris-setosa&#39;, 1.6, 0.2)
+(31, &#39;Iris-setosa&#39;, 1.6, 0.2)
+(32, &#39;Iris-setosa&#39;, 1.5, 0.4)
+(33, &#39;Iris-setosa&#39;, 1.5, 0.1)
+(34, &#39;Iris-setosa&#39;, 1.4, 0.2)
+(35, &#39;Iris-setosa&#39;, 1.5, 0.1)
+(36, &#39;Iris-setosa&#39;, 1.2, 0.2)
+(37, &#39;Iris-setosa&#39;, 1.3, 0.2)
+(38, &#39;Iris-setosa&#39;, 1.5, 0.1)
+(39, &#39;Iris-setosa&#39;, 1.3, 0.2)
+(40, &#39;Iris-setosa&#39;, 1.5, 0.2)
+(41, &#39;Iris-setosa&#39;, 1.3, 0.3)
+(42, &#39;Iris-setosa&#39;, 1.3, 0.3)
+(43, &#39;Iris-setosa&#39;, 1.3, 0.2)
+(44, &#39;Iris-setosa&#39;, 1.6, 0.6)
+(45, &#39;Iris-setosa&#39;, 1.9, 0.4)
+(46, &#39;Iris-setosa&#39;, 1.4, 0.3)
+(47, &#39;Iris-setosa&#39;, 1.6, 0.2)
+(48, &#39;Iris-setosa&#39;, 1.4, 0.2)
+(49, &#39;Iris-setosa&#39;, 1.5, 0.2)
+(50, &#39;Iris-setosa&#39;, 1.4, 0.2)
+(51, &#39;Iris-versicolor&#39;, 4.7, 1.4)
+(52, &#39;Iris-versicolor&#39;, 4.5, 1.5)
+(53, &#39;Iris-versicolor&#39;, 4.9, 1.5)
+(54, &#39;Iris-versicolor&#39;, 4.0, 1.3)
+(55, &#39;Iris-versicolor&#39;, 4.6, 1.5)
+(56, &#39;Iris-versicolor&#39;, 4.5, 1.3)
+(57, &#39;Iris-versicolor&#39;, 4.7, 1.6)
+(58, &#39;Iris-versicolor&#39;, 3.3, 1.0)
+(59, &#39;Iris-versicolor&#39;, 4.6, 1.3)
+(60, &#39;Iris-versicolor&#39;, 3.9, 1.4)
+(61, &#39;Iris-versicolor&#39;, 3.5, 1.0)
+(62, &#39;Iris-versicolor&#39;, 4.2, 1.5)
+(63, &#39;Iris-versicolor&#39;, 4.0, 1.0)
+(64, &#39;Iris-versicolor&#39;, 4.7, 1.4)
+(65, &#39;Iris-versicolor&#39;, 3.6, 1.3)
+(66, &#39;Iris-versicolor&#39;, 4.4, 1.4)
+(67, &#39;Iris-versicolor&#39;, 4.5, 1.5)
+(68, &#39;Iris-versicolor&#39;, 4.1, 1.0)
+(69, &#39;Iris-versicolor&#39;, 4.5, 1.5)
+(70, &#39;Iris-versicolor&#39;, 3.9, 1.1)
+(71, &#39;Iris-versicolor&#39;, 4.8, 1.8)
+(72, &#39;Iris-versicolor&#39;, 4.0, 1.3)
+(73, &#39;Iris-versicolor&#39;, 4.9, 1.5)
+(74, &#39;Iris-versicolor&#39;, 4.7, 1.2)
+(75, &#39;Iris-versicolor&#39;, 4.3, 1.3)
+(76, &#39;Iris-versicolor&#39;, 4.4, 1.4)
+(77, &#39;Iris-versicolor&#39;, 4.8, 1.4)
+(78, &#39;Iris-versicolor&#39;, 5.0, 1.7)
+(79, &#39;Iris-versicolor&#39;, 4.5, 1.5)
+(80, &#39;Iris-versicolor&#39;, 3.5, 1.0)
+(81, &#39;Iris-versicolor&#39;, 3.8, 1.1)
+(82, &#39;Iris-versicolor&#39;, 3.7, 1.0)
+(83, &#39;Iris-versicolor&#39;, 3.9, 1.2)
+(84, &#39;Iris-versicolor&#39;, 5.1, 1.6)
+(85, &#39;Iris-versicolor&#39;, 4.5, 1.5)
+(86, &#39;Iris-versicolor&#39;, 4.5, 1.6)
+(87, &#39;Iris-versicolor&#39;, 4.7, 1.5)
+(88, &#39;Iris-versicolor&#39;, 4.4, 1.3)
+(89, &#39;Iris-versicolor&#39;, 4.1, 1.3)
+(90, &#39;Iris-versicolor&#39;, 4.0, 1.3)
+(91, &#39;Iris-versicolor&#39;, 4.4, 1.2)
+(92, &#39;Iris-versicolor&#39;, 4.6, 1.4)
+(93, &#39;Iris-versicolor&#39;, 4.0, 1.2)
+(94, &#39;Iris-versicolor&#39;, 3.3, 1.0)
+(95, &#39;Iris-versicolor&#39;, 4.2, 1.3)
+(96, &#39;Iris-versicolor&#39;, 4.2, 1.2)
+(97, &#39;Iris-versicolor&#39;, 4.2, 1.3)
+(98, &#39;Iris-versicolor&#39;, 4.3, 1.3)
+(99, &#39;Iris-versicolor&#39;, 3.0, 1.1)
+(100, &#39;Iris-versicolor&#39;, 4.1, 1.3)
+(101, &#39;Iris-virginica&#39;, 6.0, 2.5)
+(102, &#39;Iris-virginica&#39;, 5.1, 1.9)
+(103, &#39;Iris-virginica&#39;, 5.9, 2.1)
+(104, &#39;Iris-virginica&#39;, 5.6, 1.8)
+(105, &#39;Iris-virginica&#39;, 5.8, 2.2)
+(106, &#39;Iris-virginica&#39;, 6.6, 2.1)
+(107, &#39;Iris-virginica&#39;, 4.5, 1.7)
+(108, &#39;Iris-virginica&#39;, 6.3, 1.8)
+(109, &#39;Iris-virginica&#39;, 5.8, 1.8)
+(110, &#39;Iris-virginica&#39;, 6.1, 2.5)
+(111, &#39;Iris-virginica&#39;, 5.1, 2.0)
+(112, &#39;Iris-virginica&#39;, 5.3, 1.9)
+(113, &#39;Iris-virginica&#39;, 5.5, 2.1)
+(114, &#39;Iris-virginica&#39;, 5.0, 2.0)
+(115, &#39;Iris-virginica&#39;, 5.1, 2.4)
+(116, &#39;Iris-virginica&#39;, 5.3, 2.3)
+(117, &#39;Iris-virginica&#39;, 5.5, 1.8)
+(118, &#39;Iris-virginica&#39;, 6.7, 2.2)
+(119, &#39;Iris-virginica&#39;, 6.9, 2.3)
+(120, &#39;Iris-virginica&#39;, 5.0, 1.5)
+(121, &#39;Iris-virginica&#39;, 5.7, 2.3)
+(122, &#39;Iris-virginica&#39;, 4.9, 2.0)
+(123, &#39;Iris-virginica&#39;, 6.7, 2.0)
+(124, &#39;Iris-virginica&#39;, 4.9, 1.8)
+(125, &#39;Iris-virginica&#39;, 5.7, 2.1)
+(126, &#39;Iris-virginica&#39;, 6.0, 1.8)
+(127, &#39;Iris-virginica&#39;, 4.8, 1.8)
+(128, &#39;Iris-virginica&#39;, 4.9, 1.8)
+(129, &#39;Iris-virginica&#39;, 5.6, 2.1)
+(130, &#39;Iris-virginica&#39;, 5.8, 1.6)
+(131, &#39;Iris-virginica&#39;, 6.1, 1.9)
+(132, &#39;Iris-virginica&#39;, 6.4, 2.0)
+(133, &#39;Iris-virginica&#39;, 5.6, 2.2)
+(134, &#39;Iris-virginica&#39;, 5.1, 1.5)
+(135, &#39;Iris-virginica&#39;, 5.6, 1.4)
+(136, &#39;Iris-virginica&#39;, 6.1, 2.3)
+(137, &#39;Iris-virginica&#39;, 5.6, 2.4)
+(138, &#39;Iris-virginica&#39;, 5.5, 1.8)
+(139, &#39;Iris-virginica&#39;, 4.8, 1.8)
+(140, &#39;Iris-virginica&#39;, 5.4, 2.1)
+(141, &#39;Iris-virginica&#39;, 5.6, 2.4)
+(142, &#39;Iris-virginica&#39;, 5.1, 2.3)
+(143, &#39;Iris-virginica&#39;, 5.1, 1.9)
+(144, &#39;Iris-virginica&#39;, 5.9, 2.3)
+(145, &#39;Iris-virginica&#39;, 5.7, 2.5)
+(146, &#39;Iris-virginica&#39;, 5.2, 2.3)
+(147, &#39;Iris-virginica&#39;, 5.0, 1.9)
+(148, &#39;Iris-virginica&#39;, 5.2, 2.0)
+(149, &#39;Iris-virginica&#39;, 5.4, 2.3)
+(150, &#39;Iris-virginica&#39;, 5.1, 1.8)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Menampilkan data dari PostgreSQL</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;DATA POSTGRESQL&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">data_postgre</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DATA POSTGRESQL
+(1, &#39;Iris-setosa&#39;, 5.1, 3.5)
+(2, &#39;Iris-setosa&#39;, 4.9, 3.0)
+(3, &#39;Iris-setosa&#39;, 4.7, 3.2)
+(4, &#39;Iris-setosa&#39;, 4.6, 3.1)
+(5, &#39;Iris-setosa&#39;, 5.0, 3.6)
+(6, &#39;Iris-setosa&#39;, 5.4, 3.9)
+(7, &#39;Iris-setosa&#39;, 4.6, 3.4)
+(8, &#39;Iris-setosa&#39;, 5.0, 3.4)
+(9, &#39;Iris-setosa&#39;, 4.4, 2.9)
+(10, &#39;Iris-setosa&#39;, 4.9, 3.1)
+(11, &#39;Iris-setosa&#39;, 5.4, 3.7)
+(12, &#39;Iris-setosa&#39;, 4.8, 3.4)
+(13, &#39;Iris-setosa&#39;, 4.8, 3.0)
+(14, &#39;Iris-setosa&#39;, 4.3, 3.0)
+(15, &#39;Iris-setosa&#39;, 5.8, 4.0)
+(16, &#39;Iris-setosa&#39;, 5.7, 4.4)
+(17, &#39;Iris-setosa&#39;, 5.4, 3.9)
+(18, &#39;Iris-setosa&#39;, 5.1, 3.5)
+(19, &#39;Iris-setosa&#39;, 5.7, 3.8)
+(20, &#39;Iris-setosa&#39;, 5.1, 3.8)
+(21, &#39;Iris-setosa&#39;, 5.4, 3.4)
+(22, &#39;Iris-setosa&#39;, 5.1, 3.7)
+(23, &#39;Iris-setosa&#39;, 4.6, 3.6)
+(24, &#39;Iris-setosa&#39;, 5.1, 3.3)
+(25, &#39;Iris-setosa&#39;, 4.8, 3.4)
+(26, &#39;Iris-setosa&#39;, 5.0, 3.0)
+(27, &#39;Iris-setosa&#39;, 5.0, 3.4)
+(28, &#39;Iris-setosa&#39;, 5.2, 3.5)
+(29, &#39;Iris-setosa&#39;, 5.2, 3.4)
+(30, &#39;Iris-setosa&#39;, 4.7, 3.2)
+(31, &#39;Iris-setosa&#39;, 4.8, 3.1)
+(32, &#39;Iris-setosa&#39;, 5.4, 3.4)
+(33, &#39;Iris-setosa&#39;, 5.2, 4.1)
+(34, &#39;Iris-setosa&#39;, 5.5, 4.2)
+(35, &#39;Iris-setosa&#39;, 4.9, 3.1)
+(36, &#39;Iris-setosa&#39;, 5.0, 3.2)
+(37, &#39;Iris-setosa&#39;, 5.5, 3.5)
+(38, &#39;Iris-setosa&#39;, 4.9, 3.1)
+(39, &#39;Iris-setosa&#39;, 4.4, 3.0)
+(40, &#39;Iris-setosa&#39;, 5.1, 3.4)
+(41, &#39;Iris-setosa&#39;, 5.0, 3.5)
+(42, &#39;Iris-setosa&#39;, 4.5, 2.3)
+(43, &#39;Iris-setosa&#39;, 4.4, 3.2)
+(44, &#39;Iris-setosa&#39;, 5.0, 3.5)
+(45, &#39;Iris-setosa&#39;, 5.1, 3.8)
+(46, &#39;Iris-setosa&#39;, 4.8, 3.0)
+(47, &#39;Iris-setosa&#39;, 5.1, 3.8)
+(48, &#39;Iris-setosa&#39;, 4.6, 3.2)
+(49, &#39;Iris-setosa&#39;, 5.3, 3.7)
+(50, &#39;Iris-setosa&#39;, 5.0, 3.3)
+(51, &#39;Iris-versicolor&#39;, 7.0, 3.2)
+(52, &#39;Iris-versicolor&#39;, 6.4, 3.2)
+(53, &#39;Iris-versicolor&#39;, 6.9, 3.1)
+(54, &#39;Iris-versicolor&#39;, 5.5, 2.3)
+(55, &#39;Iris-versicolor&#39;, 6.5, 2.8)
+(56, &#39;Iris-versicolor&#39;, 5.7, 2.8)
+(57, &#39;Iris-versicolor&#39;, 6.3, 3.3)
+(58, &#39;Iris-versicolor&#39;, 4.9, 2.4)
+(59, &#39;Iris-versicolor&#39;, 6.6, 2.9)
+(60, &#39;Iris-versicolor&#39;, 5.2, 2.7)
+(61, &#39;Iris-versicolor&#39;, 5.0, 2.0)
+(62, &#39;Iris-versicolor&#39;, 5.9, 3.0)
+(63, &#39;Iris-versicolor&#39;, 6.0, 2.2)
+(64, &#39;Iris-versicolor&#39;, 6.1, 2.9)
+(65, &#39;Iris-versicolor&#39;, 5.6, 2.9)
+(66, &#39;Iris-versicolor&#39;, 6.7, 3.1)
+(67, &#39;Iris-versicolor&#39;, 5.6, 3.0)
+(68, &#39;Iris-versicolor&#39;, 5.8, 2.7)
+(69, &#39;Iris-versicolor&#39;, 6.2, 2.2)
+(70, &#39;Iris-versicolor&#39;, 5.6, 2.5)
+(71, &#39;Iris-versicolor&#39;, 5.9, 3.2)
+(72, &#39;Iris-versicolor&#39;, 6.1, 2.8)
+(73, &#39;Iris-versicolor&#39;, 6.3, 2.5)
+(74, &#39;Iris-versicolor&#39;, 6.1, 2.8)
+(75, &#39;Iris-versicolor&#39;, 6.4, 2.9)
+(76, &#39;Iris-versicolor&#39;, 6.6, 3.0)
+(77, &#39;Iris-versicolor&#39;, 6.8, 2.8)
+(78, &#39;Iris-versicolor&#39;, 6.7, 3.0)
+(79, &#39;Iris-versicolor&#39;, 6.0, 2.9)
+(80, &#39;Iris-versicolor&#39;, 5.7, 2.6)
+(81, &#39;Iris-versicolor&#39;, 5.5, 2.4)
+(82, &#39;Iris-versicolor&#39;, 5.5, 2.4)
+(83, &#39;Iris-versicolor&#39;, 5.8, 2.7)
+(84, &#39;Iris-versicolor&#39;, 6.0, 2.7)
+(85, &#39;Iris-versicolor&#39;, 5.4, 3.0)
+(86, &#39;Iris-versicolor&#39;, 6.0, 3.4)
+(87, &#39;Iris-versicolor&#39;, 6.7, 3.1)
+(88, &#39;Iris-versicolor&#39;, 6.3, 2.3)
+(89, &#39;Iris-versicolor&#39;, 5.6, 3.0)
+(90, &#39;Iris-versicolor&#39;, 5.5, 2.5)
+(91, &#39;Iris-versicolor&#39;, 5.5, 2.6)
+(92, &#39;Iris-versicolor&#39;, 6.1, 3.0)
+(93, &#39;Iris-versicolor&#39;, 5.8, 2.6)
+(94, &#39;Iris-versicolor&#39;, 5.0, 2.3)
+(95, &#39;Iris-versicolor&#39;, 5.6, 2.7)
+(96, &#39;Iris-versicolor&#39;, 5.7, 3.0)
+(97, &#39;Iris-versicolor&#39;, 5.7, 2.9)
+(98, &#39;Iris-versicolor&#39;, 6.2, 2.9)
+(99, &#39;Iris-versicolor&#39;, 5.1, 2.5)
+(100, &#39;Iris-versicolor&#39;, 5.7, 2.8)
+(101, &#39;Iris-virginica&#39;, 6.3, 3.3)
+(102, &#39;Iris-virginica&#39;, 5.8, 2.7)
+(103, &#39;Iris-virginica&#39;, 7.1, 3.0)
+(104, &#39;Iris-virginica&#39;, 6.3, 2.9)
+(105, &#39;Iris-virginica&#39;, 6.5, 3.0)
+(106, &#39;Iris-virginica&#39;, 7.6, 3.0)
+(107, &#39;Iris-virginica&#39;, 4.9, 2.5)
+(108, &#39;Iris-virginica&#39;, 7.3, 2.9)
+(109, &#39;Iris-virginica&#39;, 6.7, 2.5)
+(110, &#39;Iris-virginica&#39;, 7.2, 3.6)
+(111, &#39;Iris-virginica&#39;, 6.5, 3.2)
+(112, &#39;Iris-virginica&#39;, 6.4, 2.7)
+(113, &#39;Iris-virginica&#39;, 6.8, 3.0)
+(114, &#39;Iris-virginica&#39;, 5.7, 2.5)
+(115, &#39;Iris-virginica&#39;, 5.8, 2.8)
+(116, &#39;Iris-virginica&#39;, 6.4, 3.2)
+(117, &#39;Iris-virginica&#39;, 6.5, 3.0)
+(118, &#39;Iris-virginica&#39;, 7.7, 3.8)
+(119, &#39;Iris-virginica&#39;, 7.7, 2.6)
+(120, &#39;Iris-virginica&#39;, 6.0, 2.2)
+(121, &#39;Iris-virginica&#39;, 6.9, 3.2)
+(122, &#39;Iris-virginica&#39;, 5.6, 2.8)
+(123, &#39;Iris-virginica&#39;, 7.7, 2.8)
+(124, &#39;Iris-virginica&#39;, 6.3, 2.7)
+(125, &#39;Iris-virginica&#39;, 6.7, 3.3)
+(126, &#39;Iris-virginica&#39;, 7.2, 3.2)
+(127, &#39;Iris-virginica&#39;, 6.2, 2.8)
+(128, &#39;Iris-virginica&#39;, 6.1, 3.0)
+(129, &#39;Iris-virginica&#39;, 6.4, 2.8)
+(130, &#39;Iris-virginica&#39;, 7.2, 3.0)
+(131, &#39;Iris-virginica&#39;, 7.4, 2.8)
+(132, &#39;Iris-virginica&#39;, 7.9, 3.8)
+(133, &#39;Iris-virginica&#39;, 6.4, 2.8)
+(134, &#39;Iris-virginica&#39;, 6.3, 2.8)
+(135, &#39;Iris-virginica&#39;, 6.1, 2.6)
+(136, &#39;Iris-virginica&#39;, 7.7, 3.0)
+(137, &#39;Iris-virginica&#39;, 6.3, 3.4)
+(138, &#39;Iris-virginica&#39;, 6.4, 3.1)
+(139, &#39;Iris-virginica&#39;, 6.0, 3.0)
+(140, &#39;Iris-virginica&#39;, 6.9, 3.1)
+(141, &#39;Iris-virginica&#39;, 6.7, 3.1)
+(142, &#39;Iris-virginica&#39;, 6.9, 3.1)
+(143, &#39;Iris-virginica&#39;, 5.8, 2.7)
+(144, &#39;Iris-virginica&#39;, 6.8, 3.2)
+(145, &#39;Iris-virginica&#39;, 6.7, 3.3)
+(146, &#39;Iris-virginica&#39;, 6.7, 3.0)
+(147, &#39;Iris-virginica&#39;, 6.3, 2.5)
+(148, &#39;Iris-virginica&#39;, 6.5, 3.0)
+(149, &#39;Iris-virginica&#39;, 6.2, 3.4)
+(150, &#39;Iris-virginica&#39;, 5.9, 3.0)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Berikut cara menggabungkan data</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pymysql</span>
+<span class="kn">import</span> <span class="nn">psycopg2</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
+
+<span class="c1"># Buat engine SQLAlchemy untuk MySQL</span>
+<span class="n">mysql_engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span>
+    <span class="s2">&quot;mysql+pymysql://avnadmin:AVNS_iraqnLcleYqP_JZOqhA@mysql-ab9f2e5-pendata-d.h.aivencloud.com:24202/defaultdb&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># Buat engine SQLAlchemy untuk PostgreSQL</span>
+<span class="n">postgres_engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span>
+    <span class="s2">&quot;postgresql+psycopg2://avnadmin:AVNS_ghOdrdJb9YEAMyKNvOp@pg-314e9d84-pendata-d.h.aivencloud.com:24202/defaultdb&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># Query untuk mengambil data</span>
+<span class="n">mysql_query</span> <span class="o">=</span> <span class="s2">&quot;SELECT id, class, petallength, petalwidth FROM pendatmysql&quot;</span>
+<span class="n">postgres_query</span> <span class="o">=</span> <span class="s2">&quot;SELECT id, sepallength, sepalwidth FROM pendatpostgres&quot;</span>
+
+<span class="c1"># Ambil data dari MySQL dan PostgreSQL sebagai DataFrame Pandas</span>
+<span class="n">df_mysql</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">mysql_query</span><span class="p">,</span> <span class="n">mysql_engine</span><span class="p">,</span> <span class="n">coerce_float</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df_postgres</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">postgres_query</span><span class="p">,</span> <span class="n">postgres_engine</span><span class="p">,</span> <span class="n">coerce_float</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># **Gabungkan Data berdasarkan &#39;id&#39;**</span>
+<span class="n">df_combined</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_mysql</span><span class="p">,</span> <span class="n">df_postgres</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;inner&quot;</span><span class="p">)</span>
+
+<span class="c1"># Tampilkan hasil</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_combined</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+
+<span class="c1"># Jika ingin menyimpan hasil ke CSV</span>
+<span class="n">df_combined</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;db_gabungan.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   id        class  petallength  petalwidth  sepallength  sepalwidth
+0   1  Iris-setosa          1.4         0.2          5.1         3.5
+1   2  Iris-setosa          1.4         0.2          4.9         3.0
+2   3  Iris-setosa          1.3         0.2          4.7         3.2
+3   4  Iris-setosa          1.5         0.2          4.6         3.1
+4   5  Iris-setosa          1.4         0.2          5.0         3.6
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 
     <script type="text/x-thebe-config">
