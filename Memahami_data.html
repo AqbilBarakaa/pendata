@@ -381,6 +381,8 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ekplorasi-data-set-iris">Ekplorasi data set IRIS</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-data">Visualisasi Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#profiling-data-set-iris">Profiling data set IRIS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tipe-tipe-data">Tipe-tipe data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#konsep-knn-untuk-deteksi-outlier">Konsep KNN untuk Deteksi Outlier</a></li>
 </ul>
 </li>
 </ul>
@@ -968,91 +970,6 @@ None
 </div>
 </div>
 <ul class="simple">
-<li><p>Visualisasi Hubungan Antar Fitur dengan Pairplot</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;species&quot;</span><span class="p">,</span> <span class="n">diag_kind</span><span class="o">=</span><span class="s2">&quot;kde&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="nn">File ~/.local/lib/python3.12/site-packages/pandas/core/indexes/base.py:3805,</span> in <span class="ni">Index.get_loc</span><span class="nt">(self, key)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3804</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">3805</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">casted_key</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3806</span> <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
-
-<span class="nn">File index.pyx:167,</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
-
-<span class="nn">File index.pyx:196,</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
-
-<span class="nn">File pandas/_libs/hashtable_class_helper.pxi:7081,</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
-
-<span class="nn">File pandas/_libs/hashtable_class_helper.pxi:7089,</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
-
-<span class="ne">KeyError</span>: &#39;species&#39;
-
-<span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
-
-<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;species&quot;</span><span class="p">,</span> <span class="n">diag_kind</span><span class="o">=</span><span class="s2">&quot;kde&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="nn">File ~/.local/lib/python3.12/site-packages/seaborn/axisgrid.py:2119,</span> in <span class="ni">pairplot</span><span class="nt">(data, hue, hue_order, palette, vars, x_vars, y_vars, kind, diag_kind, markers, height, aspect, corner, dropna, plot_kws, diag_kws, grid_kws, size)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2117</span> <span class="c1"># Set up the PairGrid</span>
-<span class="g g-Whitespace">   </span><span class="mi">2118</span> <span class="n">grid_kws</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;diag_sharey&quot;</span><span class="p">,</span> <span class="n">diag_kind</span> <span class="o">==</span> <span class="s2">&quot;hist&quot;</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">2119</span> <span class="n">grid</span> <span class="o">=</span> <span class="n">PairGrid</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">vars</span><span class="o">=</span><span class="nb">vars</span><span class="p">,</span> <span class="n">x_vars</span><span class="o">=</span><span class="n">x_vars</span><span class="p">,</span> <span class="n">y_vars</span><span class="o">=</span><span class="n">y_vars</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="n">hue</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">2120</span>                 <span class="n">hue_order</span><span class="o">=</span><span class="n">hue_order</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="n">palette</span><span class="p">,</span> <span class="n">corner</span><span class="o">=</span><span class="n">corner</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">2121</span>                 <span class="n">height</span><span class="o">=</span><span class="n">height</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="n">aspect</span><span class="p">,</span> <span class="n">dropna</span><span class="o">=</span><span class="n">dropna</span><span class="p">,</span> <span class="o">**</span><span class="n">grid_kws</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2123</span> <span class="c1"># Add the markers here as PairGrid has figured out how many levels of the</span>
-<span class="g g-Whitespace">   </span><span class="mi">2124</span> <span class="c1"># hue variable are needed and we don&#39;t want to duplicate that process</span>
-<span class="g g-Whitespace">   </span><span class="mi">2125</span> <span class="k">if</span> <span class="n">markers</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-
-<span class="nn">File ~/.local/lib/python3.12/site-packages/seaborn/axisgrid.py:1327,</span> in <span class="ni">PairGrid.__init__</span><span class="nt">(self, data, hue, vars, x_vars, y_vars, hue_order, palette, hue_kws, corner, diag_sharey, height, aspect, layout_pad, despine, dropna)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1316</span>     <span class="bp">self</span><span class="o">.</span><span class="n">hue_vals</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s2">&quot;_nolegend_&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1317</span>                               <span class="n">index</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1318</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1319</span>     <span class="c1"># We need hue_order and hue_names because the former is used to control</span>
-<span class="g g-Whitespace">   </span><span class="mi">1320</span>     <span class="c1"># the order of drawing and the latter is used to control the order of</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1325</span>     <span class="c1"># to the axes-level functions, while always handling legend creation.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1326</span>     <span class="c1"># See GH2307</span>
-<span class="ne">-&gt; </span><span class="mi">1327</span>     <span class="n">hue_names</span> <span class="o">=</span> <span class="n">hue_order</span> <span class="o">=</span> <span class="n">categorical_order</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">hue</span><span class="p">],</span> <span class="n">hue_order</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1328</span>     <span class="k">if</span> <span class="n">dropna</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1329</span>         <span class="c1"># Filter NA from the list of unique hue names</span>
-<span class="g g-Whitespace">   </span><span class="mi">1330</span>         <span class="n">hue_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">notnull</span><span class="p">,</span> <span class="n">hue_names</span><span class="p">))</span>
-
-<span class="nn">File ~/.local/lib/python3.12/site-packages/pandas/core/frame.py:4102,</span> in <span class="ni">DataFrame.__getitem__</span><span class="nt">(self, key)</span>
-<span class="g g-Whitespace">   </span><span class="mi">4100</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">nlevels</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">4101</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getitem_multilevel</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">4102</span> <span class="n">indexer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">4103</span> <span class="k">if</span> <span class="n">is_integer</span><span class="p">(</span><span class="n">indexer</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">4104</span>     <span class="n">indexer</span> <span class="o">=</span> <span class="p">[</span><span class="n">indexer</span><span class="p">]</span>
-
-<span class="nn">File ~/.local/lib/python3.12/site-packages/pandas/core/indexes/base.py:3812,</span> in <span class="ni">Index.get_loc</span><span class="nt">(self, key)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3807</span>     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">casted_key</span><span class="p">,</span> <span class="nb">slice</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">3808</span>         <span class="nb">isinstance</span><span class="p">(</span><span class="n">casted_key</span><span class="p">,</span> <span class="n">abc</span><span class="o">.</span><span class="n">Iterable</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3809</span>         <span class="ow">and</span> <span class="nb">any</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">slice</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">casted_key</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3810</span>     <span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">3811</span>         <span class="k">raise</span> <span class="n">InvalidIndexError</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">3812</span>     <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">err</span>
-<span class="g g-Whitespace">   </span><span class="mi">3813</span> <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">3814</span>     <span class="c1"># If we have a listlike key, _check_indexing_error will raise</span>
-<span class="g g-Whitespace">   </span><span class="mi">3815</span>     <span class="c1">#  InvalidIndexError. Otherwise we fall through and re-raise</span>
-<span class="g g-Whitespace">   </span><span class="mi">3816</span>     <span class="c1">#  the TypeError.</span>
-<span class="g g-Whitespace">   </span><span class="mi">3817</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_check_indexing_error</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-
-<span class="ne">KeyError</span>: &#39;species&#39;
-</pre></div>
-</div>
-<img alt="_images/f9d72b8956e5e0eddcd391860fe87e6fc7e2e43e8d0344746e41251759726e54.png" src="_images/f9d72b8956e5e0eddcd391860fe87e6fc7e2e43e8d0344746e41251759726e54.png" />
-</div>
-</div>
-<ul class="simple">
 <li><p>Menampilkan dengan fitur Scatter Plot</p></li>
 </ul>
 <div class="cell docutils container">
@@ -1178,6 +1095,232 @@ Name: count, dtype: int64
 </div>
 </div>
 </section>
+<section id="tipe-tipe-data">
+<h2>Tipe-tipe data<a class="headerlink" href="#tipe-tipe-data" title="Link to this heading">#</a></h2>
+<p>Dalam konteks pemrograman dan analisis data, tipe data (data types) adalah klasifikasi yang menentukan jenis nilai yang dapat disimpan dalam suatu variabel atau kolom data. Setiap tipe data memiliki karakteristik dan operasi yang dapat dilakukan terhadapnya. Berikut adalah penjelasan tentang tipe-tipe data yang umum digunakan:</p>
+<p><strong>1. Tipe Data Numerik</strong></p>
+<p>Tipe data numerik digunakan untuk menyimpan nilai angka. Terdapat dua jenis utama:</p>
+<p><strong>a. Integer (Bilangan Bulat)</strong></p>
+<ul class="simple">
+<li><p>Menyimpan bilangan bulat (tanpa desimal).</p></li>
+<li><p>Contoh: 1, -5, 1000.</p></li>
+<li><p>Ukuran: Bergantung pada bahasa pemrograman (misalnya, int32, int64).</p></li>
+</ul>
+<p><strong>b. Float (Bilangan Desimal)</strong></p>
+<ul class="simple">
+<li><p>Menyimpan bilangan desimal.</p></li>
+<li><p>Contoh: 3.14, -0.001, 2.0.</p></li>
+<li><p>Ukuran: Bergantung pada bahasa pemrograman (misalnya, float32, float64).</p></li>
+</ul>
+<p><strong>c. Complex (Bilangan Kompleks)</strong></p>
+<ul class="simple">
+<li><p>Menyimpan bilangan kompleks (dengan bagian imajiner).</p></li>
+<li><p>Contoh: 3 + 4j, -1.5 + 2.5j.</p></li>
+</ul>
+<p><strong>2. Tipe Data Teks (String)</strong></p>
+<p>Tipe data teks digunakan untuk menyimpan rangkaian karakter.</p>
+<p><strong>a. String</strong></p>
+<ul class="simple">
+<li><p>Menyimpan teks atau karakter.</p></li>
+<li><p>Contoh: “Hello”, “123”, “Data Science”.</p></li>
+<li><p>Operasi: Penggabungan (+), pemotongan (slice), pencarian, dll.</p></li>
+</ul>
+<p><strong>3. Tipe Data Boolean</strong></p>
+<p>Tipe data boolean digunakan untuk menyimpan nilai logika.</p>
+<p><strong>a. Boolean</strong></p>
+<ul class="simple">
+<li><p>Menyimpan nilai True atau False.</p></li>
+<li><p>Contoh: True, False.</p></li>
+<li><p>Operasi: Logika AND, OR, NOT.</p></li>
+</ul>
+<p><strong>4. Tipe Data Kategorikal</strong></p>
+<p>Tipe data kategorikal digunakan untuk menyimpan data yang memiliki kategori atau kelompok.</p>
+<p><strong>a. Category</strong></p>
+<ul class="simple">
+<li><p>Menyimpan data dengan kategori terbatas.</p></li>
+<li><p>Contoh: “Male”, “Female”, “High”, “Medium”, “Low”.</p></li>
+<li><p>Operasi: Pengelompokan (grouping), analisis frekuensi.</p></li>
+</ul>
+<p><strong>5.Tipe Data Waktu dan Tanggal</strong></p>
+<p>Tipe data ini digunakan untuk menyimpan informasi waktu dan tanggal.</p>
+<p><strong>a. Date</strong></p>
+<ul class="simple">
+<li><p>Menyimpan tanggal.</p></li>
+<li><p>Contoh: 2023-10-15.</p></li>
+</ul>
+<p><strong>b. Time</strong></p>
+<ul class="simple">
+<li><p>Menyimpan waktu.</p></li>
+<li><p>Contoh: 14:30:00.</p></li>
+</ul>
+<p><strong>c. Datetime</strong></p>
+<ul class="simple">
+<li><p>Menyimpan tanggal dan waktu.</p></li>
+<li><p>Contoh: 2023-10-15 14:30:00.</p></li>
+</ul>
+<p><strong>6. Tipe Data Koleksi</strong></p>
+<p>Tipe data koleksi digunakan untuk menyimpan sekumpulan data.</p>
+<p><strong>a. List</strong></p>
+<ul class="simple">
+<li><p>Menyimpan kumpulan data yang terurut dan dapat diubah (mutable).</p></li>
+<li><p>Contoh: [1, 2, 3], [“a”, “b”, “c”].</p></li>
+</ul>
+<p><strong>b. Tuple</strong></p>
+<ul class="simple">
+<li><p>Menyimpan kumpulan data yang terurut dan tidak dapat diubah (immutable).</p></li>
+<li><p>Contoh: (1, 2, 3), (“a”, “b”, “c”).</p></li>
+</ul>
+<p><strong>c. Set</strong></p>
+<ul class="simple">
+<li><p>Menyimpan kumpulan data unik dan tidak terurut.</p></li>
+</ul>
+<p>Contoh: {1, 2, 3}, {“a”, “b”, “c”}.</p>
+<p><strong>d. Dictionary</strong></p>
+<ul class="simple">
+<li><p>Menyimpan kumpulan data dalam bentuk pasangan key-value.</p></li>
+<li><p>Contoh: {“name”: “John”, “age”: 30}.</p></li>
+</ul>
+<p><strong>7.Tipe Data Binary</strong></p>
+<p>Tipe data binary digunakan untuk menyimpan data dalam bentuk biner.</p>
+<p><strong>a. Bytes</strong></p>
+<ul class="simple">
+<li><p>Menyimpan data biner.</p></li>
+<li><p>Contoh: b”hello”.</p></li>
+</ul>
+<p><strong>b. Bytearray</strong></p>
+<ul class="simple">
+<li><p>Menyimpan data biner yang dapat diubah (mutable).</p></li>
+<li><p>Contoh: bytearray(b”hello”).</p></li>
+</ul>
+<p><strong>8. Tipe Data Khusus</strong></p>
+<p>Beberapa bahasa pemrograman atau framework memiliki tipe data khusus untuk keperluan tertentu.</p>
+<p><strong>a. Array</strong></p>
+<ul class="simple">
+<li><p>Menyimpan kumpulan data dengan tipe yang sama.</p></li>
+<li><p>Contoh: array(‘i’, [1, 2, 3]) (di Python).</p></li>
+</ul>
+<p><strong>b. DataFrame</strong></p>
+<ul class="simple">
+<li><p>Digunakan dalam library seperti Pandas untuk menyimpan data tabular.</p></li>
+<li><p>Contoh: Tabel dengan baris dan kolom.</p></li>
+</ul>
+<p><strong>c. Null/None</strong></p>
+<ul class="simple">
+<li><p>Menyimpan nilai kosong atau tidak terdefinisi.</p></li>
+<li><p>Contoh: None (di Python), NULL (di SQL).</p></li>
+</ul>
+</section>
+<section id="konsep-knn-untuk-deteksi-outlier">
+<h2>Konsep KNN untuk Deteksi Outlier<a class="headerlink" href="#konsep-knn-untuk-deteksi-outlier" title="Link to this heading">#</a></h2>
+<p>K-Nearest Neighbors (K-NN) adalah salah satu algoritma machine learning yang digunakan untuk klasifikasi dan regresi. K-NN termasuk dalam kategori supervised learning (pembelajaran terawasi) dan bekerja berdasarkan prinsip kemiripan (similarity). Algoritma ini memprediksi kelas atau nilai suatu data dengan melihat “tetangga terdekat” (nearest neighbors) dari data tersebut.</p>
+<p>Berikut adalah konsep langkah demi langkah untuk mendeteksi outlier menggunakan KNN:</p>
+<ol class="arabic simple">
+<li><p>Hitung Jarak: Menghitung jarak antara titik data dengan K titik data terdekatnya. Jarak umum yang digunakan adalah jarak Euclidean.</p></li>
+<li><p>Pilih K: Tentukan jumlah tetangga terdekat (K). Misalnya, K = 5 berarti kita akan mencari 5 tetangga terdekat.</p></li>
+<li><p>Tentukan Threshold: Tentukan ambang batas untuk jarak. Jika jarak titik ke tetangga terdekatnya lebih besar dari threshold yang ditentukan, maka data tersebut dianggap sebagai outlier.</p></li>
+<li><p>Analisis Jarak: Jika suatu titik memiliki jarak yang sangat besar dengan tetangganya (jauh lebih besar dari rata-rata jarak titik lainnya), maka titik tersebut kemungkinan merupakan outlier.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pymysql</span>
+<span class="kn">import</span> <span class="nn">psycopg2</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
+<span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">LocalOutlierFactor</span>
+
+<span class="c1"># Buat engine SQLAlchemy untuk MySQL</span>
+<span class="n">mysql_engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span>
+    <span class="s2">&quot;mysql+pymysql://avnadmin:AVNS_iraqnLcleYqP_JZOqhA@mysql-ab9f2e5-pendata-d.h.aivencloud.com:24202/defaultdb&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># Buat engine SQLAlchemy untuk PostgreSQL</span>
+<span class="n">postgres_engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span>
+    <span class="s2">&quot;postgresql+psycopg2://avnadmin:AVNS_ghOdrdJb9YEAMyKNvOp@pg-314e9d84-pendata-d.h.aivencloud.com:24202/defaultdb&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># Query untuk mengambil data</span>
+<span class="n">mysql_query</span> <span class="o">=</span> <span class="s2">&quot;SELECT id, class, petallength, petalwidth FROM pendatmysql&quot;</span>
+<span class="n">postgres_query</span> <span class="o">=</span> <span class="s2">&quot;SELECT id, sepallength, sepalwidth FROM pendatpostgres&quot;</span>
+
+<span class="c1"># Ambil data dari MySQL dan PostgreSQL sebagai DataFrame Pandas</span>
+<span class="n">df_mysql</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">mysql_query</span><span class="p">,</span> <span class="n">mysql_engine</span><span class="p">,</span> <span class="n">coerce_float</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df_postgres</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">postgres_query</span><span class="p">,</span> <span class="n">postgres_engine</span><span class="p">,</span> <span class="n">coerce_float</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Gabungkan Data berdasarkan &#39;id&#39;</span>
+<span class="n">df_combined</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_mysql</span><span class="p">,</span> <span class="n">df_postgres</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;inner&quot;</span><span class="p">)</span>
+
+<span class="c1"># Konversi ke numpy array untuk analisis</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">df_combined</span><span class="p">[[</span><span class="s1">&#39;petallength&#39;</span><span class="p">,</span> <span class="s1">&#39;petalwidth&#39;</span><span class="p">,</span> <span class="s1">&#39;sepallength&#39;</span><span class="p">,</span> <span class="s1">&#39;sepalwidth&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+
+<span class="c1"># Model KNN untuk deteksi outlier dengan LOF</span>
+<span class="n">lof</span> <span class="o">=</span> <span class="n">LocalOutlierFactor</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">contamination</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">outlier_labels</span> <span class="o">=</span> <span class="n">lof</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># Tambahkan hasil deteksi ke DataFrame</span>
+<span class="n">df_combined</span><span class="p">[</span><span class="s2">&quot;outlier&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">outlier_labels</span>
+
+<span class="c1"># Pisahkan data normal dan outlier</span>
+<span class="n">normal_data</span> <span class="o">=</span> <span class="n">df_combined</span><span class="p">[</span><span class="n">df_combined</span><span class="p">[</span><span class="s2">&quot;outlier&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">outlier_data</span> <span class="o">=</span> <span class="n">df_combined</span><span class="p">[</span><span class="n">df_combined</span><span class="p">[</span><span class="s2">&quot;outlier&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># Visualisasi hasil (menggunakan dua fitur untuk plotting)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">normal_data</span><span class="p">[</span><span class="s2">&quot;sepallength&quot;</span><span class="p">],</span> <span class="n">normal_data</span><span class="p">[</span><span class="s2">&quot;sepalwidth&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Normal&quot;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">outlier_data</span><span class="p">[</span><span class="s2">&quot;sepallength&quot;</span><span class="p">],</span> <span class="n">outlier_data</span><span class="p">[</span><span class="s2">&quot;sepalwidth&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Outlier&quot;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Sepal Length&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Sepal Width&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Deteksi Outlier dengan KNN (LOF)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Menampilkan data outlier</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data Outlier:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">outlier_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/62bab8aacfbd3be3b1e930582869a0d3d57795cb8bc811fa9a89a3dbafc7cf17.png" src="_images/62bab8aacfbd3be3b1e930582869a0d3d57795cb8bc811fa9a89a3dbafc7cf17.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data Outlier:
+      id            class  petallength  petalwidth  sepallength  sepalwidth  \
+20    21      Iris-setosa          1.7         0.2          5.4         3.4   
+22    23      Iris-setosa          1.0         0.2          4.6         3.6   
+23    24      Iris-setosa          1.7         0.5          5.1         3.3   
+24    25      Iris-setosa          1.9         0.2          4.8         3.4   
+31    32      Iris-setosa          1.5         0.4          5.4         3.4   
+35    36      Iris-setosa          1.2         0.2          5.0         3.2   
+36    37      Iris-setosa          1.3         0.2          5.5         3.5   
+41    42      Iris-setosa          1.3         0.3          4.5         2.3   
+62    63  Iris-versicolor          4.0         1.0          6.0         2.2   
+64    65  Iris-versicolor          3.6         1.3          5.6         2.9   
+106  107   Iris-virginica          4.5         1.7          4.9         2.5   
+108  109   Iris-virginica          5.8         1.8          6.7         2.5   
+109  110   Iris-virginica          6.1         2.5          7.2         3.6   
+131  132   Iris-virginica          6.4         2.0          7.9         3.8   
+134  135   Iris-virginica          5.6         1.4          6.1         2.6   
+
+     outlier  
+20        -1  
+22        -1  
+23        -1  
+24        -1  
+31        -1  
+35        -1  
+36        -1  
+41        -1  
+62        -1  
+64        -1  
+106       -1  
+108       -1  
+109       -1  
+131       -1  
+134       -1  
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1240,6 +1383,8 @@ Name: count, dtype: int64
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ekplorasi-data-set-iris">Ekplorasi data set IRIS</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-data">Visualisasi Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#profiling-data-set-iris">Profiling data set IRIS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tipe-tipe-data">Tipe-tipe data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#konsep-knn-untuk-deteksi-outlier">Konsep KNN untuk Deteksi Outlier</a></li>
 </ul>
 </li>
 </ul>
