@@ -183,6 +183,7 @@
 
 
 
+
 </ul>
 
     </div>
@@ -381,6 +382,7 @@ document.write(`
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Memahami Data dalam Penambangan Data</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pengumpulan-data-terkait-dengan-iris-dataset">Pengumpulan data terkait dengan IRIS Dataset</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ekplorasi-data-set-iris">Ekplorasi data set IRIS</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-data">Visualisasi Data</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#profiling-data-set-iris">Profiling data set IRIS</a></li>
 </ul>
 
@@ -832,77 +834,181 @@ document.write(`
 </section>
 <section id="ekplorasi-data-set-iris">
 <h1>Ekplorasi data set IRIS<a class="headerlink" href="#ekplorasi-data-set-iris" title="Link to this heading">#</a></h1>
-<p>Import Library dan Load Data</p>
+<p>Import Library dan Load Data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-<span class="c1"># Load dataset Iris dari seaborn</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;iris&quot;</span><span class="p">)</span>
+<span class="c1"># Baca data dari CSV</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;db_gabungan.csv&quot;</span><span class="p">)</span>
 
 <span class="c1"># Menampilkan 5 baris pertama</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>  
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   sepal_length  sepal_width  petal_length  petal_width species
-0           5.1          3.5           1.4          0.2  setosa
-1           4.9          3.0           1.4          0.2  setosa
-2           4.7          3.2           1.3          0.2  setosa
-3           4.6          3.1           1.5          0.2  setosa
-4           5.0          3.6           1.4          0.2  setosa
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   id        class  petallength  petalwidth  sepallength  sepalwidth
+0   1  Iris-setosa          1.4         0.2          5.1         3.5
+1   2  Iris-setosa          1.4         0.2          4.9         3.0
+2   3  Iris-setosa          1.3         0.2          4.7         3.2
+3   4  Iris-setosa          1.5         0.2          4.6         3.1
+4   5  Iris-setosa          1.4         0.2          5.0         3.6
 </pre></div>
 </div>
 </div>
 </div>
-<p>Menampilkan Informasi Dataset</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Statistik deskriptif</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>  
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>               id  petallength  petalwidth  sepallength  sepalwidth
+count  150.000000   150.000000  150.000000   150.000000  150.000000
+mean    75.500000     3.758667    1.198667     5.843333    3.054000
+std     43.445368     1.764420    0.763161     0.828066    0.433594
+min      1.000000     1.000000    0.100000     4.300000    2.000000
+25%     38.250000     1.600000    0.300000     5.100000    2.800000
+50%     75.500000     4.350000    1.300000     5.800000    3.000000
+75%    112.750000     5.100000    1.800000     6.400000    3.300000
+max    150.000000     6.900000    2.500000     7.900000    4.400000
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Informasi dataset</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">())</span>
-
-<span class="c1"># Statistik deskriptif</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
 RangeIndex: 150 entries, 0 to 149
-Data columns (total 5 columns):
- #   Column        Non-Null Count  Dtype  
----  ------        --------------  -----  
- 0   sepal_length  150 non-null    float64
- 1   sepal_width   150 non-null    float64
- 2   petal_length  150 non-null    float64
- 3   petal_width   150 non-null    float64
- 4   species       150 non-null    object 
-dtypes: float64(4), object(1)
-memory usage: 6.0+ KB
+Data columns (total 6 columns):
+ #   Column       Non-Null Count  Dtype  
+---  ------       --------------  -----  
+ 0   id           150 non-null    int64  
+ 1   class        150 non-null    object 
+ 2   petallength  150 non-null    float64
+ 3   petalwidth   150 non-null    float64
+ 4   sepallength  150 non-null    float64
+ 5   sepalwidth   150 non-null    float64
+dtypes: float64(4), int64(1), object(1)
+memory usage: 7.2+ KB
 None
-       sepal_length  sepal_width  petal_length  petal_width
-count    150.000000   150.000000    150.000000   150.000000
-mean       5.843333     3.057333      3.758000     1.199333
-std        0.828066     0.435866      1.765298     0.762238
-min        4.300000     2.000000      1.000000     0.100000
-25%        5.100000     2.800000      1.600000     0.300000
-50%        5.800000     3.000000      4.350000     1.300000
-75%        6.400000     3.300000      5.100000     1.800000
-max        7.900000     4.400000      6.900000     2.500000
 </pre></div>
 </div>
+</div>
+</div>
+</section>
+<section id="visualisasi-data">
+<h1>Visualisasi Data<a class="headerlink" href="#visualisasi-data" title="Link to this heading">#</a></h1>
+<p>proses mengubah data menjadi bentuk visual seperti grafik, diagram, atau peta untuk memudahkan pemahaman, analisis, dan komunikasi informasi.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="c1"># Baca data dari CSV</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;db_gabungan.csv&quot;</span><span class="p">)</span>
+
+<span class="c1"># Tampilkan beberapa baris pertama</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   id        class  petallength  petalwidth  sepallength  sepalwidth
+0   1  Iris-setosa          1.4         0.2          5.1         3.5
+1   2  Iris-setosa          1.4         0.2          4.9         3.0
+2   3  Iris-setosa          1.3         0.2          4.7         3.2
+3   4  Iris-setosa          1.5         0.2          4.6         3.1
+4   5  Iris-setosa          1.4         0.2          5.0         3.6
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="c1"># Baca dataset</span>
+<span class="n">file_path</span> <span class="o">=</span> <span class="s2">&quot;db_gabungan.csv&quot;</span>  <span class="c1"># Pastikan file berada di direktori yang sesuai</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+
+<span class="c1"># Histogram: Distribusi data numerik</span>
+<span class="n">df</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Distribusi Data Numerik&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/b0f31c728ac09d07e05d0eb06b550b666068de3d839881892be9a3a03142b811.png" src="_images/b0f31c728ac09d07e05d0eb06b550b666068de3d839881892be9a3a03142b811.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Box Plot: Mendeteksi outliers</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Boxplot Data Numerik&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/59991f361faf9c38799e4788cce6b00a1d8349223e05fdcd0d452b845ad57c91.png" src="_images/59991f361faf9c38799e4788cce6b00a1d8349223e05fdcd0d452b845ad57c91.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Scatter Plot: Hubungan antara Sepal Length dan Sepal Width</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;sepallength&quot;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;sepalwidth&quot;</span><span class="p">],</span> <span class="n">hue</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">],</span> <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;coolwarm&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Hubungan antara Sepal Length dan Sepal Width&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Sepal Length&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Sepal Width&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Class&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/eb9f63834b8f065482f6818df1b6027a3897098333aa5e435420290a1f03c899.png" src="_images/eb9f63834b8f065482f6818df1b6027a3897098333aa5e435420290a1f03c899.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pie Chart: Proporsi tiap kelas bunga</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;pie&quot;</span><span class="p">,</span> <span class="n">autopct</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%1.1f%%</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;coolwarm&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Proporsi Kelas Bunga&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>  <span class="c1"># Menghilangkan label y agar lebih rapi</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/d22e6d4c389e2e9099ceebb13e223c94ae96a2925efe54201ee4a1f15876d62c.png" src="_images/d22e6d4c389e2e9099ceebb13e223c94ae96a2925efe54201ee4a1f15876d62c.png" />
 </div>
 </div>
 </section>
 <section id="profiling-data-set-iris">
 <h1>Profiling data set IRIS<a class="headerlink" href="#profiling-data-set-iris" title="Link to this heading">#</a></h1>
 <p>Profiling dataset IRIS merujuk pada proses menganalisis dan memahami karakteristik dari dataset Iris, yang merupakan salah satu dataset paling terkenal dalam dunia machine learning dan statistik. Sering digunakan untuk tujuan pengenalan pola, klasifikasi, dan visualisasi data.</p>
-<p>Visualisasi Data</p>
 <ul class="simple">
-<li><p>Distribusi Fitur dengan Histogram</p></li>
+<li><p>Distribusi Fitur dengan Histogram.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -912,7 +1018,7 @@ max        7.900000     4.400000      6.900000     2.500000
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/2ec84dce3375125f8f114f6bc5fa7fedd28262d8842c1a1383c50c2a48a7e20a.png" src="_images/2ec84dce3375125f8f114f6bc5fa7fedd28262d8842c1a1383c50c2a48a7e20a.png" />
+<img alt="_images/5f3d6254a75a5eec6c507e825b4bade751029f3c3fee3b6de79b4b060218a82a.png" src="_images/5f3d6254a75a5eec6c507e825b4bade751029f3c3fee3b6de79b4b060218a82a.png" />
 </div>
 </div>
 <ul class="simple">
@@ -927,7 +1033,7 @@ max        7.900000     4.400000      6.900000     2.500000
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/4cb51e3ef3eacb66ed90cd3b5e6cb203fa7eaa5ec3bdd7374e1bccbe7d047b76.png" src="_images/4cb51e3ef3eacb66ed90cd3b5e6cb203fa7eaa5ec3bdd7374e1bccbe7d047b76.png" />
+<img alt="_images/5a8e55610d7929a60d9ed281b655bb6c8c8db87b8ae9f0b2e5c04ccb3a55a0ff.png" src="_images/5a8e55610d7929a60d9ed281b655bb6c8c8db87b8ae9f0b2e5c04ccb3a55a0ff.png" />
 </div>
 </div>
 <ul class="simple">
@@ -941,7 +1047,101 @@ max        7.900000     4.400000      6.900000     2.500000
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8c1492da1f79e1985f3211a98f18a919270cdeae617ea96a997c146782fca5ee.png" src="_images/8c1492da1f79e1985f3211a98f18a919270cdeae617ea96a997c146782fca5ee.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="nn">File ~/.local/lib/python3.12/site-packages/pandas/core/indexes/base.py:3805,</span> in <span class="ni">Index.get_loc</span><span class="nt">(self, key)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3804</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">3805</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">casted_key</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3806</span> <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+
+<span class="nn">File index.pyx:167,</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
+
+<span class="nn">File index.pyx:196,</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
+
+<span class="nn">File pandas/_libs/hashtable_class_helper.pxi:7081,</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
+
+<span class="nn">File pandas/_libs/hashtable_class_helper.pxi:7089,</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
+
+<span class="ne">KeyError</span>: &#39;species&#39;
+
+<span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
+
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">14</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;species&quot;</span><span class="p">,</span> <span class="n">diag_kind</span><span class="o">=</span><span class="s2">&quot;kde&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="nn">File ~/.local/lib/python3.12/site-packages/seaborn/axisgrid.py:2119,</span> in <span class="ni">pairplot</span><span class="nt">(data, hue, hue_order, palette, vars, x_vars, y_vars, kind, diag_kind, markers, height, aspect, corner, dropna, plot_kws, diag_kws, grid_kws, size)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2117</span> <span class="c1"># Set up the PairGrid</span>
+<span class="g g-Whitespace">   </span><span class="mi">2118</span> <span class="n">grid_kws</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;diag_sharey&quot;</span><span class="p">,</span> <span class="n">diag_kind</span> <span class="o">==</span> <span class="s2">&quot;hist&quot;</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">2119</span> <span class="n">grid</span> <span class="o">=</span> <span class="n">PairGrid</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">vars</span><span class="o">=</span><span class="nb">vars</span><span class="p">,</span> <span class="n">x_vars</span><span class="o">=</span><span class="n">x_vars</span><span class="p">,</span> <span class="n">y_vars</span><span class="o">=</span><span class="n">y_vars</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="n">hue</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2120</span>                 <span class="n">hue_order</span><span class="o">=</span><span class="n">hue_order</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="n">palette</span><span class="p">,</span> <span class="n">corner</span><span class="o">=</span><span class="n">corner</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2121</span>                 <span class="n">height</span><span class="o">=</span><span class="n">height</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="n">aspect</span><span class="p">,</span> <span class="n">dropna</span><span class="o">=</span><span class="n">dropna</span><span class="p">,</span> <span class="o">**</span><span class="n">grid_kws</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2123</span> <span class="c1"># Add the markers here as PairGrid has figured out how many levels of the</span>
+<span class="g g-Whitespace">   </span><span class="mi">2124</span> <span class="c1"># hue variable are needed and we don&#39;t want to duplicate that process</span>
+<span class="g g-Whitespace">   </span><span class="mi">2125</span> <span class="k">if</span> <span class="n">markers</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+
+<span class="nn">File ~/.local/lib/python3.12/site-packages/seaborn/axisgrid.py:1327,</span> in <span class="ni">PairGrid.__init__</span><span class="nt">(self, data, hue, vars, x_vars, y_vars, hue_order, palette, hue_kws, corner, diag_sharey, height, aspect, layout_pad, despine, dropna)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1316</span>     <span class="bp">self</span><span class="o">.</span><span class="n">hue_vals</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s2">&quot;_nolegend_&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1317</span>                               <span class="n">index</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1318</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1319</span>     <span class="c1"># We need hue_order and hue_names because the former is used to control</span>
+<span class="g g-Whitespace">   </span><span class="mi">1320</span>     <span class="c1"># the order of drawing and the latter is used to control the order of</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1325</span>     <span class="c1"># to the axes-level functions, while always handling legend creation.</span>
+<span class="g g-Whitespace">   </span><span class="mi">1326</span>     <span class="c1"># See GH2307</span>
+<span class="ne">-&gt; </span><span class="mi">1327</span>     <span class="n">hue_names</span> <span class="o">=</span> <span class="n">hue_order</span> <span class="o">=</span> <span class="n">categorical_order</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">hue</span><span class="p">],</span> <span class="n">hue_order</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1328</span>     <span class="k">if</span> <span class="n">dropna</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1329</span>         <span class="c1"># Filter NA from the list of unique hue names</span>
+<span class="g g-Whitespace">   </span><span class="mi">1330</span>         <span class="n">hue_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">notnull</span><span class="p">,</span> <span class="n">hue_names</span><span class="p">))</span>
+
+<span class="nn">File ~/.local/lib/python3.12/site-packages/pandas/core/frame.py:4102,</span> in <span class="ni">DataFrame.__getitem__</span><span class="nt">(self, key)</span>
+<span class="g g-Whitespace">   </span><span class="mi">4100</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">nlevels</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">4101</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getitem_multilevel</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">4102</span> <span class="n">indexer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">4103</span> <span class="k">if</span> <span class="n">is_integer</span><span class="p">(</span><span class="n">indexer</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">4104</span>     <span class="n">indexer</span> <span class="o">=</span> <span class="p">[</span><span class="n">indexer</span><span class="p">]</span>
+
+<span class="nn">File ~/.local/lib/python3.12/site-packages/pandas/core/indexes/base.py:3812,</span> in <span class="ni">Index.get_loc</span><span class="nt">(self, key)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3807</span>     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">casted_key</span><span class="p">,</span> <span class="nb">slice</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">3808</span>         <span class="nb">isinstance</span><span class="p">(</span><span class="n">casted_key</span><span class="p">,</span> <span class="n">abc</span><span class="o">.</span><span class="n">Iterable</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3809</span>         <span class="ow">and</span> <span class="nb">any</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">slice</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">casted_key</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3810</span>     <span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">3811</span>         <span class="k">raise</span> <span class="n">InvalidIndexError</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">3812</span>     <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">err</span>
+<span class="g g-Whitespace">   </span><span class="mi">3813</span> <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">3814</span>     <span class="c1"># If we have a listlike key, _check_indexing_error will raise</span>
+<span class="g g-Whitespace">   </span><span class="mi">3815</span>     <span class="c1">#  InvalidIndexError. Otherwise we fall through and re-raise</span>
+<span class="g g-Whitespace">   </span><span class="mi">3816</span>     <span class="c1">#  the TypeError.</span>
+<span class="g g-Whitespace">   </span><span class="mi">3817</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_check_indexing_error</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+
+<span class="ne">KeyError</span>: &#39;species&#39;
+</pre></div>
+</div>
+<img alt="_images/f9d72b8956e5e0eddcd391860fe87e6fc7e2e43e8d0344746e41251759726e54.png" src="_images/f9d72b8956e5e0eddcd391860fe87e6fc7e2e43e8d0344746e41251759726e54.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>Korelasi Antarvariabel Numerik</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Pilih hanya kolom numerik</span>
+<span class="n">df_numeric</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;number&#39;</span><span class="p">])</span>
+
+<span class="c1"># Heatmap korelasi antar variabel numerik</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">df_numeric</span><span class="o">.</span><span class="n">corr</span><span class="p">(),</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;coolwarm&quot;</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Korelasi Antar Variabel Numerik&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/817f32921e845a646c91f224d8d5e5529bb94a3cb2be35e7474dd7070695be73.png" src="_images/817f32921e845a646c91f224d8d5e5529bb94a3cb2be35e7474dd7070695be73.png" />
 </div>
 </div>
 </section>
@@ -1004,6 +1204,7 @@ max        7.900000     4.400000      6.900000     2.500000
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Memahami Data dalam Penambangan Data</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pengumpulan-data-terkait-dengan-iris-dataset">Pengumpulan data terkait dengan IRIS Dataset</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ekplorasi-data-set-iris">Ekplorasi data set IRIS</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-data">Visualisasi Data</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#profiling-data-set-iris">Profiling data set IRIS</a></li>
 </ul>
 
@@ -1030,7 +1231,7 @@ By Aqbil Baraka
 
   <p class="copyright">
     
-      © Copyright 2025..
+      © Copyright 2025.
       <br/>
     
   </p>
