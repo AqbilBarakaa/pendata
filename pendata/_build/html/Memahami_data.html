@@ -1405,16 +1405,16 @@ Pilih nilai k, yaitu jumlah tetangga terdekat yang akan digunakan untuk analisis
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
-    <span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">101</span><span class="p">],</span>
-    <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">103</span><span class="p">],</span>
-    <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">110</span><span class="p">],</span>
-    <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">115</span><span class="p">],</span>
-    <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span>
-    <span class="p">[</span><span class="mi">13</span><span class="p">,</span> <span class="mi">200</span><span class="p">],</span>
-    <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">500</span><span class="p">],</span>
-    <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">104</span><span class="p">],</span>
-    <span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">104</span><span class="p">],</span>
-    <span class="p">[</span><span class="mi">21</span><span class="p">,</span> <span class="mi">125</span><span class="p">]</span>
+    <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">110</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">22</span><span class="p">,</span> <span class="mi">120</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">21</span><span class="p">,</span> <span class="mi">115</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">24</span><span class="p">,</span> <span class="mi">130</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">19</span><span class="p">,</span> <span class="mi">105</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">112</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">210</span><span class="p">,</span> <span class="mi">1010</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">23</span><span class="p">,</span> <span class="mi">118</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">113</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">21</span><span class="p">,</span> <span class="mi">117</span><span class="p">]</span>
 <span class="p">])</span>
 
 <span class="n">clf</span> <span class="o">=</span> <span class="n">LocalOutlierFactor</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">contamination</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
@@ -1430,16 +1430,16 @@ Pilih nilai k, yaitu jumlah tetangga terdekat yang akan digunakan untuk analisis
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9185836143492351
-1.0525705444207971
-1.031956207994181
-1.2486061674561528
-0.9185836143492351
-6.310481719369693
-17.10385027230082
-5.709831607974479
-1.9350540212366025
-1.4515668729720705
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0644992983716246
+1.0908816574970919
+0.8100128092514396
+2.998378029495099
+1.7881191834980215
+1.0644992983716246
+178.31915296329976
+1.090881657497092
+1.0846423605139304
+1.0908816574970919
 [ 1  1  1  1  1  1 -1  1  1  1]
 </pre></div>
 </div>
