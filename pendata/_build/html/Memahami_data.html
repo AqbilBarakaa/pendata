@@ -386,7 +386,10 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tipe-tipe-data">Tipe-tipe data</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#konsep-knn-untuk-deteksi-outlier">Konsep KNN untuk Deteksi Outlier</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#konsep-knn-untuk-deteksi-outlier">Konsep KNN untuk Deteksi Outlier</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deteksi-outlier-menggunakan-local-outlier-factor-lof">Deteksi Outlier Menggunakan Local Outlier Factor (LOF)</a></li>
+</ul>
+</li>
 </ul>
 
             </nav>
@@ -1304,6 +1307,145 @@ Name: count, dtype: int64
 <img alt="_images/5f9e5131bebc2e79295801035f71e9fc4187bea795140a60d88bfc8b92ba4ee4.png" src="_images/5f9e5131bebc2e79295801035f71e9fc4187bea795140a60d88bfc8b92ba4ee4.png" />
 </div>
 </div>
+<section id="deteksi-outlier-menggunakan-local-outlier-factor-lof">
+<h2>Deteksi Outlier Menggunakan Local Outlier Factor (LOF)<a class="headerlink" href="#deteksi-outlier-menggunakan-local-outlier-factor-lof" title="Link to this heading">#</a></h2>
+<p>(LOF) adalah metode untuk mendeteksi outlier dalam dataset berdasarkan kepadatan lokal. LOF membandingkan kepadatan lokal suatu titik dengan tetangganya untuk menentukan apakah titik tersebut merupakan outlier.</p>
+<p><strong>Langkah-langkah untuk menghitung lOF</strong></p>
+<ol class="arabic simple">
+<li><p>Menentukan parameter k (Jumlah Tetangga):
+Pilih nilai k, yaitu jumlah tetangga terdekat yang akan digunakan untuk analisis kepadatan.</p></li>
+<li><p>Hitung Jarak k-Tetangga Terdekat: Gunakan metrik seperti Euclidean distance untuk mencari k tetangga terdekat dari setiap titik dalam dataset.</p></li>
+<li><p>Hitung Reachability Distance (RD): Jarak keterjangkauan (reachability distance) dari titik A terhadap titik B didefinisikan sebagai:<br />
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<msub>
+<mtext>reachability-distance</mtext>
+<mi>k</mi>
+</msub>
+<mo stretchy="false">(</mo>
+<mi>A</mi>
+<mo>,</mo>
+<mi>B</mi>
+<mo stretchy="false">)</mo>
+<mo>=</mo>
+<mo data-mjx-texclass="OP" movablelimits="true">max</mo>
+<mrow data-mjx-texclass="INNER">
+<mo data-mjx-texclass="OPEN">(</mo>
+<msub>
+<mtext>core-distance</mtext>
+<mi>k</mi>
+</msub>
+<mo stretchy="false">(</mo>
+<mi>B</mi>
+<mo stretchy="false">)</mo>
+<mo>,</mo>
+<mtext>distance</mtext>
+<mo stretchy="false">(</mo>
+<mi>A</mi>
+<mo>,</mo>
+<mi>B</mi>
+<mo stretchy="false">)</mo>
+<mo data-mjx-texclass="CLOSE">)</mo>
+</mrow>
+</math></p></li>
+<li><p>Hitung Kepadatan Lokal (Local Reachability Density, LRD)<br />
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<msub>
+<mtext>lrd</mtext>
+<mi>k</mi>
+</msub>
+<mo stretchy="false">(</mo>
+<mi>A</mi>
+<mo stretchy="false">)</mo>
+<mo>:=</mo>
+<mfrac>
+<mrow>
+<mo stretchy="false">|</mo>
+<msub>
+<mi>N</mi>
+<mi>k</mi>
+</msub>
+<mo stretchy="false">(</mo>
+<mi>A</mi>
+<mo stretchy="false">)</mo>
+<mo stretchy="false">|</mo>
+</mrow>
+<mrow>
+<munder>
+<mo data-mjx-texclass="OP">∑</mo>
+<mrow data-mjx-texclass="ORD">
+<mi>B</mi>
+<mo>∈</mo>
+<msub>
+<mi>N</mi>
+<mi>k</mi>
+</msub>
+<mo stretchy="false">(</mo>
+<mi>A</mi>
+<mo stretchy="false">)</mo>
+</mrow>
+</munder>
+<msub>
+<mtext>reachability-distance</mtext>
+<mi>k</mi>
+</msub>
+<mo stretchy="false">(</mo>
+<mi>A</mi>
+<mo>,</mo>
+<mi>B</mi>
+<mo stretchy="false">)</mo>
+</mrow>
+</mfrac>
+</math></p></li>
+<li><p>Hitung Local Outlier Factor (LOF) Lof dihitung sebagai rata-rata rasio LRD dari tetangga terhadap LRD titik itu sendiri</p></li>
+</ol>
+<p><strong>Contoh implementasi menggunakan python</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">LocalOutlierFactor</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">101</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">103</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">110</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">115</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">13</span><span class="p">,</span> <span class="mi">200</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">500</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">104</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">104</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">21</span><span class="p">,</span> <span class="mi">125</span><span class="p">]</span>
+<span class="p">])</span>
+
+<span class="n">clf</span> <span class="o">=</span> <span class="n">LocalOutlierFactor</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">contamination</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="c1"># n_errors = (y_pred != ground_truth).sum()</span>
+<span class="n">X_scores</span> <span class="o">=</span> <span class="o">-</span><span class="n">clf</span><span class="o">.</span><span class="n">negative_outlier_factor_</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">X_scores</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">y_pred</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9185836143492351
+1.0525705444207971
+1.031956207994181
+1.2486061674561528
+0.9185836143492351
+6.310481719369693
+17.10385027230082
+5.709831607974479
+1.9350540212366025
+1.4515668729720705
+[ 1  1  1  1  1  1 -1  1  1  1]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1369,7 +1511,10 @@ Name: count, dtype: int64
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tipe-tipe-data">Tipe-tipe data</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#konsep-knn-untuk-deteksi-outlier">Konsep KNN untuk Deteksi Outlier</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#konsep-knn-untuk-deteksi-outlier">Konsep KNN untuk Deteksi Outlier</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deteksi-outlier-menggunakan-local-outlier-factor-lof">Deteksi Outlier Menggunakan Local Outlier Factor (LOF)</a></li>
+</ul>
+</li>
 </ul>
 
   </nav></div>
