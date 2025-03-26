@@ -1,0 +1,1889 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Klasifikasi Naive Bayas &#8212; Penambangan Data</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Modeling_data';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Penambangan Data - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Penambangan Data - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to MyPage
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Memahami_data.html">Memahami Data dalam Penambangan Data</a></li>
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FModeling_data.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Modeling_data.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Klasifikasi Naive Bayas</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Klasifikasi Naive Bayas</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-naive-bayes">Implementasi Naive Bayes</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="klasifikasi-naive-bayas">
+<h1>Klasifikasi Naive Bayas<a class="headerlink" href="#klasifikasi-naive-bayas" title="Link to this heading">#</a></h1>
+<p>Naive Bayes Classifier adalah algoritma machine learning berbasis probabilitas yang sederhana namun kuat, berdasarkan Teorema Bayes dengan asumsi independensi bersyarat (conditional independence) antar fitur.</p>
+<p><strong>1. Prinsip Dasar - Teorema Bayes</strong></p>
+<p><strong>Teorema Bayes:</strong></p>
+<div class="math notranslate nohighlight">
+\[
+P(Y | X) = \frac{P(X | Y) \cdot P(Y)}{P(X)}
+\]</div>
+<p><strong>Penjelasan:</strong></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( P(Y | X) \)</span> = Probabilitas posterior (kelas <span class="math notranslate nohighlight">\(𝑌\)</span> diberikan fitur <span class="math notranslate nohighlight">\(𝑋\)</span>).</p></li>
+<li><p><span class="math notranslate nohighlight">\( P(X | Y) \)</span> = Likelihood (probabilitas fitur <span class="math notranslate nohighlight">\(𝑋\)</span> diberikan kelas <span class="math notranslate nohighlight">\(𝑌\)</span>).</p></li>
+<li><p><span class="math notranslate nohighlight">\( P(Y) \)</span> = Prior probability (probabilitas awal kelas <span class="math notranslate nohighlight">\(𝑌\)</span>).</p></li>
+<li><p><span class="math notranslate nohighlight">\( P(X) \)</span> = Evidence (probabilitas fitur <span class="math notranslate nohighlight">\(𝑋\)</span> secara keseluruhan).</p></li>
+</ul>
+<p><strong>Tujuan:</strong><br />
+Mencari kelas <span class="math notranslate nohighlight">\(𝑌\)</span> dengan nilai <span class="math notranslate nohighlight">\(𝑃(𝑌|𝑋)\)</span> tertinggi.</p>
+<p><strong>2. Prinsip “Naive” (Independensi Fitur)</strong></p>
+<p>Naive Bayes mengasumsikan bahwa setiap fitur dalam dataset <strong>tidak saling bergantung</strong>, sehingga probabilitas gabungan fitur dapat dihitung sebagai:</p>
+<div class="math notranslate nohighlight">
+\[
+P(A | X_1, X_2, ..., X_n) = \frac{P(X_1, X_2, ..., X_n | A) \cdot P(A)}{P(X_1, X_2, ..., X_n)}
+\]</div>
+<p>Karena diasumsikan fitur <strong>independen</strong>, maka:</p>
+<div class="math notranslate nohighlight">
+\[
+P(X_1, X_2, ..., X_n | A) = P(X_1 | A) \cdot P(X_2 | A) \cdot ... \cdot P(X_n | A)
+\]</div>
+<p>Sehingga:</p>
+<div class="math notranslate nohighlight">
+\[
+P(A | X_1, X_2, ..., X_n) = \frac{P(A) \cdot \prod_{i=1}^{n} P(X_i | A)}{P(X_1, X_2, ..., X_n)}
+\]</div>
+<p><strong>3. Jenis Naive Bayes</strong></p>
+<p><strong>a) Gaussian Naive Bayes</strong> (Untuk Data Numerik)<br />
+Jika fitur <span class="math notranslate nohighlight">\( X \)</span> mengikuti <strong>distribusi normal (Gaussian)</strong>, maka probabilitas dihitung dengan:</p>
+<div class="math notranslate nohighlight">
+\[
+P(x | C) = \frac{1}{\sqrt{2\pi\sigma^2}} e^{\frac{-(x-\mu)^2}{2\sigma^2}}
+\]</div>
+<p>Di mana:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \mu \)</span> = Rata-rata fitur dalam kelas tertentu</p></li>
+<li><p><span class="math notranslate nohighlight">\( \sigma \)</span> = Standar deviasi fitur dalam kelas tertentu</p></li>
+<li><p><span class="math notranslate nohighlight">\( x \)</span> = Nilai fitur</p></li>
+</ul>
+<p><strong>b) Multinomial Naive Bayes</strong> (Untuk Data Kategori)<br />
+Digunakan untuk <strong>klasifikasi teks</strong> berdasarkan frekuensi kata:</p>
+<div class="math notranslate nohighlight">
+\[
+P(X | C) = \frac{(N_{c, X} + \alpha)}{(N_c + \alpha \cdot d)}
+\]</div>
+<p>Di mana:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( N_{c, X} \)</span> = Jumlah kata <span class="math notranslate nohighlight">\( X \)</span> dalam kelas <span class="math notranslate nohighlight">\( C \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( N_c \)</span> = Total jumlah kata dalam kelas <span class="math notranslate nohighlight">\( C \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( d \)</span> = Jumlah total kata unik dalam semua kelas</p></li>
+<li><p><span class="math notranslate nohighlight">\( \alpha \)</span> = Parameter smoothing (Laplace Smoothing)</p></li>
+</ul>
+<p><strong>c) Bernoulli Naive Bayes</strong> (Untuk Data Biner)<br />
+Digunakan jika fitur hanya memiliki dua kemungkinan (ada/tidak ada):</p>
+<div class="math notranslate nohighlight">
+\[
+P(X | C) = P(X_1 | C)^{x_1} \cdot P(X_2 | C)^{x_2} \cdot ... \cdot P(X_n | C)^{x_n} \cdot (1 - P(X_1 | C))^{(1 - x_1)}
+\]</div>
+<p><strong>4. Kelebihan dan Kekurangan</strong></p>
+<p><strong>Kelebihan:</strong></p>
+<ul class="simple">
+<li><p>Sederhana dan mudah diimplementasikan.</p></li>
+<li><p>Cepat dan efisien untuk dataset besar.</p></li>
+<li><p>Cocok untuk data dengan banyak fitur.</p></li>
+</ul>
+<p><strong>Kekurangan:</strong></p>
+<ul class="simple">
+<li><p>Asumsi independensi fitur seringkali tidak realistis.</p></li>
+<li><p>Performa menurun jika fitur saling bergantung.</p></li>
+<li><p>Memerlukan penanganan khusus untuk data dengan probabilitas nol.</p></li>
+</ul>
+<p><strong>5. Contoh Penggunaan Naive Bayes</strong></p>
+<p>Naive Bayes sering digunakan di bidang seperti:</p>
+<ul class="simple">
+<li><p>Deteksi Spam</p></li>
+<li><p>Analisis Sentimen</p></li>
+<li><p>Klasifikasi Dokumen</p></li>
+<li><p>Prediksi Penyakit</p></li>
+</ul>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="implementasi-naive-bayes">
+<h1>Implementasi Naive Bayes<a class="headerlink" href="#implementasi-naive-bayes" title="Link to this heading">#</a></h1>
+<p>Import Library</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">LabelEncoder</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">classification_report</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Load Dataset</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data_gabungan.csv&#39;</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>class</th>
+      <th>petal_length</th>
+      <th>petal_width</th>
+      <th>sepal_length</th>
+      <th>sepal_width</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>Iris-setosa</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>5.1</td>
+      <td>3.5</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>Iris-setosa</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>4.9</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>Iris-setosa</td>
+      <td>1.3</td>
+      <td>0.2</td>
+      <td>4.7</td>
+      <td>3.2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>Iris-setosa</td>
+      <td>1.5</td>
+      <td>0.2</td>
+      <td>4.6</td>
+      <td>3.1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>Iris-setosa</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>5.0</td>
+      <td>3.6</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Encoding Label</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">en</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span> 
+
+<span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">en</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">])</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>class</th>
+      <th>petal_length</th>
+      <th>petal_width</th>
+      <th>sepal_length</th>
+      <th>sepal_width</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>0</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>5.1</td>
+      <td>3.5</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>0</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>4.9</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>0</td>
+      <td>1.3</td>
+      <td>0.2</td>
+      <td>4.7</td>
+      <td>3.2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>0</td>
+      <td>1.5</td>
+      <td>0.2</td>
+      <td>4.6</td>
+      <td>3.1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>0</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>5.0</td>
+      <td>3.6</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Memisahkan Fitur dan Label</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">:]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1.4, 0.2, 5.1, 3.5],
+       [1.4, 0.2, 4.9, 3. ],
+       [1.3, 0.2, 4.7, 3.2],
+       [1.5, 0.2, 4.6, 3.1],
+       [1.4, 0.2, 5. , 3.6],
+       [1.7, 0.4, 5.4, 3.9],
+       [1.4, 0.3, 4.6, 3.4],
+       [1.5, 0.2, 5. , 3.4],
+       [1.4, 0.2, 4.4, 2.9],
+       [1.5, 0.1, 4.9, 3.1],
+       [1.5, 0.2, 5.4, 3.7],
+       [1.6, 0.2, 4.8, 3.4],
+       [1.4, 0.1, 4.8, 3. ],
+       [1.1, 0.1, 4.3, 3. ],
+       [1.2, 0.2, 5.8, 4. ],
+       [1.5, 0.4, 5.7, 4.4],
+       [1.3, 0.4, 5.4, 3.9],
+       [1.4, 0.3, 5.1, 3.5],
+       [1.7, 0.3, 5.7, 3.8],
+       [1.5, 0.3, 5.1, 3.8],
+       [1.7, 0.2, 5.4, 3.4],
+       [1.5, 0.4, 5.1, 3.7],
+       [1. , 0.2, 4.6, 3.6],
+       [1.7, 0.5, 5.1, 3.3],
+       [1.9, 0.2, 4.8, 3.4],
+       [1.6, 0.2, 5. , 3. ],
+       [1.6, 0.4, 5. , 3.4],
+       [1.5, 0.2, 5.2, 3.5],
+       [1.4, 0.2, 5.2, 3.4],
+       [1.6, 0.2, 4.7, 3.2],
+       [1.6, 0.2, 4.8, 3.1],
+       [1.5, 0.4, 5.4, 3.4],
+       [1.5, 0.1, 5.2, 4.1],
+       [1.4, 0.2, 5.5, 4.2],
+       [1.5, 0.1, 4.9, 3.1],
+       [1.2, 0.2, 5. , 3.2],
+       [1.3, 0.2, 5.5, 3.5],
+       [1.5, 0.1, 4.9, 3.1],
+       [1.3, 0.2, 4.4, 3. ],
+       [1.5, 0.2, 5.1, 3.4],
+       [1.3, 0.3, 5. , 3.5],
+       [1.3, 0.3, 4.5, 2.3],
+       [1.3, 0.2, 4.4, 3.2],
+       [1.6, 0.6, 5. , 3.5],
+       [1.9, 0.4, 5.1, 3.8],
+       [1.4, 0.3, 4.8, 3. ],
+       [1.6, 0.2, 5.1, 3.8],
+       [1.4, 0.2, 4.6, 3.2],
+       [1.5, 0.2, 5.3, 3.7],
+       [1.4, 0.2, 5. , 3.3],
+       [4.7, 1.4, 7. , 3.2],
+       [4.5, 1.5, 6.4, 3.2],
+       [4.9, 1.5, 6.9, 3.1],
+       [4. , 1.3, 5.5, 2.3],
+       [4.6, 1.5, 6.5, 2.8],
+       [4.5, 1.3, 5.7, 2.8],
+       [4.7, 1.6, 6.3, 3.3],
+       [3.3, 1. , 4.9, 2.4],
+       [4.6, 1.3, 6.6, 2.9],
+       [3.9, 1.4, 5.2, 2.7],
+       [3.5, 1. , 5. , 2. ],
+       [4.2, 1.5, 5.9, 3. ],
+       [4. , 1. , 6. , 2.2],
+       [4.7, 1.4, 6.1, 2.9],
+       [3.6, 1.3, 5.6, 2.9],
+       [4.4, 1.4, 6.7, 3.1],
+       [4.5, 1.5, 5.6, 3. ],
+       [4.1, 1. , 5.8, 2.7],
+       [4.5, 1.5, 6.2, 2.2],
+       [3.9, 1.1, 5.6, 2.5],
+       [4.8, 1.8, 5.9, 3.2],
+       [4. , 1.3, 6.1, 2.8],
+       [4.9, 1.5, 6.3, 2.5],
+       [4.7, 1.2, 6.1, 2.8],
+       [4.3, 1.3, 6.4, 2.9],
+       [4.4, 1.4, 6.6, 3. ],
+       [4.8, 1.4, 6.8, 2.8],
+       [5. , 1.7, 6.7, 3. ],
+       [4.5, 1.5, 6. , 2.9],
+       [3.5, 1. , 5.7, 2.6],
+       [3.8, 1.1, 5.5, 2.4],
+       [3.7, 1. , 5.5, 2.4],
+       [3.9, 1.2, 5.8, 2.7],
+       [5.1, 1.6, 6. , 2.7],
+       [4.5, 1.5, 5.4, 3. ],
+       [4.5, 1.6, 6. , 3.4],
+       [4.7, 1.5, 6.7, 3.1],
+       [4.4, 1.3, 6.3, 2.3],
+       [4.1, 1.3, 5.6, 3. ],
+       [4. , 1.3, 5.5, 2.5],
+       [4.4, 1.2, 5.5, 2.6],
+       [4.6, 1.4, 6.1, 3. ],
+       [4. , 1.2, 5.8, 2.6],
+       [3.3, 1. , 5. , 2.3],
+       [4.2, 1.3, 5.6, 2.7],
+       [4.2, 1.2, 5.7, 3. ],
+       [4.2, 1.3, 5.7, 2.9],
+       [4.3, 1.3, 6.2, 2.9],
+       [3. , 1.1, 5.1, 2.5],
+       [4.1, 1.3, 5.7, 2.8],
+       [6. , 2.5, 6.3, 3.3],
+       [5.1, 1.9, 5.8, 2.7],
+       [5.9, 2.1, 7.1, 3. ],
+       [5.6, 1.8, 6.3, 2.9],
+       [5.8, 2.2, 6.5, 3. ],
+       [6.6, 2.1, 7.6, 3. ],
+       [4.5, 1.7, 4.9, 2.5],
+       [6.3, 1.8, 7.3, 2.9],
+       [5.8, 1.8, 6.7, 2.5],
+       [6.1, 2.5, 7.2, 3.6],
+       [5.1, 2. , 6.5, 3.2],
+       [5.3, 1.9, 6.4, 2.7],
+       [5.5, 2.1, 6.8, 3. ],
+       [5. , 2. , 5.7, 2.5],
+       [5.1, 2.4, 5.8, 2.8],
+       [5.3, 2.3, 6.4, 3.2],
+       [5.5, 1.8, 6.5, 3. ],
+       [6.7, 2.2, 7.7, 3.8],
+       [6.9, 2.3, 7.7, 2.6],
+       [5. , 1.5, 6. , 2.2],
+       [5.7, 2.3, 6.9, 3.2],
+       [4.9, 2. , 5.6, 2.8],
+       [6.7, 2. , 7.7, 2.8],
+       [4.9, 1.8, 6.3, 2.7],
+       [5.7, 2.1, 6.7, 3.3],
+       [6. , 1.8, 7.2, 3.2],
+       [4.8, 1.8, 6.2, 2.8],
+       [4.9, 1.8, 6.1, 3. ],
+       [5.6, 2.1, 6.4, 2.8],
+       [5.8, 1.6, 7.2, 3. ],
+       [6.1, 1.9, 7.4, 2.8],
+       [6.4, 2. , 7.9, 3.8],
+       [5.6, 2.2, 6.4, 2.8],
+       [5.1, 1.5, 6.3, 2.8],
+       [5.6, 1.4, 6.1, 2.6],
+       [6.1, 2.3, 7.7, 3. ],
+       [5.6, 2.4, 6.3, 3.4],
+       [5.5, 1.8, 6.4, 3.1],
+       [4.8, 1.8, 6. , 3. ],
+       [5.4, 2.1, 6.9, 3.1],
+       [5.6, 2.4, 6.7, 3.1],
+       [5.1, 2.3, 6.9, 3.1],
+       [5.1, 1.9, 5.8, 2.7],
+       [5.9, 2.3, 6.8, 3.2],
+       [5.7, 2.5, 6.7, 3.3],
+       [5.2, 2.3, 6.7, 3. ],
+       [5. , 1.9, 6.3, 2.5],
+       [5.2, 2. , 6.5, 3. ],
+       [5.4, 2.3, 6.2, 3.4],
+       [5.1, 1.8, 5.9, 3. ]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+       2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+       2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">123</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x_train shape: &quot;</span><span class="p">,</span> <span class="n">x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x_test shape: &quot;</span><span class="p">,</span> <span class="n">x_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;y_train shape: &quot;</span><span class="p">,</span> <span class="n">y_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;y_test shape: &quot;</span><span class="p">,</span> <span class="n">y_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x_train shape:  (120, 4)
+x_test shape:  (30, 4)
+y_train shape:  (120,)
+y_test shape:  (30,)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Normalisasi Data</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sc</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">x_train</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">x_train</span><span class="p">)</span>
+<span class="n">x_test</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_train</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 1.32384841,  0.91509239,  1.89107197, -0.54902995],
+       [ 0.68491609,  0.37415107,  0.16162128, -1.91685543],
+       [-1.28996563, -1.38390819, -1.44429721,  0.3628537 ],
+       [-1.40613514, -1.38390819, -0.95016844,  1.04676645],
+       [ 0.10406852, -0.30202557,  0.16162128, -1.91685543],
+       [-0.30252477, -0.30202557, -1.07370063, -1.68888452],
+       [ 1.49810268,  1.05032772,  2.50873292,  1.73067919],
+       [-1.23188088, -1.11343754, -0.57957187,  1.9586501 ],
+       [-1.4642199 , -1.11343754, -0.57957187,  1.9586501 ],
+       [ 0.04598377, -0.03155491, -0.0854431 , -0.77700086],
+       [-0.18635526, -0.30202557, -1.07370063, -2.37279726],
+       [-1.52230466, -1.38390819, -1.07370063,  0.3628537 ],
+       [ 1.20767889,  1.4560337 ,  1.14987882,  0.3628537 ],
+       [ 0.8010856 ,  1.4560337 ,  1.02634662, -0.09308812],
+       [ 0.74300084,  0.91509239, -0.0854431 , -0.77700086],
+       [ 0.74300084,  1.59126903, -0.0854431 , -0.54902995],
+       [ 1.03342462,  1.59126903,  0.53221786,  0.81879553],
+       [ 0.10406852,  0.10368042, -0.45603967, -1.68888452],
+       [-1.34805039, -1.24867286, -0.95016844,  1.73067919],
+       [-1.4642199 , -1.38390819, -1.81489378, -0.09308812],
+       [ 0.74300084,  1.05032772,  0.77928224,  0.3628537 ],
+       [-1.23188088, -0.97820221, -0.95016844,  0.59082462],
+       [-1.34805039, -1.51914352, -1.19723282,  0.13488279],
+       [ 0.51066182,  0.37415107,  1.02634662,  0.13488279],
+       [ 0.45257706,  0.23891575,  0.28515348, -0.09308812],
+       [ 0.10406852,  0.10368042, -0.45603967, -1.23294269],
+       [-0.18635526, -0.30202557, -0.20897529, -1.00497178],
+       [ 0.74300084,  0.91509239, -0.0854431 , -0.77700086],
+       [ 0.33640755,  0.23891575,  1.02634662,  0.13488279],
+       [ 0.85917035,  1.4560337 ,  0.65575005,  0.3628537 ],
+       [-1.4642199 , -1.24867286, -1.69136159, -1.68888452],
+       [ 1.09150938,  1.18556304,  1.02634662,  0.59082462],
+       [ 0.22023803, -0.03155491, -0.20897529, -0.09308812],
+       [-1.34805039, -1.11343754, -0.95016844,  1.50270827],
+       [-1.28996563, -1.38390819, -1.32076501,  0.81879553],
+       [ 1.03342462,  0.77985706,  0.53221786, -0.32105904],
+       [ 0.27832279,  0.10368042,  0.65575005, -0.32105904],
+       [ 1.67235694,  1.05032772,  2.26166854, -0.54902995],
+       [ 1.78852646,  1.4560337 ,  2.26166854, -1.00497178],
+       [-1.11571136, -1.11343754, -0.95016844,  1.73067919],
+       [ 0.3944923 ,  0.37415107,  0.65575005,  0.3628537 ],
+       [-0.07018575, -0.30202557, -0.45603967, -1.46091361],
+       [ 0.74300084,  0.77985706,  0.03808909, -0.09308812],
+       [-1.40613514, -1.51914352, -1.32076501, -0.09308812],
+       [ 1.14959414,  0.5093864 ,  1.64400758, -0.09308812],
+       [ 0.51066182,  0.5093864 ,  0.53221786,  0.59082462],
+       [ 0.51066182,  0.23891575,  1.3969432 ,  0.3628537 ],
+       [-1.28996563, -1.38390819, -1.07370063, -0.09308812],
+       [ 1.03342462,  1.18556304,  0.65575005, -0.54902995],
+       [ 0.68491609,  0.91509239,  0.53221786, -1.23294269],
+       [-1.28996563, -0.84296688, -1.07370063,  1.04676645],
+       [-1.40613514, -1.38390819, -1.19723282, -0.09308812],
+       [ 0.10406852,  0.10368042,  0.28515348, -0.54902995],
+       [ 0.45257706,  0.37415107,  0.77928224, -0.54902995],
+       [ 1.26576365,  1.72650436,  0.53221786,  0.59082462],
+       [-1.52230466, -1.38390819, -0.0854431 ,  2.18662102],
+       [-1.40613514, -1.24867286, -1.5678294 ,  0.81879553],
+       [-0.01210099, -0.16679024, -0.45603967, -1.46091361],
+       [-1.28996563, -1.11343754, -1.07370063,  0.81879553],
+       [ 0.56874657,  0.77985706,  0.03808909,  0.3628537 ],
+       [ 0.91725511,  1.18556304,  1.27341101,  0.13488279],
+       [-1.28996563, -1.38390819, -1.32076501,  0.13488279],
+       [ 1.14959414,  0.77985706,  1.02634662, -1.23294269],
+       [-1.34805039, -1.11343754, -0.20897529,  3.09850467],
+       [-1.23188088, -1.24867286, -0.20897529,  1.73067919],
+       [ 0.68491609,  0.64462173,  1.02634662, -0.09308812],
+       [-1.63847417, -1.38390819, -1.5678294 ,  1.27473736],
+       [-1.34805039, -1.38390819, -0.57957187,  1.50270827],
+       [ 0.45257706,  0.10368042,  0.90281443, -0.32105904],
+       [ 1.44001792,  0.77985706,  1.76753977, -0.32105904],
+       [ 0.33640755,  0.23891575,  0.90281443, -0.09308812],
+       [-0.1282705 ,  0.10368042, -0.33250748, -0.32105904],
+       [ 0.04598377, -0.16679024, -0.33250748, -1.23294269],
+       [-1.34805039, -1.38390819, -1.5678294 ,  0.13488279],
+       [-1.4642199 , -1.24867286, -1.07370063,  1.04676645],
+       [ 0.56874657,  0.23891575,  1.14987882, -0.54902995],
+       [ 1.03342462,  0.23891575,  0.28515348, -1.00497178],
+       [-1.34805039, -1.51914352, -1.19723282,  0.13488279],
+       [-1.34805039, -1.38390819, -0.82663625,  1.04676645],
+       [ 0.22023803,  0.10368042, -0.33250748, -0.77700086],
+       [ 0.3944923 ,  0.5093864 ,  0.16162128,  0.81879553],
+       [ 0.27832279,  0.10368042,  0.40868567, -0.32105904],
+       [ 1.20767889,  1.18556304,  1.52047539, -0.09308812],
+       [ 0.62683133,  0.37415107,  1.27341101,  0.13488279],
+       [ 0.10406852, -0.03155491, -0.0854431 , -1.00497178],
+       [ 0.16215328,  0.10368042, -0.20897529, -0.54902995],
+       [ 1.61427219,  1.18556304,  2.13813635, -0.09308812],
+       [-1.34805039, -1.38390819, -1.07370063,  0.81879553],
+       [-1.34805039, -1.38390819, -0.70310406,  1.50270827],
+       [ 0.22023803,  0.37415107,  0.03808909, -0.09308812],
+       [ 1.09150938,  1.4560337 ,  1.27341101,  0.3628537 ],
+       [ 0.97533987,  0.77985706,  0.65575005,  0.13488279],
+       [ 1.26576365,  0.77985706,  1.64400758,  0.3628537 ],
+       [ 0.8010856 ,  1.05032772,  0.77928224, -0.09308812],
+       [-1.34805039, -1.38390819, -0.95016844,  0.81879553],
+       [ 0.3944923 ,  0.37415107, -0.57957187, -0.09308812],
+       [-1.4642199 , -1.38390819, -1.44429721,  0.3628537 ],
+       [ 0.16215328, -0.30202557, -0.0854431 , -0.77700086],
+       [ 0.3944923 ,  0.10368042, -0.20897529, -0.54902995],
+       [-1.40613514, -1.38390819, -1.07370063,  0.59082462],
+       [ 0.3944923 ,  0.37415107,  0.40868567, -1.91685543],
+       [ 1.03342462,  1.59126903,  1.02634662,  0.13488279],
+       [ 0.3944923 ,  0.37415107,  0.16162128, -0.32105904],
+       [ 1.09150938,  1.72650436,  1.02634662,  0.59082462],
+       [ 0.85917035,  0.91509239,  0.65575005, -0.77700086],
+       [-1.34805039, -1.51914352, -0.82663625,  2.41459193],
+       [ 0.51066182, -0.03155491,  0.28515348, -0.54902995],
+       [-1.40613514, -1.38390819, -1.5678294 ,  0.3628537 ],
+       [ 0.91725511,  1.4560337 ,  0.40868567,  0.81879553],
+       [ 0.68491609,  1.05032772, -0.20897529, -1.23294269],
+       [ 0.22023803,  0.10368042, -0.20897529, -0.32105904],
+       [-0.30252477, -0.30202557, -1.19723282, -1.46091361],
+       [ 0.62683133,  0.77985706,  0.53221786, -0.77700086],
+       [ 0.3944923 ,  0.64462173, -1.19723282, -1.23294269],
+       [ 0.74300084,  0.5093864 ,  0.16162128, -0.77700086],
+       [-1.40613514, -1.24867286, -0.95016844,  1.04676645],
+       [-0.47677904, -0.16679024, -0.95016844, -1.23294269],
+       [ 0.3944923 ,  0.37415107, -0.33250748, -0.09308812],
+       [ 0.56874657,  0.77985706,  0.40868567, -0.54902995],
+       [ 1.32384841,  1.72650436,  1.64400758,  1.27473736]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_test</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.62683133,  0.37415107,  0.53221786, -1.23294269],
+       [ 0.97533987,  1.18556304,  1.14987882, -0.09308812],
+       [ 1.03342462,  1.32079837,  0.65575005, -0.54902995],
+       [ 0.16215328,  0.10368042, -0.33250748, -0.09308812],
+       [-1.34805039, -1.51914352, -1.19723282,  0.13488279],
+       [ 0.56874657,  0.77985706,  0.16162128, -0.09308812],
+       [ 0.33640755,  0.10368042,  0.53221786, -1.68888452],
+       [-1.4642199 , -1.38390819, -1.81489378,  0.3628537 ],
+       [-1.40613514, -1.38390819, -1.81489378, -0.32105904],
+       [ 0.33640755, -0.03155491, -0.45603967, -1.00497178],
+       [ 0.74300084,  1.4560337 ,  1.27341101,  0.13488279],
+       [-1.40613514, -1.38390819, -0.45603967,  2.64256284],
+       [ 0.04598377,  0.23891575, -0.82663625, -0.77700086],
+       [ 0.97533987,  0.77985706,  0.77928224, -0.09308812],
+       [ 1.32384841,  1.4560337 ,  2.26166854, -0.09308812],
+       [ 1.14959414,  1.32079837,  0.77928224, -0.09308812],
+       [-1.4642199 , -1.38390819, -0.45603967,  1.04676645],
+       [-1.58038941, -1.51914352, -1.93842597, -0.09308812],
+       [ 0.51066182,  0.23891575,  0.28515348, -0.32105904],
+       [-1.40613514, -1.24867286, -1.32076501, -0.09308812],
+       [-1.40613514, -1.38390819, -0.82663625,  0.81879553],
+       [ 0.74300084,  0.37415107,  0.53221786, -0.54902995],
+       [-1.11571136, -1.38390819, -1.32076501,  0.81879553],
+       [ 0.62683133,  0.77985706,  0.28515348, -0.09308812],
+       [-1.28996563, -1.38390819, -0.95016844,  1.73067919],
+       [-1.23188088, -1.38390819, -0.57957187,  0.81879553],
+       [-1.34805039, -1.11343754, -0.57957187,  0.81879553],
+       [ 0.62683133,  1.05032772, -0.33250748, -0.54902995],
+       [ 1.67235694,  1.32079837,  2.26166854,  1.73067919],
+       [-1.40613514, -1.38390819, -1.07370063,  1.27473736]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clasifier</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
+<span class="n">clasifier</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>#sk-container-id-1 {
+  /* Definition of color scheme common for light and dark mode */
+  --sklearn-color-text: #000;
+  --sklearn-color-text-muted: #666;
+  --sklearn-color-line: gray;
+  /* Definition of color scheme for unfitted estimators */
+  --sklearn-color-unfitted-level-0: #fff5e6;
+  --sklearn-color-unfitted-level-1: #f6e4d2;
+  --sklearn-color-unfitted-level-2: #ffe0b3;
+  --sklearn-color-unfitted-level-3: chocolate;
+  /* Definition of color scheme for fitted estimators */
+  --sklearn-color-fitted-level-0: #f0f8ff;
+  --sklearn-color-fitted-level-1: #d4ebff;
+  --sklearn-color-fitted-level-2: #b3dbfd;
+  --sklearn-color-fitted-level-3: cornflowerblue;
+
+  /* Specific color for light theme */
+  --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, white)));
+  --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-icon: #696969;
+
+  @media (prefers-color-scheme: dark) {
+    /* Redefinition of color scheme for dark theme */
+    --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, #111)));
+    --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-icon: #878787;
+  }
+}
+
+#sk-container-id-1 {
+  color: var(--sklearn-color-text);
+}
+
+#sk-container-id-1 pre {
+  padding: 0;
+}
+
+#sk-container-id-1 input.sk-hidden--visually {
+  border: 0;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+#sk-container-id-1 div.sk-dashed-wrapped {
+  border: 1px dashed var(--sklearn-color-line);
+  margin: 0 0.4em 0.5em 0.4em;
+  box-sizing: border-box;
+  padding-bottom: 0.4em;
+  background-color: var(--sklearn-color-background);
+}
+
+#sk-container-id-1 div.sk-container {
+  /* jupyter's `normalize.less` sets `[hidden] { display: none; }`
+     but bootstrap.min.css set `[hidden] { display: none !important; }`
+     so we also need the `!important` here to be able to override the
+     default hidden behavior on the sphinx rendered scikit-learn.org.
+     See: https://github.com/scikit-learn/scikit-learn/issues/21755 */
+  display: inline-block !important;
+  position: relative;
+}
+
+#sk-container-id-1 div.sk-text-repr-fallback {
+  display: none;
+}
+
+div.sk-parallel-item,
+div.sk-serial,
+div.sk-item {
+  /* draw centered vertical line to link estimators */
+  background-image: linear-gradient(var(--sklearn-color-text-on-default-background), var(--sklearn-color-text-on-default-background));
+  background-size: 2px 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+/* Parallel-specific style estimator block */
+
+#sk-container-id-1 div.sk-parallel-item::after {
+  content: "";
+  width: 100%;
+  border-bottom: 2px solid var(--sklearn-color-text-on-default-background);
+  flex-grow: 1;
+}
+
+#sk-container-id-1 div.sk-parallel {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  background-color: var(--sklearn-color-background);
+  position: relative;
+}
+
+#sk-container-id-1 div.sk-parallel-item {
+  display: flex;
+  flex-direction: column;
+}
+
+#sk-container-id-1 div.sk-parallel-item:first-child::after {
+  align-self: flex-end;
+  width: 50%;
+}
+
+#sk-container-id-1 div.sk-parallel-item:last-child::after {
+  align-self: flex-start;
+  width: 50%;
+}
+
+#sk-container-id-1 div.sk-parallel-item:only-child::after {
+  width: 0;
+}
+
+/* Serial-specific style estimator block */
+
+#sk-container-id-1 div.sk-serial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--sklearn-color-background);
+  padding-right: 1em;
+  padding-left: 1em;
+}
+
+
+/* Toggleable style: style used for estimator/Pipeline/ColumnTransformer box that is
+clickable and can be expanded/collapsed.
+- Pipeline and ColumnTransformer use this feature and define the default style
+- Estimators will overwrite some part of the style using the `sk-estimator` class
+*/
+
+/* Pipeline and ColumnTransformer style (default) */
+
+#sk-container-id-1 div.sk-toggleable {
+  /* Default theme specific background. It is overwritten whether we have a
+  specific estimator or a Pipeline/ColumnTransformer */
+  background-color: var(--sklearn-color-background);
+}
+
+/* Toggleable label */
+#sk-container-id-1 label.sk-toggleable__label {
+  cursor: pointer;
+  display: flex;
+  width: 100%;
+  margin-bottom: 0;
+  padding: 0.5em;
+  box-sizing: border-box;
+  text-align: center;
+  align-items: start;
+  justify-content: space-between;
+  gap: 0.5em;
+}
+
+#sk-container-id-1 label.sk-toggleable__label .caption {
+  font-size: 0.6rem;
+  font-weight: lighter;
+  color: var(--sklearn-color-text-muted);
+}
+
+#sk-container-id-1 label.sk-toggleable__label-arrow:before {
+  /* Arrow on the left of the label */
+  content: "▸";
+  float: left;
+  margin-right: 0.25em;
+  color: var(--sklearn-color-icon);
+}
+
+#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {
+  color: var(--sklearn-color-text);
+}
+
+/* Toggleable content - dropdown */
+
+#sk-container-id-1 div.sk-toggleable__content {
+  max-height: 0;
+  max-width: 0;
+  overflow: hidden;
+  text-align: left;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-1 div.sk-toggleable__content.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-1 div.sk-toggleable__content pre {
+  margin: 0.2em;
+  border-radius: 0.25em;
+  color: var(--sklearn-color-text);
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-1 div.sk-toggleable__content.fitted pre {
+  /* unfitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {
+  /* Expand drop-down */
+  max-height: 200px;
+  max-width: 100%;
+  overflow: auto;
+}
+
+#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
+  content: "▾";
+}
+
+/* Pipeline/ColumnTransformer-specific style */
+
+#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-1 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator-specific style */
+
+/* Colorize estimator box */
+#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-1 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+#sk-container-id-1 div.sk-label label.sk-toggleable__label,
+#sk-container-id-1 div.sk-label label {
+  /* The background is the default theme color */
+  color: var(--sklearn-color-text-on-default-background);
+}
+
+/* On hover, darken the color of the background */
+#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+/* Label box, darken color on hover, fitted */
+#sk-container-id-1 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator label */
+
+#sk-container-id-1 div.sk-label label {
+  font-family: monospace;
+  font-weight: bold;
+  display: inline-block;
+  line-height: 1.2em;
+}
+
+#sk-container-id-1 div.sk-label-container {
+  text-align: center;
+}
+
+/* Estimator-specific */
+#sk-container-id-1 div.sk-estimator {
+  font-family: monospace;
+  border: 1px dotted var(--sklearn-color-border-box);
+  border-radius: 0.25em;
+  box-sizing: border-box;
+  margin-bottom: 0.5em;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-1 div.sk-estimator.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+/* on hover */
+#sk-container-id-1 div.sk-estimator:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-1 div.sk-estimator.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Specification for estimator info (e.g. "i" and "?") */
+
+/* Common style for "i" and "?" */
+
+.sk-estimator-doc-link,
+a:link.sk-estimator-doc-link,
+a:visited.sk-estimator-doc-link {
+  float: right;
+  font-size: smaller;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1em;
+  height: 1em;
+  width: 1em;
+  text-decoration: none !important;
+  margin-left: 0.5em;
+  text-align: center;
+  /* unfitted */
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+  color: var(--sklearn-color-unfitted-level-1);
+}
+
+.sk-estimator-doc-link.fitted,
+a:link.sk-estimator-doc-link.fitted,
+a:visited.sk-estimator-doc-link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+div.sk-estimator:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover,
+div.sk-label-container:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+div.sk-estimator.fitted:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover,
+div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+/* Span, style for the box shown on hovering the info icon */
+.sk-estimator-doc-link span {
+  display: none;
+  z-index: 9999;
+  position: relative;
+  font-weight: normal;
+  right: .2ex;
+  padding: .5ex;
+  margin: .5ex;
+  width: min-content;
+  min-width: 20ex;
+  max-width: 50ex;
+  color: var(--sklearn-color-text);
+  box-shadow: 2pt 2pt 4pt #999;
+  /* unfitted */
+  background: var(--sklearn-color-unfitted-level-0);
+  border: .5pt solid var(--sklearn-color-unfitted-level-3);
+}
+
+.sk-estimator-doc-link.fitted span {
+  /* fitted */
+  background: var(--sklearn-color-fitted-level-0);
+  border: var(--sklearn-color-fitted-level-3);
+}
+
+.sk-estimator-doc-link:hover span {
+  display: block;
+}
+
+/* "?"-specific style due to the `<a>` HTML tag */
+
+#sk-container-id-1 a.estimator_doc_link {
+  float: right;
+  font-size: 1rem;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1rem;
+  height: 1rem;
+  width: 1rem;
+  text-decoration: none;
+  /* unfitted */
+  color: var(--sklearn-color-unfitted-level-1);
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+}
+
+#sk-container-id-1 a.estimator_doc_link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+#sk-container-id-1 a.estimator_doc_link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+#sk-container-id-1 a.estimator_doc_link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+}
+</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>GaussianNB()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked><label for="sk-estimator-id-1" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>GaussianNB</div></div><div><a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.6/modules/generated/sklearn.naive_bayes.GaussianNB.html">?<span>Documentation for GaussianNB</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></div></label><div class="sk-toggleable__content fitted"><pre>GaussianNB()</pre></div> </div></div></div></div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">clasifier</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
+<span class="n">y_pred</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 2, 2, 1, 0, 2, 1, 0, 0, 1, 2, 0, 1, 2, 2, 2, 0, 0, 1, 0, 0, 1,
+       0, 2, 0, 0, 0, 2, 2, 0])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clasifier</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[9.98113576e-125, 9.23061983e-001, 7.69380171e-002],
+       [7.28011469e-195, 1.22131474e-005, 9.99987787e-001],
+       [1.76579881e-205, 4.05456535e-006, 9.99995945e-001],
+       [6.68285574e-075, 9.99831223e-001, 1.68777079e-004],
+       [1.00000000e+000, 7.69492498e-017, 1.27237734e-025],
+       [5.40967176e-131, 2.65635572e-001, 7.34364428e-001],
+       [3.65348518e-092, 9.99265736e-001, 7.34264286e-004],
+       [1.00000000e+000, 2.13664102e-017, 2.01478558e-026],
+       [1.00000000e+000, 2.34838672e-016, 1.53190017e-025],
+       [2.62228168e-085, 9.99862993e-001, 1.37007010e-004],
+       [9.66245490e-184, 1.79873766e-006, 9.99998201e-001],
+       [1.00000000e+000, 9.41524767e-019, 1.84582236e-026],
+       [5.43637781e-070, 9.99924553e-001, 7.54469589e-005],
+       [2.10529816e-175, 2.94898096e-003, 9.97051019e-001],
+       [4.48635493e-257, 4.56398627e-010, 1.00000000e+000],
+       [2.25678814e-219, 6.99119033e-007, 9.99999301e-001],
+       [1.00000000e+000, 9.75935324e-017, 2.74142217e-025],
+       [1.00000000e+000, 4.65742823e-018, 3.19162765e-027],
+       [1.12554555e-108, 9.87037102e-001, 1.29628984e-002],
+       [1.00000000e+000, 2.64240034e-015, 1.61312105e-024],
+       [1.00000000e+000, 8.61694475e-017, 1.77891924e-025],
+       [2.24844198e-135, 7.26872380e-001, 2.73127620e-001],
+       [1.00000000e+000, 1.95157088e-013, 9.34754436e-022],
+       [5.93559689e-137, 1.53591643e-001, 8.46408357e-001],
+       [1.00000000e+000, 4.85330335e-017, 3.46187224e-025],
+       [1.00000000e+000, 2.06895586e-014, 9.12460638e-023],
+       [1.00000000e+000, 1.91264827e-013, 3.84774410e-022],
+       [2.12841019e-146, 2.42993930e-002, 9.75700607e-001],
+       [1.06138452e-295, 1.01944463e-011, 1.00000000e+000],
+       [1.00000000e+000, 1.03216579e-017, 2.94282816e-026]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cm</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[13  0  0]
+ [ 0  6  0]
+ [ 0  1 10]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">akurasi</span> <span class="o">=</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">akurasi</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
+
+           0       1.00      1.00      1.00        13
+           1       0.86      1.00      0.92         6
+           2       1.00      0.91      0.95        11
+
+    accuracy                           0.97        30
+   macro avg       0.95      0.97      0.96        30
+weighted avg       0.97      0.97      0.97        30
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">akurasi</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">y_pred</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tingkat Akurasi : </span><span class="si">%d</span><span class="s2"> persen&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">akurasi</span><span class="o">*</span><span class="mi">100</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tingkat Akurasi : 96 persen
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ydata</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">ydata</span><span class="p">[</span><span class="s1">&#39;y_test&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span>
+<span class="n">ydata</span><span class="p">[</span><span class="s1">&#39;y_pred&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">y_pred</span><span class="p">)</span>
+<span class="n">ydata</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>y_test</th>
+      <th>y_pred</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Klasifikasi Naive Bayas</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-naive-bayes">Implementasi Naive Bayes</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Aqbil Baraka
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
