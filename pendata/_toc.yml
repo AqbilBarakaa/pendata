@@ -5,5 +5,5 @@ format: jb-book
 root: intro
 chapters:
 - file: Memahami_data
-- file: tugas2
+- file: Klasifikasi_Naive_Bayas
 - file: tugas3
