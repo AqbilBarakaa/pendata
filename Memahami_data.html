@@ -60,6 +60,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'Memahami_data';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Klasifikasi Naive Bayas" href="Klasifikasi_Naive_Bayas.html" />
     <link rel="prev" title="Welcome to MyPage" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -183,6 +184,8 @@
 
 
 
+
+<li class="toctree-l1"><a class="reference internal" href="Klasifikasi_Naive_Bayas.html">Klasifikasi Naive Bayas</a></li>
 
 </ul>
 
@@ -1150,42 +1153,82 @@ Name: count, dtype: int64
 <span class="n">numerical_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;petal_length&quot;</span><span class="p">,</span> <span class="s2">&quot;petal_width&quot;</span><span class="p">,</span> <span class="s2">&quot;sepal_length&quot;</span><span class="p">,</span> <span class="s2">&quot;sepal_width&quot;</span><span class="p">]</span>
 <span class="n">data_numeric</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">numerical_columns</span><span class="p">]</span>
 
-<span class="c1"># ==== 1. Mencari K Tetangga Terdekat ====</span>
-<span class="n">k</span> <span class="o">=</span> <span class="mi">15</span>  <span class="c1"># Jumlah tetangga yang digunakan</span>
+<span class="c1"># 1. Mencari K Tetangga Terdekat </span>
+<span class="n">k</span> <span class="o">=</span> <span class="mi">15</span>  <span class="c1"># Jumlah tetangga</span>
 <span class="n">nbrs</span> <span class="o">=</span> <span class="n">NearestNeighbors</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;euclidean&quot;</span><span class="p">)</span>
 <span class="n">nbrs</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data_numeric</span><span class="p">)</span>
 
-<span class="c1"># ==== 2. Menghitung Jarak ke K Tetangga Terdekat ====</span>
+<span class="c1"># 2. Menghitung Jarak ke K Tetangga Terdekat</span>
 <span class="n">distances</span><span class="p">,</span> <span class="n">indices</span> <span class="o">=</span> <span class="n">nbrs</span><span class="o">.</span><span class="n">kneighbors</span><span class="p">(</span><span class="n">data_numeric</span><span class="p">)</span>
 
 <span class="c1"># Gunakan rata-rata dari jarak ke semua K tetangga sebagai skor outlier</span>
 <span class="n">outlier_scores</span> <span class="o">=</span> <span class="n">distances</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="c1"># ==== 3. Menentukan Threshold Outlier ====</span>
-<span class="n">threshold</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">outlier_scores</span><span class="p">,</span> <span class="mf">99.5</span><span class="p">)</span>  <span class="c1"># Ambil persentil ke-95 sebagai batas</span>
+<span class="c1"># 3. Menentukan Threshold Outlier</span>
+<span class="n">threshold</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">outlier_scores</span><span class="p">,</span> <span class="mi">90</span><span class="p">)</span>  <span class="c1"># Ambil persentil ke-90 sebagai batas</span>
 <span class="n">outliers</span> <span class="o">=</span> <span class="n">outlier_scores</span> <span class="o">&gt;</span> <span class="n">threshold</span>  <span class="c1"># Data dianggap outlier jika skornya di atas threshold</span>
 
-<span class="c1"># ==== 4. Visualisasi Outlier ====</span>
+<span class="c1"># 4. Visualisasi Outlier</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;petal_length&quot;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;sepal_length&quot;</span><span class="p">],</span> <span class="n">hue</span><span class="o">=</span><span class="n">outliers</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="p">{</span><span class="kc">True</span><span class="p">:</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">:</span> <span class="s2">&quot;blue&quot;</span><span class="p">})</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Deteksi Outlier dengan KNN (K-Nearest Neighbors)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Panjang Kelopak (Petal Length)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Panjang Mahkota (Sepal Length)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;(Petal Length)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;(Sepal Length)&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Outlier&quot;</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Outlier&quot;</span><span class="p">,</span> <span class="s2">&quot;Normal&quot;</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
-<span class="c1"># ==== 5. Menampilkan Data Outlier ====</span>
+<span class="c1"># 5. Menampilkan Data Outlier</span>
 <span class="n">df_outliers</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">outliers</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data yang terdeteksi sebagai outlier:&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df_outliers</span><span class="p">)</span>
+
+<span class="c1"># 6. Menghapus Outlier dari Data</span>
+<span class="n">df_clean</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="n">outliers</span><span class="p">]</span>
+
+<span class="c1"># 7. Menyimpan Data Bersih ke CSV</span>
+<span class="n">df_clean</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;data_clean.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data bersih telah disimpan sebagai &#39;data_clean.csv&#39;.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/925927c267008056279f44e37ca06a31a88827eb3167286b53cefe30e65ef1fd.png" src="_images/925927c267008056279f44e37ca06a31a88827eb3167286b53cefe30e65ef1fd.png" />
+<img alt="_images/c49438d2eb4e8d5202ea092ff7f2bbee956be891e7afa194ba1bf2263fcb666a.png" src="_images/c49438d2eb4e8d5202ea092ff7f2bbee956be891e7afa194ba1bf2263fcb666a.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data yang terdeteksi sebagai outlier:
-   id        class  petal_length  petal_width  sepal_length  sepal_width
-0   1  Iris-setosa          86.4         70.0          20.1         30.5
+      id            class  petal_length  petal_width  sepal_length  \
+0      1      Iris-setosa          86.4         70.0          20.1   
+15    16      Iris-setosa           1.5          0.4           5.7   
+41    42      Iris-setosa           1.3          0.3           4.5   
+57    58  Iris-versicolor           3.3          1.0           4.9   
+60    61  Iris-versicolor           3.5          1.0           5.0   
+93    94  Iris-versicolor           3.3          1.0           5.0   
+98    99  Iris-versicolor           3.0          1.1           5.1   
+105  106   Iris-virginica           6.6          2.1           7.6   
+106  107   Iris-virginica           4.5          1.7           4.9   
+109  110   Iris-virginica           6.1          2.5           7.2   
+117  118   Iris-virginica           6.7          2.2           7.7   
+118  119   Iris-virginica           6.9          2.3           7.7   
+122  123   Iris-virginica           6.7          2.0           7.7   
+131  132   Iris-virginica           6.4          2.0           7.9   
+135  136   Iris-virginica           6.1          2.3           7.7   
+
+     sepal_width  
+0           30.5  
+15           4.4  
+41           2.3  
+57           2.4  
+60           2.0  
+93           2.3  
+98           2.5  
+105          3.0  
+106          2.5  
+109          3.6  
+117          3.8  
+118          2.6  
+122          2.8  
+131          3.8  
+135          3.0  
+Data bersih telah disimpan sebagai &#39;data_clean.csv&#39;.
 </pre></div>
 </div>
 </div>
@@ -1414,6 +1457,15 @@ Pilih nilai k, yaitu jumlah tetangga terdekat yang akan digunakan untuk analisis
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">Welcome to MyPage</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="Klasifikasi_Naive_Bayas.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Klasifikasi Naive Bayas</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
