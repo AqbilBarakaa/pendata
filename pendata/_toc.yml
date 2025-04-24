@@ -6,5 +6,5 @@ root: intro
 chapters:
 - file: Memahami_data
 - file: Klasifikasi_Naive_Bayas
-- file: tugas3
+- file: UTS
 - file: tugas4
