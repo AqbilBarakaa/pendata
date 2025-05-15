@@ -18,16 +18,45 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-cluster_labels = kms.predict(X)
+fig, ax = plt.subplots(figsize=(15,7)) 
+plt.scatter(x=clusters[clusters['Cluster_Prediction'] == 0]['sepal_length'],
+            y=clusters[clusters['Cluster_Prediction'] == 0]['sepal_width'],
+            s=70,edgecolor='teal', linewidth=0.3, c='teal', label='Iris-versicolor')
 
-silhouette_avg = silhouette_score(X, cluster_labels)
-print("Silhouette Score:", )silhouette_avg
+
+plt.scatter(x=clusters[clusters['Cluster_Prediction'] == 1]['sepal_length'],
+            y=clusters[clusters['Cluster_Prediction'] == 1]['sepal_width'],
+            s=70,edgecolor='lime', linewidth=0.3, c='lime', label='Iris-setosa')
+
+
+plt.scatter(x=clusters[clusters['Cluster_Prediction'] == 2]['sepal_length'],
+            y=clusters[clusters['Cluster_Prediction'] == 2]['sepal_width'],
+            s=70,edgecolor='magenta', linewidth=0.3, c='magenta', label='Iris-virginica')
+
+plt.scatter(x=kms.cluster_centers_[:, 0], y=kms.cluster_centers_[:, 1], s = 170, c = 'yellow', label = 'Centroids',edgecolor='black', linewidth=0.3)
+plt.legend(loc='upper right')
+plt.xlim(4,8)
+plt.ylim(1.8,4.5)
+ax.set_ylabel('Sepal Width (in cm)')
+ax.set_xlabel('Sepal Length (in cm)')
+plt.title('Clusters', fontsize = 20)
+plt.show()
 ------------------
 
 
-[0;36m  Cell [0;32mIn[37], line 4[0;36m[0m
-[0;31m    print("Silhouette Score:", )silhouette_avg[0m
-[0m                                ^[0m
-[0;31mSyntaxError[0m[0;31m:[0m invalid syntax
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mIndexError[0m                                Traceback (most recent call last)
+Cell [0;32mIn[30], line 2[0m
+[1;32m      1[0m fig, ax [38;5;241m=[39m plt[38;5;241m.[39msubplots(figsize[38;5;241m=[39m([38;5;241m15[39m,[38;5;241m7[39m)) 
+[0;32m----> 2[0m plt[38;5;241m.[39mscatter(x[38;5;241m=[39mclusters[[43mclusters[49m[43m[[49m[38;5;124;43m'[39;49m[38;5;124;43mCluster_Prediction[39;49m[38;5;124;43m'[39;49m[43m][49m [38;5;241m==[39m [38;5;241m0[39m][[38;5;124m'[39m[38;5;124msepal_length[39m[38;5;124m'[39m],
+[1;32m      3[0m             y[38;5;241m=[39mclusters[clusters[[38;5;124m'[39m[38;5;124mCluster_Prediction[39m[38;5;124m'[39m] [38;5;241m==[39m [38;5;241m0[39m][[38;5;124m'[39m[38;5;124msepal_width[39m[38;5;124m'[39m],
+[1;32m      4[0m             s[38;5;241m=[39m[38;5;241m70[39m,edgecolor[38;5;241m=[39m[38;5;124m'[39m[38;5;124mteal[39m[38;5;124m'[39m, linewidth[38;5;241m=[39m[38;5;241m0.3[39m, c[38;5;241m=[39m[38;5;124m'[39m[38;5;124mteal[39m[38;5;124m'[39m, label[38;5;241m=[39m[38;5;124m'[39m[38;5;124mIris-versicolor[39m[38;5;124m'[39m)
+[1;32m      7[0m plt[38;5;241m.[39mscatter(x[38;5;241m=[39mclusters[clusters[[38;5;124m'[39m[38;5;124mCluster_Prediction[39m[38;5;124m'[39m] [38;5;241m==[39m [38;5;241m1[39m][[38;5;124m'[39m[38;5;124msepal_length[39m[38;5;124m'[39m],
+[1;32m      8[0m             y[38;5;241m=[39mclusters[clusters[[38;5;124m'[39m[38;5;124mCluster_Prediction[39m[38;5;124m'[39m] [38;5;241m==[39m [38;5;241m1[39m][[38;5;124m'[39m[38;5;124msepal_width[39m[38;5;124m'[39m],
+[1;32m      9[0m             s[38;5;241m=[39m[38;5;241m70[39m,edgecolor[38;5;241m=[39m[38;5;124m'[39m[38;5;124mlime[39m[38;5;124m'[39m, linewidth[38;5;241m=[39m[38;5;241m0.3[39m, c[38;5;241m=[39m[38;5;124m'[39m[38;5;124mlime[39m[38;5;124m'[39m, label[38;5;241m=[39m[38;5;124m'[39m[38;5;124mIris-setosa[39m[38;5;124m'[39m)
+[1;32m     12[0m plt[38;5;241m.[39mscatter(x[38;5;241m=[39mclusters[clusters[[38;5;124m'[39m[38;5;124mCluster_Prediction[39m[38;5;124m'[39m] [38;5;241m==[39m [38;5;241m2[39m][[38;5;124m'[39m[38;5;124msepal_length[39m[38;5;124m'[39m],
+[1;32m     13[0m             y[38;5;241m=[39mclusters[clusters[[38;5;124m'[39m[38;5;124mCluster_Prediction[39m[38;5;124m'[39m] [38;5;241m==[39m [38;5;241m2[39m][[38;5;124m'[39m[38;5;124msepal_width[39m[38;5;124m'[39m],
+[1;32m     14[0m             s[38;5;241m=[39m[38;5;241m70[39m,edgecolor[38;5;241m=[39m[38;5;124m'[39m[38;5;124mmagenta[39m[38;5;124m'[39m, linewidth[38;5;241m=[39m[38;5;241m0.3[39m, c[38;5;241m=[39m[38;5;124m'[39m[38;5;124mmagenta[39m[38;5;124m'[39m, label[38;5;241m=[39m[38;5;124m'[39m[38;5;124mIris-virginica[39m[38;5;124m'[39m)
 
+[0;31mIndexError[0m: only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
 
