@@ -914,28 +914,6 @@ For a guide to updating your code to use the new functions, please see
 https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 
   func(*plot_args, **plot_kwargs)
-/home/codespace/.local/lib/python3.12/site-packages/seaborn/axisgrid.py:854: UserWarning: 
-
-`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
-
-Please adapt your code to use either `displot` (a figure-level function with
-similar flexibility) or `histplot` (an axes-level function for histograms).
-
-For a guide to updating your code to use the new functions, please see
-https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
-
-  func(*plot_args, **plot_kwargs)
-/home/codespace/.local/lib/python3.12/site-packages/seaborn/axisgrid.py:854: UserWarning: 
-
-`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
-
-Please adapt your code to use either `displot` (a figure-level function with
-similar flexibility) or `histplot` (an axes-level function for histograms).
-
-For a guide to updating your code to use the new functions, please see
-https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
-
-  func(*plot_args, **plot_kwargs)
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/codespace/.local/lib/python3.12/site-packages/seaborn/axisgrid.py:854: UserWarning: 
@@ -982,9 +960,33 @@ For a guide to updating your code to use the new functions, please see
 https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 
   func(*plot_args, **plot_kwargs)
+/home/codespace/.local/lib/python3.12/site-packages/seaborn/axisgrid.py:854: UserWarning: 
+
+`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
+
+Please adapt your code to use either `displot` (a figure-level function with
+similar flexibility) or `histplot` (an axes-level function for histograms).
+
+For a guide to updating your code to use the new functions, please see
+https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
+
+  func(*plot_args, **plot_kwargs)
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x79a41c77ddf0&gt;
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/codespace/.local/lib/python3.12/site-packages/seaborn/axisgrid.py:854: UserWarning: 
+
+`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
+
+Please adapt your code to use either `displot` (a figure-level function with
+similar flexibility) or `histplot` (an axes-level function for histograms).
+
+For a guide to updating your code to use the new functions, please see
+https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
+
+  func(*plot_args, **plot_kwargs)
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x79cce4499940&gt;
 </pre></div>
 </div>
 <img alt="_images/3f1ebb80d724d412e8ce9c3f6afc0d46bb78bbb46b4b695db4b2f84ca2ae7e67.png" src="_images/3f1ebb80d724d412e8ce9c3f6afc0d46bb78bbb46b4b695db4b2f84ca2ae7e67.png" />
@@ -1056,165 +1058,117 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 <p>Training data</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">values</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[5.1 3.5 1.4 0.2]
- [4.9 3.  1.4 0.2]
- [4.7 3.2 1.3 0.2]
- [4.6 3.1 1.5 0.2]
- [5.  3.6 1.4 0.2]
- [5.4 3.9 1.7 0.4]
- [4.6 3.4 1.4 0.3]
- [5.  3.4 1.5 0.2]
- [4.4 2.9 1.4 0.2]
- [4.9 3.1 1.5 0.1]
- [5.4 3.7 1.5 0.2]
- [4.8 3.4 1.6 0.2]
- [4.8 3.  1.4 0.1]
- [4.3 3.  1.1 0.1]
- [5.8 4.  1.2 0.2]
- [5.7 4.4 1.5 0.4]
- [5.4 3.9 1.3 0.4]
- [5.1 3.5 1.4 0.3]
- [5.7 3.8 1.7 0.3]
- [5.1 3.8 1.5 0.3]
- [5.4 3.4 1.7 0.2]
- [5.1 3.7 1.5 0.4]
- [4.6 3.6 1.  0.2]
- [5.1 3.3 1.7 0.5]
- [4.8 3.4 1.9 0.2]
- [5.  3.  1.6 0.2]
- [5.  3.4 1.6 0.4]
- [5.2 3.5 1.5 0.2]
- [5.2 3.4 1.4 0.2]
- [4.7 3.2 1.6 0.2]
- [4.8 3.1 1.6 0.2]
- [5.4 3.4 1.5 0.4]
- [5.2 4.1 1.5 0.1]
- [5.5 4.2 1.4 0.2]
- [4.9 3.1 1.5 0.1]
- [5.  3.2 1.2 0.2]
- [5.5 3.5 1.3 0.2]
- [4.9 3.1 1.5 0.1]
- [4.4 3.  1.3 0.2]
- [5.1 3.4 1.5 0.2]
- [5.  3.5 1.3 0.3]
- [4.5 2.3 1.3 0.3]
- [4.4 3.2 1.3 0.2]
- [5.  3.5 1.6 0.6]
- [5.1 3.8 1.9 0.4]
- [4.8 3.  1.4 0.3]
- [5.1 3.8 1.6 0.2]
- [4.6 3.2 1.4 0.2]
- [5.3 3.7 1.5 0.2]
- [5.  3.3 1.4 0.2]
- [7.  3.2 4.7 1.4]
- [6.4 3.2 4.5 1.5]
- [6.9 3.1 4.9 1.5]
- [5.5 2.3 4.  1.3]
- [6.5 2.8 4.6 1.5]
- [5.7 2.8 4.5 1.3]
- [6.3 3.3 4.7 1.6]
- [4.9 2.4 3.3 1. ]
- [6.6 2.9 4.6 1.3]
- [5.2 2.7 3.9 1.4]
- [5.  2.  3.5 1. ]
- [5.9 3.  4.2 1.5]
- [6.  2.2 4.  1. ]
- [6.1 2.9 4.7 1.4]
- [5.6 2.9 3.6 1.3]
- [6.7 3.1 4.4 1.4]
- [5.6 3.  4.5 1.5]
- [5.8 2.7 4.1 1. ]
- [6.2 2.2 4.5 1.5]
- [5.6 2.5 3.9 1.1]
- [5.9 3.2 4.8 1.8]
- [6.1 2.8 4.  1.3]
- [6.3 2.5 4.9 1.5]
- [6.1 2.8 4.7 1.2]
- [6.4 2.9 4.3 1.3]
- [6.6 3.  4.4 1.4]
- [6.8 2.8 4.8 1.4]
- [6.7 3.  5.  1.7]
- [6.  2.9 4.5 1.5]
- [5.7 2.6 3.5 1. ]
- [5.5 2.4 3.8 1.1]
- [5.5 2.4 3.7 1. ]
- [5.8 2.7 3.9 1.2]
- [6.  2.7 5.1 1.6]
- [5.4 3.  4.5 1.5]
- [6.  3.4 4.5 1.6]
- [6.7 3.1 4.7 1.5]
- [6.3 2.3 4.4 1.3]
- [5.6 3.  4.1 1.3]
- [5.5 2.5 4.  1.3]
- [5.5 2.6 4.4 1.2]
- [6.1 3.  4.6 1.4]
- [5.8 2.6 4.  1.2]
- [5.  2.3 3.3 1. ]
- [5.6 2.7 4.2 1.3]
- [5.7 3.  4.2 1.2]
- [5.7 2.9 4.2 1.3]
- [6.2 2.9 4.3 1.3]
- [5.1 2.5 3.  1.1]
- [5.7 2.8 4.1 1.3]
- [6.3 3.3 6.  2.5]
- [5.8 2.7 5.1 1.9]
- [7.1 3.  5.9 2.1]
- [6.3 2.9 5.6 1.8]
- [6.5 3.  5.8 2.2]
- [7.6 3.  6.6 2.1]
- [4.9 2.5 4.5 1.7]
- [7.3 2.9 6.3 1.8]
- [6.7 2.5 5.8 1.8]
- [7.2 3.6 6.1 2.5]
- [6.5 3.2 5.1 2. ]
- [6.4 2.7 5.3 1.9]
- [6.8 3.  5.5 2.1]
- [5.7 2.5 5.  2. ]
- [5.8 2.8 5.1 2.4]
- [6.4 3.2 5.3 2.3]
- [6.5 3.  5.5 1.8]
- [7.7 3.8 6.7 2.2]
- [7.7 2.6 6.9 2.3]
- [6.  2.2 5.  1.5]
- [6.9 3.2 5.7 2.3]
- [5.6 2.8 4.9 2. ]
- [7.7 2.8 6.7 2. ]
- [6.3 2.7 4.9 1.8]
- [6.7 3.3 5.7 2.1]
- [7.2 3.2 6.  1.8]
- [6.2 2.8 4.8 1.8]
- [6.1 3.  4.9 1.8]
- [6.4 2.8 5.6 2.1]
- [7.2 3.  5.8 1.6]
- [7.4 2.8 6.1 1.9]
- [7.9 3.8 6.4 2. ]
- [6.4 2.8 5.6 2.2]
- [6.3 2.8 5.1 1.5]
- [6.1 2.6 5.6 1.4]
- [7.7 3.  6.1 2.3]
- [6.3 3.4 5.6 2.4]
- [6.4 3.1 5.5 1.8]
- [6.  3.  4.8 1.8]
- [6.9 3.1 5.4 2.1]
- [6.7 3.1 5.6 2.4]
- [6.9 3.1 5.1 2.3]
- [5.8 2.7 5.1 1.9]
- [6.8 3.2 5.9 2.3]
- [6.7 3.3 5.7 2.5]
- [6.7 3.  5.2 2.3]
- [6.3 2.5 5.  1.9]
- [6.5 3.  5.2 2. ]
- [6.2 3.4 5.4 2.3]
- [5.9 3.  5.1 1.8]]
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sepal_length</th>
+      <th>sepal_width</th>
+      <th>petal_length</th>
+      <th>petal_width</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-0.900681</td>
+      <td>1.032057</td>
+      <td>-1.341272</td>
+      <td>-1.312977</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-1.143017</td>
+      <td>-0.124958</td>
+      <td>-1.341272</td>
+      <td>-1.312977</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-1.385353</td>
+      <td>0.337848</td>
+      <td>-1.398138</td>
+      <td>-1.312977</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-1.506521</td>
+      <td>0.106445</td>
+      <td>-1.284407</td>
+      <td>-1.312977</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>-1.021849</td>
+      <td>1.263460</td>
+      <td>-1.341272</td>
+      <td>-1.312977</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>145</th>
+      <td>1.038005</td>
+      <td>-0.124958</td>
+      <td>0.819624</td>
+      <td>1.447956</td>
+    </tr>
+    <tr>
+      <th>146</th>
+      <td>0.553333</td>
+      <td>-1.281972</td>
+      <td>0.705893</td>
+      <td>0.922064</td>
+    </tr>
+    <tr>
+      <th>147</th>
+      <td>0.795669</td>
+      <td>-0.124958</td>
+      <td>0.819624</td>
+      <td>1.053537</td>
+    </tr>
+    <tr>
+      <th>148</th>
+      <td>0.432165</td>
+      <td>0.800654</td>
+      <td>0.933356</td>
+      <td>1.447956</td>
+    </tr>
+    <tr>
+      <th>149</th>
+      <td>0.068662</td>
+      <td>-0.124958</td>
+      <td>0.762759</td>
+      <td>0.790591</td>
+    </tr>
+  </tbody>
+</table>
+<p>150 rows × 4 columns</p>
+</div></div></div>
 </div>
 <p>visualisasi data clustering</p>
 <div class="cell docutils container">
@@ -1230,19 +1184,7 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">IndexError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">14</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">font_scale</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">X</span><span class="p">[</span><span class="s1">&#39;sepal_length&#39;</span><span class="p">],</span><span class="n">y</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;sepal_width&#39;</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">70</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#f73434&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;#f73434&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Sepal Width (in cm)&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Sepal Length (in cm)&#39;</span><span class="p">)</span>
-
-<span class="ne">IndexError</span>: only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
-</pre></div>
-</div>
-<img alt="_images/250e65841619f6029bd1b8408a3da7b3ec8e8c83bba59d27bd253046e5c07c64.png" src="_images/250e65841619f6029bd1b8408a3da7b3ec8e8c83bba59d27bd253046e5c07c64.png" />
+<img alt="_images/ff019452d9b30637625b5b1e8b82c3606237fdfcc080471104a12101a65e2a49.png" src="_images/ff019452d9b30637625b5b1e8b82c3606237fdfcc080471104a12101a65e2a49.png" />
 </div>
 </div>
 <p>nilai sse untuk cluster 1-10</p>
@@ -1260,16 +1202,16 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[680.8243999999996,
- 152.36870647733915,
- 78.94506582597728,
- 57.34540931571815,
- 49.91714055829228,
- 41.79530692640694,
- 40.780635081911555,
- 30.308925838654112,
- 30.796929358420215,
- 26.756632806563914]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[600.0000000000003,
+ 223.73200573676343,
+ 142.11063713104195,
+ 115.51538076409035,
+ 106.940895774969,
+ 81.75658187204954,
+ 72.47302154741767,
+ 63.20563259361187,
+ 55.72136404506359,
+ 52.32116910186539]
 </pre></div>
 </div>
 </div>
@@ -1288,7 +1230,7 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/422c0f8cb571b658745e5ab5a2aa088e24b27d7d707c9a92cbdfb4aef17ddfd3.png" src="_images/422c0f8cb571b658745e5ab5a2aa088e24b27d7d707c9a92cbdfb4aef17ddfd3.png" />
+<img alt="_images/6597afbb8f1f1d266a72a1a215e764188f2afc833f42d9c022e70c3a1eb3cc06.png" src="_images/6597afbb8f1f1d266a72a1a215e764188f2afc833f42d9c022e70c3a1eb3cc06.png" />
 </div>
 </div>
 <p>nilai silhouette untuk cluster 1-10</p>
@@ -1307,15 +1249,15 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.6808136202936816,
- 0.5525919445499757,
- 0.4972279726640147,
- 0.4885175508886279,
- 0.48383853845695607,
- 0.44279169814284863,
- 0.32169253543611287,
- 0.34758193438682383,
- 0.3370615771484342]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.580184463257396,
+ 0.45542721937148334,
+ 0.41789721824741266,
+ 0.41457267378999196,
+ 0.3415283223146528,
+ 0.3116634435197774,
+ 0.32464270772279363,
+ 0.31206567717306505,
+ 0.3498559076371262]
 </pre></div>
 </div>
 </div>
@@ -1603,7 +1545,7 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/84863472721383474e868e35a3550e68c4f70d4138bb3316a2fcf70b95dc2a35.png" src="_images/84863472721383474e868e35a3550e68c4f70d4138bb3316a2fcf70b95dc2a35.png" />
+<img alt="_images/8418d17e78b14d60276043aec5ccec5adb6f0728bc10230cae99ff80daedf735.png" src="_images/8418d17e78b14d60276043aec5ccec5adb6f0728bc10230cae99ff80daedf735.png" />
 </div>
 </div>
 <p>nilai sse dengan 2 centroid</p>
@@ -1783,7 +1725,7 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/331edc1b278b15f86f59ea43b79f623b8f3bf1bc3805ca5d095fb90f1ac73bc7.png" src="_images/331edc1b278b15f86f59ea43b79f623b8f3bf1bc3805ca5d095fb90f1ac73bc7.png" />
+<img alt="_images/16326b0f696b758e8938292ea9f157c95854e1e28978d6e5ec077e46168e6e02.png" src="_images/16326b0f696b758e8938292ea9f157c95854e1e28978d6e5ec077e46168e6e02.png" />
 </div>
 </div>
 <p>nilai sse dengan 3 centroid</p>
@@ -1964,7 +1906,7 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7a3e5f89e77852f54c6b828ea143043290dd54e66405801ebc7ca2e0c147643e.png" src="_images/7a3e5f89e77852f54c6b828ea143043290dd54e66405801ebc7ca2e0c147643e.png" />
+<img alt="_images/fe82bc0961f43b625a711eecf14f5ce8a14dcc480f94f1244c37e36680d4fc6b.png" src="_images/fe82bc0961f43b625a711eecf14f5ce8a14dcc480f94f1244c37e36680d4fc6b.png" />
 </div>
 </div>
 <p>nilai sse dengan 4 centroid</p>
@@ -1992,7 +1934,10 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Silhouette Score: 0.4978256901095472
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">37</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Silhouette Score:&quot;</span><span class="p">,</span> <span class="p">)</span><span class="n">silhouette_avg</span>
+                                <span class="o">^</span>
+<span class="ne">SyntaxError</span>: invalid syntax
 </pre></div>
 </div>
 </div>

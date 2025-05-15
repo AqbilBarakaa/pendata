@@ -18,24 +18,16 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-ax = plt.subplots(figsize=(15,7))
-sns.set(font_scale=1.5)
-ax = sns.scatterplot(x=X['sepal_length'],y=data['sepal_width'], s=70, color='#f73434', edgecolor='#f73434', linewidth=0.3)
-ax.set_ylabel('Sepal Width (in cm)')
-ax.set_xlabel('Sepal Length (in cm)')
-plt.title('Sepal Length vs Width', fontsize = 20)
-plt.show()
+cluster_labels = kms.predict(X)
+
+silhouette_avg = silhouette_score(X, cluster_labels)
+print("Silhouette Score:", )silhouette_avg
 ------------------
 
 
-[0;31m---------------------------------------------------------------------------[0m
-[0;31mIndexError[0m                                Traceback (most recent call last)
-Cell [0;32mIn[14], line 3[0m
-[1;32m      1[0m ax [38;5;241m=[39m plt[38;5;241m.[39msubplots(figsize[38;5;241m=[39m([38;5;241m15[39m,[38;5;241m7[39m))
-[1;32m      2[0m sns[38;5;241m.[39mset(font_scale[38;5;241m=[39m[38;5;241m1.5[39m)
-[0;32m----> 3[0m ax [38;5;241m=[39m sns[38;5;241m.[39mscatterplot(x[38;5;241m=[39m[43mX[49m[43m[[49m[38;5;124;43m'[39;49m[38;5;124;43msepal_length[39;49m[38;5;124;43m'[39;49m[43m][49m,y[38;5;241m=[39mdata[[38;5;124m'[39m[38;5;124msepal_width[39m[38;5;124m'[39m], s[38;5;241m=[39m[38;5;241m70[39m, color[38;5;241m=[39m[38;5;124m'[39m[38;5;124m#f73434[39m[38;5;124m'[39m, edgecolor[38;5;241m=[39m[38;5;124m'[39m[38;5;124m#f73434[39m[38;5;124m'[39m, linewidth[38;5;241m=[39m[38;5;241m0.3[39m)
-[1;32m      4[0m ax[38;5;241m.[39mset_ylabel([38;5;124m'[39m[38;5;124mSepal Width (in cm)[39m[38;5;124m'[39m)
-[1;32m      5[0m ax[38;5;241m.[39mset_xlabel([38;5;124m'[39m[38;5;124mSepal Length (in cm)[39m[38;5;124m'[39m)
+[0;36m  Cell [0;32mIn[37], line 4[0;36m[0m
+[0;31m    print("Silhouette Score:", )silhouette_avg[0m
+[0m                                ^[0m
+[0;31mSyntaxError[0m[0;31m:[0m invalid syntax
 
-[0;31mIndexError[0m: only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
 
