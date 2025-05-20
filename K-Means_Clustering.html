@@ -503,7 +503,7 @@ document.write(`
 <p>Loading &amp; Read the Dataset</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;iris_dataset_baru.csv&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;iris_dataset.csv&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dataset loaded successfully&quot;</span><span class="p">)</span>
 <span class="n">data</span>
 </pre></div>
@@ -531,6 +531,7 @@ document.write(`
   <thead>
     <tr style="text-align: right;">
       <th></th>
+      <th>id</th>
       <th>sepal_length</th>
       <th>sepal_width</th>
       <th>petal_length</th>
@@ -541,6 +542,7 @@ document.write(`
   <tbody>
     <tr>
       <th>0</th>
+      <td>1</td>
       <td>5.1</td>
       <td>3.5</td>
       <td>1.4</td>
@@ -549,6 +551,7 @@ document.write(`
     </tr>
     <tr>
       <th>1</th>
+      <td>2</td>
       <td>4.9</td>
       <td>3.0</td>
       <td>1.4</td>
@@ -557,6 +560,7 @@ document.write(`
     </tr>
     <tr>
       <th>2</th>
+      <td>3</td>
       <td>4.7</td>
       <td>3.2</td>
       <td>1.3</td>
@@ -565,6 +569,7 @@ document.write(`
     </tr>
     <tr>
       <th>3</th>
+      <td>4</td>
       <td>4.6</td>
       <td>3.1</td>
       <td>1.5</td>
@@ -573,6 +578,7 @@ document.write(`
     </tr>
     <tr>
       <th>4</th>
+      <td>5</td>
       <td>5.0</td>
       <td>3.6</td>
       <td>1.4</td>
@@ -586,9 +592,11 @@ document.write(`
       <td>...</td>
       <td>...</td>
       <td>...</td>
+      <td>...</td>
     </tr>
     <tr>
       <th>145</th>
+      <td>146</td>
       <td>6.7</td>
       <td>3.0</td>
       <td>5.2</td>
@@ -597,6 +605,7 @@ document.write(`
     </tr>
     <tr>
       <th>146</th>
+      <td>147</td>
       <td>6.3</td>
       <td>2.5</td>
       <td>5.0</td>
@@ -605,6 +614,7 @@ document.write(`
     </tr>
     <tr>
       <th>147</th>
+      <td>148</td>
       <td>6.5</td>
       <td>3.0</td>
       <td>5.2</td>
@@ -613,6 +623,7 @@ document.write(`
     </tr>
     <tr>
       <th>148</th>
+      <td>149</td>
       <td>6.2</td>
       <td>3.4</td>
       <td>5.4</td>
@@ -621,6 +632,7 @@ document.write(`
     </tr>
     <tr>
       <th>149</th>
+      <td>150</td>
       <td>5.9</td>
       <td>3.0</td>
       <td>5.1</td>
@@ -629,14 +641,15 @@ document.write(`
     </tr>
   </tbody>
 </table>
-<p>150 rows × 5 columns</p>
+<p>150 rows × 6 columns</p>
 </div></div></div>
 </div>
 <p>Menghapus Class</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>   <span class="c1"># Menghapus kolom terakhir (class)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">])</span>  <span class="c1"># Menghapus kolom &#39;id&#39; dari X</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>    <span class="c1"># Kolom class</span>
 <span class="n">X</span>
 </pre></div>
 </div>
@@ -777,9 +790,9 @@ document.write(`
 <p>standardisasi fitur (feature scaling)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ss</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">ss</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">col_names</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">columns</span>
+<span class="n">ss</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">ss</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">columns</span><span class="o">=</span><span class="n">col_names</span><span class="p">)</span>
 <span class="n">X</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -871,6 +884,14 @@ document.write(`
 </section>
 <section id="data-visualization">
 <h2>Data Visualization<a class="headerlink" href="#data-visualization" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_plot</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">X_plot</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">values</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p>plot setiap class bunga ke histogram</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -984,7 +1005,7 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
   func(*plot_args, **plot_kwargs)
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x75e58de221b0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x70d334afa150&gt;
 </pre></div>
 </div>
 <img alt="_images/3f1ebb80d724d412e8ce9c3f6afc0d46bb78bbb46b4b695db4b2f84ca2ae7e67.png" src="_images/3f1ebb80d724d412e8ce9c3f6afc0d46bb78bbb46b4b695db4b2f84ca2ae7e67.png" />
@@ -1009,32 +1030,32 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 <p>box plot</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;class&quot;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;petal_length&quot;</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;class&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;petal_length&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">X_plot</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/31a2e1fe72d8233f487e53879ce38733a5a13880b6e7d618747168a3faf2a800.png" src="_images/31a2e1fe72d8233f487e53879ce38733a5a13880b6e7d618747168a3faf2a800.png" />
+<img alt="_images/99f9dbe21ff31ae535eb5c0d3e4a8092e84a0a898e392f054f96710b27cd3931.png" src="_images/99f9dbe21ff31ae535eb5c0d3e4a8092e84a0a898e392f054f96710b27cd3931.png" />
 </div>
 </div>
 <p>violin plot</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;class&quot;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;petal_length&quot;</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;class&quot;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;petal_length&quot;</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">X_plot</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/31688902fc1bb046f4e622ab0b246c7f1bb8b0c3e04952a16d3d24b7e088a6ea.png" src="_images/31688902fc1bb046f4e622ab0b246c7f1bb8b0c3e04952a16d3d24b7e088a6ea.png" />
+<img alt="_images/ec931e3a8ef84f4e8453c68f0c40cf53426cbe06a6dee93d7ee5f1e57b216c77.png" src="_images/ec931e3a8ef84f4e8453c68f0c40cf53426cbe06a6dee93d7ee5f1e57b216c77.png" />
 </div>
 </div>
 <p>Scatter plot</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s2">&quot;whitegrid&quot;</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">hue</span><span class="o">=</span><span class="s2">&quot;class&quot;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">3</span><span class="p">);</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">X_plot</span><span class="p">,</span><span class="n">hue</span><span class="o">=</span><span class="s2">&quot;class&quot;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">3</span><span class="p">);</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1044,7 +1065,7 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
   warnings.warn(msg, UserWarning)
 </pre></div>
 </div>
-<img alt="_images/c4662eb4a7a1e45dc830cb5106aaaa34fda8c5db3df7f9fb7bbdb0935b7d6ed0.png" src="_images/c4662eb4a7a1e45dc830cb5106aaaa34fda8c5db3df7f9fb7bbdb0935b7d6ed0.png" />
+<img alt="_images/50463c4341a4395b005488808b617eaa8f0f7814c5c6f79609d62d9af3248622.png" src="_images/50463c4341a4395b005488808b617eaa8f0f7814c5c6f79609d62d9af3248622.png" />
 </div>
 </div>
 </section>
@@ -1202,14 +1223,14 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[600.0000000000003,
  223.73200573676343,
- 141.15417813388655,
- 115.1902848511995,
- 91.15330203158297,
- 84.04041751459458,
- 74.49899714543545,
- 67.27440988433703,
- 56.78708257529152,
- 48.0016867776791]
+ 142.11063713104195,
+ 114.93521419827835,
+ 91.03697127893268,
+ 84.25961461763745,
+ 73.84487673392523,
+ 65.02975875240499,
+ 57.5933702454592,
+ 52.21149245099769]
 </pre></div>
 </div>
 </div>
@@ -1228,7 +1249,7 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/2a9a51046bcd557958de73f61b23a30edbfc641f75c5395acafc3c6c8b596d22.png" src="_images/2a9a51046bcd557958de73f61b23a30edbfc641f75c5395acafc3c6c8b596d22.png" />
+<img alt="_images/061949ea772e8a4484576acbd602182d1a715037a3c71204e0285e43040204b5.png" src="_images/061949ea772e8a4484576acbd602182d1a715037a3c71204e0285e43040204b5.png" />
 </div>
 </div>
 <p>nilai silhouette untuk cluster 1-10</p>
@@ -1248,14 +1269,14 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.580184463257396,
- 0.45542721937148334,
- 0.38724679456128813,
- 0.3442962563138737,
- 0.34247337746736195,
- 0.28892041042488986,
- 0.333849865705465,
- 0.33401400573493883,
- 0.34635977830644854]
+ 0.46214947389312017,
+ 0.4140182611396695,
+ 0.360748221776554,
+ 0.33356756097514456,
+ 0.33587984259424974,
+ 0.33267060886097,
+ 0.2663328300851727,
+ 0.3390289783380452]
 </pre></div>
 </div>
 </div>
@@ -1265,38 +1286,61 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 <h2>Uji coba Clustering menggunakan 2 Centroid<a class="headerlink" href="#uji-coba-clustering-menggunakan-2-centroid" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;iris_dataset_baru.csv&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;iris_dataset.csv&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
-
-<span class="n">shilouette_scores</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">sse_scores</span> <span class="o">=</span> <span class="p">[]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   sepal_length  sepal_width  petal_length  petal_width        class
-0           5.1          3.5           1.4          0.2  Iris-setosa
-1           4.9          3.0           1.4          0.2  Iris-setosa
-2           4.7          3.2           1.3          0.2  Iris-setosa
-3           4.6          3.1           1.5          0.2  Iris-setosa
-4           5.0          3.6           1.4          0.2  Iris-setosa
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   id  sepal_length  sepal_width  petal_length  petal_width        class
+0   1           5.1          3.5           1.4          0.2  Iris-setosa
+1   2           4.9          3.0           1.4          0.2  Iris-setosa
+2   3           4.7          3.2           1.3          0.2  Iris-setosa
+3   4           4.6          3.1           1.5          0.2  Iris-setosa
+4   5           5.0          3.6           1.4          0.2  Iris-setosa
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">,</span> <span class="s2">&quot;id&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">values</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">20</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">,</span> <span class="s2">&quot;id&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">values</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;df&#39; is not defined
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Normalisasi data (menggunakan StandardScaler)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">col_names</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">columns</span>
+
+<span class="c1"># Normalisasi data (menggunakan StandardScaler)</span>
 <span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
 <span class="n">X_standardized</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="n">X_standardized</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X_standardized</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="n">X_standardized</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X_standardized</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">col_names</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">79</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">col_names</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">columns</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># Normalisasi data (menggunakan StandardScaler)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+
+<span class="ne">AttributeError</span>: &#39;numpy.ndarray&#39; object has no attribute &#39;columns&#39;
 </pre></div>
 </div>
 </div>
@@ -1662,7 +1706,7 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">IndexError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">30</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">71</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span> 
 <span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">clusters</span><span class="p">[</span><span class="n">clusters</span><span class="p">[</span><span class="s1">&#39;Cluster_Prediction&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">][</span><span class="s1">&#39;sepal_length&#39;</span><span class="p">],</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span>             <span class="n">y</span><span class="o">=</span><span class="n">clusters</span><span class="p">[</span><span class="n">clusters</span><span class="p">[</span><span class="s1">&#39;Cluster_Prediction&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">][</span><span class="s1">&#39;sepal_width&#39;</span><span class="p">],</span>
