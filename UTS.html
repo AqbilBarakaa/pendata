@@ -60,6 +60,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'UTS';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="K-Means Clustering" href="K-Means_Clustering.html" />
     <link rel="prev" title="Klasifikasi Naive Bayas" href="Klasifikasi_Naive_Bayas.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -180,13 +181,10 @@
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Memahami_data.html">Memahami Data dalam Penambangan Data</a></li>
-
-
-
-
 <li class="toctree-l1"><a class="reference internal" href="Klasifikasi_Naive_Bayas.html">Klasifikasi Naive Bayas</a></li>
-
 <li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>UJIAN TENGAH SEMESTER</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="K-Means_Clustering.html">K-Means Clustering</a></li>
+
 </ul>
 
     </div>
@@ -382,8 +380,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pemahaman-data-data-understanding"><strong>1. Pemahaman Data (data understanding)</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frekuensi-kemunculan-untuk-variabel-kategorikal"><strong>Frekuensi kemunculan untuk variabel kategorikal</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pemahaman-data-data-understanding"><strong>1. Pemahaman Data (data understanding)</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#frekuensi-kemunculan-untuk-variabel-kategorikal"><strong>Frekuensi kemunculan untuk variabel kategorikal</strong></a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pemrosesan-awal-data-preprocessing"><strong>2. Pemrosesan awal data (Preprocessing)</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pemodelan-model-klasifikasi"><strong>3. Pemodelan (model klasifikasi)</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi-model"><strong>4. Evaluasi Model</strong></a></li>
@@ -793,9 +793,8 @@ memory usage: 65.4+ KB
 </table>
 </div></div></div>
 </div>
-</section>
 <section id="frekuensi-kemunculan-untuk-variabel-kategorikal">
-<h2><strong>Frekuensi kemunculan untuk variabel kategorikal</strong><a class="headerlink" href="#frekuensi-kemunculan-untuk-variabel-kategorikal" title="Link to this heading">#</a></h2>
+<h3><strong>Frekuensi kemunculan untuk variabel kategorikal</strong><a class="headerlink" href="#frekuensi-kemunculan-untuk-variabel-kategorikal" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Frekuensi Variabel Kategorikal:&quot;</span><span class="p">)</span>
@@ -874,6 +873,7 @@ Name: count, dtype: int64
 </div>
 </div>
 </section>
+</section>
 <section id="pemrosesan-awal-data-preprocessing">
 <h2><strong>2. Pemrosesan awal data (Preprocessing)</strong><a class="headerlink" href="#pemrosesan-awal-data-preprocessing" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
@@ -884,6 +884,10 @@ Name: count, dtype: int64
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: ace_tools in /usr/local/python/3.12.1/lib/python3.12/site-packages (0.0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">[</span><span class=" -Color -Color-Blue">notice</span><span class=" -Color -Color-Bold">]</span> A new release of pip is available: <span class=" -Color -Color-Red">25.0.1</span> -&gt; <span class=" -Color -Color-Green">25.1.1</span>
+<span class=" -Color -Color-Bold">[</span><span class=" -Color -Color-Blue">notice</span><span class=" -Color -Color-Bold">]</span> To update, run: <span class=" -Color -Color-Green">python3 -m pip install --upgrade pip</span>
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Note: you may need to restart the kernel to use updated packages.
@@ -1026,9 +1030,7 @@ dtype: object
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Detected outliers:
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      ID  N_Days Status             Drug    Age Sex Ascites Hepatomegaly  \
+      ID  N_Days Status             Drug    Age Sex Ascites Hepatomegaly  \
 29    30     321      D          Placebo  15116   F       N            Y   
 52    53    1000      D  D-penicillamine  24621   F       N            Y   
 28    29    4509      C          Placebo  23331   F       N            N   
@@ -1297,10 +1299,12 @@ F1-Score: 0.58
 Akurasi: 0.79
 Precision: 0.64
 Recall: 0.62
-F1-Score: 0.63
 </pre></div>
 </div>
-<img alt="_images/4563a17bb2be96d893b8082aa61a9292d3ab86effa214b309cc6077cbbf92337.png" src="_images/4563a17bb2be96d893b8082aa61a9292d3ab86effa214b309cc6077cbbf92337.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>F1-Score: 0.63
+</pre></div>
+</div>
+<img alt="_images/fd2502f02d327f992593d5c8b86edf2cb8a66155bf93a530d14de4c31a604bff.png" src="_images/fd2502f02d327f992593d5c8b86edf2cb8a66155bf93a530d14de4c31a604bff.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>🔍 Evaluasi untuk Random Forest:
 Akurasi: 0.81
 Precision: 0.54
@@ -1381,6 +1385,15 @@ F1-Score: 0.54
         <p class="prev-next-title">Klasifikasi Naive Bayas</p>
       </div>
     </a>
+    <a class="right-next"
+       href="K-Means_Clustering.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">K-Means Clustering</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -1397,8 +1410,10 @@ F1-Score: 0.54
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pemahaman-data-data-understanding"><strong>1. Pemahaman Data (data understanding)</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frekuensi-kemunculan-untuk-variabel-kategorikal"><strong>Frekuensi kemunculan untuk variabel kategorikal</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pemahaman-data-data-understanding"><strong>1. Pemahaman Data (data understanding)</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#frekuensi-kemunculan-untuk-variabel-kategorikal"><strong>Frekuensi kemunculan untuk variabel kategorikal</strong></a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pemrosesan-awal-data-preprocessing"><strong>2. Pemrosesan awal data (Preprocessing)</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pemodelan-model-klasifikasi"><strong>3. Pemodelan (model klasifikasi)</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi-model"><strong>4. Evaluasi Model</strong></a></li>

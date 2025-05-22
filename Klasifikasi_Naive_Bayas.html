@@ -62,6 +62,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'Klasifikasi_Naive_Bayas';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="UJIAN TENGAH SEMESTER" href="UTS.html" />
     <link rel="prev" title="Memahami Data dalam Penambangan Data" href="Memahami_data.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -182,11 +183,9 @@
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Memahami_data.html">Memahami Data dalam Penambangan Data</a></li>
-
-
-
-
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Klasifikasi Naive Bayas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UTS.html"><strong>UJIAN TENGAH SEMESTER</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="K-Means_Clustering.html">K-Means Clustering</a></li>
 
 </ul>
 
@@ -383,21 +382,20 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Klasifikasi Naive Bayas</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prinsip-dasar-teorema-bayes"><strong>1. Prinsip Dasar - Teorema Bayes</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-aplikasi"><strong>2. Contoh Aplikasi:</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-langkah-klasifikasi"><strong>3. Langkah-langkah Klasifikasi</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kelebihan-dan-kekurangan"><strong>4. Kelebihan dan Kekurangan</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-kasus-klasifikasi-email-spam"><strong>5. Contoh Kasus - Klasifikasi Email Spam</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-klasifikasi-naive-bayas">Penjelasan Klasifikasi Naive Bayas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prinsip-dasar-teorema-bayes"><strong>1. Prinsip Dasar - Teorema Bayes</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-aplikasi"><strong>2. Contoh Aplikasi:</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-langkah-klasifikasi"><strong>3. Langkah-langkah Klasifikasi</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kelebihan-dan-kekurangan"><strong>4. Kelebihan dan Kekurangan</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-kasus-klasifikasi-email-spam"><strong>5. Contoh Kasus - Klasifikasi Email Spam</strong></a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-naive-bayes"><strong>Implementasi Naive Bayes</strong></a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-menggunakan-outlier"><strong>Implementasi Menggunakan Outlier</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-tanpa-menggunakan-outlier"><strong>Implementasi Tanpa Menggunakan Outlier</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-naive-bayes"><strong>Implementasi Naive Bayes</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-menggunakan-outlier"><strong>Implementasi Menggunakan Outlier</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-tanpa-menggunakan-outlier"><strong>Implementasi Tanpa Menggunakan Outlier</strong></a></li>
 </ul>
 </li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -410,6 +408,8 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="klasifikasi-naive-bayas">
 <h1>Klasifikasi Naive Bayas<a class="headerlink" href="#klasifikasi-naive-bayas" title="Link to this heading">#</a></h1>
+<section id="penjelasan-klasifikasi-naive-bayas">
+<h2>Penjelasan Klasifikasi Naive Bayas<a class="headerlink" href="#penjelasan-klasifikasi-naive-bayas" title="Link to this heading">#</a></h2>
 <p><strong>Apa itu Naive Bayes?</strong></p>
 <ul class="simple">
 <li><p>Algoritma klasifikasi berbasis probabilitas.</p></li>
@@ -422,7 +422,7 @@ document.write(`
 <li><p>Artinya, probabilitas suatu fitur tidak dipengaruhi oleh fitur lainnya.</p></li>
 </ul>
 <section id="prinsip-dasar-teorema-bayes">
-<h2><strong>1. Prinsip Dasar - Teorema Bayes</strong><a class="headerlink" href="#prinsip-dasar-teorema-bayes" title="Link to this heading">#</a></h2>
+<h3><strong>1. Prinsip Dasar - Teorema Bayes</strong><a class="headerlink" href="#prinsip-dasar-teorema-bayes" title="Link to this heading">#</a></h3>
 <p><strong>Teorema Bayes:</strong></p>
 <div class="math notranslate nohighlight">
 \[
@@ -439,7 +439,7 @@ P(Y | X) = \frac{P(X | Y) \cdot P(Y)}{P(X)}
 Mencari kelas <span class="math notranslate nohighlight">\(𝑌\)</span> dengan nilai <span class="math notranslate nohighlight">\(𝑃(𝑌|𝑋)\)</span> tertinggi.</p>
 </section>
 <section id="contoh-aplikasi">
-<h2><strong>2. Contoh Aplikasi:</strong><a class="headerlink" href="#contoh-aplikasi" title="Link to this heading">#</a></h2>
+<h3><strong>2. Contoh Aplikasi:</strong><a class="headerlink" href="#contoh-aplikasi" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Klasifikasi email spam atau bukan spam.</p></li>
 <li><p>Prediksi cuaca.</p></li>
@@ -447,7 +447,7 @@ Mencari kelas <span class="math notranslate nohighlight">\(𝑌\)</span> dengan 
 </ul>
 </section>
 <section id="langkah-langkah-klasifikasi">
-<h2><strong>3. Langkah-langkah Klasifikasi</strong><a class="headerlink" href="#langkah-langkah-klasifikasi" title="Link to this heading">#</a></h2>
+<h3><strong>3. Langkah-langkah Klasifikasi</strong><a class="headerlink" href="#langkah-langkah-klasifikasi" title="Link to this heading">#</a></h3>
 <p><strong>1. Persiapan Data:</strong></p>
 <ul class="simple">
 <li><p>Pisahkan data menjadi fitur (<span class="math notranslate nohighlight">\(𝑋\)</span>) dan label (<span class="math notranslate nohighlight">\(𝑌\)</span>).</p></li>
@@ -473,7 +473,7 @@ P(Y | X) = \frac{P(X | Y) \cdot P(Y)}{P(X)}
 </ul>
 </section>
 <section id="kelebihan-dan-kekurangan">
-<h2><strong>4. Kelebihan dan Kekurangan</strong><a class="headerlink" href="#kelebihan-dan-kekurangan" title="Link to this heading">#</a></h2>
+<h3><strong>4. Kelebihan dan Kekurangan</strong><a class="headerlink" href="#kelebihan-dan-kekurangan" title="Link to this heading">#</a></h3>
 <p><strong>Kelebihan:</strong></p>
 <ul class="simple">
 <li><p>Sederhana dan mudah diimplementasikan.</p></li>
@@ -488,7 +488,7 @@ P(Y | X) = \frac{P(X | Y) \cdot P(Y)}{P(X)}
 </ul>
 </section>
 <section id="contoh-kasus-klasifikasi-email-spam">
-<h2><strong>5. Contoh Kasus - Klasifikasi Email Spam</strong><a class="headerlink" href="#contoh-kasus-klasifikasi-email-spam" title="Link to this heading">#</a></h2>
+<h3><strong>5. Contoh Kasus - Klasifikasi Email Spam</strong><a class="headerlink" href="#contoh-kasus-klasifikasi-email-spam" title="Link to this heading">#</a></h3>
 <p><strong>Dataset:</strong></p>
 <ul class="simple">
 <li><p><strong>Fitur:</strong> Frekuensi kata-kata tertentu (e.g., “gratis”, “diskon”).</p></li>
@@ -504,8 +504,8 @@ P(Y | X) = \frac{P(X | Y) \cdot P(Y)}{P(X)}
 <p>Email diklasifikasikan sebagai spam jika probabilitas spam lebih tinggi daripada bukan spam.</p>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="implementasi-naive-bayes">
-<h1><strong>Implementasi Naive Bayes</strong><a class="headerlink" href="#implementasi-naive-bayes" title="Link to this heading">#</a></h1>
+<section id="implementasi-naive-bayes">
+<h2><strong>Implementasi Naive Bayes</strong><a class="headerlink" href="#implementasi-naive-bayes" title="Link to this heading">#</a></h2>
 <p>Import Library</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -517,7 +517,7 @@ P(Y | X) = \frac{P(X | Y) \cdot P(Y)}{P(X)}
 </div>
 </div>
 <section id="implementasi-menggunakan-outlier">
-<h2><strong>Implementasi Menggunakan Outlier</strong><a class="headerlink" href="#implementasi-menggunakan-outlier" title="Link to this heading">#</a></h2>
+<h3><strong>Implementasi Menggunakan Outlier</strong><a class="headerlink" href="#implementasi-menggunakan-outlier" title="Link to this heading">#</a></h3>
 <p>Import Dataset</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1284,7 +1284,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </div>
 </section>
 <section id="implementasi-tanpa-menggunakan-outlier">
-<h2><strong>Implementasi Tanpa Menggunakan Outlier</strong><a class="headerlink" href="#implementasi-tanpa-menggunakan-outlier" title="Link to this heading">#</a></h2>
+<h3><strong>Implementasi Tanpa Menggunakan Outlier</strong><a class="headerlink" href="#implementasi-tanpa-menggunakan-outlier" title="Link to this heading">#</a></h3>
 <p>Import Dataset</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2055,6 +2055,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </div>
 </section>
 </section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -2095,6 +2096,15 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
         <p class="prev-next-title">Memahami Data dalam Penambangan Data</p>
       </div>
     </a>
+    <a class="right-next"
+       href="UTS.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><strong>UJIAN TENGAH SEMESTER</strong></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -2111,21 +2121,20 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Klasifikasi Naive Bayas</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prinsip-dasar-teorema-bayes"><strong>1. Prinsip Dasar - Teorema Bayes</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-aplikasi"><strong>2. Contoh Aplikasi:</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-langkah-klasifikasi"><strong>3. Langkah-langkah Klasifikasi</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kelebihan-dan-kekurangan"><strong>4. Kelebihan dan Kekurangan</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-kasus-klasifikasi-email-spam"><strong>5. Contoh Kasus - Klasifikasi Email Spam</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-klasifikasi-naive-bayas">Penjelasan Klasifikasi Naive Bayas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prinsip-dasar-teorema-bayes"><strong>1. Prinsip Dasar - Teorema Bayes</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-aplikasi"><strong>2. Contoh Aplikasi:</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-langkah-klasifikasi"><strong>3. Langkah-langkah Klasifikasi</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kelebihan-dan-kekurangan"><strong>4. Kelebihan dan Kekurangan</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-kasus-klasifikasi-email-spam"><strong>5. Contoh Kasus - Klasifikasi Email Spam</strong></a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-naive-bayes"><strong>Implementasi Naive Bayes</strong></a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-menggunakan-outlier"><strong>Implementasi Menggunakan Outlier</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-tanpa-menggunakan-outlier"><strong>Implementasi Tanpa Menggunakan Outlier</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-naive-bayes"><strong>Implementasi Naive Bayes</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-menggunakan-outlier"><strong>Implementasi Menggunakan Outlier</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-tanpa-menggunakan-outlier"><strong>Implementasi Tanpa Menggunakan Outlier</strong></a></li>
 </ul>
 </li>
 </ul>
-
   </nav></div>
 
 </div></div>
