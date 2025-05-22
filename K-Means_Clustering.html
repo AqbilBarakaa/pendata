@@ -189,9 +189,6 @@
 <li class="toctree-l1"><a class="reference internal" href="UTS.html"><strong>UJIAN TENGAH SEMESTER</strong></a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">K-Means Clustering</a></li>
 
-
-
-
 </ul>
 
     </div>
@@ -395,28 +392,32 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kelebihan">Kelebihan</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kekurangan">Kekurangan</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi-hasil-klustering">Evaluasi Hasil Klustering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-k-means-clustering">Implementasi K-Means Clustering</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries-load-read-dataset">Import libraries, load, &amp; read dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-process-data-standardization-data">Pre-process data (Standardization data)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-visualization">Data Visualization</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-k-means-clustering">Implementasi K-Means Clustering</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries-load-read-dataset">Import libraries, load, &amp; read dataset</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-process-data-standardization-data">Pre-process data (Standardization data)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-visualization">Data Visualization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling-k-means-clustering">Modeling K-Means Clustering</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clustering">Clustering</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling-k-means-clustering">Modeling K-Means Clustering</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clustering">Clustering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uji-coba-clustering-tanpa-class">Uji Coba Clustering Tanpa Class</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uji-coba-clustering-menggunakan-2-centroid">Uji Coba Clustering menggunakan 2 Centroid</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uji-coba-clustering-menggunakan-3-centroid">Uji Coba Clustering menggunakan 3 Centroid</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uji-coba-clustering-menggunakan-4-centroid">Uji Coba Clustering menggunakan 4 Centroid</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#uji-coba-clustering-tanpa-class">Uji coba Clustering Tanpa Class</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uji-coba-clustering-menggunakan-2-centroid">Uji coba Clustering menggunakan 2 Centroid</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uji-coba-clustering-menggunakan-3-centroid">Uji coba Clustering menggunakan 3 Centroid</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uji-coba-clustering-menggunakan-4-centroid">Uji coba Clustering menggunakan 4 Centroid</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uji-coba-clustering-menggunakan-class">Uji Coba Clustering Menggunakan Class</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Uji Coba Clustering menggunakan 2 Centroid</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Uji Coba Clustering menggunakan 3 Centroid</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Uji Coba Clustering menggunakan 4 Centroid</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#uji-coba-clustering-menggunakan-class">Uji coba Clustering Menggunakan Class</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Uji coba Clustering menggunakan 2 Centroid</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Uji coba Clustering menggunakan 3 Centroid</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Uji coba Clustering menggunakan 4 Centroid</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fuzzy-c-means">FUZZY C-MEANS</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#konsep-fuzzy-c-means">Konsep Fuzzy C-Means</a></li>
 </ul>
 </li>
 </ul>
@@ -490,11 +491,10 @@ document.write(`
 <li><p>Elbow Method: Untuk memilih nilai K optimal</p></li>
 </ul>
 </section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="implementasi-k-means-clustering">
-<h1>Implementasi K-Means Clustering<a class="headerlink" href="#implementasi-k-means-clustering" title="Link to this heading">#</a></h1>
+<section id="implementasi-k-means-clustering">
+<h2>Implementasi K-Means Clustering<a class="headerlink" href="#implementasi-k-means-clustering" title="Link to this heading">#</a></h2>
 <section id="import-libraries-load-read-dataset">
-<h2>Import libraries, load, &amp; read dataset<a class="headerlink" href="#import-libraries-load-read-dataset" title="Link to this heading">#</a></h2>
+<h3>Import libraries, load, &amp; read dataset<a class="headerlink" href="#import-libraries-load-read-dataset" title="Link to this heading">#</a></h3>
 <p>import libraries</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -798,7 +798,7 @@ document.write(`
 </div>
 </section>
 <section id="pre-process-data-standardization-data">
-<h2>Pre-process data (Standardization data)<a class="headerlink" href="#pre-process-data-standardization-data" title="Link to this heading">#</a></h2>
+<h3>Pre-process data (Standardization data)<a class="headerlink" href="#pre-process-data-standardization-data" title="Link to this heading">#</a></h3>
 <p>standardisasi fitur (feature scaling)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -895,7 +895,7 @@ document.write(`
 </div>
 </section>
 <section id="data-visualization">
-<h2>Data Visualization<a class="headerlink" href="#data-visualization" title="Link to this heading">#</a></h2>
+<h3>Data Visualization<a class="headerlink" href="#data-visualization" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_plot</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -947,28 +947,6 @@ For a guide to updating your code to use the new functions, please see
 https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 
   func(*plot_args, **plot_kwargs)
-/home/codespace/.local/lib/python3.12/site-packages/seaborn/axisgrid.py:854: UserWarning: 
-
-`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
-
-Please adapt your code to use either `displot` (a figure-level function with
-similar flexibility) or `histplot` (an axes-level function for histograms).
-
-For a guide to updating your code to use the new functions, please see
-https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
-
-  func(*plot_args, **plot_kwargs)
-/home/codespace/.local/lib/python3.12/site-packages/seaborn/axisgrid.py:854: UserWarning: 
-
-`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
-
-Please adapt your code to use either `displot` (a figure-level function with
-similar flexibility) or `histplot` (an axes-level function for histograms).
-
-For a guide to updating your code to use the new functions, please see
-https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
-
-  func(*plot_args, **plot_kwargs)
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/codespace/.local/lib/python3.12/site-packages/seaborn/axisgrid.py:854: UserWarning: 
@@ -1015,9 +993,33 @@ For a guide to updating your code to use the new functions, please see
 https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 
   func(*plot_args, **plot_kwargs)
+/home/codespace/.local/lib/python3.12/site-packages/seaborn/axisgrid.py:854: UserWarning: 
+
+`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
+
+Please adapt your code to use either `displot` (a figure-level function with
+similar flexibility) or `histplot` (an axes-level function for histograms).
+
+For a guide to updating your code to use the new functions, please see
+https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
+
+  func(*plot_args, **plot_kwargs)
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7cde286c2330&gt;
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/codespace/.local/lib/python3.12/site-packages/seaborn/axisgrid.py:854: UserWarning: 
+
+`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
+
+Please adapt your code to use either `displot` (a figure-level function with
+similar flexibility) or `histplot` (an axes-level function for histograms).
+
+For a guide to updating your code to use the new functions, please see
+https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
+
+  func(*plot_args, **plot_kwargs)
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x73a1a1bd4b30&gt;
 </pre></div>
 </div>
 <img alt="_images/3f1ebb80d724d412e8ce9c3f6afc0d46bb78bbb46b4b695db4b2f84ca2ae7e67.png" src="_images/3f1ebb80d724d412e8ce9c3f6afc0d46bb78bbb46b4b695db4b2f84ca2ae7e67.png" />
@@ -1082,10 +1084,10 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="modeling-k-means-clustering">
-<h1>Modeling K-Means Clustering<a class="headerlink" href="#modeling-k-means-clustering" title="Link to this heading">#</a></h1>
+<section id="modeling-k-means-clustering">
+<h2>Modeling K-Means Clustering<a class="headerlink" href="#modeling-k-means-clustering" title="Link to this heading">#</a></h2>
 <section id="clustering">
-<h2>Clustering<a class="headerlink" href="#clustering" title="Link to this heading">#</a></h2>
+<h3>Clustering<a class="headerlink" href="#clustering" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;iris_dataset.csv&#39;</span><span class="p">)</span>
@@ -1493,7 +1495,7 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[152.36870647733915, 78.94506582597728, 57.4732732654949]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[152.36870647733915, 78.94084142614601, 57.4732732654949]
 </pre></div>
 </div>
 </div>
@@ -1512,7 +1514,7 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7b8550d75fa8b6ec01e74bbeb680a0c8ef6d5cd834a0cbe5a9aee4d6a370dc05.png" src="_images/7b8550d75fa8b6ec01e74bbeb680a0c8ef6d5cd834a0cbe5a9aee4d6a370dc05.png" />
+<img alt="_images/4bab7e3fa51e75b6b5e1277a814a1095f4975440046a955c9188cf4eb0fcd5e5.png" src="_images/4bab7e3fa51e75b6b5e1277a814a1095f4975440046a955c9188cf4eb0fcd5e5.png" />
 </div>
 </div>
 <p>nilai silhouette untuk cluster 2-4</p>
@@ -1531,15 +1533,15 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.6808136202936816, 0.5509643746707443, 0.4972279726640147]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.6808136202936816, 0.5525919445499757, 0.4974115445023624]
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="uji-coba-clustering-tanpa-class">
-<h1>Uji coba Clustering Tanpa Class<a class="headerlink" href="#uji-coba-clustering-tanpa-class" title="Link to this heading">#</a></h1>
+<section id="uji-coba-clustering-tanpa-class">
+<h2>Uji Coba Clustering Tanpa Class<a class="headerlink" href="#uji-coba-clustering-tanpa-class" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;iris_dataset.csv&quot;</span><span class="p">)</span>
@@ -1884,7 +1886,7 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 </div>
 </div>
 <section id="uji-coba-clustering-menggunakan-2-centroid">
-<h2>Uji coba Clustering menggunakan 2 Centroid<a class="headerlink" href="#uji-coba-clustering-menggunakan-2-centroid" title="Link to this heading">#</a></h2>
+<h3>Uji Coba Clustering menggunakan 2 Centroid<a class="headerlink" href="#uji-coba-clustering-menggunakan-2-centroid" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kms</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">0.0001</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">copy_x</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;lloyd&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
@@ -1972,7 +1974,7 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 </div>
 </section>
 <section id="uji-coba-clustering-menggunakan-3-centroid">
-<h2>Uji coba Clustering menggunakan 3 Centroid<a class="headerlink" href="#uji-coba-clustering-menggunakan-3-centroid" title="Link to this heading">#</a></h2>
+<h3>Uji Coba Clustering menggunakan 3 Centroid<a class="headerlink" href="#uji-coba-clustering-menggunakan-3-centroid" title="Link to this heading">#</a></h3>
 <p>Menentukan centroid cluster</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2060,7 +2062,7 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 </div>
 </section>
 <section id="uji-coba-clustering-menggunakan-4-centroid">
-<h2>Uji coba Clustering menggunakan 4 Centroid<a class="headerlink" href="#uji-coba-clustering-menggunakan-4-centroid" title="Link to this heading">#</a></h2>
+<h3>Uji Coba Clustering menggunakan 4 Centroid<a class="headerlink" href="#uji-coba-clustering-menggunakan-4-centroid" title="Link to this heading">#</a></h3>
 <p>Menentukan centroid cluster</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2070,10 +2072,7 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hasil label cluster:
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hasil label cluster: [1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
  1 1 1 1 1 1 1 1 1 1 1 1 1 3 3 3 0 3 0 3 0 3 0 0 0 0 3 0 3 0 0 3 0 3 0 3 3
  3 3 3 3 3 0 0 0 0 3 0 3 3 3 0 0 0 3 0 0 0 0 0 3 0 0 2 3 2 2 2 2 0 2 2 2 3
  3 2 3 3 2 2 2 2 3 2 3 2 3 2 2 3 3 2 2 2 2 2 3 3 2 2 2 3 2 2 2 3 2 2 2 3 3
@@ -2153,8 +2152,8 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="uji-coba-clustering-menggunakan-class">
-<h1>Uji coba Clustering Menggunakan Class<a class="headerlink" href="#uji-coba-clustering-menggunakan-class" title="Link to this heading">#</a></h1>
+<section id="uji-coba-clustering-menggunakan-class">
+<h2>Uji Coba Clustering Menggunakan Class<a class="headerlink" href="#uji-coba-clustering-menggunakan-class" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;iris_dataset.csv&quot;</span><span class="p">)</span>
@@ -2500,7 +2499,7 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 </div>
 </div>
 <section id="id1">
-<h2>Uji coba Clustering menggunakan 2 Centroid<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<h3>Uji Coba Clustering menggunakan 2 Centroid<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kms2</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">0.0001</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">copy_x</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;lloyd&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_scaled</span><span class="p">)</span>
@@ -2583,7 +2582,7 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 </div>
 </section>
 <section id="id2">
-<h2>Uji coba Clustering menggunakan 3 Centroid<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<h3>Uji Coba Clustering menggunakan 3 Centroid<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kms2</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">0.0001</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">copy_x</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;lloyd&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_scaled</span><span class="p">)</span>
@@ -2667,7 +2666,7 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 </div>
 </section>
 <section id="id3">
-<h2>Uji coba Clustering menggunakan 4 Centroid<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<h3>Uji Coba Clustering menggunakan 4 Centroid<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kms2</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">0.0001</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">copy_x</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;lloyd&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_scaled</span><span class="p">)</span>
@@ -2779,9 +2778,16 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/2d405f1a41e9ac2ef4b9b582dd881055586834540f2b9fe63639acc42180a8ba.png" src="_images/2d405f1a41e9ac2ef4b9b582dd881055586834540f2b9fe63639acc42180a8ba.png" />
+<img alt="_images/add8af32a1a6686ae0481b3d4cf9a8f44b7f7b2c26d184b9ab1a8304610f52d1.png" src="_images/add8af32a1a6686ae0481b3d4cf9a8f44b7f7b2c26d184b9ab1a8304610f52d1.png" />
 </div>
 </div>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="fuzzy-c-means">
+<h1>FUZZY C-MEANS<a class="headerlink" href="#fuzzy-c-means" title="Link to this heading">#</a></h1>
+<section id="konsep-fuzzy-c-means">
+<h2>Konsep Fuzzy C-Means<a class="headerlink" href="#konsep-fuzzy-c-means" title="Link to this heading">#</a></h2>
 </section>
 </section>
 
@@ -2848,28 +2854,32 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kelebihan">Kelebihan</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kekurangan">Kekurangan</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi-hasil-klustering">Evaluasi Hasil Klustering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-k-means-clustering">Implementasi K-Means Clustering</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries-load-read-dataset">Import libraries, load, &amp; read dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-process-data-standardization-data">Pre-process data (Standardization data)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-visualization">Data Visualization</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-k-means-clustering">Implementasi K-Means Clustering</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries-load-read-dataset">Import libraries, load, &amp; read dataset</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-process-data-standardization-data">Pre-process data (Standardization data)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-visualization">Data Visualization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling-k-means-clustering">Modeling K-Means Clustering</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clustering">Clustering</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling-k-means-clustering">Modeling K-Means Clustering</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clustering">Clustering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uji-coba-clustering-tanpa-class">Uji Coba Clustering Tanpa Class</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uji-coba-clustering-menggunakan-2-centroid">Uji Coba Clustering menggunakan 2 Centroid</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uji-coba-clustering-menggunakan-3-centroid">Uji Coba Clustering menggunakan 3 Centroid</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uji-coba-clustering-menggunakan-4-centroid">Uji Coba Clustering menggunakan 4 Centroid</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#uji-coba-clustering-tanpa-class">Uji coba Clustering Tanpa Class</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uji-coba-clustering-menggunakan-2-centroid">Uji coba Clustering menggunakan 2 Centroid</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uji-coba-clustering-menggunakan-3-centroid">Uji coba Clustering menggunakan 3 Centroid</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uji-coba-clustering-menggunakan-4-centroid">Uji coba Clustering menggunakan 4 Centroid</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uji-coba-clustering-menggunakan-class">Uji Coba Clustering Menggunakan Class</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Uji Coba Clustering menggunakan 2 Centroid</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Uji Coba Clustering menggunakan 3 Centroid</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Uji Coba Clustering menggunakan 4 Centroid</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#uji-coba-clustering-menggunakan-class">Uji coba Clustering Menggunakan Class</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Uji coba Clustering menggunakan 2 Centroid</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Uji coba Clustering menggunakan 3 Centroid</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Uji coba Clustering menggunakan 4 Centroid</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fuzzy-c-means">FUZZY C-MEANS</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#konsep-fuzzy-c-means">Konsep Fuzzy C-Means</a></li>
 </ul>
 </li>
 </ul>
