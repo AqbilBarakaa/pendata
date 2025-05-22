@@ -385,13 +385,16 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">K-Means Clustering</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apa-itu-k-means-clustering">Apa Itu K-Means Clustering?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengapa-perlu-clustering">Mengapa Perlu Clustering?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan-dan-fungsi">Tujuan dan Fungsi</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-langkah-algoritma-k-means">Langkah-Langkah Algoritma K-Means</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kelebihan">Kelebihan</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kekurangan">Kekurangan</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi-hasil-klustering">Evaluasi Hasil Klustering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-k-means-clustering">Penjelasan K-Means Clustering</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#apa-itu-k-means-clustering">Apa Itu K-Means Clustering?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengapa-perlu-clustering">Mengapa Perlu Clustering?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan-dan-fungsi">Tujuan dan Fungsi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-langkah-algoritma-k-means">Langkah-Langkah Algoritma K-Means</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kelebihan">Kelebihan</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kekurangan">Kekurangan</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi-hasil-klustering">Evaluasi Hasil Klustering</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-k-means-clustering">Implementasi K-Means Clustering</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries-load-read-dataset">Import libraries, load, &amp; read dataset</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-process-data-standardization-data">Pre-process data (Standardization data)</a></li>
@@ -434,16 +437,18 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="k-means-clustering">
 <h1>K-Means Clustering<a class="headerlink" href="#k-means-clustering" title="Link to this heading">#</a></h1>
+<section id="penjelasan-k-means-clustering">
+<h2>Penjelasan K-Means Clustering<a class="headerlink" href="#penjelasan-k-means-clustering" title="Link to this heading">#</a></h2>
 <section id="apa-itu-k-means-clustering">
-<h2>Apa Itu K-Means Clustering?<a class="headerlink" href="#apa-itu-k-means-clustering" title="Link to this heading">#</a></h2>
+<h3>Apa Itu K-Means Clustering?<a class="headerlink" href="#apa-itu-k-means-clustering" title="Link to this heading">#</a></h3>
 <p>Teknik pengelompokan (clustering) berbasis partisi membagi data menjadi K kelompok berdasarkan jarak setiap kelompok direpresentasikan oleh centroid (rata-rata dari titik dalam kluster).</p>
 </section>
 <section id="mengapa-perlu-clustering">
-<h2>Mengapa Perlu Clustering?<a class="headerlink" href="#mengapa-perlu-clustering" title="Link to this heading">#</a></h2>
+<h3>Mengapa Perlu Clustering?<a class="headerlink" href="#mengapa-perlu-clustering" title="Link to this heading">#</a></h3>
 <p>Data sering kali tidak memiliki label → Unsupervised Learning clustering membantu mengelompokkan data berdasarkan kesamaan karakteristik.</p>
 </section>
 <section id="tujuan-dan-fungsi">
-<h2>Tujuan dan Fungsi<a class="headerlink" href="#tujuan-dan-fungsi" title="Link to this heading">#</a></h2>
+<h3>Tujuan dan Fungsi<a class="headerlink" href="#tujuan-dan-fungsi" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Meminimalkan variasi dalam kluster (within-cluster variance)</p></li>
 <li><p>Mengelompokkan objek sehingga:</p>
@@ -455,7 +460,7 @@ document.write(`
 </ul>
 </section>
 <section id="langkah-langkah-algoritma-k-means">
-<h2>Langkah-Langkah Algoritma K-Means<a class="headerlink" href="#langkah-langkah-algoritma-k-means" title="Link to this heading">#</a></h2>
+<h3>Langkah-Langkah Algoritma K-Means<a class="headerlink" href="#langkah-langkah-algoritma-k-means" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p>Tentukan jumlah kluster K,</p></li>
 <li><p>Pilih K centroid awal secara acak,</p></li>
@@ -466,7 +471,7 @@ document.write(`
 </ol>
 </section>
 <section id="kelebihan">
-<h2>Kelebihan<a class="headerlink" href="#kelebihan" title="Link to this heading">#</a></h2>
+<h3>Kelebihan<a class="headerlink" href="#kelebihan" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Cepat dan efisien</p></li>
 <li><p>Mudah dipahami &amp; diimplementasikan</p></li>
@@ -475,7 +480,7 @@ document.write(`
 </ul>
 </section>
 <section id="kekurangan">
-<h2>Kekurangan<a class="headerlink" href="#kekurangan" title="Link to this heading">#</a></h2>
+<h3>Kekurangan<a class="headerlink" href="#kekurangan" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Harus menentukan nilai K di awal</p></li>
 <li><p>Sensitif terhadap outlier</p></li>
@@ -484,12 +489,13 @@ document.write(`
 </ul>
 </section>
 <section id="evaluasi-hasil-klustering">
-<h2>Evaluasi Hasil Klustering<a class="headerlink" href="#evaluasi-hasil-klustering" title="Link to this heading">#</a></h2>
+<h3>Evaluasi Hasil Klustering<a class="headerlink" href="#evaluasi-hasil-klustering" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Inertia: Jumlah kuadrat jarak antara titik dan centroid</p></li>
 <li><p>Silhouette Score: Ukuran seberapa mirip suatu objek dengan klusternya dibanding kluster lain</p></li>
 <li><p>Elbow Method: Untuk memilih nilai K optimal</p></li>
 </ul>
+</section>
 </section>
 <section id="implementasi-k-means-clustering">
 <h2>Implementasi K-Means Clustering<a class="headerlink" href="#implementasi-k-means-clustering" title="Link to this heading">#</a></h2>
@@ -947,52 +953,6 @@ For a guide to updating your code to use the new functions, please see
 https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 
   func(*plot_args, **plot_kwargs)
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/codespace/.local/lib/python3.12/site-packages/seaborn/axisgrid.py:854: UserWarning: 
-
-`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
-
-Please adapt your code to use either `displot` (a figure-level function with
-similar flexibility) or `histplot` (an axes-level function for histograms).
-
-For a guide to updating your code to use the new functions, please see
-https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
-
-  func(*plot_args, **plot_kwargs)
-/home/codespace/.local/lib/python3.12/site-packages/seaborn/axisgrid.py:854: UserWarning: 
-
-`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
-
-Please adapt your code to use either `displot` (a figure-level function with
-similar flexibility) or `histplot` (an axes-level function for histograms).
-
-For a guide to updating your code to use the new functions, please see
-https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
-
-  func(*plot_args, **plot_kwargs)
-/home/codespace/.local/lib/python3.12/site-packages/seaborn/axisgrid.py:854: UserWarning: 
-
-`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
-
-Please adapt your code to use either `displot` (a figure-level function with
-similar flexibility) or `histplot` (an axes-level function for histograms).
-
-For a guide to updating your code to use the new functions, please see
-https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
-
-  func(*plot_args, **plot_kwargs)
-/home/codespace/.local/lib/python3.12/site-packages/seaborn/axisgrid.py:854: UserWarning: 
-
-`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
-
-Please adapt your code to use either `displot` (a figure-level function with
-similar flexibility) or `histplot` (an axes-level function for histograms).
-
-For a guide to updating your code to use the new functions, please see
-https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
-
-  func(*plot_args, **plot_kwargs)
 /home/codespace/.local/lib/python3.12/site-packages/seaborn/axisgrid.py:854: UserWarning: 
 
 `distplot` is a deprecated function and will be removed in seaborn v0.14.0.
@@ -1017,9 +977,53 @@ For a guide to updating your code to use the new functions, please see
 https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 
   func(*plot_args, **plot_kwargs)
+/home/codespace/.local/lib/python3.12/site-packages/seaborn/axisgrid.py:854: UserWarning: 
+
+`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
+
+Please adapt your code to use either `displot` (a figure-level function with
+similar flexibility) or `histplot` (an axes-level function for histograms).
+
+For a guide to updating your code to use the new functions, please see
+https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
+
+  func(*plot_args, **plot_kwargs)
+/home/codespace/.local/lib/python3.12/site-packages/seaborn/axisgrid.py:854: UserWarning: 
+
+`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
+
+Please adapt your code to use either `displot` (a figure-level function with
+similar flexibility) or `histplot` (an axes-level function for histograms).
+
+For a guide to updating your code to use the new functions, please see
+https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
+
+  func(*plot_args, **plot_kwargs)
+/home/codespace/.local/lib/python3.12/site-packages/seaborn/axisgrid.py:854: UserWarning: 
+
+`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
+
+Please adapt your code to use either `displot` (a figure-level function with
+similar flexibility) or `histplot` (an axes-level function for histograms).
+
+For a guide to updating your code to use the new functions, please see
+https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
+
+  func(*plot_args, **plot_kwargs)
+/home/codespace/.local/lib/python3.12/site-packages/seaborn/axisgrid.py:854: UserWarning: 
+
+`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
+
+Please adapt your code to use either `displot` (a figure-level function with
+similar flexibility) or `histplot` (an axes-level function for histograms).
+
+For a guide to updating your code to use the new functions, please see
+https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
+
+  func(*plot_args, **plot_kwargs)
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x73a1a1bd4b30&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x783681d6eb70&gt;
 </pre></div>
 </div>
 <img alt="_images/3f1ebb80d724d412e8ce9c3f6afc0d46bb78bbb46b4b695db4b2f84ca2ae7e67.png" src="_images/3f1ebb80d724d412e8ce9c3f6afc0d46bb78bbb46b4b695db4b2f84ca2ae7e67.png" />
@@ -1495,7 +1499,7 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[152.36870647733915, 78.94084142614601, 57.4732732654949]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[152.36870647733915, 78.94506582597728, 57.4732732654949]
 </pre></div>
 </div>
 </div>
@@ -1514,7 +1518,7 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/4bab7e3fa51e75b6b5e1277a814a1095f4975440046a955c9188cf4eb0fcd5e5.png" src="_images/4bab7e3fa51e75b6b5e1277a814a1095f4975440046a955c9188cf4eb0fcd5e5.png" />
+<img alt="_images/7b8550d75fa8b6ec01e74bbeb680a0c8ef6d5cd834a0cbe5a9aee4d6a370dc05.png" src="_images/7b8550d75fa8b6ec01e74bbeb680a0c8ef6d5cd834a0cbe5a9aee4d6a370dc05.png" />
 </div>
 </div>
 <p>nilai silhouette untuk cluster 2-4</p>
@@ -1533,7 +1537,7 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.6808136202936816, 0.5525919445499757, 0.4974115445023624]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.6808136202936816, 0.5509643746707443, 0.49511999553021513]
 </pre></div>
 </div>
 </div>
@@ -2778,7 +2782,7 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/add8af32a1a6686ae0481b3d4cf9a8f44b7f7b2c26d184b9ab1a8304610f52d1.png" src="_images/add8af32a1a6686ae0481b3d4cf9a8f44b7f7b2c26d184b9ab1a8304610f52d1.png" />
+<img alt="_images/d3d91535aa5a403245203385dba85ec58fad770a6bc4d2c74c0022eab436f315.png" src="_images/d3d91535aa5a403245203385dba85ec58fad770a6bc4d2c74c0022eab436f315.png" />
 </div>
 </div>
 </section>
@@ -2847,13 +2851,16 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">K-Means Clustering</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apa-itu-k-means-clustering">Apa Itu K-Means Clustering?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengapa-perlu-clustering">Mengapa Perlu Clustering?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan-dan-fungsi">Tujuan dan Fungsi</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-langkah-algoritma-k-means">Langkah-Langkah Algoritma K-Means</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kelebihan">Kelebihan</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kekurangan">Kekurangan</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi-hasil-klustering">Evaluasi Hasil Klustering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-k-means-clustering">Penjelasan K-Means Clustering</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#apa-itu-k-means-clustering">Apa Itu K-Means Clustering?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengapa-perlu-clustering">Mengapa Perlu Clustering?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan-dan-fungsi">Tujuan dan Fungsi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-langkah-algoritma-k-means">Langkah-Langkah Algoritma K-Means</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kelebihan">Kelebihan</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kekurangan">Kekurangan</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi-hasil-klustering">Evaluasi Hasil Klustering</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-k-means-clustering">Implementasi K-Means Clustering</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries-load-read-dataset">Import libraries, load, &amp; read dataset</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-process-data-standardization-data">Pre-process data (Standardization data)</a></li>
