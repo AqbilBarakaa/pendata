@@ -181,11 +181,9 @@
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Memahami Data dalam Penambangan Data</a></li>
-
-
-
-
 <li class="toctree-l1"><a class="reference internal" href="Klasifikasi_Naive_Bayas.html">Klasifikasi Naive Bayas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UTS.html"><strong>UJIAN TENGAH SEMESTER</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="K-Means_Clustering.html">K-Means Clustering</a></li>
 
 </ul>
 
@@ -382,18 +380,17 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Memahami Data dalam Penambangan Data</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pengumpulan-data-terkait-dengan-iris-dataset">Pengumpulan data terkait dengan IRIS Dataset</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ekplorasi-data-set-iris">Ekplorasi data set IRIS</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-data">Visualisasi Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#profiling-data-set-iris">Profiling data set IRIS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan">Penjelasan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pengumpulan-data-terkait-dengan-iris-dataset">Pengumpulan data terkait dengan IRIS Dataset</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ekplorasi-data-set-iris">Ekplorasi data set IRIS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-data">Visualisasi Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#profiling-data-set-iris">Profiling data set IRIS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tipe-tipe-data">Tipe-tipe data</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tipe-tipe-data">Tipe-tipe data</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#konsep-knn-untuk-deteksi-outlier">Konsep KNN untuk Deteksi Outlier</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#deteksi-outlier-menggunakan-local-outlier-factor-lof">Deteksi Outlier Menggunakan Local Outlier Factor (LOF)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#konsep-knn-untuk-deteksi-outlier">Konsep KNN untuk Deteksi Outlier</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deteksi-outlier-menggunakan-local-outlier-factor-lof">Deteksi Outlier Menggunakan Local Outlier Factor (LOF)</a></li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -406,6 +403,8 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="memahami-data-dalam-penambangan-data">
 <h1>Memahami Data dalam Penambangan Data<a class="headerlink" href="#memahami-data-dalam-penambangan-data" title="Link to this heading">#</a></h1>
+<section id="penjelasan">
+<h2>Penjelasan<a class="headerlink" href="#penjelasan" title="Link to this heading">#</a></h2>
 <p>Memahami data adalah langkah awal yang sangat penting dalam proses penambangan data (data mining). Tujuan dari memahami data adalah untuk mengenali karakteristik data yang akan digunakan, sehingga kita dapat menentukan metode dan teknik yang tepat untuk analisis lebih lanjut. Beberapa kegiatan yang termasuk dalam memahami data antara lain:</p>
 <ol class="arabic simple">
 <li><p><strong>Pengumpulan Data</strong>: Mengumpulkan data dari berbagai sumber yang relevan.</p></li>
@@ -414,8 +413,8 @@ document.write(`
 </ol>
 <p>Pemahaman data merupakan langkah kritis dalam proses analisis data, karena tanpa pemahaman yang mendalam, interpretasi dan kesimpulan yang dihasilkan dapat menyesatkan atau tidak akurat. Oleh karena itu, seorang peneliti atau analis data harus memiliki kemampuan untuk tidak hanya mengolah data secara teknis, tetapi juga memahami konteks dan implikasi dari data tersebut.</p>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="pengumpulan-data-terkait-dengan-iris-dataset">
-<h1>Pengumpulan data terkait dengan IRIS Dataset<a class="headerlink" href="#pengumpulan-data-terkait-dengan-iris-dataset" title="Link to this heading">#</a></h1>
+<section id="pengumpulan-data-terkait-dengan-iris-dataset">
+<h2>Pengumpulan data terkait dengan IRIS Dataset<a class="headerlink" href="#pengumpulan-data-terkait-dengan-iris-dataset" title="Link to this heading">#</a></h2>
 <p>Data iris berada di <a class="reference external" href="http://aiven.io">aiven.io</a> menggunakan 2 database mysql dan postgresql</p>
 <p>Berikut tahapan proses pengumpulan data dari mysql:</p>
 <div class="cell docutils container">
@@ -450,157 +449,59 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DATA SQL
-(1, &#39;Iris-setosa&#39;, &#39;1.4&#39;, &#39;0.2&#39;)
-(2, &#39;Iris-setosa&#39;, &#39;1.4&#39;, &#39;0.2&#39;)
-(3, &#39;Iris-setosa&#39;, &#39;1.3&#39;, &#39;0.2&#39;)
-(4, &#39;Iris-setosa&#39;, &#39;1.5&#39;, &#39;0.2&#39;)
-(5, &#39;Iris-setosa&#39;, &#39;1.4&#39;, &#39;0.2&#39;)
-(6, &#39;Iris-setosa&#39;, &#39;1.7&#39;, &#39;0.4&#39;)
-(7, &#39;Iris-setosa&#39;, &#39;1.4&#39;, &#39;0.3&#39;)
-(8, &#39;Iris-setosa&#39;, &#39;1.5&#39;, &#39;0.2&#39;)
-(9, &#39;Iris-setosa&#39;, &#39;1.4&#39;, &#39;0.2&#39;)
-(10, &#39;Iris-setosa&#39;, &#39;1.5&#39;, &#39;0.1&#39;)
-(11, &#39;Iris-setosa&#39;, &#39;1.5&#39;, &#39;0.2&#39;)
-(12, &#39;Iris-setosa&#39;, &#39;1.6&#39;, &#39;0.2&#39;)
-(13, &#39;Iris-setosa&#39;, &#39;1.4&#39;, &#39;0.1&#39;)
-(14, &#39;Iris-setosa&#39;, &#39;1.1&#39;, &#39;0.1&#39;)
-(15, &#39;Iris-setosa&#39;, &#39;1.2&#39;, &#39;0.2&#39;)
-(16, &#39;Iris-setosa&#39;, &#39;1.5&#39;, &#39;0.4&#39;)
-(17, &#39;Iris-setosa&#39;, &#39;1.3&#39;, &#39;0.4&#39;)
-(18, &#39;Iris-setosa&#39;, &#39;1.4&#39;, &#39;0.3&#39;)
-(19, &#39;Iris-setosa&#39;, &#39;1.7&#39;, &#39;0.3&#39;)
-(20, &#39;Iris-setosa&#39;, &#39;1.5&#39;, &#39;0.3&#39;)
-(21, &#39;Iris-setosa&#39;, &#39;1.7&#39;, &#39;0.2&#39;)
-(22, &#39;Iris-setosa&#39;, &#39;1.5&#39;, &#39;0.4&#39;)
-(23, &#39;Iris-setosa&#39;, &#39;1&#39;, &#39;0.2&#39;)
-(24, &#39;Iris-setosa&#39;, &#39;1.7&#39;, &#39;0.5&#39;)
-(25, &#39;Iris-setosa&#39;, &#39;1.9&#39;, &#39;0.2&#39;)
-(26, &#39;Iris-setosa&#39;, &#39;1.6&#39;, &#39;0.2&#39;)
-(27, &#39;Iris-setosa&#39;, &#39;1.6&#39;, &#39;0.4&#39;)
-(28, &#39;Iris-setosa&#39;, &#39;1.5&#39;, &#39;0.2&#39;)
-(29, &#39;Iris-setosa&#39;, &#39;1.4&#39;, &#39;0.2&#39;)
-(30, &#39;Iris-setosa&#39;, &#39;1.6&#39;, &#39;0.2&#39;)
-(31, &#39;Iris-setosa&#39;, &#39;1.6&#39;, &#39;0.2&#39;)
-(32, &#39;Iris-setosa&#39;, &#39;1.5&#39;, &#39;0.4&#39;)
-(33, &#39;Iris-setosa&#39;, &#39;1.5&#39;, &#39;0.1&#39;)
-(34, &#39;Iris-setosa&#39;, &#39;1.4&#39;, &#39;0.2&#39;)
-(35, &#39;Iris-setosa&#39;, &#39;1.5&#39;, &#39;0.1&#39;)
-(36, &#39;Iris-setosa&#39;, &#39;1.2&#39;, &#39;0.2&#39;)
-(37, &#39;Iris-setosa&#39;, &#39;1.3&#39;, &#39;0.2&#39;)
-(38, &#39;Iris-setosa&#39;, &#39;1.5&#39;, &#39;0.1&#39;)
-(39, &#39;Iris-setosa&#39;, &#39;1.3&#39;, &#39;0.2&#39;)
-(40, &#39;Iris-setosa&#39;, &#39;1.5&#39;, &#39;0.2&#39;)
-(41, &#39;Iris-setosa&#39;, &#39;1.3&#39;, &#39;0.3&#39;)
-(42, &#39;Iris-setosa&#39;, &#39;1.3&#39;, &#39;0.3&#39;)
-(43, &#39;Iris-setosa&#39;, &#39;1.3&#39;, &#39;0.2&#39;)
-(44, &#39;Iris-setosa&#39;, &#39;1.6&#39;, &#39;0.6&#39;)
-(45, &#39;Iris-setosa&#39;, &#39;1.9&#39;, &#39;0.4&#39;)
-(46, &#39;Iris-setosa&#39;, &#39;1.4&#39;, &#39;0.3&#39;)
-(47, &#39;Iris-setosa&#39;, &#39;1.6&#39;, &#39;0.2&#39;)
-(48, &#39;Iris-setosa&#39;, &#39;1.4&#39;, &#39;0.2&#39;)
-(49, &#39;Iris-setosa&#39;, &#39;1.5&#39;, &#39;0.2&#39;)
-(50, &#39;Iris-setosa&#39;, &#39;1.4&#39;, &#39;0.2&#39;)
-(51, &#39;Iris-versicolor&#39;, &#39;4.7&#39;, &#39;1.4&#39;)
-(52, &#39;Iris-versicolor&#39;, &#39;4.5&#39;, &#39;1.5&#39;)
-(53, &#39;Iris-versicolor&#39;, &#39;4.9&#39;, &#39;1.5&#39;)
-(54, &#39;Iris-versicolor&#39;, &#39;4&#39;, &#39;1.3&#39;)
-(55, &#39;Iris-versicolor&#39;, &#39;4.6&#39;, &#39;1.5&#39;)
-(56, &#39;Iris-versicolor&#39;, &#39;4.5&#39;, &#39;1.3&#39;)
-(57, &#39;Iris-versicolor&#39;, &#39;4.7&#39;, &#39;1.6&#39;)
-(58, &#39;Iris-versicolor&#39;, &#39;3.3&#39;, &#39;1&#39;)
-(59, &#39;Iris-versicolor&#39;, &#39;4.6&#39;, &#39;1.3&#39;)
-(60, &#39;Iris-versicolor&#39;, &#39;3.9&#39;, &#39;1.4&#39;)
-(61, &#39;Iris-versicolor&#39;, &#39;3.5&#39;, &#39;1&#39;)
-(62, &#39;Iris-versicolor&#39;, &#39;4.2&#39;, &#39;1.5&#39;)
-(63, &#39;Iris-versicolor&#39;, &#39;4&#39;, &#39;1&#39;)
-(64, &#39;Iris-versicolor&#39;, &#39;4.7&#39;, &#39;1.4&#39;)
-(65, &#39;Iris-versicolor&#39;, &#39;3.6&#39;, &#39;1.3&#39;)
-(66, &#39;Iris-versicolor&#39;, &#39;4.4&#39;, &#39;1.4&#39;)
-(67, &#39;Iris-versicolor&#39;, &#39;4.5&#39;, &#39;1.5&#39;)
-(68, &#39;Iris-versicolor&#39;, &#39;4.1&#39;, &#39;1&#39;)
-(69, &#39;Iris-versicolor&#39;, &#39;4.5&#39;, &#39;1.5&#39;)
-(70, &#39;Iris-versicolor&#39;, &#39;3.9&#39;, &#39;1.1&#39;)
-(71, &#39;Iris-versicolor&#39;, &#39;4.8&#39;, &#39;1.8&#39;)
-(72, &#39;Iris-versicolor&#39;, &#39;4&#39;, &#39;1.3&#39;)
-(73, &#39;Iris-versicolor&#39;, &#39;4.9&#39;, &#39;1.5&#39;)
-(74, &#39;Iris-versicolor&#39;, &#39;4.7&#39;, &#39;1.2&#39;)
-(75, &#39;Iris-versicolor&#39;, &#39;4.3&#39;, &#39;1.3&#39;)
-(76, &#39;Iris-versicolor&#39;, &#39;4.4&#39;, &#39;1.4&#39;)
-(77, &#39;Iris-versicolor&#39;, &#39;4.8&#39;, &#39;1.4&#39;)
-(78, &#39;Iris-versicolor&#39;, &#39;5&#39;, &#39;1.7&#39;)
-(79, &#39;Iris-versicolor&#39;, &#39;4.5&#39;, &#39;1.5&#39;)
-(80, &#39;Iris-versicolor&#39;, &#39;3.5&#39;, &#39;1&#39;)
-(81, &#39;Iris-versicolor&#39;, &#39;3.8&#39;, &#39;1.1&#39;)
-(82, &#39;Iris-versicolor&#39;, &#39;3.7&#39;, &#39;1&#39;)
-(83, &#39;Iris-versicolor&#39;, &#39;3.9&#39;, &#39;1.2&#39;)
-(84, &#39;Iris-versicolor&#39;, &#39;5.1&#39;, &#39;1.6&#39;)
-(85, &#39;Iris-versicolor&#39;, &#39;4.5&#39;, &#39;1.5&#39;)
-(86, &#39;Iris-versicolor&#39;, &#39;4.5&#39;, &#39;1.6&#39;)
-(87, &#39;Iris-versicolor&#39;, &#39;4.7&#39;, &#39;1.5&#39;)
-(88, &#39;Iris-versicolor&#39;, &#39;4.4&#39;, &#39;1.3&#39;)
-(89, &#39;Iris-versicolor&#39;, &#39;4.1&#39;, &#39;1.3&#39;)
-(90, &#39;Iris-versicolor&#39;, &#39;4&#39;, &#39;1.3&#39;)
-(91, &#39;Iris-versicolor&#39;, &#39;4.4&#39;, &#39;1.2&#39;)
-(92, &#39;Iris-versicolor&#39;, &#39;4.6&#39;, &#39;1.4&#39;)
-(93, &#39;Iris-versicolor&#39;, &#39;4&#39;, &#39;1.2&#39;)
-(94, &#39;Iris-versicolor&#39;, &#39;3.3&#39;, &#39;1&#39;)
-(95, &#39;Iris-versicolor&#39;, &#39;4.2&#39;, &#39;1.3&#39;)
-(96, &#39;Iris-versicolor&#39;, &#39;4.2&#39;, &#39;1.2&#39;)
-(97, &#39;Iris-versicolor&#39;, &#39;4.2&#39;, &#39;1.3&#39;)
-(98, &#39;Iris-versicolor&#39;, &#39;4.3&#39;, &#39;1.3&#39;)
-(99, &#39;Iris-versicolor&#39;, &#39;3&#39;, &#39;1.1&#39;)
-(100, &#39;Iris-versicolor&#39;, &#39;4.1&#39;, &#39;1.3&#39;)
-(101, &#39;Iris-virginica&#39;, &#39;6&#39;, &#39;2.5&#39;)
-(102, &#39;Iris-virginica&#39;, &#39;5.1&#39;, &#39;1.9&#39;)
-(103, &#39;Iris-virginica&#39;, &#39;5.9&#39;, &#39;2.1&#39;)
-(104, &#39;Iris-virginica&#39;, &#39;5.6&#39;, &#39;1.8&#39;)
-(105, &#39;Iris-virginica&#39;, &#39;5.8&#39;, &#39;2.2&#39;)
-(106, &#39;Iris-virginica&#39;, &#39;6.6&#39;, &#39;2.1&#39;)
-(107, &#39;Iris-virginica&#39;, &#39;4.5&#39;, &#39;1.7&#39;)
-(108, &#39;Iris-virginica&#39;, &#39;6.3&#39;, &#39;1.8&#39;)
-(109, &#39;Iris-virginica&#39;, &#39;5.8&#39;, &#39;1.8&#39;)
-(110, &#39;Iris-virginica&#39;, &#39;6.1&#39;, &#39;2.5&#39;)
-(111, &#39;Iris-virginica&#39;, &#39;5.1&#39;, &#39;2&#39;)
-(112, &#39;Iris-virginica&#39;, &#39;5.3&#39;, &#39;1.9&#39;)
-(113, &#39;Iris-virginica&#39;, &#39;5.5&#39;, &#39;2.1&#39;)
-(114, &#39;Iris-virginica&#39;, &#39;5&#39;, &#39;2&#39;)
-(115, &#39;Iris-virginica&#39;, &#39;5.1&#39;, &#39;2.4&#39;)
-(116, &#39;Iris-virginica&#39;, &#39;5.3&#39;, &#39;2.3&#39;)
-(117, &#39;Iris-virginica&#39;, &#39;5.5&#39;, &#39;1.8&#39;)
-(118, &#39;Iris-virginica&#39;, &#39;6.7&#39;, &#39;2.2&#39;)
-(119, &#39;Iris-virginica&#39;, &#39;6.9&#39;, &#39;2.3&#39;)
-(120, &#39;Iris-virginica&#39;, &#39;5&#39;, &#39;1.5&#39;)
-(121, &#39;Iris-virginica&#39;, &#39;5.7&#39;, &#39;2.3&#39;)
-(122, &#39;Iris-virginica&#39;, &#39;4.9&#39;, &#39;2&#39;)
-(123, &#39;Iris-virginica&#39;, &#39;6.7&#39;, &#39;2&#39;)
-(124, &#39;Iris-virginica&#39;, &#39;4.9&#39;, &#39;1.8&#39;)
-(125, &#39;Iris-virginica&#39;, &#39;5.7&#39;, &#39;2.1&#39;)
-(126, &#39;Iris-virginica&#39;, &#39;6&#39;, &#39;1.8&#39;)
-(127, &#39;Iris-virginica&#39;, &#39;4.8&#39;, &#39;1.8&#39;)
-(128, &#39;Iris-virginica&#39;, &#39;4.9&#39;, &#39;1.8&#39;)
-(129, &#39;Iris-virginica&#39;, &#39;5.6&#39;, &#39;2.1&#39;)
-(130, &#39;Iris-virginica&#39;, &#39;5.8&#39;, &#39;1.6&#39;)
-(131, &#39;Iris-virginica&#39;, &#39;6.1&#39;, &#39;1.9&#39;)
-(132, &#39;Iris-virginica&#39;, &#39;6.4&#39;, &#39;2&#39;)
-(133, &#39;Iris-virginica&#39;, &#39;5.6&#39;, &#39;2.2&#39;)
-(134, &#39;Iris-virginica&#39;, &#39;5.1&#39;, &#39;1.5&#39;)
-(135, &#39;Iris-virginica&#39;, &#39;5.6&#39;, &#39;1.4&#39;)
-(136, &#39;Iris-virginica&#39;, &#39;6.1&#39;, &#39;2.3&#39;)
-(137, &#39;Iris-virginica&#39;, &#39;5.6&#39;, &#39;2.4&#39;)
-(138, &#39;Iris-virginica&#39;, &#39;5.5&#39;, &#39;1.8&#39;)
-(139, &#39;Iris-virginica&#39;, &#39;4.8&#39;, &#39;1.8&#39;)
-(140, &#39;Iris-virginica&#39;, &#39;5.4&#39;, &#39;2.1&#39;)
-(141, &#39;Iris-virginica&#39;, &#39;5.6&#39;, &#39;2.4&#39;)
-(142, &#39;Iris-virginica&#39;, &#39;5.1&#39;, &#39;2.3&#39;)
-(143, &#39;Iris-virginica&#39;, &#39;5.1&#39;, &#39;1.9&#39;)
-(144, &#39;Iris-virginica&#39;, &#39;5.9&#39;, &#39;2.3&#39;)
-(145, &#39;Iris-virginica&#39;, &#39;5.7&#39;, &#39;2.5&#39;)
-(146, &#39;Iris-virginica&#39;, &#39;5.2&#39;, &#39;2.3&#39;)
-(147, &#39;Iris-virginica&#39;, &#39;5&#39;, &#39;1.9&#39;)
-(148, &#39;Iris-virginica&#39;, &#39;5.2&#39;, &#39;2&#39;)
-(149, &#39;Iris-virginica&#39;, &#39;5.4&#39;, &#39;2.3&#39;)
-(150, &#39;Iris-virginica&#39;, &#39;5.1&#39;, &#39;1.8&#39;)
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">gaierror</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="nn">File /usr/local/python/3.12.1/lib/python3.12/site-packages/pymysql/connections.py:649,</span> in <span class="ni">Connection.connect</span><span class="nt">(self, sock)</span>
+<span class="g g-Whitespace">    </span><span class="mi">648</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">649</span>     <span class="n">sock</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">create_connection</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">650</span>         <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">host</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">port</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">connect_timeout</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+<span class="g g-Whitespace">    </span><span class="mi">651</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">652</span>     <span class="k">break</span>
+
+<span class="nn">File /usr/local/python/3.12.1/lib/python3.12/socket.py:828,</span> in <span class="ni">create_connection</span><span class="nt">(address, timeout, source_address, all_errors)</span>
+<span class="g g-Whitespace">    </span><span class="mi">827</span> <span class="n">exceptions</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="ne">--&gt; </span><span class="mi">828</span> <span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">getaddrinfo</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">SOCK_STREAM</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">829</span>     <span class="n">af</span><span class="p">,</span> <span class="n">socktype</span><span class="p">,</span> <span class="n">proto</span><span class="p">,</span> <span class="n">canonname</span><span class="p">,</span> <span class="n">sa</span> <span class="o">=</span> <span class="n">res</span>
+
+<span class="nn">File /usr/local/python/3.12.1/lib/python3.12/socket.py:963,</span> in <span class="ni">getaddrinfo</span><span class="nt">(host, port, family, type, proto, flags)</span>
+<span class="g g-Whitespace">    </span><span class="mi">962</span> <span class="n">addrlist</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="ne">--&gt; </span><span class="mi">963</span> <span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">_socket</span><span class="o">.</span><span class="n">getaddrinfo</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="n">family</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">proto</span><span class="p">,</span> <span class="n">flags</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">964</span>     <span class="n">af</span><span class="p">,</span> <span class="n">socktype</span><span class="p">,</span> <span class="n">proto</span><span class="p">,</span> <span class="n">canonname</span><span class="p">,</span> <span class="n">sa</span> <span class="o">=</span> <span class="n">res</span>
+
+<span class="ne">gaierror</span>: [Errno -2] Name or service not known
+
+<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
+
+<span class="ne">OperationalError</span><span class="g g-Whitespace">                          </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pymysql</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># Koneksi ke MySQL</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">mysql_conn</span> <span class="o">=</span> <span class="n">pymysql</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="n">host</span><span class="o">=</span><span class="s2">&quot;mysql-ab9f2e5-pendata-d.h.aivencloud.com&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span>     <span class="n">user</span><span class="o">=</span><span class="s2">&quot;avnadmin&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span>     <span class="n">password</span><span class="o">=</span><span class="s2">&quot;AVNS_iraqnLcleYqP_JZOqhA&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span>     <span class="n">database</span><span class="o">=</span><span class="s2">&quot;defaultdb&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span>     <span class="n">port</span><span class="o">=</span><span class="mi">24202</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span>     <span class="n">ssl</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;ssl&quot;</span><span class="p">:</span> <span class="p">{}}</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="n">mysql_cur</span> <span class="o">=</span> <span class="n">mysql_conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="c1"># Eksekusi query untuk mengambil data dari MySQL</span>
+
+<span class="nn">File /usr/local/python/3.12.1/lib/python3.12/site-packages/pymysql/connections.py:361,</span> in <span class="ni">Connection.__init__</span><span class="nt">(self, user, password, host, database, unix_socket, port, charset, collation, sql_mode, read_default_file, conv, use_unicode, client_flag, cursorclass, init_command, connect_timeout, read_default_group, autocommit, local_infile, max_allowed_packet, defer_connect, auth_plugin_map, read_timeout, write_timeout, bind_address, binary_prefix, program_name, server_public_key, ssl, ssl_ca, ssl_cert, ssl_disabled, ssl_key, ssl_key_password, ssl_verify_cert, ssl_verify_identity, compress, named_pipe, passwd, db)</span>
+<span class="g g-Whitespace">    </span><span class="mi">359</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_sock</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="g g-Whitespace">    </span><span class="mi">360</span> <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">361</span>     <span class="bp">self</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+
+<span class="nn">File /usr/local/python/3.12.1/lib/python3.12/site-packages/pymysql/connections.py:716,</span> in <span class="ni">Connection.connect</span><span class="nt">(self, sock)</span>
+<span class="g g-Whitespace">    </span><span class="mi">714</span>     <span class="k">if</span> <span class="n">DEBUG</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">715</span>         <span class="nb">print</span><span class="p">(</span><span class="n">exc</span><span class="o">.</span><span class="n">traceback</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">716</span>     <span class="k">raise</span> <span class="n">exc</span>
+<span class="g g-Whitespace">    </span><span class="mi">718</span> <span class="c1"># If e is neither DatabaseError or IOError, It&#39;s a bug.</span>
+<span class="g g-Whitespace">    </span><span class="mi">719</span> <span class="c1"># But raising AssertionError hides original error.</span>
+<span class="g g-Whitespace">    </span><span class="mi">720</span> <span class="c1"># So just reraise it.</span>
+<span class="g g-Whitespace">    </span><span class="mi">721</span> <span class="k">raise</span>
+
+<span class="ne">OperationalError</span>: (2003, &quot;Can&#39;t connect to MySQL server on &#39;mysql-ab9f2e5-pendata-d.h.aivencloud.com&#39; ([Errno -2] Name or service not known)&quot;)
 </pre></div>
 </div>
 </div>
@@ -841,7 +742,7 @@ document.write(`
 </div>
 </div>
 <section id="ekplorasi-data-set-iris">
-<h2>Ekplorasi data set IRIS<a class="headerlink" href="#ekplorasi-data-set-iris" title="Link to this heading">#</a></h2>
+<h3>Ekplorasi data set IRIS<a class="headerlink" href="#ekplorasi-data-set-iris" title="Link to this heading">#</a></h3>
 <p>Import Library dan Load Data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -917,7 +818,7 @@ None
 </div>
 </section>
 <section id="visualisasi-data">
-<h2>Visualisasi Data<a class="headerlink" href="#visualisasi-data" title="Link to this heading">#</a></h2>
+<h3>Visualisasi Data<a class="headerlink" href="#visualisasi-data" title="Link to this heading">#</a></h3>
 <p>proses mengubah data menjadi bentuk visual seperti grafik, diagram, atau peta untuk memudahkan pemahaman, analisis, dan komunikasi informasi.</p>
 <ul class="simple">
 <li><p>Distribusi Fitur dengan Histogram</p></li>
@@ -998,7 +899,7 @@ None
 </div>
 </section>
 <section id="profiling-data-set-iris">
-<h2>Profiling data set IRIS<a class="headerlink" href="#profiling-data-set-iris" title="Link to this heading">#</a></h2>
+<h3>Profiling data set IRIS<a class="headerlink" href="#profiling-data-set-iris" title="Link to this heading">#</a></h3>
 <p>proses menganalisis dan memahami struktur, karakteristik, dan kualitas data dalam sebuah dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1087,9 +988,8 @@ Name: count, dtype: int64
 </div>
 </div>
 </section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="tipe-tipe-data">
-<h1>Tipe-tipe data<a class="headerlink" href="#tipe-tipe-data" title="Link to this heading">#</a></h1>
+<section id="tipe-tipe-data">
+<h3>Tipe-tipe data<a class="headerlink" href="#tipe-tipe-data" title="Link to this heading">#</a></h3>
 <p>Dalam konteks pemrograman dan analisis data, tipe data (data types) adalah klasifikasi yang menentukan jenis nilai yang dapat disimpan dalam suatu variabel atau kolom data. Setiap tipe data memiliki karakteristik dan operasi yang dapat dilakukan terhadapnya. Berikut adalah penjelasan tentang tipe-tipe data yang umum digunakan:</p>
 <p><strong>1. Tipe Data Numerik</strong></p>
 <p>Tipe data numerik digunakan untuk menyimpan nilai angka. Terdapat dua jenis utama:</p>
@@ -1203,8 +1103,9 @@ Name: count, dtype: int64
 <li><p>Contoh: None (di Python), NULL (di SQL).</p></li>
 </ul>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="konsep-knn-untuk-deteksi-outlier">
-<h1>Konsep KNN untuk Deteksi Outlier<a class="headerlink" href="#konsep-knn-untuk-deteksi-outlier" title="Link to this heading">#</a></h1>
+</section>
+<section id="konsep-knn-untuk-deteksi-outlier">
+<h2>Konsep KNN untuk Deteksi Outlier<a class="headerlink" href="#konsep-knn-untuk-deteksi-outlier" title="Link to this heading">#</a></h2>
 <p>K-Nearest Neighbors (K-NN) adalah salah satu algoritma machine learning yang digunakan untuk klasifikasi dan regresi. K-NN termasuk dalam kategori supervised learning (pembelajaran terawasi) dan bekerja berdasarkan prinsip kemiripan (similarity). Algoritma ini memprediksi kelas atau nilai suatu data dengan melihat “tetangga terdekat” (nearest neighbors) dari data tersebut.</p>
 <p>Berikut adalah konsep langkah demi langkah untuk mendeteksi outlier menggunakan KNN:</p>
 <ol class="arabic simple">
@@ -1350,8 +1251,8 @@ Data bersih telah disimpan sebagai &#39;data_bersih.csv&#39;.
 </div>
 </div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="deteksi-outlier-menggunakan-local-outlier-factor-lof">
-<h1>Deteksi Outlier Menggunakan Local Outlier Factor (LOF)<a class="headerlink" href="#deteksi-outlier-menggunakan-local-outlier-factor-lof" title="Link to this heading">#</a></h1>
+<section id="deteksi-outlier-menggunakan-local-outlier-factor-lof">
+<h2>Deteksi Outlier Menggunakan Local Outlier Factor (LOF)<a class="headerlink" href="#deteksi-outlier-menggunakan-local-outlier-factor-lof" title="Link to this heading">#</a></h2>
 <p>(LOF) adalah metode untuk mendeteksi outlier dalam dataset berdasarkan kepadatan lokal. LOF membandingkan kepadatan lokal suatu titik dengan tetangganya untuk menentukan apakah titik tersebut merupakan outlier.</p>
 <p><strong>Langkah-langkah untuk menghitung lOF</strong></p>
 <ol class="arabic simple">
@@ -1516,6 +1417,7 @@ Pilih nilai k, yaitu jumlah tetangga terdekat yang akan digunakan untuk analisis
 <p><strong>HITUNGAN MANUAL LOF</strong></p>
 <p><a class="reference external" href="https://docs.google.com/spreadsheets/d/1KiVYJ9DMk0xjzEg72wD2IpttJ1bxNiLQl1FdUcQHaSk/edit?usp=sharing">https://docs.google.com/spreadsheets/d/1KiVYJ9DMk0xjzEg72wD2IpttJ1bxNiLQl1FdUcQHaSk/edit?usp=sharing</a></p>
 </section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1581,18 +1483,17 @@ Pilih nilai k, yaitu jumlah tetangga terdekat yang akan digunakan untuk analisis
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Memahami Data dalam Penambangan Data</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pengumpulan-data-terkait-dengan-iris-dataset">Pengumpulan data terkait dengan IRIS Dataset</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ekplorasi-data-set-iris">Ekplorasi data set IRIS</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-data">Visualisasi Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#profiling-data-set-iris">Profiling data set IRIS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan">Penjelasan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pengumpulan-data-terkait-dengan-iris-dataset">Pengumpulan data terkait dengan IRIS Dataset</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ekplorasi-data-set-iris">Ekplorasi data set IRIS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-data">Visualisasi Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#profiling-data-set-iris">Profiling data set IRIS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tipe-tipe-data">Tipe-tipe data</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tipe-tipe-data">Tipe-tipe data</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#konsep-knn-untuk-deteksi-outlier">Konsep KNN untuk Deteksi Outlier</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#deteksi-outlier-menggunakan-local-outlier-factor-lof">Deteksi Outlier Menggunakan Local Outlier Factor (LOF)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#konsep-knn-untuk-deteksi-outlier">Konsep KNN untuk Deteksi Outlier</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deteksi-outlier-menggunakan-local-outlier-factor-lof">Deteksi Outlier Menggunakan Local Outlier Factor (LOF)</a></li>
 </ul>
-
   </nav></div>
 
 </div></div>
