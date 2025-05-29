@@ -419,6 +419,15 @@ document.write(`
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fuzzy-c-means">FUZZY C-MEANS</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#konsep-fuzzy-c-means">Konsep Fuzzy C-Means</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#apa-itu-fuzzy-c-means">Apa itu Fuzzy C-Means?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#karakteristik-fcm">Karakteristik FCM</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prinsip-kerja-fcm">Prinsip Kerja FCM</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritma-fcm">Algoritma FCM</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kelebihan-fcm">Kelebihan FCM</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kekurangan-fcm">Kekurangan FCM</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-menggunakan-data-iris">Implementasi Menggunakan Data IRIS</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-dengan-data-outlier">Implementasi dengan data outlier</a></li>
 </ul>
 </li>
 </ul>
@@ -956,41 +965,6 @@ For a guide to updating your code to use the new functions, please see
 https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 
   func(*plot_args, **plot_kwargs)
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/codespace/.local/lib/python3.12/site-packages/seaborn/axisgrid.py:854: UserWarning: 
-
-`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
-
-Please adapt your code to use either `displot` (a figure-level function with
-similar flexibility) or `histplot` (an axes-level function for histograms).
-
-For a guide to updating your code to use the new functions, please see
-https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
-
-  func(*plot_args, **plot_kwargs)
-/home/codespace/.local/lib/python3.12/site-packages/seaborn/axisgrid.py:854: UserWarning: 
-
-`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
-
-Please adapt your code to use either `displot` (a figure-level function with
-similar flexibility) or `histplot` (an axes-level function for histograms).
-
-For a guide to updating your code to use the new functions, please see
-https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
-
-  func(*plot_args, **plot_kwargs)
-/home/codespace/.local/lib/python3.12/site-packages/seaborn/axisgrid.py:854: UserWarning: 
-
-`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
-
-Please adapt your code to use either `displot` (a figure-level function with
-similar flexibility) or `histplot` (an axes-level function for histograms).
-
-For a guide to updating your code to use the new functions, please see
-https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
-
-  func(*plot_args, **plot_kwargs)
 /home/codespace/.local/lib/python3.12/site-packages/seaborn/axisgrid.py:854: UserWarning: 
 
 `distplot` is a deprecated function and will be removed in seaborn v0.14.0.
@@ -1026,9 +1000,44 @@ For a guide to updating your code to use the new functions, please see
 https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 
   func(*plot_args, **plot_kwargs)
+/home/codespace/.local/lib/python3.12/site-packages/seaborn/axisgrid.py:854: UserWarning: 
+
+`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
+
+Please adapt your code to use either `displot` (a figure-level function with
+similar flexibility) or `histplot` (an axes-level function for histograms).
+
+For a guide to updating your code to use the new functions, please see
+https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
+
+  func(*plot_args, **plot_kwargs)
+/home/codespace/.local/lib/python3.12/site-packages/seaborn/axisgrid.py:854: UserWarning: 
+
+`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
+
+Please adapt your code to use either `displot` (a figure-level function with
+similar flexibility) or `histplot` (an axes-level function for histograms).
+
+For a guide to updating your code to use the new functions, please see
+https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
+
+  func(*plot_args, **plot_kwargs)
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f8ee52f3350&gt;
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/codespace/.local/lib/python3.12/site-packages/seaborn/axisgrid.py:854: UserWarning: 
+
+`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
+
+Please adapt your code to use either `displot` (a figure-level function with
+similar flexibility) or `histplot` (an axes-level function for histograms).
+
+For a guide to updating your code to use the new functions, please see
+https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
+
+  func(*plot_args, **plot_kwargs)
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x75a9a0c9a600&gt;
 </pre></div>
 </div>
 <img alt="_images/3f1ebb80d724d412e8ce9c3f6afc0d46bb78bbb46b4b695db4b2f84ca2ae7e67.png" src="_images/3f1ebb80d724d412e8ce9c3f6afc0d46bb78bbb46b4b695db4b2f84ca2ae7e67.png" />
@@ -1504,7 +1513,7 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[152.36870647733915, 78.94506582597728, 57.4732732654949]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[152.36870647733915, 78.94506582597728, 71.34044682436698]
 </pre></div>
 </div>
 </div>
@@ -1523,7 +1532,7 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7b8550d75fa8b6ec01e74bbeb680a0c8ef6d5cd834a0cbe5a9aee4d6a370dc05.png" src="_images/7b8550d75fa8b6ec01e74bbeb680a0c8ef6d5cd834a0cbe5a9aee4d6a370dc05.png" />
+<img alt="_images/a0eadd372a93f261afdb19a170c78f6835e6fa5ac10299feccb199cae35f46aa.png" src="_images/a0eadd372a93f261afdb19a170c78f6835e6fa5ac10299feccb199cae35f46aa.png" />
 </div>
 </div>
 <p>nilai silhouette untuk cluster 2-4</p>
@@ -1542,7 +1551,7 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.6808136202936816, 0.5509643746707443, 0.4972279726640147]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.6808136202936816, 0.5509643746707443, 0.4974115445023624]
 </pre></div>
 </div>
 </div>
@@ -2787,7 +2796,7 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/2d405f1a41e9ac2ef4b9b582dd881055586834540f2b9fe63639acc42180a8ba.png" src="_images/2d405f1a41e9ac2ef4b9b582dd881055586834540f2b9fe63639acc42180a8ba.png" />
+<img alt="_images/bcbbab8f9d73aa3f4497df8bd63a630acbe31f66d582d13176a8d645518a3bf8.png" src="_images/bcbbab8f9d73aa3f4497df8bd63a630acbe31f66d582d13176a8d645518a3bf8.png" />
 </div>
 </div>
 </section>
@@ -2800,6 +2809,69 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 <section id="apa-itu-fuzzy-c-means">
 <h3>Apa itu Fuzzy C-Means?<a class="headerlink" href="#apa-itu-fuzzy-c-means" title="Link to this heading">#</a></h3>
 <p>Fuzzy c-means (FCM) adalah teknik pengelompokan data di mana satu set data dikelompokkan ke dalam N klaster dengan setiap titik data dalam set data tersebut termasuk dalam setiap klaster hingga tingkat tertentu. Misalnya, satu titik data yang terletak dekat dengan pusat klaster akan memiliki tingkat keanggotaan yang tinggi dalam klaster tersebut, dan titik data lain yang terletak jauh dari pusat klaster akan memiliki tingkat keanggotaan yang rendah dalam klaster tersebut.</p>
+<p>Tujuan utama FCM: Mencari pusat kluster sedemikian rupa sehingga setiap data memiliki derajat keanggotaan terhadap tiap kluster.Tujuan utama FCM: Mencari pusat kluster sedemikian rupa sehingga setiap data memiliki derajat keanggotaan terhadap tiap kluster.</p>
+</section>
+<section id="karakteristik-fcm">
+<h3>Karakteristik FCM<a class="headerlink" href="#karakteristik-fcm" title="Link to this heading">#</a></h3>
+<p>Fitur : Deskripsi
+Metode : Klusterisasi Unsupervised learning (tidak memerlukan label)<br />
+Jenis Klusterisasi : Fuzzy (soft clustering)<br />
+Derajat Keanggotaan:Data bisa termasuk ke lebih dari satu kluster<br />
+Output : Matriks derajat keanggotaan + pusat kluster</p>
+</section>
+<section id="prinsip-kerja-fcm">
+<h3>Prinsip Kerja FCM<a class="headerlink" href="#prinsip-kerja-fcm" title="Link to this heading">#</a></h3>
+<p>FCM bekerja dengan prinsip optimisasi fungsi tujuan (objective function) berikut:</p>
+<p><img alt="image.png" src="attachment:image.png" /></p>
+<p>dimana:</p>
+<ul class="simple">
+<li><p>𝑥𝑘: titik data ke-𝑘</p></li>
+<li><p>𝑣𝑖
+: pusat kluster ke-𝑖</p></li>
+<li><p>𝑢𝑖𝑘: derajat keanggotaan 𝑥𝑘 pada kluster 𝑖</p></li>
+<li><p>𝑚: eksponen fuzziness (𝑚 ≥ 1), biasanya 𝑚 = 2</p></li>
+<li><p>𝑐: jumlah kluster - 𝑛: jumlah data</p></li>
+</ul>
+<p>Tujuan: Minimalkan nilai fungsi 𝐽 → cari nilai 𝑈 dan 𝑉 yang
+optimal.</p>
+</section>
+<section id="algoritma-fcm">
+<h3>Algoritma FCM<a class="headerlink" href="#algoritma-fcm" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Inisialisasi
+– Pilih jumlah kluster 𝑐
+– Pilih nilai fuzzifier 𝑚
+– Inisialisasi matriks keanggotaan awal 𝑈
+(0)
+secara
+acak, dengan syarat:<br />
+<img alt="image.png" src="attachment:image.png" /></p></li>
+<li><p>Hitung pusat kluster 𝑉<br />
+<img alt="image-2.png" src="attachment:image-2.png" /></p></li>
+<li><p>Update derajat keanggotaan 𝑈<br />
+<img alt="image-3.png" src="attachment:image-3.png" /></p></li>
+<li><p>Cek konvergensi<br />
+– Hitung selisih antara matriks keanggotaan sebelum dan sesudah update.
+– Jika perubahan &lt; toleransi (𝜖), hentikan proses.</p></li>
+<li><p>Iterasi ulang<br />
+– Kembali ke langkah 2 sampai algoritma konvergen.</p></li>
+<li><p>Tentukan kluster akhir<br />
+– Untuk setiap data 𝑥𝑘, tentukan kluster utamanya
+berdasarkan nilai 𝑢𝑖𝑘 tertinggi.</p></li>
+</ol>
+</section>
+<section id="kelebihan-fcm">
+<h3>Kelebihan FCM<a class="headerlink" href="#kelebihan-fcm" title="Link to this heading">#</a></h3>
+<p>• Lebih fleksibel daripada K-Means karena mengizinkan keanggotaan parsial.<br />
+• Cocok untuk data yang tidak jelas batasnya antar kluster.<br />
+• Memberikan informasi ketidakpastian tentang keanggotaan kluster.</p>
+</section>
+<section id="kekurangan-fcm">
+<h3>Kekurangan FCM<a class="headerlink" href="#kekurangan-fcm" title="Link to this heading">#</a></h3>
+<p>• Sensitif terhadap inisialisasi awal.<br />
+• Perlu menentukan jumlah kluster 𝑐 secara manual.<br />
+• Komputasi agak lambat untuk dataset besar.<br />
+• Hasil bisa berbeda-beda setiap kali running karena inisialisasi acak.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -3115,6 +3187,374 @@ Riwayat Nilai Konvergen:
 </div>
 </section>
 </section>
+<section id="implementasi-menggunakan-data-iris">
+<h2>Implementasi Menggunakan Data IRIS<a class="headerlink" href="#implementasi-menggunakan-data-iris" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pymysql</span>
+<span class="kn">import</span> <span class="nn">psycopg2</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">silhouette_score</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;iris_dataset.csv&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dataset loaded successfully&quot;</span><span class="p">)</span>
+<span class="n">data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dataset loaded successfully
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>sepal_length</th>
+      <th>sepal_width</th>
+      <th>petal_length</th>
+      <th>petal_width</th>
+      <th>class</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>5.1</td>
+      <td>3.5</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>Iris-setosa</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>4.9</td>
+      <td>3.0</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>Iris-setosa</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>4.7</td>
+      <td>3.2</td>
+      <td>1.3</td>
+      <td>0.2</td>
+      <td>Iris-setosa</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>4.6</td>
+      <td>3.1</td>
+      <td>1.5</td>
+      <td>0.2</td>
+      <td>Iris-setosa</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>5.0</td>
+      <td>3.6</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>Iris-setosa</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>145</th>
+      <td>146</td>
+      <td>6.7</td>
+      <td>3.0</td>
+      <td>5.2</td>
+      <td>2.3</td>
+      <td>Iris-virginica</td>
+    </tr>
+    <tr>
+      <th>146</th>
+      <td>147</td>
+      <td>6.3</td>
+      <td>2.5</td>
+      <td>5.0</td>
+      <td>1.9</td>
+      <td>Iris-virginica</td>
+    </tr>
+    <tr>
+      <th>147</th>
+      <td>148</td>
+      <td>6.5</td>
+      <td>3.0</td>
+      <td>5.2</td>
+      <td>2.0</td>
+      <td>Iris-virginica</td>
+    </tr>
+    <tr>
+      <th>148</th>
+      <td>149</td>
+      <td>6.2</td>
+      <td>3.4</td>
+      <td>5.4</td>
+      <td>2.3</td>
+      <td>Iris-virginica</td>
+    </tr>
+    <tr>
+      <th>149</th>
+      <td>150</td>
+      <td>5.9</td>
+      <td>3.0</td>
+      <td>5.1</td>
+      <td>1.8</td>
+      <td>Iris-virginica</td>
+    </tr>
+  </tbody>
+</table>
+<p>150 rows × 6 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;class&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">values</span>
+
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Parameter Fuzzy C-Means</span>
+<span class="n">c</span> <span class="o">=</span> <span class="mi">3</span>        <span class="c1"># Jumlah cluster</span>
+<span class="n">m</span> <span class="o">=</span> <span class="mf">2.0</span>      <span class="c1"># Fuzziness parameter</span>
+<span class="n">n_data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Inisialisasi keanggotaan U secara acak</span>
+<span class="n">U</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">dirichlet</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">c</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">n_data</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+
+<span class="c1"># Fungsi update pusat cluster</span>
+<span class="k">def</span> <span class="nf">update_centers</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+    <span class="n">um</span> <span class="o">=</span> <span class="n">U</span> <span class="o">**</span> <span class="n">m</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">um</span> <span class="o">@</span> <span class="n">data</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">um</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[:,</span> <span class="kc">None</span><span class="p">]</span>
+
+<span class="c1"># Fungsi update keanggotaan fuzzy</span>
+<span class="k">def</span> <span class="nf">update_membership</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">centers</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">centers</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">new_U</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">c</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
+            <span class="n">dist_ij</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">-</span> <span class="n">centers</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+            <span class="k">if</span> <span class="n">dist_ij</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">new_U</span><span class="p">[:,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="n">new_U</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+                <span class="k">break</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">sum_term</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
+                    <span class="n">dist_kj</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">-</span> <span class="n">centers</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+                    <span class="n">sum_term</span> <span class="o">+=</span> <span class="p">(</span><span class="n">dist_ij</span> <span class="o">/</span> <span class="n">dist_kj</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+                <span class="n">new_U</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">sum_term</span>
+    <span class="k">return</span> <span class="n">new_U</span>
+
+<span class="c1"># Fungsi objektif</span>
+<span class="k">def</span> <span class="nf">compute_objective_function</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">centers</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_data</span><span class="p">):</span>
+            <span class="n">dist_sq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">-</span> <span class="n">centers</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">**</span> <span class="mi">2</span>
+            <span class="n">total</span> <span class="o">+=</span> <span class="p">(</span><span class="n">U</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">**</span> <span class="n">m</span><span class="p">)</span> <span class="o">*</span> <span class="n">dist_sq</span>
+    <span class="k">return</span> <span class="n">total</span>
+
+<span class="c1"># Iterasi FCM</span>
+<span class="n">epsilon</span> <span class="o">=</span> <span class="mf">1e-2</span> 
+<span class="n">max_iter</span> <span class="o">=</span> <span class="mi">200</span>
+<span class="n">J_prev</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">iteration</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_iter</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">centers</span> <span class="o">=</span> <span class="n">update_centers</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+    <span class="n">U</span> <span class="o">=</span> <span class="n">update_membership</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">centers</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+    <span class="n">J</span> <span class="o">=</span> <span class="n">compute_objective_function</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">centers</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Iterasi </span><span class="si">{</span><span class="n">iteration</span><span class="si">}</span><span class="s2"> - Fungsi Objektif: </span><span class="si">{</span><span class="n">J</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">iteration</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">and</span> <span class="nb">abs</span><span class="p">(</span><span class="n">J</span> <span class="o">-</span> <span class="n">J_prev</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">epsilon</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Konvergen. Iterasi dihentikan.&quot;</span><span class="p">)</span>
+        <span class="k">break</span>
+    <span class="n">J_prev</span> <span class="o">=</span> <span class="n">J</span>
+
+<span class="k">if</span> <span class="n">iteration</span> <span class="o">==</span> <span class="n">max_iter</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Maksimum iterasi tercapai tanpa konvergensi.&quot;</span><span class="p">)</span>
+
+<span class="c1"># =======================</span>
+<span class="c1"># Evaluasi: Silhouette Score</span>
+<span class="c1"># =======================</span>
+
+<span class="c1"># Konversi ke label keras</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Hitung Silhouette Score</span>
+<span class="n">sil_score</span> <span class="o">=</span> <span class="n">silhouette_score</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Silhouette Score: </span><span class="si">{</span><span class="n">sil_score</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iterasi 1 - Fungsi Objektif: 194.990674
+Iterasi 2 - Fungsi Objektif: 167.893904
+Iterasi 3 - Fungsi Objektif: 120.151785
+Iterasi 4 - Fungsi Objektif: 113.173852
+Iterasi 5 - Fungsi Objektif: 109.385092
+Iterasi 6 - Fungsi Objektif: 104.325346
+Iterasi 7 - Fungsi Objektif: 101.865161
+Iterasi 8 - Fungsi Objektif: 101.327434
+Iterasi 9 - Fungsi Objektif: 101.242051
+Iterasi 10 - Fungsi Objektif: 101.227390
+Iterasi 11 - Fungsi Objektif: 101.223963
+Konvergen. Iterasi dihentikan.
+
+Silhouette Score: 0.4574
+</pre></div>
+</div>
+</div>
+</div>
+<section id="implementasi-dengan-data-outlier">
+<h3>Implementasi dengan data outlier<a class="headerlink" href="#implementasi-dengan-data-outlier" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data_gabungan.csv&quot;</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;class&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">values</span> 
+
+<span class="n">c</span> <span class="o">=</span> <span class="mi">3</span>        <span class="c1"># Jumlah cluster</span>
+<span class="n">m</span> <span class="o">=</span> <span class="mf">2.0</span>      <span class="c1"># Fuzziness parameter</span>
+<span class="n">n_data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Inisialisasi keanggotaan U secara acak</span>
+<span class="n">U</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">dirichlet</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">c</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">n_data</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+
+<span class="k">def</span> <span class="nf">update_centers</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+    <span class="n">um</span> <span class="o">=</span> <span class="n">U</span> <span class="o">**</span> <span class="n">m</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">um</span> <span class="o">@</span> <span class="n">data</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">um</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[:,</span> <span class="kc">None</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">update_membership</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">centers</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">centers</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">new_U</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">c</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
+            <span class="n">dist_ij</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">-</span> <span class="n">centers</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+            <span class="k">if</span> <span class="n">dist_ij</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">new_U</span><span class="p">[:,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="n">new_U</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+                <span class="k">break</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">sum_term</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
+                    <span class="n">dist_kj</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">-</span> <span class="n">centers</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+                    <span class="n">sum_term</span> <span class="o">+=</span> <span class="p">(</span><span class="n">dist_ij</span> <span class="o">/</span> <span class="n">dist_kj</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+                <span class="n">new_U</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">sum_term</span>
+    <span class="k">return</span> <span class="n">new_U</span>
+
+<span class="k">def</span> <span class="nf">compute_objective_function</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">centers</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_data</span><span class="p">):</span>
+            <span class="n">dist_sq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">-</span> <span class="n">centers</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">**</span> <span class="mi">2</span>
+            <span class="n">total</span> <span class="o">+=</span> <span class="p">(</span><span class="n">U</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">**</span> <span class="n">m</span><span class="p">)</span> <span class="o">*</span> <span class="n">dist_sq</span>
+    <span class="k">return</span> <span class="n">total</span>
+
+<span class="n">epsilon</span> <span class="o">=</span> <span class="mf">1e-2</span> 
+<span class="n">max_iter</span> <span class="o">=</span> <span class="mi">200</span>
+<span class="n">J_prev</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">iteration</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_iter</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">centers</span> <span class="o">=</span> <span class="n">update_centers</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+    <span class="n">U</span> <span class="o">=</span> <span class="n">update_membership</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">centers</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+    <span class="n">J</span> <span class="o">=</span> <span class="n">compute_objective_function</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">centers</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Iterasi </span><span class="si">{</span><span class="n">iteration</span><span class="si">}</span><span class="s2"> - Fungsi Objektif: </span><span class="si">{</span><span class="n">J</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">iteration</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">and</span> <span class="nb">abs</span><span class="p">(</span><span class="n">J</span> <span class="o">-</span> <span class="n">J_prev</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">epsilon</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Konvergen. Iterasi dihentikan.&quot;</span><span class="p">)</span>
+        <span class="k">break</span>
+    <span class="n">J_prev</span> <span class="o">=</span> <span class="n">J</span>
+
+<span class="k">if</span> <span class="n">iteration</span> <span class="o">==</span> <span class="n">max_iter</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Maksimum iterasi tercapai tanpa konvergensi.&quot;</span><span class="p">)</span>
+
+<span class="c1"># =======================</span>
+<span class="c1"># 3. Silhouette Score</span>
+<span class="c1"># =======================</span>
+
+<span class="c1"># Konversi keanggotaan fuzzy ke label keras</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Hitung Silhouette Score</span>
+<span class="n">sil_score</span> <span class="o">=</span> <span class="n">silhouette_score</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Silhouette Score: </span><span class="si">{</span><span class="n">sil_score</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iterasi 1 - Fungsi Objektif: 213.156894
+Iterasi 2 - Fungsi Objektif: 151.329673
+Iterasi 3 - Fungsi Objektif: 83.284051
+Iterasi 4 - Fungsi Objektif: 67.785951
+Iterasi 5 - Fungsi Objektif: 63.759984
+Iterasi 6 - Fungsi Objektif: 62.043270
+Iterasi 7 - Fungsi Objektif: 61.245949
+Iterasi 8 - Fungsi Objektif: 60.875281
+Iterasi 9 - Fungsi Objektif: 60.706898
+Iterasi 10 - Fungsi Objektif: 60.632310
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iterasi 11 - Fungsi Objektif: 60.599931
+Iterasi 12 - Fungsi Objektif: 60.586076
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iterasi 13 - Fungsi Objektif: 60.580206
+Konvergen. Iterasi dihentikan.
+
+Silhouette Score: 0.5493
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -3211,6 +3651,15 @@ Riwayat Nilai Konvergen:
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fuzzy-c-means">FUZZY C-MEANS</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#konsep-fuzzy-c-means">Konsep Fuzzy C-Means</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#apa-itu-fuzzy-c-means">Apa itu Fuzzy C-Means?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#karakteristik-fcm">Karakteristik FCM</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prinsip-kerja-fcm">Prinsip Kerja FCM</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritma-fcm">Algoritma FCM</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kelebihan-fcm">Kelebihan FCM</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kekurangan-fcm">Kekurangan FCM</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-menggunakan-data-iris">Implementasi Menggunakan Data IRIS</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-dengan-data-outlier">Implementasi dengan data outlier</a></li>
 </ul>
 </li>
 </ul>
