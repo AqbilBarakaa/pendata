@@ -28,7 +28,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
@@ -516,16 +516,30 @@ document.write(`
 <p>import libraries</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span> 
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
-<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">silhouette_score</span>
-<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">MinMaxScaler</span>
-<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
-<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">LabelEncoder</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span> 
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.cluster</span><span class="w"> </span><span class="kn">import</span> <span class="n">KMeans</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.decomposition</span><span class="w"> </span><span class="kn">import</span> <span class="n">PCA</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">silhouette_score</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">MinMaxScaler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LabelEncoder</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span> 
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.cluster</span><span class="w"> </span><span class="kn">import</span> <span class="n">KMeans</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.decomposition</span><span class="w"> </span><span class="kn">import</span> <span class="n">PCA</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;seaborn&#39;
 </pre></div>
 </div>
 </div>
@@ -965,28 +979,6 @@ For a guide to updating your code to use the new functions, please see
 https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 
   func(*plot_args, **plot_kwargs)
-/home/codespace/.local/lib/python3.12/site-packages/seaborn/axisgrid.py:854: UserWarning: 
-
-`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
-
-Please adapt your code to use either `displot` (a figure-level function with
-similar flexibility) or `histplot` (an axes-level function for histograms).
-
-For a guide to updating your code to use the new functions, please see
-https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
-
-  func(*plot_args, **plot_kwargs)
-/home/codespace/.local/lib/python3.12/site-packages/seaborn/axisgrid.py:854: UserWarning: 
-
-`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
-
-Please adapt your code to use either `displot` (a figure-level function with
-similar flexibility) or `histplot` (an axes-level function for histograms).
-
-For a guide to updating your code to use the new functions, please see
-https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
-
-  func(*plot_args, **plot_kwargs)
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/codespace/.local/lib/python3.12/site-packages/seaborn/axisgrid.py:854: UserWarning: 
@@ -1033,9 +1025,31 @@ For a guide to updating your code to use the new functions, please see
 https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 
   func(*plot_args, **plot_kwargs)
+/home/codespace/.local/lib/python3.12/site-packages/seaborn/axisgrid.py:854: UserWarning: 
+
+`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
+
+Please adapt your code to use either `displot` (a figure-level function with
+similar flexibility) or `histplot` (an axes-level function for histograms).
+
+For a guide to updating your code to use the new functions, please see
+https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
+
+  func(*plot_args, **plot_kwargs)
+/home/codespace/.local/lib/python3.12/site-packages/seaborn/axisgrid.py:854: UserWarning: 
+
+`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
+
+Please adapt your code to use either `displot` (a figure-level function with
+similar flexibility) or `histplot` (an axes-level function for histograms).
+
+For a guide to updating your code to use the new functions, please see
+https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
+
+  func(*plot_args, **plot_kwargs)
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7b2e016c5c70&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7300f45e33b0&gt;
 </pre></div>
 </div>
 <img alt="_images/3f1ebb80d724d412e8ce9c3f6afc0d46bb78bbb46b4b695db4b2f84ca2ae7e67.png" src="_images/3f1ebb80d724d412e8ce9c3f6afc0d46bb78bbb46b4b695db4b2f84ca2ae7e67.png" />
@@ -1549,7 +1563,7 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.6808136202936816, 0.5525919445499757, 0.41237747330899416]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.6808136202936816, 0.5509643746707443, 0.49699284998335724]
 </pre></div>
 </div>
 </div>
@@ -2794,7 +2808,7 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7ee5e7f538e0e7fdf5432c106562763735f72950ee15f8603b070c6c6ab68a63.png" src="_images/7ee5e7f538e0e7fdf5432c106562763735f72950ee15f8603b070c6c6ab68a63.png" />
+<img alt="_images/eb3bc110395ca816ba8749956e7ee35c5143c6e45c84c66862f887f264b9919f.png" src="_images/eb3bc110395ca816ba8749956e7ee35c5143c6e45c84c66862f887f264b9919f.png" />
 </div>
 </div>
 </section>
@@ -2872,8 +2886,8 @@ berdasarkan nilai 𝑢𝑖𝑘 tertinggi.</p></li>
 • Hasil bisa berbeda-beda setiap kali running karena inisialisasi acak.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
     <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>  <span class="c1"># Data-1</span>
@@ -2905,18 +2919,18 @@ Data-5   7   8
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">ListedColormap</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.colors</span><span class="w"> </span><span class="kn">import</span> <span class="n">ListedColormap</span>
 
-<span class="k">class</span> <span class="nc">FuzzyCMeans</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_clusters</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">error</span><span class="o">=</span><span class="mf">0.001</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">FuzzyCMeans</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_clusters</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">error</span><span class="o">=</span><span class="mf">0.001</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">n_clusters</span> <span class="o">=</span> <span class="n">n_clusters</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">max_iter</span> <span class="o">=</span> <span class="n">max_iter</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">m</span> <span class="o">=</span> <span class="n">m</span>  <span class="c1"># Fuzziness parameter</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">error</span> <span class="o">=</span> <span class="n">error</span>  <span class="c1"># Convergence threshold</span>
         
-    <span class="k">def</span> <span class="nf">initialize_membership</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">initial_u</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">initialize_membership</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">initial_u</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">initial_u</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">initial_u</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
@@ -2925,12 +2939,12 @@ Data-5   7   8
             <span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_clusters</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">u</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     
-    <span class="k">def</span> <span class="nf">compute_centroids</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">u</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">compute_centroids</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">u</span><span class="p">):</span>
         <span class="n">um</span> <span class="o">=</span> <span class="n">u</span> <span class="o">**</span> <span class="bp">self</span><span class="o">.</span><span class="n">m</span>
         <span class="n">centroids</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">um</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">um</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">centroids</span>
     
-    <span class="k">def</span> <span class="nf">update_membership</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">centroids</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">update_membership</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">centroids</span><span class="p">):</span>
         <span class="n">power</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
         <span class="n">n_samples</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">n_clusters</span> <span class="o">=</span> <span class="n">centroids</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -2950,7 +2964,7 @@ Data-5   7   8
         
         <span class="k">return</span> <span class="n">new_u</span>
     
-    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">initial_u</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">initial_u</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">u</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">initialize_membership</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">initial_u</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">centroids</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">memberships</span> <span class="o">=</span> <span class="p">[]</span>
@@ -2987,7 +3001,7 @@ Data-5   7   8
         
         <span class="k">return</span> <span class="bp">self</span>
     
-    <span class="k">def</span> <span class="nf">plot_iteration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">iteration</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">plot_iteration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">iteration</span><span class="p">):</span>
         <span class="n">centroids</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">centroids</span><span class="p">[</span><span class="n">iteration</span><span class="p">]</span>
         <span class="n">u</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">memberships</span><span class="p">[</span><span class="n">iteration</span><span class="p">]</span>
         
@@ -3081,7 +3095,7 @@ Data-5   7   8
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Konvergen terkecil di Iterasi 6
 </pre></div>
 </div>
-<img alt="_images/eed45aa0ca02498495530342fadb4621981b7b4625cf63ddf81fd57346cceaf8.png" src="_images/eed45aa0ca02498495530342fadb4621981b7b4625cf63ddf81fd57346cceaf8.png" />
+<img alt="_images/262882b64aa887534473cd796cc6372f08a2aae99201ebe3bf22ddef64742bfb.png" src="_images/262882b64aa887534473cd796cc6372f08a2aae99201ebe3bf22ddef64742bfb.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iterasi 1:
 Derajat Keanggotaan:
 [[0.6 0.4]
@@ -3095,7 +3109,7 @@ Nilai Centroid:
 Nilai Konvergen: 0.438628
 </pre></div>
 </div>
-<img alt="_images/07dd094d7efed010512302e2a8c47da1aed6dbe83e01291edcc3a906b64642eb.png" src="_images/07dd094d7efed010512302e2a8c47da1aed6dbe83e01291edcc3a906b64642eb.png" />
+<img alt="_images/68040ea4b40755c035ac5f3857586d6469ebc93ea9d9d65920df878dbea03159.png" src="_images/68040ea4b40755c035ac5f3857586d6469ebc93ea9d9d65920df878dbea03159.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iterasi 2:
 Derajat Keanggotaan:
 [[0.59388413 0.40611587]
@@ -3109,7 +3123,7 @@ Nilai Centroid:
 Nilai Konvergen: 0.264734
 </pre></div>
 </div>
-<img alt="_images/7ddb74a35034040b27bfa36a2d7c770768fda99ea7184bd4d941617872a6f740.png" src="_images/7ddb74a35034040b27bfa36a2d7c770768fda99ea7184bd4d941617872a6f740.png" />
+<img alt="_images/b3484cb78aa10abbb323a4741ce0e2b7459537e67d4c14cce84aad0615b8c81a.png" src="_images/b3484cb78aa10abbb323a4741ce0e2b7459537e67d4c14cce84aad0615b8c81a.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iterasi 3:
 Derajat Keanggotaan:
 [[8.02504282e-01 1.97495718e-01]
@@ -3123,7 +3137,7 @@ Nilai Centroid:
 Nilai Konvergen: 0.181094
 </pre></div>
 </div>
-<img alt="_images/031cc42e0a5dfb564882379fe009e677e501e5138e982fcf48c894be497ddb73.png" src="_images/031cc42e0a5dfb564882379fe009e677e501e5138e982fcf48c894be497ddb73.png" />
+<img alt="_images/23ca55f00b595d7dd07dcb560fc13fddb8cec597d6e63bfe1979c33fe108a6b0.png" src="_images/23ca55f00b595d7dd07dcb560fc13fddb8cec597d6e63bfe1979c33fe108a6b0.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iterasi 4:
 Derajat Keanggotaan:
 [[0.94741114 0.05258886]
@@ -3137,7 +3151,7 @@ Nilai Centroid:
 Nilai Konvergen: 0.025071
 </pre></div>
 </div>
-<img alt="_images/8809d86637f3b6b2ec5554ff0667c85f6a5a0f98678a8f2eb6549a9ca6cb1af4.png" src="_images/8809d86637f3b6b2ec5554ff0667c85f6a5a0f98678a8f2eb6549a9ca6cb1af4.png" />
+<img alt="_images/ba48ee86312c4ef88606b9e17a427fb990378a9a38d18be0a97ac1c2bed39d20.png" src="_images/ba48ee86312c4ef88606b9e17a427fb990378a9a38d18be0a97ac1c2bed39d20.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iterasi 5:
 Derajat Keanggotaan:
 [[9.67627070e-01 3.23729305e-02]
@@ -3151,7 +3165,7 @@ Nilai Centroid:
 Nilai Konvergen: 0.004020
 </pre></div>
 </div>
-<img alt="_images/6bfed30bc5f0f1fd43ca1d5a9b2861d501a25dbd440b7c18627a3e0ce7e5d2cd.png" src="_images/6bfed30bc5f0f1fd43ca1d5a9b2861d501a25dbd440b7c18627a3e0ce7e5d2cd.png" />
+<img alt="_images/f90cd1412f2f5df6cee711d9ba6e2a295ffc9356bb6d7b7861b74d712c60cba1.png" src="_images/f90cd1412f2f5df6cee711d9ba6e2a295ffc9356bb6d7b7861b74d712c60cba1.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iterasi 6:
 Derajat Keanggotaan:
 [[9.69656524e-01 3.03434758e-02]
@@ -3180,7 +3194,7 @@ Riwayat Nilai Konvergen:
 [np.float64(0.4386277226278892), np.float64(0.2647342853049488), np.float64(0.18109432054359187), np.float64(0.025071185646415195), np.float64(0.004020470707437454), np.float64(0.000602935614064326)]
 </pre></div>
 </div>
-<img alt="_images/384767b068d4dcbdc782d9fb9c1be82bc7aeb12f13bdf62ccf0960990f81a07f.png" src="_images/384767b068d4dcbdc782d9fb9c1be82bc7aeb12f13bdf62ccf0960990f81a07f.png" />
+<img alt="_images/2f5c5eaccf806dd5591e25cd2ab57cf098aa1c569577990d9c4cbe8c83034afb.png" src="_images/2f5c5eaccf806dd5591e25cd2ab57cf098aa1c569577990d9c4cbe8c83034afb.png" />
 </div>
 </div>
 </section>
@@ -3189,13 +3203,13 @@ Riwayat Nilai Konvergen:
 <h2>Implementasi Menggunakan Data IRIS<a class="headerlink" href="#implementasi-menggunakan-data-iris" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pymysql</span>
-<span class="kn">import</span> <span class="nn">psycopg2</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
-<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">silhouette_score</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pymysql</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">psycopg2</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_engine</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">silhouette_score</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 </pre></div>
 </div>
 </div>
@@ -3364,12 +3378,12 @@ Riwayat Nilai Konvergen:
 <span class="n">U</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">dirichlet</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">c</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">n_data</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
 
 <span class="c1"># Fungsi update pusat cluster</span>
-<span class="k">def</span> <span class="nf">update_centers</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">update_centers</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
     <span class="n">um</span> <span class="o">=</span> <span class="n">U</span> <span class="o">**</span> <span class="n">m</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">um</span> <span class="o">@</span> <span class="n">data</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">um</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[:,</span> <span class="kc">None</span><span class="p">]</span>
 
 <span class="c1"># Fungsi update keanggotaan fuzzy</span>
-<span class="k">def</span> <span class="nf">update_membership</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">centers</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">update_membership</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">centers</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
     <span class="n">c</span> <span class="o">=</span> <span class="n">centers</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">n</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">new_U</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">c</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
@@ -3389,7 +3403,7 @@ Riwayat Nilai Konvergen:
     <span class="k">return</span> <span class="n">new_U</span>
 
 <span class="c1"># Fungsi objektif</span>
-<span class="k">def</span> <span class="nf">compute_objective_function</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">centers</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_objective_function</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">centers</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
     <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_data</span><span class="p">):</span>
@@ -3431,16 +3445,15 @@ Riwayat Nilai Konvergen:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iterasi 1 - Fungsi Objektif: 199.119149
-Iterasi 2 - Fungsi Objektif: 193.700731
-Iterasi 3 - Fungsi Objektif: 167.521761
-Iterasi 4 - Fungsi Objektif: 122.317501
-Iterasi 5 - Fungsi Objektif: 107.599235
-Iterasi 6 - Fungsi Objektif: 102.960240
-Iterasi 7 - Fungsi Objektif: 101.546203
-Iterasi 8 - Fungsi Objektif: 101.274851
-Iterasi 9 - Fungsi Objektif: 101.231683
-Iterasi 10 - Fungsi Objektif: 101.224443
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iterasi 1 - Fungsi Objektif: 192.863266
+Iterasi 2 - Fungsi Objektif: 164.473883
+Iterasi 3 - Fungsi Objektif: 120.286898
+Iterasi 4 - Fungsi Objektif: 106.910733
+Iterasi 5 - Fungsi Objektif: 102.715244
+Iterasi 6 - Fungsi Objektif: 101.490621
+Iterasi 7 - Fungsi Objektif: 101.263232
+Iterasi 8 - Fungsi Objektif: 101.228686
+Iterasi 9 - Fungsi Objektif: 101.223467
 Konvergen. Iterasi dihentikan.
 
 Silhouette Score: 0.4574
@@ -3462,11 +3475,11 @@ Silhouette Score: 0.4574
 <span class="c1"># Inisialisasi keanggotaan U secara acak</span>
 <span class="n">U</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">dirichlet</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">c</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">n_data</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
 
-<span class="k">def</span> <span class="nf">update_centers</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">update_centers</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
     <span class="n">um</span> <span class="o">=</span> <span class="n">U</span> <span class="o">**</span> <span class="n">m</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">um</span> <span class="o">@</span> <span class="n">data</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">um</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[:,</span> <span class="kc">None</span><span class="p">]</span>
 
-<span class="k">def</span> <span class="nf">update_membership</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">centers</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">update_membership</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">centers</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
     <span class="n">c</span> <span class="o">=</span> <span class="n">centers</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">n</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">new_U</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">c</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
@@ -3485,7 +3498,7 @@ Silhouette Score: 0.4574
                 <span class="n">new_U</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">sum_term</span>
     <span class="k">return</span> <span class="n">new_U</span>
 
-<span class="k">def</span> <span class="nf">compute_objective_function</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">centers</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_objective_function</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">centers</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
     <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_data</span><span class="p">):</span>
@@ -3526,27 +3539,20 @@ Silhouette Score: 0.4574
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iterasi 1 - Fungsi Objektif: 223.673301
-Iterasi 2 - Fungsi Objektif: 200.675673
-Iterasi 3 - Fungsi Objektif: 137.907789
-Iterasi 4 - Fungsi Objektif: 107.580613
-Iterasi 5 - Fungsi Objektif: 104.608715
-Iterasi 6 - Fungsi Objektif: 100.102142
-Iterasi 7 - Fungsi Objektif: 81.986609
-Iterasi 8 - Fungsi Objektif: 68.725960
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iterasi 9 - Fungsi Objektif: 64.238549
-Iterasi 10 - Fungsi Objektif: 62.282377
-Iterasi 11 - Fungsi Objektif: 61.361628
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iterasi 12 - Fungsi Objektif: 60.929129
-Iterasi 13 - Fungsi Objektif: 60.731139
-Iterasi 14 - Fungsi Objektif: 60.642947
-Iterasi 15 - Fungsi Objektif: 60.604515
-Iterasi 16 - Fungsi Objektif: 60.588028
-Iterasi 17 - Fungsi Objektif: 60.581030
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iterasi 1 - Fungsi Objektif: 223.493342
+Iterasi 2 - Fungsi Objektif: 198.330683
+Iterasi 3 - Fungsi Objektif: 126.858844
+Iterasi 4 - Fungsi Objektif: 85.553430
+Iterasi 5 - Fungsi Objektif: 69.469548
+Iterasi 6 - Fungsi Objektif: 64.503596
+Iterasi 7 - Fungsi Objektif: 62.398112
+Iterasi 8 - Fungsi Objektif: 61.415082
+Iterasi 9 - Fungsi Objektif: 60.953730
+Iterasi 10 - Fungsi Objektif: 60.742205
+Iterasi 11 - Fungsi Objektif: 60.647811
+Iterasi 12 - Fungsi Objektif: 60.606615
+Iterasi 13 - Fungsi Objektif: 60.588923
+Iterasi 14 - Fungsi Objektif: 60.581408
 Konvergen. Iterasi dihentikan.
 
 Silhouette Score: 0.5493

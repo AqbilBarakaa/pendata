@@ -1,20 +1,17 @@
 Traceback (most recent call last):
-  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+  File "C:\Users\acer\AppData\Local\Programs\Python\Python39\lib\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
     executenb(
-  File "/home/codespace/.local/lib/python3.12/site-packages/nbclient/client.py", line 1314, in execute
+  File "C:\Users\acer\AppData\Local\Programs\Python\Python39\lib\site-packages\nbclient\client.py", line 1319, in execute
     return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/codespace/.local/lib/python3.12/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+  File "C:\Users\acer\AppData\Roaming\Python\Python39\site-packages\jupyter_core\utils\__init__.py", line 165, in wrapped
     return loop.run_until_complete(inner)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/python/3.12.1/lib/python3.12/asyncio/base_events.py", line 684, in run_until_complete
+  File "C:\Users\acer\AppData\Local\Programs\Python\Python39\lib\asyncio\base_events.py", line 647, in run_until_complete
     return future.result()
-           ^^^^^^^^^^^^^^^
-  File "/home/codespace/.local/lib/python3.12/site-packages/nbclient/client.py", line 709, in async_execute
+  File "C:\Users\acer\AppData\Local\Programs\Python\Python39\lib\site-packages\nbclient\client.py", line 709, in async_execute
     await self.async_execute_cell(
-  File "/home/codespace/.local/lib/python3.12/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+  File "C:\Users\acer\AppData\Local\Programs\Python\Python39\lib\site-packages\nbclient\client.py", line 1062, in async_execute_cell
     await self._check_raise_for_error(cell, cell_index, exec_reply)
-  File "/home/codespace/.local/lib/python3.12/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+  File "C:\Users\acer\AppData\Local\Programs\Python\Python39\lib\site-packages\nbclient\client.py", line 918, in _check_raise_for_error
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
@@ -47,57 +44,17 @@ mysql_conn.close()
 ------------------
 
 
-[0;31m---------------------------------------------------------------------------[0m
-[0;31mgaierror[0m                                  Traceback (most recent call last)
-File [0;32m/usr/local/python/3.12.1/lib/python3.12/site-packages/pymysql/connections.py:649[0m, in [0;36mConnection.connect[0;34m(self, sock)[0m
-[1;32m    648[0m [38;5;28;01mtry[39;00m:
-[0;32m--> 649[0m     sock [38;5;241m=[39m [43msocket[49m[38;5;241;43m.[39;49m[43mcreate_connection[49m[43m([49m
-[1;32m    650[0m [43m        [49m[43m([49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mhost[49m[43m,[49m[43m [49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mport[49m[43m)[49m[43m,[49m[43m [49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mconnect_timeout[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m
-[1;32m    651[0m [43m    [49m[43m)[49m
-[1;32m    652[0m     [38;5;28;01mbreak[39;00m
+[1;31m---------------------------------------------------------------------------[0m
+[1;31mModuleNotFoundError[0m                       Traceback (most recent call last)
+Cell [1;32mIn[1], line 1[0m
+[1;32m----> 1[0m [38;5;28;01mimport[39;00m[38;5;250m [39m[38;5;21;01mpymysql[39;00m
+[0;32m      3[0m [38;5;66;03m# Koneksi ke MySQL[39;00m
+[0;32m      4[0m mysql_conn [38;5;241m=[39m pymysql[38;5;241m.[39mconnect(
+[0;32m      5[0m     host[38;5;241m=[39m[38;5;124m"[39m[38;5;124mmysql-ab9f2e5-pendata-d.h.aivencloud.com[39m[38;5;124m"[39m,
+[0;32m      6[0m     user[38;5;241m=[39m[38;5;124m"[39m[38;5;124mavnadmin[39m[38;5;124m"[39m,
+[1;32m   (...)[0m
+[0;32m     10[0m     ssl[38;5;241m=[39m{[38;5;124m"[39m[38;5;124mssl[39m[38;5;124m"[39m: {}}
+[0;32m     11[0m )
 
-File [0;32m/usr/local/python/3.12.1/lib/python3.12/socket.py:828[0m, in [0;36mcreate_connection[0;34m(address, timeout, source_address, all_errors)[0m
-[1;32m    827[0m exceptions [38;5;241m=[39m []
-[0;32m--> 828[0m [38;5;28;01mfor[39;00m res [38;5;129;01min[39;00m [43mgetaddrinfo[49m[43m([49m[43mhost[49m[43m,[49m[43m [49m[43mport[49m[43m,[49m[43m [49m[38;5;241;43m0[39;49m[43m,[49m[43m [49m[43mSOCK_STREAM[49m[43m)[49m:
-[1;32m    829[0m     af, socktype, proto, canonname, sa [38;5;241m=[39m res
-
-File [0;32m/usr/local/python/3.12.1/lib/python3.12/socket.py:963[0m, in [0;36mgetaddrinfo[0;34m(host, port, family, type, proto, flags)[0m
-[1;32m    962[0m addrlist [38;5;241m=[39m []
-[0;32m--> 963[0m [38;5;28;01mfor[39;00m res [38;5;129;01min[39;00m [43m_socket[49m[38;5;241;43m.[39;49m[43mgetaddrinfo[49m[43m([49m[43mhost[49m[43m,[49m[43m [49m[43mport[49m[43m,[49m[43m [49m[43mfamily[49m[43m,[49m[43m [49m[38;5;28;43mtype[39;49m[43m,[49m[43m [49m[43mproto[49m[43m,[49m[43m [49m[43mflags[49m[43m)[49m:
-[1;32m    964[0m     af, socktype, proto, canonname, sa [38;5;241m=[39m res
-
-[0;31mgaierror[0m: [Errno -2] Name or service not known
-
-During handling of the above exception, another exception occurred:
-
-[0;31mOperationalError[0m                          Traceback (most recent call last)
-Cell [0;32mIn[1], line 4[0m
-[1;32m      1[0m [38;5;28;01mimport[39;00m [38;5;21;01mpymysql[39;00m
-[1;32m      3[0m [38;5;66;03m# Koneksi ke MySQL[39;00m
-[0;32m----> 4[0m mysql_conn [38;5;241m=[39m [43mpymysql[49m[38;5;241;43m.[39;49m[43mconnect[49m[43m([49m
-[1;32m      5[0m [43m    [49m[43mhost[49m[38;5;241;43m=[39;49m[38;5;124;43m"[39;49m[38;5;124;43mmysql-ab9f2e5-pendata-d.h.aivencloud.com[39;49m[38;5;124;43m"[39;49m[43m,[49m
-[1;32m      6[0m [43m    [49m[43muser[49m[38;5;241;43m=[39;49m[38;5;124;43m"[39;49m[38;5;124;43mavnadmin[39;49m[38;5;124;43m"[39;49m[43m,[49m
-[1;32m      7[0m [43m    [49m[43mpassword[49m[38;5;241;43m=[39;49m[38;5;124;43m"[39;49m[38;5;124;43mAVNS_iraqnLcleYqP_JZOqhA[39;49m[38;5;124;43m"[39;49m[43m,[49m
-[1;32m      8[0m [43m    [49m[43mdatabase[49m[38;5;241;43m=[39;49m[38;5;124;43m"[39;49m[38;5;124;43mdefaultdb[39;49m[38;5;124;43m"[39;49m[43m,[49m
-[1;32m      9[0m [43m    [49m[43mport[49m[38;5;241;43m=[39;49m[38;5;241;43m24202[39;49m[43m,[49m
-[1;32m     10[0m [43m    [49m[43mssl[49m[38;5;241;43m=[39;49m[43m{[49m[38;5;124;43m"[39;49m[38;5;124;43mssl[39;49m[38;5;124;43m"[39;49m[43m:[49m[43m [49m[43m{[49m[43m}[49m[43m}[49m
-[1;32m     11[0m [43m)[49m
-[1;32m     12[0m mysql_cur [38;5;241m=[39m mysql_conn[38;5;241m.[39mcursor()
-[1;32m     14[0m [38;5;66;03m# Eksekusi query untuk mengambil data dari MySQL[39;00m
-
-File [0;32m/usr/local/python/3.12.1/lib/python3.12/site-packages/pymysql/connections.py:361[0m, in [0;36mConnection.__init__[0;34m(self, user, password, host, database, unix_socket, port, charset, collation, sql_mode, read_default_file, conv, use_unicode, client_flag, cursorclass, init_command, connect_timeout, read_default_group, autocommit, local_infile, max_allowed_packet, defer_connect, auth_plugin_map, read_timeout, write_timeout, bind_address, binary_prefix, program_name, server_public_key, ssl, ssl_ca, ssl_cert, ssl_disabled, ssl_key, ssl_key_password, ssl_verify_cert, ssl_verify_identity, compress, named_pipe, passwd, db)[0m
-[1;32m    359[0m     [38;5;28mself[39m[38;5;241m.[39m_sock [38;5;241m=[39m [38;5;28;01mNone[39;00m
-[1;32m    360[0m [38;5;28;01melse[39;00m:
-[0;32m--> 361[0m     [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mconnect[49m[43m([49m[43m)[49m
-
-File [0;32m/usr/local/python/3.12.1/lib/python3.12/site-packages/pymysql/connections.py:716[0m, in [0;36mConnection.connect[0;34m(self, sock)[0m
-[1;32m    714[0m     [38;5;28;01mif[39;00m DEBUG:
-[1;32m    715[0m         [38;5;28mprint[39m(exc[38;5;241m.[39mtraceback)
-[0;32m--> 716[0m     [38;5;28;01mraise[39;00m exc
-[1;32m    718[0m [38;5;66;03m# If e is neither DatabaseError or IOError, It's a bug.[39;00m
-[1;32m    719[0m [38;5;66;03m# But raising AssertionError hides original error.[39;00m
-[1;32m    720[0m [38;5;66;03m# So just reraise it.[39;00m
-[1;32m    721[0m [38;5;28;01mraise[39;00m
-
-[0;31mOperationalError[0m: (2003, "Can't connect to MySQL server on 'mysql-ab9f2e5-pendata-d.h.aivencloud.com' ([Errno -2] Name or service not known)")
+[1;31mModuleNotFoundError[0m: No module named 'pymysql'
 
