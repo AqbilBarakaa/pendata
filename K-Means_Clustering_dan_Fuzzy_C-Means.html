@@ -60,7 +60,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'K-Means_Clustering_dan_Fuzzy_C-Means';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="&lt;no title&gt;" href="decisiontree.html" />
+    <link rel="next" title="Decision Tree" href="decisiontree.html" />
     <link rel="prev" title="UJIAN TENGAH SEMESTER" href="UTS.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -186,6 +186,7 @@
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">K-Means Clustering dan Fuzzy C-Means</a></li>
 
 
+<li class="toctree-l1"><a class="reference internal" href="decisiontree.html">Decision Tree</a></li>
 </ul>
 
     </div>
@@ -999,17 +1000,6 @@ For a guide to updating your code to use the new functions, please see
 https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 
   func(*plot_args, **plot_kwargs)
-C:\Users\acer\AppData\Local\Programs\Python\Python39\lib\site-packages\seaborn\axisgrid.py:854: UserWarning: 
-
-`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
-
-Please adapt your code to use either `displot` (a figure-level function with
-similar flexibility) or `histplot` (an axes-level function for histograms).
-
-For a guide to updating your code to use the new functions, please see
-https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
-
-  func(*plot_args, **plot_kwargs)
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\acer\AppData\Local\Programs\Python\Python39\lib\site-packages\seaborn\axisgrid.py:854: UserWarning: 
@@ -1034,9 +1024,20 @@ For a guide to updating your code to use the new functions, please see
 https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 
   func(*plot_args, **plot_kwargs)
+C:\Users\acer\AppData\Local\Programs\Python\Python39\lib\site-packages\seaborn\axisgrid.py:854: UserWarning: 
+
+`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
+
+Please adapt your code to use either `displot` (a figure-level function with
+similar flexibility) or `histplot` (an axes-level function for histograms).
+
+For a guide to updating your code to use the new functions, please see
+https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
+
+  func(*plot_args, **plot_kwargs)
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x281b93bd5e0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x27abf4fe5e0&gt;
 </pre></div>
 </div>
 <img alt="_images/28b68766461db5dcdf47e85656a66aa6ffb03cc7dfaa47941df0505774c5ca4e.png" src="_images/28b68766461db5dcdf47e85656a66aa6ffb03cc7dfaa47941df0505774c5ca4e.png" />
@@ -1512,7 +1513,7 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[152.36870647733906, 78.9450658259773, 57.34540931571816]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[152.36870647733906, 78.94084142614601, 57.473273265494925]
 </pre></div>
 </div>
 </div>
@@ -1531,7 +1532,7 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e3cf16685e49d987d42a14561c9c14ca525198fbb9d8f32788144d3bd1097bf0.png" src="_images/e3cf16685e49d987d42a14561c9c14ca525198fbb9d8f32788144d3bd1097bf0.png" />
+<img alt="_images/0e1060f15c08d156873b02348b7f827a50ce1ee639ef7c432e8eb5e932247416.png" src="_images/0e1060f15c08d156873b02348b7f827a50ce1ee639ef7c432e8eb5e932247416.png" />
 </div>
 </div>
 <p>nilai silhouette untuk cluster 2-4</p>
@@ -1550,7 +1551,7 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.6808136202936816, 0.5525919445499757, 0.49511999553021513]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.6808136202936816, 0.5525919445499757, 0.4970706490990157]
 </pre></div>
 </div>
 </div>
@@ -2795,7 +2796,7 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/92e4e583af93b010a4e1a5b01353d3fd9018d06e950d7803f907cfb0ea8dbbee.png" src="_images/92e4e583af93b010a4e1a5b01353d3fd9018d06e950d7803f907cfb0ea8dbbee.png" />
+<img alt="_images/1efa37f501284b76e7bf25cd934aec68ef236b779f2fa4e82caf604d62c9192f.png" src="_images/1efa37f501284b76e7bf25cd934aec68ef236b779f2fa4e82caf604d62c9192f.png" />
 </div>
 </div>
 </section>
@@ -3607,7 +3608,7 @@ Silhouette Score: 0.5493
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">&lt;no title&gt;</p>
+        <p class="prev-next-title">Decision Tree</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
