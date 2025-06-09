@@ -15,46 +15,25 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-import pymysql
+import matplotlib.pyplot as plt
+import seaborn as sns
 
-# Koneksi ke MySQL
-mysql_conn = pymysql.connect(
-    host="mysql-ab9f2e5-pendata-d.h.aivencloud.com",
-    user="avnadmin",
-    password="AVNS_iraqnLcleYqP_JZOqhA",
-    database="defaultdb",
-    port=24202,
-    ssl={"ssl": {}}
-)
-mysql_cur = mysql_conn.cursor()
-
-# Eksekusi query untuk mengambil data dari MySQL
-query_mysql = "SELECT * FROM pendatmysql"
-mysql_cur.execute(query_mysql)
-data_mysql = mysql_cur.fetchall()
-
-# Menampilkan data dari MySQL
-print("DATA SQL")
-for row in data_mysql:
-    print(row)
-
-# Tutup kursor dan koneksi
-mysql_cur.close()
-mysql_conn.close()
+# Histogram untuk kolom 'Age'
+sns.histplot(df['Age'], bins=30, kde=True)
+plt.title('Distribusi Umur Pasien')
+plt.xlabel('Umur')
+plt.ylabel('Frekuensi')
+plt.show()
 ------------------
 
 
 [1;31m---------------------------------------------------------------------------[0m
 [1;31mModuleNotFoundError[0m                       Traceback (most recent call last)
-Cell [1;32mIn[1], line 1[0m
-[1;32m----> 1[0m [38;5;28;01mimport[39;00m[38;5;250m [39m[38;5;21;01mpymysql[39;00m
-[0;32m      3[0m [38;5;66;03m# Koneksi ke MySQL[39;00m
-[0;32m      4[0m mysql_conn [38;5;241m=[39m pymysql[38;5;241m.[39mconnect(
-[0;32m      5[0m     host[38;5;241m=[39m[38;5;124m"[39m[38;5;124mmysql-ab9f2e5-pendata-d.h.aivencloud.com[39m[38;5;124m"[39m,
-[0;32m      6[0m     user[38;5;241m=[39m[38;5;124m"[39m[38;5;124mavnadmin[39m[38;5;124m"[39m,
-[1;32m   (...)[0m
-[0;32m     10[0m     ssl[38;5;241m=[39m{[38;5;124m"[39m[38;5;124mssl[39m[38;5;124m"[39m: {}}
-[0;32m     11[0m )
+Cell [1;32mIn[5], line 2[0m
+[0;32m      1[0m [38;5;28;01mimport[39;00m[38;5;250m [39m[38;5;21;01mmatplotlib[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpyplot[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[38;5;21;01mplt[39;00m
+[1;32m----> 2[0m [38;5;28;01mimport[39;00m[38;5;250m [39m[38;5;21;01mseaborn[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[38;5;21;01msns[39;00m
+[0;32m      4[0m [38;5;66;03m# Histogram untuk kolom 'Age'[39;00m
+[0;32m      5[0m sns[38;5;241m.[39mhistplot(df[[38;5;124m'[39m[38;5;124mAge[39m[38;5;124m'[39m], bins[38;5;241m=[39m[38;5;241m30[39m, kde[38;5;241m=[39m[38;5;28;01mTrue[39;00m)
 
-[1;31mModuleNotFoundError[0m: No module named 'pymysql'
+[1;31mModuleNotFoundError[0m: No module named 'seaborn'
 
