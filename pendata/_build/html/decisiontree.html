@@ -185,7 +185,7 @@
 <li class="toctree-l1"><a class="reference internal" href="K-Means_Clustering_dan_Fuzzy_C-Means.html">K-Means Clustering dan Fuzzy C-Means</a></li>
 
 
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Decision Tree</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>Decision Tree</strong></a></li>
 </ul>
 
     </div>
@@ -358,7 +358,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -374,6 +376,32 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apa-itu-decision-tree">1. Apa itu Decision Tree?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#entropy">2. Entropy</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rumus-entropy">Rumus Entropy:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh">Contoh:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#information-gain-ig">3. Information Gain (IG)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rumus-information-gain">Rumus Information Gain:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cara-kerja-decision-tree">4. Cara Kerja Decision Tree</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kelebihan-decision-tree">5. Kelebihan Decision Tree</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kekurangan-decision-tree">6. Kekurangan Decision Tree</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tugas-decision-tree"><strong>Tugas Decision Tree</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perhitungan-manual-menggunakan-information-gain-untuk-klasifikasi-dengan-jumlah-data-15-dengan-2-fitur-3-kelas">Perhitungan Manual Menggunakan Information Gain untuk Klasifikasi dengan Jumlah Data 15 dengan 2 Fitur 3 Kelas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perbandingan-hasil-dengan-menggunakan-library-sklearn-decisiontreeclassifier">Perbandingan Hasil dengan Menggunakan Library Sklearn DecisionTreeClassifier</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-pohon-keputusan-dengan-rulenya-dan-diuji-dengan-2-data-baru">Membuat Pohon Keputusan dengan Rulenya dan Diuji dengan 2 Data Baru</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -384,93 +412,326 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="decision-tree">
-<h1>Decision Tree<a class="headerlink" href="#decision-tree" title="Link to this heading">#</a></h1>
+<h1><strong>Decision Tree</strong><a class="headerlink" href="#decision-tree" title="Link to this heading">#</a></h1>
+<section id="apa-itu-decision-tree">
+<h2>1. Apa itu Decision Tree?<a class="headerlink" href="#apa-itu-decision-tree" title="Link to this heading">#</a></h2>
+<p><strong>Decision Tree (Pohon Keputusan)</strong> adalah algoritma supervised learning yang digunakan untuk klasifikasi dan regresi. Algoritma ini membagi dataset ke dalam subset berdasarkan fitur, dengan tujuan memaksimalkan pemisahan antar kelas secara logis.</p>
+</section>
+<section id="entropy">
+<h2>2. Entropy<a class="headerlink" href="#entropy" title="Link to this heading">#</a></h2>
+<p>Entropy mengukur tingkat ketidakpastian atau impurity dalam sebuah dataset. Semakin murni (homogen) data, semakin rendah entropy-nya.</p>
+<section id="rumus-entropy">
+<h3>Rumus Entropy:<a class="headerlink" href="#rumus-entropy" title="Link to this heading">#</a></h3>
+<p><img alt="image.png" src="attachment:image.png" /></p>
+<p>Di mana:</p>
+<ul class="simple">
+<li><p>( <em>pi</em> ) adalah proporsi dari kelas ke-i dalam subset ( <em>S</em> ).</p></li>
+<li><p>( <em>n</em> ) adalah jumlah total kelas.</p></li>
+</ul>
+</section>
+<section id="contoh">
+<h3>Contoh:<a class="headerlink" href="#contoh" title="Link to this heading">#</a></h3>
+<p>Jika dalam satu subset terdapat:</p>
+<ul class="simple">
+<li><p>4 data kelas A.</p></li>
+<li><p>4 data kelas B.</p></li>
+</ul>
+<p>Maka:<br />
+<img alt="image-2.png" src="attachment:image-2.png" /></p>
+<p>Jika semua data dalam satu kelas:</p>
+<ul class="simple">
+<li><p>8 data kelas A.</p></li>
+</ul>
+<p>Maka:<br />
+<img alt="image-3.png" src="attachment:image-3.png" /></p>
+</section>
+</section>
+<section id="information-gain-ig">
+<h2>3. Information Gain (IG)<a class="headerlink" href="#information-gain-ig" title="Link to this heading">#</a></h2>
+<p>Information Gain digunakan untuk memilih fitur terbaik yang digunakan sebagai node dalam pohon keputusan.</p>
+<section id="rumus-information-gain">
+<h3>Rumus Information Gain:<a class="headerlink" href="#rumus-information-gain" title="Link to this heading">#</a></h3>
+<p><img alt="image.png" src="attachment:image.png" /></p>
+<p>Di mana:</p>
+<ul class="simple">
+<li><p>( <em>S</em> ) adalah dataset awal.</p></li>
+<li><p>( <em>A</em> ) adalah fitur yang diuji.</p></li>
+<li><p>( <em>Sv</em> ) adalah subset data untuk nilai v dari fitur A.</p></li>
+</ul>
+</section>
+</section>
+<section id="cara-kerja-decision-tree">
+<h2>4. Cara Kerja Decision Tree<a class="headerlink" href="#cara-kerja-decision-tree" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Hitung <strong>entropy</strong> awal dari dataset.</p></li>
+<li><p>Untuk setiap fitur, bagi data berdasarkan nilai threshold tertentu.</p></li>
+<li><p>Hitung <strong>entropy</strong> dari masing-masing subset.</p></li>
+<li><p>Hitung <strong>average entropy</strong> dari subset tersebut.</p></li>
+<li><p>Hitung <strong>information gain</strong> = entropy awal - entropy rata-rata.</p></li>
+<li><p>Pilih fitur dengan <strong>information gain tertinggi</strong> sebagai node (akar atau cabang).</p></li>
+<li><p>Ulangi proses ini secara rekursif hingga:</p>
+<ul class="simple">
+<li><p>Data habis dibagi sempurna, atau</p></li>
+<li><p>Tidak ada lagi information gain yang signifikan, atau</p></li>
+<li><p>Tercapai depth maksimum pohon.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="kelebihan-decision-tree">
+<h2>5. Kelebihan Decision Tree<a class="headerlink" href="#kelebihan-decision-tree" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Mudah dipahami dan divisualisasikan.</p></li>
+<li><p>Tidak memerlukan normalisasi data.</p></li>
+<li><p>Dapat menangani data numerik dan kategorikal.</p></li>
+</ul>
+</section>
+<section id="kekurangan-decision-tree">
+<h2>6. Kekurangan Decision Tree<a class="headerlink" href="#kekurangan-decision-tree" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Rentan terhadap overfitting.</p></li>
+<li><p>Sensitif terhadap data yang tidak seimbang.</p></li>
+<li><p>Bisa tidak stabil (perubahan kecil di data bisa mengubah struktur pohon).</p></li>
+</ul>
+</section>
+<section id="tugas-decision-tree">
+<h2><strong>Tugas Decision Tree</strong><a class="headerlink" href="#tugas-decision-tree" title="Link to this heading">#</a></h2>
+<section id="perhitungan-manual-menggunakan-information-gain-untuk-klasifikasi-dengan-jumlah-data-15-dengan-2-fitur-3-kelas">
+<h3>Perhitungan Manual Menggunakan Information Gain untuk Klasifikasi dengan Jumlah Data 15 dengan 2 Fitur 3 Kelas<a class="headerlink" href="#perhitungan-manual-menggunakan-information-gain-untuk-klasifikasi-dengan-jumlah-data-15-dengan-2-fitur-3-kelas" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.google.com/spreadsheets/d/1qKp4-_3ZeC9pM5CTrOsfRcAMOVKEeeD6KPk535Tv1_w/edit?usp=sharing">https://docs.google.com/spreadsheets/d/1qKp4-_3ZeC9pM5CTrOsfRcAMOVKEeeD6KPk535Tv1_w/edit?usp=sharing</a></p></li>
+</ul>
+</section>
+<section id="perbandingan-hasil-dengan-menggunakan-library-sklearn-decisiontreeclassifier">
+<h3>Perbandingan Hasil dengan Menggunakan Library Sklearn DecisionTreeClassifier<a class="headerlink" href="#perbandingan-hasil-dengan-menggunakan-library-sklearn-decisiontreeclassifier" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">seaborn</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.tree</span><span class="w"> </span><span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LabelEncoder</span>
+
+<span class="c1"># Data dari Excel</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Sepal Length&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">4.3</span><span class="p">,</span> <span class="mf">5.8</span><span class="p">,</span> <span class="mf">5.7</span><span class="p">,</span> <span class="mf">5.4</span><span class="p">,</span> <span class="mf">5.1</span><span class="p">,</span> <span class="mf">5.6</span><span class="p">,</span> <span class="mf">5.8</span><span class="p">,</span> <span class="mf">6.2</span><span class="p">,</span> <span class="mf">5.6</span><span class="p">,</span> <span class="mf">5.9</span><span class="p">,</span>
+                     <span class="mf">4.9</span><span class="p">,</span> <span class="mf">7.3</span><span class="p">,</span> <span class="mf">6.7</span><span class="p">,</span> <span class="mf">7.2</span><span class="p">,</span> <span class="mf">6.5</span><span class="p">],</span>
+    <span class="s1">&#39;Sepal Width&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">4.4</span><span class="p">,</span> <span class="mf">3.9</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">2.7</span><span class="p">,</span> <span class="mf">2.2</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mf">3.2</span><span class="p">,</span>
+                    <span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.9</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mf">3.6</span><span class="p">,</span> <span class="mf">3.2</span><span class="p">],</span>
+    <span class="s1">&#39;Class&#39;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s1">&#39;Iris-setosa&#39;</span><span class="p">,</span> <span class="s1">&#39;Iris-setosa&#39;</span><span class="p">,</span> <span class="s1">&#39;Iris-setosa&#39;</span><span class="p">,</span> <span class="s1">&#39;Iris-setosa&#39;</span><span class="p">,</span> <span class="s1">&#39;Iris-setosa&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Iris-versicolor&#39;</span><span class="p">,</span> <span class="s1">&#39;Iris-versicolor&#39;</span><span class="p">,</span> <span class="s1">&#39;Iris-versicolor&#39;</span><span class="p">,</span> <span class="s1">&#39;Iris-versicolor&#39;</span><span class="p">,</span> <span class="s1">&#39;Iris-versicolor&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Iris-virginica&#39;</span><span class="p">,</span> <span class="s1">&#39;Iris-virginica&#39;</span><span class="p">,</span> <span class="s1">&#39;Iris-virginica&#39;</span><span class="p">,</span> <span class="s1">&#39;Iris-virginica&#39;</span><span class="p">,</span> <span class="s1">&#39;Iris-virginica&#39;</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># Encode label kelas</span>
+<span class="n">le</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;ClassEncoded&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">le</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Class&#39;</span><span class="p">])</span>
+
+<span class="c1"># Threshold dari Excel</span>
+<span class="n">thresholds</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Sepal Length&#39;</span><span class="p">:</span> <span class="mf">5.45</span><span class="p">,</span> <span class="s1">&#39;Sepal Width&#39;</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">}</span>
+
+<span class="c1"># Ubah fitur jadi biner berdasarkan threshold</span>
+<span class="k">for</span> <span class="n">feature</span><span class="p">,</span> <span class="n">threshold</span> <span class="ow">in</span> <span class="n">thresholds</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">df</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">feature</span><span class="si">}</span><span class="s1">_binary&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+<span class="c1"># Analisis tiap fitur</span>
+<span class="n">results</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">for</span> <span class="n">feature</span><span class="p">,</span> <span class="n">threshold</span> <span class="ow">in</span> <span class="n">thresholds</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">feature</span><span class="si">}</span><span class="s1">_binary&#39;</span><span class="p">]]</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;ClassEncoded&#39;</span><span class="p">]</span>
+    
+    <span class="n">clf</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">criterion</span><span class="o">=</span><span class="s1">&#39;entropy&#39;</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+    <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+    <span class="n">tree</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">tree_</span>
+    <span class="n">n_total</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">n_node_samples</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">left_count</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">n_node_samples</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">right_count</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">n_node_samples</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+
+    <span class="n">e_root</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">impurity</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">e_left</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">impurity</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">e_right</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">impurity</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+    
+    <span class="n">avg_entropy</span> <span class="o">=</span> <span class="p">(</span><span class="n">left_count</span> <span class="o">/</span> <span class="n">n_total</span><span class="p">)</span> <span class="o">*</span> <span class="n">e_left</span> <span class="o">+</span> <span class="p">(</span><span class="n">right_count</span> <span class="o">/</span> <span class="n">n_total</span><span class="p">)</span> <span class="o">*</span> <span class="n">e_right</span>
+    <span class="n">info_gain</span> <span class="o">=</span> <span class="n">e_root</span> <span class="o">-</span> <span class="n">avg_entropy</span>
+
+    <span class="n">results</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;Threshold&#39;</span><span class="p">:</span> <span class="n">threshold</span><span class="p">,</span>
+        <span class="s1">&#39;Entropy Awal&#39;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">e_root</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+        <span class="s1">&#39;Entropy Kiri&#39;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">e_left</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+        <span class="s1">&#39;Entropy Kanan&#39;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">e_right</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+        <span class="s1">&#39;Entropy Rata2&#39;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">avg_entropy</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+        <span class="s1">&#39;Information Gain&#39;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">info_gain</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="p">}</span>
+
+<span class="c1"># Cetak hasil</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== Hasil Information Gain dengan sklearn (threshold tetap) ===</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">best_feature</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">best_ig</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+
+<span class="k">for</span> <span class="n">feature</span><span class="p">,</span> <span class="n">vals</span> <span class="ow">in</span> <span class="n">results</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fitur: </span><span class="si">{</span><span class="n">feature</span><span class="si">}</span><span class="s2"> (Threshold = </span><span class="si">{</span><span class="n">vals</span><span class="p">[</span><span class="s1">&#39;Threshold&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Entropy Awal     : </span><span class="si">{</span><span class="n">vals</span><span class="p">[</span><span class="s1">&#39;Entropy Awal&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Entropy Kiri     : </span><span class="si">{</span><span class="n">vals</span><span class="p">[</span><span class="s1">&#39;Entropy Kiri&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Entropy Kanan    : </span><span class="si">{</span><span class="n">vals</span><span class="p">[</span><span class="s1">&#39;Entropy Kanan&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Entropy Rata2    : </span><span class="si">{</span><span class="n">vals</span><span class="p">[</span><span class="s1">&#39;Entropy Rata2&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Information Gain : </span><span class="si">{</span><span class="n">vals</span><span class="p">[</span><span class="s1">&#39;Information Gain&#39;</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Cek fitur dengan IG tertinggi</span>
+    <span class="k">if</span> <span class="n">vals</span><span class="p">[</span><span class="s1">&#39;Information Gain&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">best_ig</span><span class="p">:</span>
+        <span class="n">best_ig</span> <span class="o">=</span> <span class="n">vals</span><span class="p">[</span><span class="s1">&#39;Information Gain&#39;</span><span class="p">]</span>
+        <span class="n">best_feature</span> <span class="o">=</span> <span class="n">feature</span>
+
+<span class="c1"># Tampilkan fitur terbaik</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fitur terbaik berdasarkan Information Gain tertinggi adalah: **</span><span class="si">{</span><span class="n">best_feature</span><span class="si">}</span><span class="s2">** (IG = </span><span class="si">{</span><span class="n">best_ig</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: seaborn in c:\users\acer\appdata\local\programs\python\python39\lib\site-packages (0.13.2)
-Requirement already satisfied: numpy!=1.24.0,&gt;=1.20 in c:\users\acer\appdata\local\programs\python\python39\lib\site-packages (from seaborn) (2.0.2)
-Requirement already satisfied: pandas&gt;=1.2 in c:\users\acer\appdata\local\programs\python\python39\lib\site-packages (from seaborn) (2.2.3)
-Requirement already satisfied: matplotlib!=3.6.1,&gt;=3.4 in c:\users\acer\appdata\local\programs\python\python39\lib\site-packages (from seaborn) (3.9.4)
-Requirement already satisfied: contourpy&gt;=1.0.1 in c:\users\acer\appdata\local\programs\python\python39\lib\site-packages (from matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn) (1.3.0)
-Requirement already satisfied: cycler&gt;=0.10 in c:\users\acer\appdata\local\programs\python\python39\lib\site-packages (from matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn) (0.12.1)
-Requirement already satisfied: fonttools&gt;=4.22.0 in c:\users\acer\appdata\local\programs\python\python39\lib\site-packages (from matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn) (4.57.0)
-Requirement already satisfied: kiwisolver&gt;=1.3.1 in c:\users\acer\appdata\local\programs\python\python39\lib\site-packages (from matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn) (1.4.7)
-Requirement already satisfied: packaging&gt;=20.0 in c:\users\acer\appdata\local\programs\python\python39\lib\site-packages (from matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn) (24.2)
-Requirement already satisfied: pillow&gt;=8 in c:\users\acer\appdata\local\programs\python\python39\lib\site-packages (from matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn) (11.2.1)
-Requirement already satisfied: pyparsing&gt;=2.3.1 in c:\users\acer\appdata\local\programs\python\python39\lib\site-packages (from matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn) (3.2.3)
-Requirement already satisfied: python-dateutil&gt;=2.7 in c:\users\acer\appdata\roaming\python\python39\site-packages (from matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn) (2.9.0.post0)
-Requirement already satisfied: importlib-resources&gt;=3.2.0 in c:\users\acer\appdata\local\programs\python\python39\lib\site-packages (from matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn) (6.5.2)
-Requirement already satisfied: zipp&gt;=3.1.0 in c:\users\acer\appdata\roaming\python\python39\site-packages (from importlib-resources&gt;=3.2.0-&gt;matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn) (3.21.0)
-Requirement already satisfied: pytz&gt;=2020.1 in c:\users\acer\appdata\local\programs\python\python39\lib\site-packages (from pandas&gt;=1.2-&gt;seaborn) (2025.2)
-Requirement already satisfied: tzdata&gt;=2022.7 in c:\users\acer\appdata\local\programs\python\python39\lib\site-packages (from pandas&gt;=1.2-&gt;seaborn) (2025.2)
-Requirement already satisfied: six&gt;=1.5 in c:\users\acer\appdata\roaming\python\python39\site-packages (from python-dateutil&gt;=2.7-&gt;matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn) (1.17.0)
-Note: you may need to restart the kernel to use updated packages.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Hasil Information Gain dengan sklearn (threshold tetap) ===
+
+Fitur: Sepal Length (Threshold = 5.45)
+  Entropy Awal     : 1.58
+  Entropy Kiri     : 0.81
+  Entropy Kanan    : 1.49
+  Entropy Rata2    : 1.31
+  Information Gain : 0.27
+
+Fitur: Sepal Width (Threshold = 3.0)
+  Entropy Awal     : 1.58
+  Entropy Kiri     : 1.41
+  Entropy Kanan    : 1.38
+  Entropy Rata2    : 1.39
+  Information Gain : 0.19
+
+Fitur terbaik berdasarkan Information Gain tertinggi adalah: **Sepal Length** (IG = 0.27)
 </pre></div>
 </div>
 </div>
 </div>
+</section>
+<section id="membuat-pohon-keputusan-dengan-rulenya-dan-diuji-dengan-2-data-baru">
+<h3>Membuat Pohon Keputusan dengan Rulenya dan Diuji dengan 2 Data Baru<a class="headerlink" href="#membuat-pohon-keputusan-dengan-rulenya-dan-diuji-dengan-2-data-baru" title="Link to this heading">#</a></h3>
+<p>Data Baru:<br />
+Data 1:</p>
+<ul class="simple">
+<li><p>Sepal Length = 6.0</p></li>
+<li><p>Sepal Width  = 2.8</p></li>
+</ul>
+<p>Data 2:</p>
+<ul class="simple">
+<li><p>Sepal Length = 4.9</p></li>
+<li><p>Sepal Width  = 3.5</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#| echo: false</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.tree</span><span class="w"> </span><span class="kn">import</span> <span class="n">DecisionTreeClassifier</span><span class="p">,</span> <span class="n">export_text</span><span class="p">,</span> <span class="n">plot_tree</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LabelEncoder</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
-<span class="c1"># Load Iris dataset</span>
-<span class="n">iris</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;iris&#39;</span><span class="p">)</span>
+<span class="c1"># 1. Dataset</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Sepal Length&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">4.3</span><span class="p">,</span> <span class="mf">5.8</span><span class="p">,</span> <span class="mf">5.7</span><span class="p">,</span> <span class="mf">5.4</span><span class="p">,</span> <span class="mf">5.1</span><span class="p">,</span> <span class="mf">5.6</span><span class="p">,</span> <span class="mf">5.8</span><span class="p">,</span> <span class="mf">6.2</span><span class="p">,</span> <span class="mf">5.6</span><span class="p">,</span> <span class="mf">5.9</span><span class="p">,</span>
+                     <span class="mf">4.9</span><span class="p">,</span> <span class="mf">7.3</span><span class="p">,</span> <span class="mf">6.7</span><span class="p">,</span> <span class="mf">7.2</span><span class="p">,</span> <span class="mf">6.5</span><span class="p">],</span>
+    <span class="s1">&#39;Sepal Width&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">4.4</span><span class="p">,</span> <span class="mf">3.9</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">2.7</span><span class="p">,</span> <span class="mf">2.2</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mf">3.2</span><span class="p">,</span>
+                    <span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.9</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mf">3.6</span><span class="p">,</span> <span class="mf">3.2</span><span class="p">],</span>
+    <span class="s1">&#39;Class&#39;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s1">&#39;Iris-setosa&#39;</span><span class="p">,</span> <span class="s1">&#39;Iris-setosa&#39;</span><span class="p">,</span> <span class="s1">&#39;Iris-setosa&#39;</span><span class="p">,</span> <span class="s1">&#39;Iris-setosa&#39;</span><span class="p">,</span> <span class="s1">&#39;Iris-setosa&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Iris-versicolor&#39;</span><span class="p">,</span> <span class="s1">&#39;Iris-versicolor&#39;</span><span class="p">,</span> <span class="s1">&#39;Iris-versicolor&#39;</span><span class="p">,</span> <span class="s1">&#39;Iris-versicolor&#39;</span><span class="p">,</span> <span class="s1">&#39;Iris-versicolor&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Iris-virginica&#39;</span><span class="p">,</span> <span class="s1">&#39;Iris-virginica&#39;</span><span class="p">,</span> <span class="s1">&#39;Iris-virginica&#39;</span><span class="p">,</span> <span class="s1">&#39;Iris-virginica&#39;</span><span class="p">,</span> <span class="s1">&#39;Iris-virginica&#39;</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
-<span class="c1"># Filter hanya Setosa dan gabungkan Versicolor + Virginica sebagai &quot;Other&quot;</span>
-<span class="n">iris</span><span class="p">[</span><span class="s1">&#39;species_grouped&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">iris</span><span class="p">[</span><span class="s1">&#39;species&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s1">&#39;setosa&#39;</span> <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="s1">&#39;setosa&#39;</span> <span class="k">else</span> <span class="s1">&#39;non-setosa&#39;</span><span class="p">)</span>
+<span class="c1"># 2. Encode class</span>
+<span class="n">le</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;ClassEncoded&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">le</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Class&#39;</span><span class="p">])</span>
 
-<span class="c1"># Plotting</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span>
-    <span class="n">data</span><span class="o">=</span><span class="n">iris</span><span class="p">,</span>
-    <span class="n">x</span><span class="o">=</span><span class="s1">&#39;sepal_length&#39;</span><span class="p">,</span>
-    <span class="n">y</span><span class="o">=</span><span class="s1">&#39;sepal_width&#39;</span><span class="p">,</span>
-    <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;species_grouped&#39;</span><span class="p">,</span>
-    <span class="n">style</span><span class="o">=</span><span class="s1">&#39;species_grouped&#39;</span><span class="p">,</span>
-    <span class="n">palette</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;setosa&#39;</span><span class="p">:</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;non-setosa&#39;</span><span class="p">:</span> <span class="s1">&#39;orange&#39;</span><span class="p">},</span>
-    <span class="n">markers</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;setosa&#39;</span><span class="p">:</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="s1">&#39;non-setosa&#39;</span><span class="p">:</span> <span class="s1">&#39;^&#39;</span><span class="p">},</span>  <span class="c1"># &lt;-- Segitiga untuk non-setosa</span>
-    <span class="n">s</span><span class="o">=</span><span class="mi">100</span>
-<span class="p">)</span>
+<span class="c1"># 3. Manual threshold binarisasi (mengikuti Excel)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Sepal Length_bin&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Sepal Length&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">5.45</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Sepal Width_bin&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Sepal Width&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">3.0</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 
-<span class="c1"># Tambahkan garis batas</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">5.45</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Batas Sepal Length = 5.45&#39;</span><span class="p">)</span>
-<span class="c1">#plt.axhline(y=2.8, color=&#39;blue&#39;, linestyle=&#39;--&#39;, linewidth=2, label=&#39;Batas Sepal Width = 2.8&#39;)</span>
+<span class="c1"># 4. Training</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;Sepal Length_bin&#39;</span><span class="p">,</span> <span class="s1">&#39;Sepal Width_bin&#39;</span><span class="p">]]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;ClassEncoded&#39;</span><span class="p">]</span>
 
-<span class="c1"># Label dan judul</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Scatter Plot of Sepal Length vs Sepal Width (Setosa vs Non-Setosa)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Sepal Length (cm)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Sepal Width (cm)&#39;</span><span class="p">)</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">criterion</span><span class="o">=</span><span class="s1">&#39;entropy&#39;</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 
-<span class="c1"># Legenda dan grid</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Species Group&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># 5. Aturan Pohon</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== Aturan dari Decision Tree ===</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">rules</span> <span class="o">=</span> <span class="n">export_text</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Sepal Length_bin&#39;</span><span class="p">,</span> <span class="s1">&#39;Sepal Width_bin&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">rules</span><span class="p">)</span>
+
+<span class="c1"># 6. Prediksi Data Baru</span>
+<span class="n">new_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Sepal Length&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">6.0</span><span class="p">,</span> <span class="mf">4.9</span><span class="p">],</span>
+    <span class="s1">&#39;Sepal Width&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">2.8</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">]</span>
+<span class="p">})</span>
+<span class="n">new_data</span><span class="p">[</span><span class="s1">&#39;Sepal Length_bin&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">new_data</span><span class="p">[</span><span class="s1">&#39;Sepal Length&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">5.45</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">new_data</span><span class="p">[</span><span class="s1">&#39;Sepal Width_bin&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="p">(</span><span class="n">new_data</span><span class="p">[</span><span class="s1">&#39;Sepal Width&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">3.0</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+<span class="n">pred_encoded</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">new_data</span><span class="p">[[</span><span class="s1">&#39;Sepal Length_bin&#39;</span><span class="p">,</span> <span class="s1">&#39;Sepal Width_bin&#39;</span><span class="p">]])</span>
+<span class="n">pred_labels</span> <span class="o">=</span> <span class="n">le</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">pred_encoded</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== Hasil Prediksi 2 Data Baru ===</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">pred_labels</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Data ke-</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Sepal Length = </span><span class="si">{</span><span class="n">new_data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;Sepal Length&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Sepal Width  = </span><span class="si">{</span><span class="n">new_data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;Sepal Width&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Prediksi Kelas: </span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># 7. Visualisasi Pohon</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plot_tree</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span>
+          <span class="n">feature_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Sepal Length_bin&#39;</span><span class="p">,</span> <span class="s1">&#39;Sepal Width_bin&#39;</span><span class="p">],</span>
+          <span class="n">class_names</span><span class="o">=</span><span class="n">le</span><span class="o">.</span><span class="n">classes_</span><span class="p">,</span>
+          <span class="n">filled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+          <span class="n">rounded</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Visualisasi Pohon Keputusan&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/89fe6803b426a58f4581054817fb587bcd7a57fcfcc6163c76a7e732c96a0f82.png" src="_images/89fe6803b426a58f4581054817fb587bcd7a57fcfcc6163c76a7e732c96a0f82.png" />
-</div>
-</div>
-<div class="highlight-plaintext notranslate"><div class="highlight"><pre><span></span>i ← 10;
-if i ≥ 5 then
-    i ← u - 1;
-else
-    if i ≤ 3 then
-        i ← i + 2;
-    end
-end
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Aturan dari Decision Tree ===
+
+|--- Sepal Length_bin &lt;= 0.50
+|   |--- Sepal Width_bin &lt;= 0.50
+|   |   |--- class: 0
+|   |--- Sepal Width_bin &gt;  0.50
+|   |   |--- class: 0
+|--- Sepal Length_bin &gt;  0.50
+|   |--- Sepal Width_bin &lt;= 0.50
+|   |   |--- class: 1
+|   |--- Sepal Width_bin &gt;  0.50
+|   |   |--- class: 0
+
+
+=== Hasil Prediksi 2 Data Baru ===
+
+Data ke-1:
+  Sepal Length = 6.0
+  Sepal Width  = 2.8
+  Prediksi Kelas: Iris-versicolor
+
+Data ke-2:
+  Sepal Length = 4.9
+  Sepal Width  = 3.5
+  Prediksi Kelas: Iris-setosa
 </pre></div>
 </div>
-<iframe scrolling="no" title="Matrix-Graph" src="https://www.geogebra.org/material/iframe/id/vmpudvdz/width/1004/height/544/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/false/sdz/true/ctl/false" width="1004px" height="544px" style="border:0px;"> </iframe></section>
+<img alt="_images/67d3372f37d7226262faca893d234bd34b931d01ce99985d4391f7e72812ce99.png" src="_images/67d3372f37d7226262faca893d234bd34b931d01ce99985d4391f7e72812ce99.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -517,6 +778,39 @@ end
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apa-itu-decision-tree">1. Apa itu Decision Tree?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#entropy">2. Entropy</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rumus-entropy">Rumus Entropy:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh">Contoh:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#information-gain-ig">3. Information Gain (IG)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rumus-information-gain">Rumus Information Gain:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cara-kerja-decision-tree">4. Cara Kerja Decision Tree</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kelebihan-decision-tree">5. Kelebihan Decision Tree</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kekurangan-decision-tree">6. Kekurangan Decision Tree</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tugas-decision-tree"><strong>Tugas Decision Tree</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perhitungan-manual-menggunakan-information-gain-untuk-klasifikasi-dengan-jumlah-data-15-dengan-2-fitur-3-kelas">Perhitungan Manual Menggunakan Information Gain untuk Klasifikasi dengan Jumlah Data 15 dengan 2 Fitur 3 Kelas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perbandingan-hasil-dengan-menggunakan-library-sklearn-decisiontreeclassifier">Perbandingan Hasil dengan Menggunakan Library Sklearn DecisionTreeClassifier</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-pohon-keputusan-dengan-rulenya-dan-diuji-dengan-2-data-baru">Membuat Pohon Keputusan dengan Rulenya dan Diuji dengan 2 Data Baru</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

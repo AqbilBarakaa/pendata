@@ -1,0 +1,11 @@
+Rule
+|--- Sepal Length_bin <= 0.50
+|   |--- Sepal Width_bin <= 0.50
+|   |   |--- class: 0
+|   |--- Sepal Width_bin >  0.50
+|   |   |--- class: 0
+|--- Sepal Length_bin >  0.50
+|   |--- Sepal Width_bin <= 0.50
+|   |   |--- class: 1
+|   |--- Sepal Width_bin >  0.50
+|   |   |--- class: 0
