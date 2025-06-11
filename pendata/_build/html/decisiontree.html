@@ -425,10 +425,9 @@ document.write(`
 <p>Entropy mengukur tingkat ketidakpastian atau impurity dalam sebuah dataset. Semakin murni (homogen) data, semakin rendah entropy-nya.</p>
 <section id="rumus-entropy">
 <h3>Rumus Entropy:<a class="headerlink" href="#rumus-entropy" title="Link to this heading">#</a></h3>
-<div class="math notranslate nohighlight">
-\[
+<p><span class="math notranslate nohighlight">\(
 Entropy(S) = - \sum_{i=1}^{n} p_i \cdot \log_2(p_i)
-\]</div>
+\)</span></p>
 <p>Di mana:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(p_i\)</span> adalah proporsi dari kelas ke-i dalam subset <span class="math notranslate nohighlight">\(S\)</span>.</p></li>
@@ -442,18 +441,18 @@ Entropy(S) = - \sum_{i=1}^{n} p_i \cdot \log_2(p_i)
 <li><p>4 data kelas A.</p></li>
 <li><p>4 data kelas B.</p></li>
 </ul>
-<p>Maka:<br />
-$<span class="math notranslate nohighlight">\(
+<p>Maka:</p>
+<p><span class="math notranslate nohighlight">\(
 Entropy = -\left( \frac{4}{8} \cdot \log_2\left(\frac{4}{8}\right) + \frac{4}{8} \cdot \log_2\left(\frac{4}{8}\right) \right) = 1  
-\)</span>$</p>
+\)</span></p>
 <p>Jika semua data dalam satu kelas:</p>
 <ul class="simple">
 <li><p>8 data kelas A.</p></li>
 </ul>
-<p>Maka:<br />
-$<span class="math notranslate nohighlight">\(
+<p>Maka:</p>
+<p><span class="math notranslate nohighlight">\(
 Entropy = -\left( 1 \cdot \log_2(1) \right) = 0  
-\)</span>$</p>
+\)</span></p>
 </section>
 </section>
 <hr class="docutils" />
@@ -462,10 +461,9 @@ Entropy = -\left( 1 \cdot \log_2(1) \right) = 0
 <p>Information Gain digunakan untuk memilih fitur terbaik yang digunakan sebagai node dalam pohon keputusan.</p>
 <section id="rumus-information-gain">
 <h3>Rumus Information Gain:<a class="headerlink" href="#rumus-information-gain" title="Link to this heading">#</a></h3>
-<div class="math notranslate nohighlight">
-\[
+<p><span class="math notranslate nohighlight">\(
 Information\ Gain(S, A) = Entropy(S) - \sum_{v \in Values(A)} \frac{|S_v|}{|S|} \cdot Entropy(S_v)
-\]</div>
+\)</span></p>
 <p>Keterangan:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(S\)</span> = keseluruhan dataset (parent)</p></li>
