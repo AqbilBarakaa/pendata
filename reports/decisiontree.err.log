@@ -1,67 +1,132 @@
 Traceback (most recent call last):
-  File "C:\Users\acer\AppData\Local\Programs\Python\Python39\lib\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
+  File "c:\PROJEK_SMST_4\pendata\.venv\Lib\site-packages\jupyter_core\utils\__init__.py", line 154, in wrapped
+    asyncio.get_running_loop()
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^
+RuntimeError: no running event loop
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\PROJEK_SMST_4\pendata\.venv\Lib\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
     executenb(
-  File "C:\Users\acer\AppData\Local\Programs\Python\Python39\lib\site-packages\nbclient\client.py", line 1319, in execute
+    ~~~~~~~~~^
+        nb,
+        ^^^
+    ...<4 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "c:\PROJEK_SMST_4\pendata\.venv\Lib\site-packages\nbclient\client.py", line 1319, in execute
     return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
-  File "C:\Users\acer\AppData\Roaming\Python\Python39\site-packages\jupyter_core\utils\__init__.py", line 165, in wrapped
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "c:\PROJEK_SMST_4\pendata\.venv\Lib\site-packages\jupyter_core\utils\__init__.py", line 158, in wrapped
     return loop.run_until_complete(inner)
-  File "C:\Users\acer\AppData\Local\Programs\Python\Python39\lib\asyncio\base_events.py", line 647, in run_until_complete
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\laragon\bin\python\python-3.13\Lib\asyncio\base_events.py", line 721, in run_until_complete
     return future.result()
-  File "C:\Users\acer\AppData\Local\Programs\Python\Python39\lib\site-packages\nbclient\client.py", line 709, in async_execute
+           ~~~~~~~~~~~~~^^
+  File "c:\PROJEK_SMST_4\pendata\.venv\Lib\site-packages\nbclient\client.py", line 709, in async_execute
     await self.async_execute_cell(
-  File "C:\Users\acer\AppData\Local\Programs\Python\Python39\lib\site-packages\nbclient\client.py", line 1062, in async_execute_cell
+        cell, index, execution_count=self.code_cells_executed + 1
+    )
+  File "c:\PROJEK_SMST_4\pendata\.venv\Lib\site-packages\nbclient\client.py", line 1062, in async_execute_cell
     await self._check_raise_for_error(cell, cell_index, exec_reply)
-  File "C:\Users\acer\AppData\Local\Programs\Python\Python39\lib\site-packages\nbclient\client.py", line 918, in _check_raise_for_error
+  File "c:\PROJEK_SMST_4\pendata\.venv\Lib\site-packages\nbclient\client.py", line 918, in _check_raise_for_error
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-#| echo: false
-import seaborn as sns
-import matplotlib.pyplot as plt
+import pandas as pd
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.preprocessing import LabelEncoder
 
-# Load Iris dataset
-iris = sns.load_dataset('iris')
+# Data dari Excel
+data = {
+    'Sepal Length': [4.3, 5.8, 5.7, 5.4, 5.1, 5.6, 5.8, 6.2, 5.6, 5.9,
+                     4.9, 7.3, 6.7, 7.2, 6.5],
+    'Sepal Width': [3.0, 4.0, 4.4, 3.9, 3.5, 3.0, 2.7, 2.2, 2.5, 3.2,
+                    2.5, 2.9, 2.5, 3.6, 3.2],
+    'Class': [
+        'Iris-setosa', 'Iris-setosa', 'Iris-setosa', 'Iris-setosa', 'Iris-setosa',
+        'Iris-versicolor', 'Iris-versicolor', 'Iris-versicolor', 'Iris-versicolor', 'Iris-versicolor',
+        'Iris-virginica', 'Iris-virginica', 'Iris-virginica', 'Iris-virginica', 'Iris-virginica'
+    ]
+}
 
-# Filter hanya Setosa dan gabungkan Versicolor + Virginica sebagai "Other"
-iris['species_grouped'] = iris['species'].apply(lambda x: 'setosa' if x == 'setosa' else 'non-setosa')
+df = pd.DataFrame(data)
 
-# Plotting
-plt.figure(figsize=(8, 6))
-sns.scatterplot(
-    data=iris,
-    x='sepal_length',
-    y='sepal_width',
-    hue='species_grouped',
-    style='species_grouped',
-    palette={'setosa': 'green', 'non-setosa': 'orange'},
-    markers={'setosa': 'o', 'non-setosa': '^'},  # <-- Segitiga untuk non-setosa
-    s=100
-)
+# Encode label kelas
+le = LabelEncoder()
+df['ClassEncoded'] = le.fit_transform(df['Class'])
 
-# Tambahkan garis batas
-plt.axvline(x=5.45, color='red', linestyle='--', linewidth=2, label='Batas Sepal Length = 5.45')
-#plt.axhline(y=2.8, color='blue', linestyle='--', linewidth=2, label='Batas Sepal Width = 2.8')
+# Threshold dari Excel
+thresholds = {'Sepal Length': 5.45, 'Sepal Width': 3.0}
 
-# Label dan judul
-plt.title('Scatter Plot of Sepal Length vs Sepal Width (Setosa vs Non-Setosa)')
-plt.xlabel('Sepal Length (cm)')
-plt.ylabel('Sepal Width (cm)')
+# Ubah fitur jadi biner berdasarkan threshold
+for feature, threshold in thresholds.items():
+    df[f'{feature}_binary'] = (df[feature] > threshold).astype(int)
 
-# Legenda dan grid
-plt.legend(title='Species Group')
-plt.grid(True)
-plt.tight_layout()
-plt.show()
+# Analisis tiap fitur
+results = {}
+
+for feature, threshold in thresholds.items():
+    X = df[[f'{feature}_binary']]
+    y = df['ClassEncoded']
+    
+    clf = DecisionTreeClassifier(criterion='entropy', max_depth=1, random_state=42)
+    clf.fit(X, y)
+
+    tree = clf.tree_
+    n_total = tree.n_node_samples[0]
+    left_count = tree.n_node_samples[1]
+    right_count = tree.n_node_samples[2]
+
+    e_root = tree.impurity[0]
+    e_left = tree.impurity[1]
+    e_right = tree.impurity[2]
+    
+    avg_entropy = (left_count / n_total) * e_left + (right_count / n_total) * e_right
+    info_gain = e_root - avg_entropy
+
+    results[feature] = {
+        'Threshold': threshold,
+        'Entropy Awal': round(e_root, 2),
+        'Entropy Kiri': round(e_left, 2),
+        'Entropy Kanan': round(e_right, 2),
+        'Entropy Rata2': round(avg_entropy, 2),
+        'Information Gain': round(info_gain, 2)
+    }
+
+# Cetak hasil
+print("=== Hasil Information Gain dengan sklearn (threshold tetap) ===\n")
+best_feature = None
+best_ig = -1
+
+for feature, vals in results.items():
+    print(f"Fitur: {feature} (Threshold = {vals['Threshold']})")
+    print(f"  Entropy Awal     : {vals['Entropy Awal']}")
+    print(f"  Entropy Kiri     : {vals['Entropy Kiri']}")
+    print(f"  Entropy Kanan    : {vals['Entropy Kanan']}")
+    print(f"  Entropy Rata2    : {vals['Entropy Rata2']}")
+    print(f"  Information Gain : {vals['Information Gain']}\n")
+
+    # Cek fitur dengan IG tertinggi
+    if vals['Information Gain'] > best_ig:
+        best_ig = vals['Information Gain']
+        best_feature = feature
+
+# Tampilkan fitur terbaik
+print(f"Fitur terbaik berdasarkan Information Gain tertinggi adalah: **{best_feature}** (IG = {best_ig})")
+
 ------------------
 
 
-[1;31m---------------------------------------------------------------------------[0m
-[1;31mModuleNotFoundError[0m                       Traceback (most recent call last)
-Cell [1;32mIn[1], line 2[0m
-[0;32m      1[0m [38;5;66;03m#| echo: false[39;00m
-[1;32m----> 2[0m [38;5;28;01mimport[39;00m[38;5;250m [39m[38;5;21;01mseaborn[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[38;5;21;01msns[39;00m
-[0;32m      3[0m [38;5;28;01mimport[39;00m[38;5;250m [39m[38;5;21;01mmatplotlib[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpyplot[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[38;5;21;01mplt[39;00m
-[0;32m      5[0m [38;5;66;03m# Load Iris dataset[39;00m
+[31m---------------------------------------------------------------------------[39m
+[31mModuleNotFoundError[39m                       Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[1][39m[32m, line 1[39m
+[32m----> [39m[32m1[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mpandas[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[34;01mpd[39;00m
+[32m      2[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01msklearn[39;00m[34;01m.[39;00m[34;01mtree[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m DecisionTreeClassifier
+[32m      3[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01msklearn[39;00m[34;01m.[39;00m[34;01mpreprocessing[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m LabelEncoder
 
-[1;31mModuleNotFoundError[0m: No module named 'seaborn'
+[31mModuleNotFoundError[39m: No module named 'pandas'
 

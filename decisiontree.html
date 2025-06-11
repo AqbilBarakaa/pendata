@@ -613,23 +613,14 @@ Information\ Gain(S, A) = Entropy(S) - \sum_{v \in Values(A)} \frac{|S_v|}{|S|} 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Hasil Information Gain dengan sklearn (threshold tetap) ===
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.tree</span><span class="w"> </span><span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LabelEncoder</span>
 
-Fitur: Sepal Length (Threshold = 5.45)
-  Entropy Awal     : 1.58
-  Entropy Kiri     : 0.81
-  Entropy Kanan    : 1.49
-  Entropy Rata2    : 1.31
-  Information Gain : 0.27
-
-Fitur: Sepal Width (Threshold = 3.0)
-  Entropy Awal     : 1.58
-  Entropy Kiri     : 1.41
-  Entropy Kanan    : 1.38
-  Entropy Rata2    : 1.39
-  Information Gain : 0.19
-
-Fitur terbaik berdasarkan Information Gain tertinggi adalah: **Sepal Length** (IG = 0.27)
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;pandas&#39;
 </pre></div>
 </div>
 </div>
@@ -748,7 +739,7 @@ Data ke-2:
   Prediksi Kelas: Iris-setosa
 </pre></div>
 </div>
-<img alt="_images/67d3372f37d7226262faca893d234bd34b931d01ce99985d4391f7e72812ce99.png" src="_images/67d3372f37d7226262faca893d234bd34b931d01ce99985d4391f7e72812ce99.png" />
+<img alt="_images/e9e672d1dc72ac729ed131ab5765f4ea27269dbb165faae7a41db446e5965e60.png" src="_images/e9e672d1dc72ac729ed131ab5765f4ea27269dbb165faae7a41db446e5965e60.png" />
 </div>
 </div>
 </section>
