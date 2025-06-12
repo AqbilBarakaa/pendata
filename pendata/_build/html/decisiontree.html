@@ -530,6 +530,66 @@ Information\ Gain(S, A) = Entropy(S) - \sum_{v \in Values(A)} \frac{|S_v|}{|S|} 
 <h3>Perbandingan Hasil dengan Menggunakan Library Sklearn DecisionTreeClassifier<a class="headerlink" href="#perbandingan-hasil-dengan-menggunakan-library-sklearn-decisiontreeclassifier" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">pip</span> install pandas
+<span class="o">%</span><span class="k">pip</span> install sklearn
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: pandas in c:\projek_smst_4\pendata\.venv\lib\site-packages (2.3.0)
+Requirement already satisfied: numpy&gt;=1.26.0 in c:\projek_smst_4\pendata\.venv\lib\site-packages (from pandas) (2.3.0)
+Requirement already satisfied: python-dateutil&gt;=2.8.2 in c:\projek_smst_4\pendata\.venv\lib\site-packages (from pandas) (2.9.0.post0)
+Requirement already satisfied: pytz&gt;=2020.1 in c:\projek_smst_4\pendata\.venv\lib\site-packages (from pandas) (2025.2)
+Requirement already satisfied: tzdata&gt;=2022.7 in c:\projek_smst_4\pendata\.venv\lib\site-packages (from pandas) (2025.2)
+Requirement already satisfied: six&gt;=1.5 in c:\projek_smst_4\pendata\.venv\lib\site-packages (from python-dateutil&gt;=2.8.2-&gt;pandas) (1.17.0)
+Note: you may need to restart the kernel to use updated packages.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting sklearn
+  Using cached sklearn-0.0.post12.tar.gz (2.6 kB)
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status &#39;error&#39;
+Note: you may need to restart the kernel to use updated packages.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  error: subprocess-exited-with-error
+  
+  python setup.py egg_info did not run successfully.
+  exit code: 1
+  
+  [15 lines of output]
+  The &#39;sklearn&#39; PyPI package is deprecated, use &#39;scikit-learn&#39;
+  rather than &#39;sklearn&#39; for pip commands.
+  
+  Here is how to fix this error in the main use cases:
+  - use &#39;pip install scikit-learn&#39; rather than &#39;pip install sklearn&#39;
+  - replace &#39;sklearn&#39; by &#39;scikit-learn&#39; in your pip requirements files
+    (requirements.txt, setup.py, setup.cfg, Pipfile, etc ...)
+  - if the &#39;sklearn&#39; package is used by one of your dependencies,
+    it would be great if you take some time to track which package uses
+    &#39;sklearn&#39; instead of &#39;scikit-learn&#39; and report it to their issue tracker
+  - as a last resort, set the environment variable
+    SKLEARN_ALLOW_DEPRECATED_SKLEARN_PACKAGE_INSTALL=True to avoid this error
+  
+  More information is available at
+  https://github.com/scikit-learn/sklearn-pypi-package
+  [end of output]
+  
+  note: This error originates from a subprocess, and is likely not a problem with pip.
+error: metadata-generation-failed
+
+Encountered error while generating package metadata.
+
+See above for output.
+
+note: This is an issue with the package mentioned above, not pip.
+hint: See above for details.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.tree</span><span class="w"> </span><span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LabelEncoder</span>
@@ -617,7 +677,7 @@ Information\ Gain(S, A) = Entropy(S) - \sum_{v \in Values(A)} \frac{|S_v|}{|S|} 
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.tree</span><span class="w"> </span><span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LabelEncoder</span>
