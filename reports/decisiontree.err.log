@@ -30,104 +30,21 @@ Traceback (most recent call last):
     await self.async_execute_cell(
         cell, index, execution_count=self.code_cells_executed + 1
     )
-  File "c:\PROJEK_SMST_4\pendata\.venv\Lib\site-packages\nbclient\client.py", line 1062, in async_execute_cell
-    await self._check_raise_for_error(cell, cell_index, exec_reply)
-  File "c:\PROJEK_SMST_4\pendata\.venv\Lib\site-packages\nbclient\client.py", line 918, in _check_raise_for_error
-    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
-nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
-------------------
-import pandas as pd
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.preprocessing import LabelEncoder
-
-# Data dari Excel
-data = {
-    'Sepal Length': [4.3, 5.8, 5.7, 5.4, 5.1, 5.6, 5.8, 6.2, 5.6, 5.9,
-                     4.9, 7.3, 6.7, 7.2, 6.5],
-    'Sepal Width': [3.0, 4.0, 4.4, 3.9, 3.5, 3.0, 2.7, 2.2, 2.5, 3.2,
-                    2.5, 2.9, 2.5, 3.6, 3.2],
-    'Class': [
-        'Iris-setosa', 'Iris-setosa', 'Iris-setosa', 'Iris-setosa', 'Iris-setosa',
-        'Iris-versicolor', 'Iris-versicolor', 'Iris-versicolor', 'Iris-versicolor', 'Iris-versicolor',
-        'Iris-virginica', 'Iris-virginica', 'Iris-virginica', 'Iris-virginica', 'Iris-virginica'
-    ]
-}
-
-df = pd.DataFrame(data)
-
-# Encode label kelas
-le = LabelEncoder()
-df['ClassEncoded'] = le.fit_transform(df['Class'])
-
-# Threshold dari Excel
-thresholds = {'Sepal Length': 5.45, 'Sepal Width': 3.0}
-
-# Ubah fitur jadi biner berdasarkan threshold
-for feature, threshold in thresholds.items():
-    df[f'{feature}_binary'] = (df[feature] > threshold).astype(int)
-
-# Analisis tiap fitur
-results = {}
-
-for feature, threshold in thresholds.items():
-    X = df[[f'{feature}_binary']]
-    y = df['ClassEncoded']
-    
-    clf = DecisionTreeClassifier(criterion='entropy', max_depth=1, random_state=42)
-    clf.fit(X, y)
-
-    tree = clf.tree_
-    n_total = tree.n_node_samples[0]
-    left_count = tree.n_node_samples[1]
-    right_count = tree.n_node_samples[2]
-
-    e_root = tree.impurity[0]
-    e_left = tree.impurity[1]
-    e_right = tree.impurity[2]
-    
-    avg_entropy = (left_count / n_total) * e_left + (right_count / n_total) * e_right
-    info_gain = e_root - avg_entropy
-
-    results[feature] = {
-        'Threshold': threshold,
-        'Entropy Awal': round(e_root, 2),
-        'Entropy Kiri': round(e_left, 2),
-        'Entropy Kanan': round(e_right, 2),
-        'Entropy Rata2': round(avg_entropy, 2),
-        'Information Gain': round(info_gain, 2)
-    }
-
-# Cetak hasil
-print("=== Hasil Information Gain dengan sklearn (threshold tetap) ===\n")
-best_feature = None
-best_ig = -1
-
-for feature, vals in results.items():
-    print(f"Fitur: {feature} (Threshold = {vals['Threshold']})")
-    print(f"  Entropy Awal     : {vals['Entropy Awal']}")
-    print(f"  Entropy Kiri     : {vals['Entropy Kiri']}")
-    print(f"  Entropy Kanan    : {vals['Entropy Kanan']}")
-    print(f"  Entropy Rata2    : {vals['Entropy Rata2']}")
-    print(f"  Information Gain : {vals['Information Gain']}\n")
-
-    # Cek fitur dengan IG tertinggi
-    if vals['Information Gain'] > best_ig:
-        best_ig = vals['Information Gain']
-        best_feature = feature
-
-# Tampilkan fitur terbaik
-print(f"Fitur terbaik berdasarkan Information Gain tertinggi adalah: **{best_feature}** (IG = {best_ig})")
-
-------------------
-
-
-[31m---------------------------------------------------------------------------[39m
-[31mModuleNotFoundError[39m                       Traceback (most recent call last)
-[36mCell[39m[36m [39m[32mIn[2][39m[32m, line 2[39m
-[32m      1[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mpandas[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[34;01mpd[39;00m
-[32m----> [39m[32m2[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01msklearn[39;00m[34;01m.[39;00m[34;01mtree[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m DecisionTreeClassifier
-[32m      3[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01msklearn[39;00m[34;01m.[39;00m[34;01mpreprocessing[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m LabelEncoder
-[32m      5[39m [38;5;66;03m# Data dari Excel[39;00m
-
-[31mModuleNotFoundError[39m: No module named 'sklearn'
+  File "c:\PROJEK_SMST_4\pendata\.venv\Lib\site-packages\nbclient\client.py", line 1005, in async_execute_cell
+    exec_reply = await self.task_poll_for_reply
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\PROJEK_SMST_4\pendata\.venv\Lib\site-packages\nbclient\client.py", line 806, in _async_poll_for_reply
+    error_on_timeout_execute_reply = await self._async_handle_timeout(timeout, cell)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\PROJEK_SMST_4\pendata\.venv\Lib\site-packages\nbclient\client.py", line 856, in _async_handle_timeout
+    raise CellTimeoutError.error_from_timeout_and_cell(
+        "Cell execution timed out", timeout, cell
+    )
+nbclient.exceptions.CellTimeoutError: A cell timed out while it was being executed, after 30 seconds.
+The message was: Cell execution timed out.
+Here is a preview of the cell contents:
+-------------------
+%pip install pandas
+%pip install scikit-learn
+-------------------
 

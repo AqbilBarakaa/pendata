@@ -531,7 +531,7 @@ Information\ Gain(S, A) = Entropy(S) - \sum_{v \in Values(A)} \frac{|S_v|}{|S|} 
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">pip</span> install pandas
-<span class="o">%</span><span class="k">pip</span> install sklearn
+<span class="o">%</span><span class="k">pip</span> install scikit-learn
 </pre></div>
 </div>
 </div>
@@ -545,45 +545,79 @@ Requirement already satisfied: six&gt;=1.5 in c:\projek_smst_4\pendata\.venv\lib
 Note: you may need to restart the kernel to use updated packages.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting sklearn
-  Using cached sklearn-0.0.post12.tar.gz (2.6 kB)
-  Preparing metadata (setup.py): started
-  Preparing metadata (setup.py): finished with status &#39;error&#39;
-Note: you may need to restart the kernel to use updated packages.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>^C
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  error: subprocess-exited-with-error
-  
-  python setup.py egg_info did not run successfully.
-  exit code: 1
-  
-  [15 lines of output]
-  The &#39;sklearn&#39; PyPI package is deprecated, use &#39;scikit-learn&#39;
-  rather than &#39;sklearn&#39; for pip commands.
-  
-  Here is how to fix this error in the main use cases:
-  - use &#39;pip install scikit-learn&#39; rather than &#39;pip install sklearn&#39;
-  - replace &#39;sklearn&#39; by &#39;scikit-learn&#39; in your pip requirements files
-    (requirements.txt, setup.py, setup.cfg, Pipfile, etc ...)
-  - if the &#39;sklearn&#39; package is used by one of your dependencies,
-    it would be great if you take some time to track which package uses
-    &#39;sklearn&#39; instead of &#39;scikit-learn&#39; and report it to their issue tracker
-  - as a last resort, set the environment variable
-    SKLEARN_ALLOW_DEPRECATED_SKLEARN_PACKAGE_INSTALL=True to avoid this error
-  
-  More information is available at
-  https://github.com/scikit-learn/sklearn-pypi-package
-  [end of output]
-  
-  note: This error originates from a subprocess, and is likely not a problem with pip.
-error: metadata-generation-failed
-
-Encountered error while generating package metadata.
-
-See above for output.
-
-note: This is an issue with the package mentioned above, not pip.
-hint: See above for details.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Note: you may need to restart the kernel to use updated packages.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting scikit-learn
+  Downloading scikit_learn-1.7.0-cp313-cp313-win_amd64.whl.metadata (14 kB)
+Requirement already satisfied: numpy&gt;=1.22.0 in c:\projek_smst_4\pendata\.venv\lib\site-packages (from scikit-learn) (2.3.0)
+Collecting scipy&gt;=1.8.0 (from scikit-learn)
+  Using cached scipy-1.15.3-cp313-cp313-win_amd64.whl.metadata (60 kB)
+Collecting joblib&gt;=1.2.0 (from scikit-learn)
+  Downloading joblib-1.5.1-py3-none-any.whl.metadata (5.6 kB)
+Collecting threadpoolctl&gt;=3.1.0 (from scikit-learn)
+  Using cached threadpoolctl-3.6.0-py3-none-any.whl.metadata (13 kB)
+Downloading scikit_learn-1.7.0-cp313-cp313-win_amd64.whl (10.7 MB)
+   ---------------------------------------- 0.0/10.7 MB ? eta -:--:--
+   ---------------------------------------- 0.0/10.7 MB ? eta -:--:--
+   ---------------------------------------- 0.0/10.7 MB ? eta -:--:--
+   ---------------------------------------- 0.0/10.7 MB ? eta -:--:--
+   ---------------------------------------- 0.0/10.7 MB ? eta -:--:--
+   ---------------------------------------- 0.0/10.7 MB ? eta -:--:--
+   ---------------------------------------- 0.0/10.7 MB ? eta -:--:--
+   ---------------------------------------- 0.0/10.7 MB ? eta -:--:--
+   ---------------------------------------- 0.0/10.7 MB ? eta -:--:--
+   ---------------------------------------- 0.0/10.7 MB ? eta -:--:--
+   ---------------------------------------- 0.0/10.7 MB ? eta -:--:--
+   ---------------------------------------- 0.0/10.7 MB ? eta -:--:--
+   ---------------------------------------- 0.0/10.7 MB ? eta -:--:--
+    --------------------------------------- 0.3/10.7 MB ? eta -:--:--
+    --------------------------------------- 0.3/10.7 MB ? eta -:--:--
+    --------------------------------------- 0.3/10.7 MB ? eta -:--:--
+    --------------------------------------- 0.3/10.7 MB ? eta -:--:--
+    --------------------------------------- 0.3/10.7 MB ? eta -:--:--
+    --------------------------------------- 0.3/10.7 MB ? eta -:--:--
+    --------------------------------------- 0.3/10.7 MB ? eta -:--:--
+    --------------------------------------- 0.3/10.7 MB ? eta -:--:--
+    --------------------------------------- 0.3/10.7 MB ? eta -:--:--
+    --------------------------------------- 0.3/10.7 MB ? eta -:--:--
+    --------------------------------------- 0.3/10.7 MB ? eta -:--:--
+    --------------------------------------- 0.3/10.7 MB ? eta -:--:--
+    --------------------------------------- 0.3/10.7 MB ? eta -:--:--
+    --------------------------------------- 0.3/10.7 MB ? eta -:--:--
+   - -------------------------------------- 0.5/10.7 MB 86.8 kB/s eta 0:01:57
+   - -------------------------------------- 0.5/10.7 MB 86.8 kB/s eta 0:01:57
+   - -------------------------------------- 0.5/10.7 MB 86.8 kB/s eta 0:01:57
+   - -------------------------------------- 0.5/10.7 MB 86.8 kB/s eta 0:01:57
+   - -------------------------------------- 0.5/10.7 MB 86.8 kB/s eta 0:01:57
+   - -------------------------------------- 0.5/10.7 MB 86.8 kB/s eta 0:01:57
+   -- ------------------------------------- 0.8/10.7 MB 124.9 kB/s eta 0:01:19
+   -- ------------------------------------- 0.8/10.7 MB 124.9 kB/s eta 0:01:19
+   -- ------------------------------------- 0.8/10.7 MB 124.9 kB/s eta 0:01:19
+   -- ------------------------------------- 0.8/10.7 MB 124.9 kB/s eta 0:01:19
+   -- ------------------------------------- 0.8/10.7 MB 124.9 kB/s eta 0:01:19
+   -- ------------------------------------- 0.8/10.7 MB 124.9 kB/s eta 0:01:19
+   -- ------------------------------------- 0.8/10.7 MB 124.9 kB/s eta 0:01:19
+   -- ------------------------------------- 0.8/10.7 MB 124.9 kB/s eta 0:01:19
+   -- ------------------------------------- 0.8/10.7 MB 124.9 kB/s eta 0:01:19
+   -- ------------------------------------- 0.8/10.7 MB 124.9 kB/s eta 0:01:19
+   -- ------------------------------------- 0.8/10.7 MB 124.9 kB/s eta 0:01:19
+   -- ------------------------------------- 0.8/10.7 MB 124.9 kB/s eta 0:01:19
+   -- ------------------------------------- 0.8/10.7 MB 124.9 kB/s eta 0:01:19
+   -- ------------------------------------- 0.8/10.7 MB 124.9 kB/s eta 0:01:19
+   -- ------------------------------------- 0.8/10.7 MB 124.9 kB/s eta 0:01:19
+   -- ------------------------------------- 0.8/10.7 MB 124.9 kB/s eta 0:01:19
+   --- ------------------------------------ 1.0/10.7 MB 104.0 kB/s eta 0:01:33
+   --- ------------------------------------ 1.0/10.7 MB 104.0 kB/s eta 0:01:33
+   --- ------------------------------------ 1.0/10.7 MB 104.0 kB/s eta 0:01:33
+   --- ------------------------------------ 1.0/10.7 MB 104.0 kB/s eta 0:01:33
+   --- ------------------------------------ 1.0/10.7 MB 104.0 kB/s eta 0:01:33
+   --- ------------------------------------ 1.0/10.7 MB 104.0 kB/s eta 0:01:33
+   --- ------------------------------------ 1.0/10.7 MB 104.0 kB/s eta 0:01:33
+   --- ------------------------------------ 1.0/10.7 MB 104.0 kB/s eta 0:01:33
 </pre></div>
 </div>
 </div>
@@ -675,15 +709,23 @@ hint: See above for details.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.tree</span><span class="w"> </span><span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LabelEncoder</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1"># Data dari Excel</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Hasil Information Gain dengan sklearn (threshold tetap) ===
 
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;sklearn&#39;
+Fitur: Sepal Length (Threshold = 5.45)
+  Entropy Awal     : 1.58
+  Entropy Kiri     : 0.81
+  Entropy Kanan    : 1.49
+  Entropy Rata2    : 1.31
+  Information Gain : 0.27
+
+Fitur: Sepal Width (Threshold = 3.0)
+  Entropy Awal     : 1.58
+  Entropy Kiri     : 1.41
+  Entropy Kanan    : 1.38
+  Entropy Rata2    : 1.39
+  Information Gain : 0.19
+
+Fitur terbaik berdasarkan Information Gain tertinggi adalah: **Sepal Length** (IG = 0.27)
 </pre></div>
 </div>
 </div>
