@@ -1,0 +1,2510 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Diskritisasi data (Binning) menggunakan K-Means Clustering &#8212; Penambangan Data</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Diskritisasi_Data';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Decision Tree" href="decisiontree.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Penambangan Data - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Penambangan Data - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to MyPage
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Memahami_data.html">Memahami Data dalam Penambangan Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Klasifikasi_Naive_Bayas.html">Klasifikasi Naive Bayas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UTS.html"><strong>UJIAN TENGAH SEMESTER</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="K-Means_Clustering_dan_Fuzzy_C-Means.html">K-Means Clustering dan Fuzzy C-Means</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="decisiontree.html">Decision Tree</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Diskritisasi data (Binning) menggunakan K-Means Clustering</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FDiskritisasi_Data.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Diskritisasi_Data.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Diskritisasi data (Binning) menggunakan K-Means Clustering</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengganti-label-sepal-length-menjadi-kategori-dengan-4-cluster">Mengganti Label Sepal Length menjadi Kategori dengan 4 Cluster</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-library">Import Library</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengambil-data-iris">Mengambil Data IRIS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengambil-label-sepal-length">Mengambil label Sepal Length</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#melakukan-normalisasi-data">Melakukan Normalisasi Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#melakukan-clustering-dengan-4-cluster">Melakukan Clustering dengan 4 Cluster</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengubah-label-cluster-menjadi-angka">Mengubah Label Cluster menjadi angka</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengubah-data-sepal-length-menjadi-cluster-yang-telah-dilakukan-sebelumnya-dan-disimpan-ke-csv">Mengubah Data Sepal Length menjadi Cluster yang telah dilakukan sebelumnya dan disimpan ke CSV</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengganti-label-sepal-width-menjadi-kategori-dengan-3-cluster">Mengganti Label Sepal Width menjadi Kategori dengan 3 Cluster</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Mengambil Data IRIS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengambil-label-sepal-width">Mengambil label Sepal Width</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Melakukan Normalisasi Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#melakukan-clustering-dengan-3-cluster">Melakukan Clustering dengan 3 Cluster</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Mengubah Label Cluster menjadi angka</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengubah-data-sepal-width-menjadi-cluster-yang-telah-dilakukan-sebelumnya-dan-disimpan-ke-csv">Mengubah Data Sepal Width menjadi Cluster yang telah dilakukan sebelumnya dan disimpan ke CSV</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengganti-label-petal-length-menjadi-kategori-dengan-4-cluster">Mengganti Label Petal Length menjadi Kategori dengan 4 Cluster</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Mengambil Data IRIS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengambil-label-petal-length">Mengambil label Petal Length</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Melakukan Normalisasi Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Melakukan Clustering dengan 4 Cluster</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Mengubah Label Cluster menjadi angka</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengubah-data-petal-length-menjadi-cluster-yang-telah-dilakukan-sebelumnya-dan-disimpan-ke-csv">Mengubah Data Petal Length menjadi Cluster yang telah dilakukan sebelumnya dan disimpan ke CSV</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengganti-label-petal-width-menjadi-kategori-dengan-3-cluster">Mengganti Label Petal Width menjadi Kategori dengan 3 Cluster</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Mengambil Data IRIS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengambil-label-petal-width">Mengambil label Petal Width</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Melakukan Normalisasi Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Melakukan Clustering dengan 3 Cluster</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Mengubah Label Cluster menjadi angka</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengubah-data-petal-width-menjadi-cluster-yang-telah-dilakukan-sebelumnya-dan-disimpan-ke-csv">Mengubah Data Petal Width menjadi Cluster yang telah dilakukan sebelumnya dan disimpan ke CSV</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-akhir-data-iris-yang-telah-di-diskritisasi">Hasil Akhir data IRIS yang telah di Diskritisasi</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dengan-class">Dengan Class</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tanpa-class">Tanpa Class</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="diskritisasi-data-binning-menggunakan-k-means-clustering">
+<h1>Diskritisasi data (Binning) menggunakan K-Means Clustering<a class="headerlink" href="#diskritisasi-data-binning-menggunakan-k-means-clustering" title="Link to this heading">#</a></h1>
+<section id="mengganti-label-sepal-length-menjadi-kategori-dengan-4-cluster">
+<h2>Mengganti Label Sepal Length menjadi Kategori dengan 4 Cluster<a class="headerlink" href="#mengganti-label-sepal-length-menjadi-kategori-dengan-4-cluster" title="Link to this heading">#</a></h2>
+<section id="import-library">
+<h3>Import Library<a class="headerlink" href="#import-library" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.cluster</span><span class="w"> </span><span class="kn">import</span> <span class="n">KMeans</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.cluster</span><span class="w"> </span><span class="kn">import</span> <span class="n">KMeans</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;sklearn&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="mengambil-data-iris">
+<h3>Mengambil Data IRIS<a class="headerlink" href="#mengambil-data-iris" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Baca data</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;IRIS_Diskritisasi.csv&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data IRIS&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data IRIS
+   id  sepal_length  sepal_width  petal_length  petal_width        class
+0   1           5.1          3.5           1.4          0.2  Iris-setosa
+1   2           4.9          3.0           1.4          0.2  Iris-setosa
+2   3           4.7          3.2           1.3          0.2  Iris-setosa
+3   4           4.6          3.1           1.5          0.2  Iris-setosa
+4   5           5.0          3.6           1.4          0.2  Iris-setosa
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="mengambil-label-sepal-length">
+<h3>Mengambil label Sepal Length<a class="headerlink" href="#mengambil-label-sepal-length" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ambil hanya kolom sepal_length untuk clustering</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="p">[[</span><span class="s1">&#39;sepal_length&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Data IRIS Sepal Length&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data IRIS Sepal Length
+[[5.1]
+ [4.9]
+ [4.7]
+ [4.6]
+ [5. ]
+ [5.4]
+ [4.6]
+ [5. ]
+ [4.4]
+ [4.9]
+ [5.4]
+ [4.8]
+ [4.8]
+ [4.3]
+ [5.8]
+ [5.7]
+ [5.4]
+ [5.1]
+ [5.7]
+ [5.1]
+ [5.4]
+ [5.1]
+ [4.6]
+ [5.1]
+ [4.8]
+ [5. ]
+ [5. ]
+ [5.2]
+ [5.2]
+ [4.7]
+ [4.8]
+ [5.4]
+ [5.2]
+ [5.5]
+ [4.9]
+ [5. ]
+ [5.5]
+ [4.9]
+ [4.4]
+ [5.1]
+ [5. ]
+ [4.5]
+ [4.4]
+ [5. ]
+ [5.1]
+ [4.8]
+ [5.1]
+ [4.6]
+ [5.3]
+ [5. ]
+ [7. ]
+ [6.4]
+ [6.9]
+ [5.5]
+ [6.5]
+ [5.7]
+ [6.3]
+ [4.9]
+ [6.6]
+ [5.2]
+ [5. ]
+ [5.9]
+ [6. ]
+ [6.1]
+ [5.6]
+ [6.7]
+ [5.6]
+ [5.8]
+ [6.2]
+ [5.6]
+ [5.9]
+ [6.1]
+ [6.3]
+ [6.1]
+ [6.4]
+ [6.6]
+ [6.8]
+ [6.7]
+ [6. ]
+ [5.7]
+ [5.5]
+ [5.5]
+ [5.8]
+ [6. ]
+ [5.4]
+ [6. ]
+ [6.7]
+ [6.3]
+ [5.6]
+ [5.5]
+ [5.5]
+ [6.1]
+ [5.8]
+ [5. ]
+ [5.6]
+ [5.7]
+ [5.7]
+ [6.2]
+ [5.1]
+ [5.7]
+ [6.3]
+ [5.8]
+ [7.1]
+ [6.3]
+ [6.5]
+ [7.6]
+ [4.9]
+ [7.3]
+ [6.7]
+ [7.2]
+ [6.5]
+ [6.4]
+ [6.8]
+ [5.7]
+ [5.8]
+ [6.4]
+ [6.5]
+ [7.7]
+ [7.7]
+ [6. ]
+ [6.9]
+ [5.6]
+ [7.7]
+ [6.3]
+ [6.7]
+ [7.2]
+ [6.2]
+ [6.1]
+ [6.4]
+ [7.2]
+ [7.4]
+ [7.9]
+ [6.4]
+ [6.3]
+ [6.1]
+ [7.7]
+ [6.3]
+ [6.4]
+ [6. ]
+ [6.9]
+ [6.7]
+ [6.9]
+ [5.8]
+ [6.8]
+ [6.7]
+ [6.7]
+ [6.3]
+ [6.5]
+ [6.2]
+ [5.9]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="melakukan-normalisasi-data">
+<h3>Melakukan Normalisasi Data<a class="headerlink" href="#melakukan-normalisasi-data" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Normalisasi</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">X_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Normalisasi data Sepal Length&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X_scaled</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Normalisasi data Sepal Length
+[[-0.90068117]
+ [-1.14301691]
+ [-1.38535265]
+ [-1.50652052]
+ [-1.02184904]
+ [-0.53717756]
+ [-1.50652052]
+ [-1.02184904]
+ [-1.74885626]
+ [-1.14301691]
+ [-0.53717756]
+ [-1.26418478]
+ [-1.26418478]
+ [-1.87002413]
+ [-0.05250608]
+ [-0.17367395]
+ [-0.53717756]
+ [-0.90068117]
+ [-0.17367395]
+ [-0.90068117]
+ [-0.53717756]
+ [-0.90068117]
+ [-1.50652052]
+ [-0.90068117]
+ [-1.26418478]
+ [-1.02184904]
+ [-1.02184904]
+ [-0.7795133 ]
+ [-0.7795133 ]
+ [-1.38535265]
+ [-1.26418478]
+ [-0.53717756]
+ [-0.7795133 ]
+ [-0.41600969]
+ [-1.14301691]
+ [-1.02184904]
+ [-0.41600969]
+ [-1.14301691]
+ [-1.74885626]
+ [-0.90068117]
+ [-1.02184904]
+ [-1.62768839]
+ [-1.74885626]
+ [-1.02184904]
+ [-0.90068117]
+ [-1.26418478]
+ [-0.90068117]
+ [-1.50652052]
+ [-0.65834543]
+ [-1.02184904]
+ [ 1.40150837]
+ [ 0.67450115]
+ [ 1.2803405 ]
+ [-0.41600969]
+ [ 0.79566902]
+ [-0.17367395]
+ [ 0.55333328]
+ [-1.14301691]
+ [ 0.91683689]
+ [-0.7795133 ]
+ [-1.02184904]
+ [ 0.06866179]
+ [ 0.18982966]
+ [ 0.31099753]
+ [-0.29484182]
+ [ 1.03800476]
+ [-0.29484182]
+ [-0.05250608]
+ [ 0.4321654 ]
+ [-0.29484182]
+ [ 0.06866179]
+ [ 0.31099753]
+ [ 0.55333328]
+ [ 0.31099753]
+ [ 0.67450115]
+ [ 0.91683689]
+ [ 1.15917263]
+ [ 1.03800476]
+ [ 0.18982966]
+ [-0.17367395]
+ [-0.41600969]
+ [-0.41600969]
+ [-0.05250608]
+ [ 0.18982966]
+ [-0.53717756]
+ [ 0.18982966]
+ [ 1.03800476]
+ [ 0.55333328]
+ [-0.29484182]
+ [-0.41600969]
+ [-0.41600969]
+ [ 0.31099753]
+ [-0.05250608]
+ [-1.02184904]
+ [-0.29484182]
+ [-0.17367395]
+ [-0.17367395]
+ [ 0.4321654 ]
+ [-0.90068117]
+ [-0.17367395]
+ [ 0.55333328]
+ [-0.05250608]
+ [ 1.52267624]
+ [ 0.55333328]
+ [ 0.79566902]
+ [ 2.12851559]
+ [-1.14301691]
+ [ 1.76501198]
+ [ 1.03800476]
+ [ 1.64384411]
+ [ 0.79566902]
+ [ 0.67450115]
+ [ 1.15917263]
+ [-0.17367395]
+ [-0.05250608]
+ [ 0.67450115]
+ [ 0.79566902]
+ [ 2.24968346]
+ [ 2.24968346]
+ [ 0.18982966]
+ [ 1.2803405 ]
+ [-0.29484182]
+ [ 2.24968346]
+ [ 0.55333328]
+ [ 1.03800476]
+ [ 1.64384411]
+ [ 0.4321654 ]
+ [ 0.31099753]
+ [ 0.67450115]
+ [ 1.64384411]
+ [ 1.88617985]
+ [ 2.4920192 ]
+ [ 0.67450115]
+ [ 0.55333328]
+ [ 0.31099753]
+ [ 2.24968346]
+ [ 0.55333328]
+ [ 0.67450115]
+ [ 0.18982966]
+ [ 1.2803405 ]
+ [ 1.03800476]
+ [ 1.2803405 ]
+ [-0.05250608]
+ [ 1.15917263]
+ [ 1.03800476]
+ [ 1.03800476]
+ [ 0.55333328]
+ [ 0.79566902]
+ [ 0.4321654 ]
+ [ 0.06866179]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="melakukan-clustering-dengan-4-cluster">
+<h3>Melakukan Clustering dengan 4 Cluster<a class="headerlink" href="#melakukan-clustering-dengan-4-cluster" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Clustering</span>
+<span class="n">kms</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_scaled</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Hasil label cluster (dengan angka):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">kms</span><span class="o">.</span><span class="n">labels_</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hasil label cluster (dengan angka):
+[2 2 2 2 2 0 2 2 2 2 0 2 2 2 0 0 0 2 0 2 0 2 2 2 2 2 2 2 2 2 2 0 2 0 2 2 0
+ 2 2 2 2 2 2 2 2 2 2 2 0 2 1 3 1 0 3 0 3 2 3 2 2 0 0 3 0 3 0 0 3 0 0 3 3 3
+ 3 3 3 3 0 0 0 0 0 0 0 0 3 3 0 0 0 3 0 2 0 0 0 3 2 0 3 0 1 3 3 1 2 1 3 1 3
+ 3 3 0 0 3 3 1 1 0 1 0 1 3 3 1 3 3 3 1 1 1 3 3 3 1 3 3 0 1 3 1 0 3 3 3 3 3
+ 3 0]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="mengubah-label-cluster-menjadi-angka">
+<h3>Mengubah Label Cluster menjadi angka<a class="headerlink" href="#mengubah-label-cluster-menjadi-angka" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mapping label angka → huruf</span>
+<span class="n">label_mapping</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span><span class="s1">&#39;D&#39;</span><span class="p">}</span>
+<span class="n">cluster_labels_named</span> <span class="o">=</span> <span class="p">[</span><span class="n">label_mapping</span><span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">kms</span><span class="o">.</span><span class="n">labels_</span><span class="p">]</span>
+<span class="n">cluster_labels_named_np</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">cluster_labels_named</span><span class="p">)</span>
+
+<span class="c1"># Cetak hasil label dalam bentuk huruf</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Hasil label cluster (dengan nama):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cluster_labels_named_np</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hasil label cluster (dengan nama):
+[&#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;A&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;A&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;A&#39; &#39;A&#39; &#39;A&#39; &#39;C&#39;
+ &#39;A&#39; &#39;C&#39; &#39;A&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;A&#39; &#39;C&#39; &#39;A&#39; &#39;C&#39; &#39;C&#39;
+ &#39;A&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;A&#39; &#39;C&#39; &#39;B&#39; &#39;D&#39; &#39;B&#39; &#39;A&#39;
+ &#39;D&#39; &#39;A&#39; &#39;D&#39; &#39;C&#39; &#39;D&#39; &#39;C&#39; &#39;C&#39; &#39;A&#39; &#39;A&#39; &#39;D&#39; &#39;A&#39; &#39;D&#39; &#39;A&#39; &#39;A&#39; &#39;D&#39; &#39;A&#39; &#39;A&#39; &#39;D&#39;
+ &#39;D&#39; &#39;D&#39; &#39;D&#39; &#39;D&#39; &#39;D&#39; &#39;D&#39; &#39;A&#39; &#39;A&#39; &#39;A&#39; &#39;A&#39; &#39;A&#39; &#39;A&#39; &#39;A&#39; &#39;A&#39; &#39;D&#39; &#39;D&#39; &#39;A&#39; &#39;A&#39;
+ &#39;A&#39; &#39;D&#39; &#39;A&#39; &#39;C&#39; &#39;A&#39; &#39;A&#39; &#39;A&#39; &#39;D&#39; &#39;C&#39; &#39;A&#39; &#39;D&#39; &#39;A&#39; &#39;B&#39; &#39;D&#39; &#39;D&#39; &#39;B&#39; &#39;C&#39; &#39;B&#39;
+ &#39;D&#39; &#39;B&#39; &#39;D&#39; &#39;D&#39; &#39;D&#39; &#39;A&#39; &#39;A&#39; &#39;D&#39; &#39;D&#39; &#39;B&#39; &#39;B&#39; &#39;A&#39; &#39;B&#39; &#39;A&#39; &#39;B&#39; &#39;D&#39; &#39;D&#39; &#39;B&#39;
+ &#39;D&#39; &#39;D&#39; &#39;D&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;D&#39; &#39;D&#39; &#39;D&#39; &#39;B&#39; &#39;D&#39; &#39;D&#39; &#39;A&#39; &#39;B&#39; &#39;D&#39; &#39;B&#39; &#39;A&#39; &#39;D&#39;
+ &#39;D&#39; &#39;D&#39; &#39;D&#39; &#39;D&#39; &#39;D&#39; &#39;A&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="mengubah-data-sepal-length-menjadi-cluster-yang-telah-dilakukan-sebelumnya-dan-disimpan-ke-csv">
+<h3>Mengubah Data Sepal Length menjadi Cluster yang telah dilakukan sebelumnya dan disimpan ke CSV<a class="headerlink" href="#mengubah-data-sepal-length-menjadi-cluster-yang-telah-dilakukan-sebelumnya-dan-disimpan-ke-csv" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ganti kolom sepal_length dengan label huruf cluster</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;sepal_length&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cluster_labels_named_np</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Data IRIS dengan &#39;sepal_length&#39; diganti huruf cluster:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># Simpan ke CSV</span>
+<span class="n">data</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;IRIS_Diskritisasi.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data IRIS dengan &#39;sepal_length&#39; diganti huruf cluster:
+      id sepal_length  sepal_width  petal_length  petal_width           class
+0      1            C          3.5           1.4          0.2     Iris-setosa
+1      2            C          3.0           1.4          0.2     Iris-setosa
+2      3            C          3.2           1.3          0.2     Iris-setosa
+3      4            C          3.1           1.5          0.2     Iris-setosa
+4      5            C          3.6           1.4          0.2     Iris-setosa
+..   ...          ...          ...           ...          ...             ...
+145  146            D          3.0           5.2          2.3  Iris-virginica
+146  147            D          2.5           5.0          1.9  Iris-virginica
+147  148            D          3.0           5.2          2.0  Iris-virginica
+148  149            D          3.4           5.4          2.3  Iris-virginica
+149  150            A          3.0           5.1          1.8  Iris-virginica
+
+[150 rows x 6 columns]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="mengganti-label-sepal-width-menjadi-kategori-dengan-3-cluster">
+<h2>Mengganti Label Sepal Width menjadi Kategori dengan 3 Cluster<a class="headerlink" href="#mengganti-label-sepal-width-menjadi-kategori-dengan-3-cluster" title="Link to this heading">#</a></h2>
+<section id="id1">
+<h3>Mengambil Data IRIS<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Baca data</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;IRIS_Diskritisasi.csv&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data IRIS&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data IRIS
+   id sepal_length  sepal_width  petal_length  petal_width        class
+0   1            C          3.5           1.4          0.2  Iris-setosa
+1   2            C          3.0           1.4          0.2  Iris-setosa
+2   3            C          3.2           1.3          0.2  Iris-setosa
+3   4            C          3.1           1.5          0.2  Iris-setosa
+4   5            C          3.6           1.4          0.2  Iris-setosa
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="mengambil-label-sepal-width">
+<h3>Mengambil label Sepal Width<a class="headerlink" href="#mengambil-label-sepal-width" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ambil hanya kolom sepal_width untuk clustering</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="p">[[</span><span class="s1">&#39;sepal_width&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Data IRIS Sepal Width&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data IRIS Sepal Width
+[[3.5]
+ [3. ]
+ [3.2]
+ [3.1]
+ [3.6]
+ [3.9]
+ [3.4]
+ [3.4]
+ [2.9]
+ [3.1]
+ [3.7]
+ [3.4]
+ [3. ]
+ [3. ]
+ [4. ]
+ [4.4]
+ [3.9]
+ [3.5]
+ [3.8]
+ [3.8]
+ [3.4]
+ [3.7]
+ [3.6]
+ [3.3]
+ [3.4]
+ [3. ]
+ [3.4]
+ [3.5]
+ [3.4]
+ [3.2]
+ [3.1]
+ [3.4]
+ [4.1]
+ [4.2]
+ [3.1]
+ [3.2]
+ [3.5]
+ [3.1]
+ [3. ]
+ [3.4]
+ [3.5]
+ [2.3]
+ [3.2]
+ [3.5]
+ [3.8]
+ [3. ]
+ [3.8]
+ [3.2]
+ [3.7]
+ [3.3]
+ [3.2]
+ [3.2]
+ [3.1]
+ [2.3]
+ [2.8]
+ [2.8]
+ [3.3]
+ [2.4]
+ [2.9]
+ [2.7]
+ [2. ]
+ [3. ]
+ [2.2]
+ [2.9]
+ [2.9]
+ [3.1]
+ [3. ]
+ [2.7]
+ [2.2]
+ [2.5]
+ [3.2]
+ [2.8]
+ [2.5]
+ [2.8]
+ [2.9]
+ [3. ]
+ [2.8]
+ [3. ]
+ [2.9]
+ [2.6]
+ [2.4]
+ [2.4]
+ [2.7]
+ [2.7]
+ [3. ]
+ [3.4]
+ [3.1]
+ [2.3]
+ [3. ]
+ [2.5]
+ [2.6]
+ [3. ]
+ [2.6]
+ [2.3]
+ [2.7]
+ [3. ]
+ [2.9]
+ [2.9]
+ [2.5]
+ [2.8]
+ [3.3]
+ [2.7]
+ [3. ]
+ [2.9]
+ [3. ]
+ [3. ]
+ [2.5]
+ [2.9]
+ [2.5]
+ [3.6]
+ [3.2]
+ [2.7]
+ [3. ]
+ [2.5]
+ [2.8]
+ [3.2]
+ [3. ]
+ [3.8]
+ [2.6]
+ [2.2]
+ [3.2]
+ [2.8]
+ [2.8]
+ [2.7]
+ [3.3]
+ [3.2]
+ [2.8]
+ [3. ]
+ [2.8]
+ [3. ]
+ [2.8]
+ [3.8]
+ [2.8]
+ [2.8]
+ [2.6]
+ [3. ]
+ [3.4]
+ [3.1]
+ [3. ]
+ [3.1]
+ [3.1]
+ [3.1]
+ [2.7]
+ [3.2]
+ [3.3]
+ [3. ]
+ [2.5]
+ [3. ]
+ [3.4]
+ [3. ]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id2">
+<h3>Melakukan Normalisasi Data<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Normalisasi</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">X_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Normalisasi data Sepal Width&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X_scaled</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Normalisasi data Sepal Width
+[[ 1.03205722]
+ [-0.1249576 ]
+ [ 0.33784833]
+ [ 0.10644536]
+ [ 1.26346019]
+ [ 1.95766909]
+ [ 0.80065426]
+ [ 0.80065426]
+ [-0.35636057]
+ [ 0.10644536]
+ [ 1.49486315]
+ [ 0.80065426]
+ [-0.1249576 ]
+ [-0.1249576 ]
+ [ 2.18907205]
+ [ 3.11468391]
+ [ 1.95766909]
+ [ 1.03205722]
+ [ 1.72626612]
+ [ 1.72626612]
+ [ 0.80065426]
+ [ 1.49486315]
+ [ 1.26346019]
+ [ 0.56925129]
+ [ 0.80065426]
+ [-0.1249576 ]
+ [ 0.80065426]
+ [ 1.03205722]
+ [ 0.80065426]
+ [ 0.33784833]
+ [ 0.10644536]
+ [ 0.80065426]
+ [ 2.42047502]
+ [ 2.65187798]
+ [ 0.10644536]
+ [ 0.33784833]
+ [ 1.03205722]
+ [ 0.10644536]
+ [-0.1249576 ]
+ [ 0.80065426]
+ [ 1.03205722]
+ [-1.74477836]
+ [ 0.33784833]
+ [ 1.03205722]
+ [ 1.72626612]
+ [-0.1249576 ]
+ [ 1.72626612]
+ [ 0.33784833]
+ [ 1.49486315]
+ [ 0.56925129]
+ [ 0.33784833]
+ [ 0.33784833]
+ [ 0.10644536]
+ [-1.74477836]
+ [-0.58776353]
+ [-0.58776353]
+ [ 0.56925129]
+ [-1.51337539]
+ [-0.35636057]
+ [-0.8191665 ]
+ [-2.43898725]
+ [-0.1249576 ]
+ [-1.97618132]
+ [-0.35636057]
+ [-0.35636057]
+ [ 0.10644536]
+ [-0.1249576 ]
+ [-0.8191665 ]
+ [-1.97618132]
+ [-1.28197243]
+ [ 0.33784833]
+ [-0.58776353]
+ [-1.28197243]
+ [-0.58776353]
+ [-0.35636057]
+ [-0.1249576 ]
+ [-0.58776353]
+ [-0.1249576 ]
+ [-0.35636057]
+ [-1.05056946]
+ [-1.51337539]
+ [-1.51337539]
+ [-0.8191665 ]
+ [-0.8191665 ]
+ [-0.1249576 ]
+ [ 0.80065426]
+ [ 0.10644536]
+ [-1.74477836]
+ [-0.1249576 ]
+ [-1.28197243]
+ [-1.05056946]
+ [-0.1249576 ]
+ [-1.05056946]
+ [-1.74477836]
+ [-0.8191665 ]
+ [-0.1249576 ]
+ [-0.35636057]
+ [-0.35636057]
+ [-1.28197243]
+ [-0.58776353]
+ [ 0.56925129]
+ [-0.8191665 ]
+ [-0.1249576 ]
+ [-0.35636057]
+ [-0.1249576 ]
+ [-0.1249576 ]
+ [-1.28197243]
+ [-0.35636057]
+ [-1.28197243]
+ [ 1.26346019]
+ [ 0.33784833]
+ [-0.8191665 ]
+ [-0.1249576 ]
+ [-1.28197243]
+ [-0.58776353]
+ [ 0.33784833]
+ [-0.1249576 ]
+ [ 1.72626612]
+ [-1.05056946]
+ [-1.97618132]
+ [ 0.33784833]
+ [-0.58776353]
+ [-0.58776353]
+ [-0.8191665 ]
+ [ 0.56925129]
+ [ 0.33784833]
+ [-0.58776353]
+ [-0.1249576 ]
+ [-0.58776353]
+ [-0.1249576 ]
+ [-0.58776353]
+ [ 1.72626612]
+ [-0.58776353]
+ [-0.58776353]
+ [-1.05056946]
+ [-0.1249576 ]
+ [ 0.80065426]
+ [ 0.10644536]
+ [-0.1249576 ]
+ [ 0.10644536]
+ [ 0.10644536]
+ [ 0.10644536]
+ [-0.8191665 ]
+ [ 0.33784833]
+ [ 0.56925129]
+ [-0.1249576 ]
+ [-1.28197243]
+ [-0.1249576 ]
+ [ 0.80065426]
+ [-0.1249576 ]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="melakukan-clustering-dengan-3-cluster">
+<h3>Melakukan Clustering dengan 3 Cluster<a class="headerlink" href="#melakukan-clustering-dengan-3-cluster" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Clustering</span>
+<span class="n">kms</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_scaled</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Hasil label cluster (dengan angka):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">kms</span><span class="o">.</span><span class="n">labels_</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hasil label cluster (dengan angka):
+[1 2 2 2 1 1 1 1 2 2 1 1 2 2 1 1 1 1 1 1 1 1 1 2 1 2 1 1 1 2 2 1 1 1 2 2 1
+ 2 2 1 1 0 2 1 1 2 1 2 1 2 2 2 2 0 0 0 2 0 2 0 0 2 0 2 2 2 2 0 0 0 2 0 0 0
+ 2 2 0 2 2 0 0 0 0 0 2 1 2 0 2 0 0 2 0 0 0 2 2 2 0 0 2 0 2 2 2 2 0 2 0 1 2
+ 0 2 0 0 2 2 1 0 0 2 0 0 0 2 2 0 2 0 2 0 1 0 0 0 2 1 2 2 2 2 2 0 2 2 2 0 2
+ 1 2]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id3">
+<h3>Mengubah Label Cluster menjadi angka<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mapping label angka → huruf</span>
+<span class="n">label_mapping</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span><span class="s1">&#39;D&#39;</span><span class="p">}</span>
+<span class="n">cluster_labels_named</span> <span class="o">=</span> <span class="p">[</span><span class="n">label_mapping</span><span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">kms</span><span class="o">.</span><span class="n">labels_</span><span class="p">]</span>
+<span class="n">cluster_labels_named_np</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">cluster_labels_named</span><span class="p">)</span>
+
+<span class="c1"># Cetak hasil label dalam bentuk huruf</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Hasil label cluster (dengan nama):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cluster_labels_named_np</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hasil label cluster (dengan nama):
+[&#39;B&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;C&#39; &#39;C&#39; &#39;B&#39; &#39;B&#39; &#39;C&#39; &#39;C&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39;
+ &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;C&#39; &#39;B&#39; &#39;C&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;C&#39; &#39;C&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;C&#39; &#39;C&#39;
+ &#39;B&#39; &#39;C&#39; &#39;C&#39; &#39;B&#39; &#39;B&#39; &#39;A&#39; &#39;C&#39; &#39;B&#39; &#39;B&#39; &#39;C&#39; &#39;B&#39; &#39;C&#39; &#39;B&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;A&#39;
+ &#39;A&#39; &#39;A&#39; &#39;C&#39; &#39;A&#39; &#39;C&#39; &#39;A&#39; &#39;A&#39; &#39;C&#39; &#39;A&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;A&#39; &#39;A&#39; &#39;A&#39; &#39;C&#39; &#39;A&#39;
+ &#39;A&#39; &#39;A&#39; &#39;C&#39; &#39;C&#39; &#39;A&#39; &#39;C&#39; &#39;C&#39; &#39;A&#39; &#39;A&#39; &#39;A&#39; &#39;A&#39; &#39;A&#39; &#39;C&#39; &#39;B&#39; &#39;C&#39; &#39;A&#39; &#39;C&#39; &#39;A&#39;
+ &#39;A&#39; &#39;C&#39; &#39;A&#39; &#39;A&#39; &#39;A&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;A&#39; &#39;A&#39; &#39;C&#39; &#39;A&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;A&#39; &#39;C&#39;
+ &#39;A&#39; &#39;B&#39; &#39;C&#39; &#39;A&#39; &#39;C&#39; &#39;A&#39; &#39;A&#39; &#39;C&#39; &#39;C&#39; &#39;B&#39; &#39;A&#39; &#39;A&#39; &#39;C&#39; &#39;A&#39; &#39;A&#39; &#39;A&#39; &#39;C&#39; &#39;C&#39;
+ &#39;A&#39; &#39;C&#39; &#39;A&#39; &#39;C&#39; &#39;A&#39; &#39;B&#39; &#39;A&#39; &#39;A&#39; &#39;A&#39; &#39;C&#39; &#39;B&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;A&#39; &#39;C&#39;
+ &#39;C&#39; &#39;C&#39; &#39;A&#39; &#39;C&#39; &#39;B&#39; &#39;C&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="mengubah-data-sepal-width-menjadi-cluster-yang-telah-dilakukan-sebelumnya-dan-disimpan-ke-csv">
+<h3>Mengubah Data Sepal Width menjadi Cluster yang telah dilakukan sebelumnya dan disimpan ke CSV<a class="headerlink" href="#mengubah-data-sepal-width-menjadi-cluster-yang-telah-dilakukan-sebelumnya-dan-disimpan-ke-csv" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ganti kolom sepal_width dengan label huruf cluster</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;sepal_width&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cluster_labels_named_np</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Data IRIS dengan &#39;sepal_width&#39; diganti huruf cluster:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># Simpan ke CSV</span>
+<span class="n">data</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;IRIS_Diskritisasi.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data IRIS dengan &#39;sepal_width&#39; diganti huruf cluster:
+      id sepal_length sepal_width  petal_length  petal_width           class
+0      1            C           B           1.4          0.2     Iris-setosa
+1      2            C           C           1.4          0.2     Iris-setosa
+2      3            C           C           1.3          0.2     Iris-setosa
+3      4            C           C           1.5          0.2     Iris-setosa
+4      5            C           B           1.4          0.2     Iris-setosa
+..   ...          ...         ...           ...          ...             ...
+145  146            D           C           5.2          2.3  Iris-virginica
+146  147            D           A           5.0          1.9  Iris-virginica
+147  148            D           C           5.2          2.0  Iris-virginica
+148  149            D           B           5.4          2.3  Iris-virginica
+149  150            A           C           5.1          1.8  Iris-virginica
+
+[150 rows x 6 columns]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="mengganti-label-petal-length-menjadi-kategori-dengan-4-cluster">
+<h2>Mengganti Label Petal Length menjadi Kategori dengan 4 Cluster<a class="headerlink" href="#mengganti-label-petal-length-menjadi-kategori-dengan-4-cluster" title="Link to this heading">#</a></h2>
+<section id="id4">
+<h3>Mengambil Data IRIS<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Baca data</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;IRIS_Diskritisasi.csv&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data IRIS&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data IRIS
+   id sepal_length sepal_width  petal_length  petal_width        class
+0   1            C           B           1.4          0.2  Iris-setosa
+1   2            C           C           1.4          0.2  Iris-setosa
+2   3            C           C           1.3          0.2  Iris-setosa
+3   4            C           C           1.5          0.2  Iris-setosa
+4   5            C           B           1.4          0.2  Iris-setosa
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="mengambil-label-petal-length">
+<h3>Mengambil label Petal Length<a class="headerlink" href="#mengambil-label-petal-length" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ambil hanya kolom petal_length untuk clustering</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="p">[[</span><span class="s1">&#39;petal_length&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Data IRIS Petal Length&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data IRIS Petal Length
+[[1.4]
+ [1.4]
+ [1.3]
+ [1.5]
+ [1.4]
+ [1.7]
+ [1.4]
+ [1.5]
+ [1.4]
+ [1.5]
+ [1.5]
+ [1.6]
+ [1.4]
+ [1.1]
+ [1.2]
+ [1.5]
+ [1.3]
+ [1.4]
+ [1.7]
+ [1.5]
+ [1.7]
+ [1.5]
+ [1. ]
+ [1.7]
+ [1.9]
+ [1.6]
+ [1.6]
+ [1.5]
+ [1.4]
+ [1.6]
+ [1.6]
+ [1.5]
+ [1.5]
+ [1.4]
+ [1.5]
+ [1.2]
+ [1.3]
+ [1.5]
+ [1.3]
+ [1.5]
+ [1.3]
+ [1.3]
+ [1.3]
+ [1.6]
+ [1.9]
+ [1.4]
+ [1.6]
+ [1.4]
+ [1.5]
+ [1.4]
+ [4.7]
+ [4.5]
+ [4.9]
+ [4. ]
+ [4.6]
+ [4.5]
+ [4.7]
+ [3.3]
+ [4.6]
+ [3.9]
+ [3.5]
+ [4.2]
+ [4. ]
+ [4.7]
+ [3.6]
+ [4.4]
+ [4.5]
+ [4.1]
+ [4.5]
+ [3.9]
+ [4.8]
+ [4. ]
+ [4.9]
+ [4.7]
+ [4.3]
+ [4.4]
+ [4.8]
+ [5. ]
+ [4.5]
+ [3.5]
+ [3.8]
+ [3.7]
+ [3.9]
+ [5.1]
+ [4.5]
+ [4.5]
+ [4.7]
+ [4.4]
+ [4.1]
+ [4. ]
+ [4.4]
+ [4.6]
+ [4. ]
+ [3.3]
+ [4.2]
+ [4.2]
+ [4.2]
+ [4.3]
+ [3. ]
+ [4.1]
+ [6. ]
+ [5.1]
+ [5.9]
+ [5.6]
+ [5.8]
+ [6.6]
+ [4.5]
+ [6.3]
+ [5.8]
+ [6.1]
+ [5.1]
+ [5.3]
+ [5.5]
+ [5. ]
+ [5.1]
+ [5.3]
+ [5.5]
+ [6.7]
+ [6.9]
+ [5. ]
+ [5.7]
+ [4.9]
+ [6.7]
+ [4.9]
+ [5.7]
+ [6. ]
+ [4.8]
+ [4.9]
+ [5.6]
+ [5.8]
+ [6.1]
+ [6.4]
+ [5.6]
+ [5.1]
+ [5.6]
+ [6.1]
+ [5.6]
+ [5.5]
+ [4.8]
+ [5.4]
+ [5.6]
+ [5.1]
+ [5.1]
+ [5.9]
+ [5.7]
+ [5.2]
+ [5. ]
+ [5.2]
+ [5.4]
+ [5.1]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id5">
+<h3>Melakukan Normalisasi Data<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Normalisasi</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">X_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Normalisasi data Petal Length&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X_scaled</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Normalisasi data Petal Length
+[[-1.3412724 ]
+ [-1.3412724 ]
+ [-1.39813811]
+ [-1.2844067 ]
+ [-1.3412724 ]
+ [-1.17067529]
+ [-1.3412724 ]
+ [-1.2844067 ]
+ [-1.3412724 ]
+ [-1.2844067 ]
+ [-1.2844067 ]
+ [-1.227541  ]
+ [-1.3412724 ]
+ [-1.51186952]
+ [-1.45500381]
+ [-1.2844067 ]
+ [-1.39813811]
+ [-1.3412724 ]
+ [-1.17067529]
+ [-1.2844067 ]
+ [-1.17067529]
+ [-1.2844067 ]
+ [-1.56873522]
+ [-1.17067529]
+ [-1.05694388]
+ [-1.227541  ]
+ [-1.227541  ]
+ [-1.2844067 ]
+ [-1.3412724 ]
+ [-1.227541  ]
+ [-1.227541  ]
+ [-1.2844067 ]
+ [-1.2844067 ]
+ [-1.3412724 ]
+ [-1.2844067 ]
+ [-1.45500381]
+ [-1.39813811]
+ [-1.2844067 ]
+ [-1.39813811]
+ [-1.2844067 ]
+ [-1.39813811]
+ [-1.39813811]
+ [-1.39813811]
+ [-1.227541  ]
+ [-1.05694388]
+ [-1.3412724 ]
+ [-1.227541  ]
+ [-1.3412724 ]
+ [-1.2844067 ]
+ [-1.3412724 ]
+ [ 0.53529583]
+ [ 0.42156442]
+ [ 0.64902723]
+ [ 0.1372359 ]
+ [ 0.47843012]
+ [ 0.42156442]
+ [ 0.53529583]
+ [-0.26082403]
+ [ 0.47843012]
+ [ 0.08037019]
+ [-0.14709262]
+ [ 0.25096731]
+ [ 0.1372359 ]
+ [ 0.53529583]
+ [-0.09022692]
+ [ 0.36469871]
+ [ 0.42156442]
+ [ 0.1941016 ]
+ [ 0.42156442]
+ [ 0.08037019]
+ [ 0.59216153]
+ [ 0.1372359 ]
+ [ 0.64902723]
+ [ 0.53529583]
+ [ 0.30783301]
+ [ 0.36469871]
+ [ 0.59216153]
+ [ 0.70589294]
+ [ 0.42156442]
+ [-0.14709262]
+ [ 0.02350449]
+ [-0.03336121]
+ [ 0.08037019]
+ [ 0.76275864]
+ [ 0.42156442]
+ [ 0.42156442]
+ [ 0.53529583]
+ [ 0.36469871]
+ [ 0.1941016 ]
+ [ 0.1372359 ]
+ [ 0.36469871]
+ [ 0.47843012]
+ [ 0.1372359 ]
+ [-0.26082403]
+ [ 0.25096731]
+ [ 0.25096731]
+ [ 0.25096731]
+ [ 0.30783301]
+ [-0.43142114]
+ [ 0.1941016 ]
+ [ 1.27454998]
+ [ 0.76275864]
+ [ 1.21768427]
+ [ 1.04708716]
+ [ 1.16081857]
+ [ 1.6157442 ]
+ [ 0.42156442]
+ [ 1.44514709]
+ [ 1.16081857]
+ [ 1.33141568]
+ [ 0.76275864]
+ [ 0.87649005]
+ [ 0.99022146]
+ [ 0.70589294]
+ [ 0.76275864]
+ [ 0.87649005]
+ [ 0.99022146]
+ [ 1.67260991]
+ [ 1.78634131]
+ [ 0.70589294]
+ [ 1.10395287]
+ [ 0.64902723]
+ [ 1.67260991]
+ [ 0.64902723]
+ [ 1.10395287]
+ [ 1.27454998]
+ [ 0.59216153]
+ [ 0.64902723]
+ [ 1.04708716]
+ [ 1.16081857]
+ [ 1.33141568]
+ [ 1.50201279]
+ [ 1.04708716]
+ [ 0.76275864]
+ [ 1.04708716]
+ [ 1.33141568]
+ [ 1.04708716]
+ [ 0.99022146]
+ [ 0.59216153]
+ [ 0.93335575]
+ [ 1.04708716]
+ [ 0.76275864]
+ [ 0.76275864]
+ [ 1.21768427]
+ [ 1.10395287]
+ [ 0.81962435]
+ [ 0.70589294]
+ [ 0.81962435]
+ [ 0.93335575]
+ [ 0.76275864]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id6">
+<h3>Melakukan Clustering dengan 4 Cluster<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Clustering</span>
+<span class="n">kms</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_scaled</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Hasil label cluster (dengan angka):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">kms</span><span class="o">.</span><span class="n">labels_</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hasil label cluster (dengan angka):
+[1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 0 2 2 2 0 2 0 0 0 0 2 0 2 2 0 2 0 2 0 2 2
+ 0 2 2 2 2 0 0 0 0 2 2 2 2 2 0 0 2 2 0 0 0 0 0 0 0 0 3 2 3 3 3 3 2 3 3 3 2
+ 2 3 2 2 2 3 3 3 2 3 2 3 2 3 3 2 2 3 3 3 3 3 2 3 3 3 3 2 3 3 2 2 3 3 2 2 2
+ 3 2]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id7">
+<h3>Mengubah Label Cluster menjadi angka<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mapping label angka → huruf</span>
+<span class="n">label_mapping</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span><span class="s1">&#39;D&#39;</span><span class="p">}</span>
+<span class="n">cluster_labels_named</span> <span class="o">=</span> <span class="p">[</span><span class="n">label_mapping</span><span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">kms</span><span class="o">.</span><span class="n">labels_</span><span class="p">]</span>
+<span class="n">cluster_labels_named_np</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">cluster_labels_named</span><span class="p">)</span>
+
+<span class="c1"># Cetak hasil label dalam bentuk huruf</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Hasil label cluster (dengan nama):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cluster_labels_named_np</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hasil label cluster (dengan nama):
+[&#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39;
+ &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39;
+ &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;A&#39;
+ &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;A&#39; &#39;C&#39; &#39;A&#39; &#39;A&#39; &#39;A&#39; &#39;A&#39; &#39;C&#39; &#39;A&#39; &#39;C&#39; &#39;C&#39; &#39;A&#39; &#39;C&#39; &#39;A&#39; &#39;C&#39; &#39;A&#39;
+ &#39;C&#39; &#39;C&#39; &#39;A&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;A&#39; &#39;A&#39; &#39;A&#39; &#39;A&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;A&#39; &#39;A&#39;
+ &#39;C&#39; &#39;C&#39; &#39;A&#39; &#39;A&#39; &#39;A&#39; &#39;A&#39; &#39;A&#39; &#39;A&#39; &#39;A&#39; &#39;A&#39; &#39;D&#39; &#39;C&#39; &#39;D&#39; &#39;D&#39; &#39;D&#39; &#39;D&#39; &#39;C&#39; &#39;D&#39;
+ &#39;D&#39; &#39;D&#39; &#39;C&#39; &#39;C&#39; &#39;D&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;D&#39; &#39;D&#39; &#39;D&#39; &#39;C&#39; &#39;D&#39; &#39;C&#39; &#39;D&#39; &#39;C&#39; &#39;D&#39; &#39;D&#39;
+ &#39;C&#39; &#39;C&#39; &#39;D&#39; &#39;D&#39; &#39;D&#39; &#39;D&#39; &#39;D&#39; &#39;C&#39; &#39;D&#39; &#39;D&#39; &#39;D&#39; &#39;D&#39; &#39;C&#39; &#39;D&#39; &#39;D&#39; &#39;C&#39; &#39;C&#39; &#39;D&#39;
+ &#39;D&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;D&#39; &#39;C&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="mengubah-data-petal-length-menjadi-cluster-yang-telah-dilakukan-sebelumnya-dan-disimpan-ke-csv">
+<h3>Mengubah Data Petal Length menjadi Cluster yang telah dilakukan sebelumnya dan disimpan ke CSV<a class="headerlink" href="#mengubah-data-petal-length-menjadi-cluster-yang-telah-dilakukan-sebelumnya-dan-disimpan-ke-csv" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ganti kolom petal_length dengan label huruf cluster</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;petal_length&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cluster_labels_named_np</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Data IRIS dengan &#39;petal_length&#39; diganti huruf cluster:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># Simpan ke CSV</span>
+<span class="n">data</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;IRIS_Diskritisasi.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data IRIS dengan &#39;petal_length&#39; diganti huruf cluster:
+      id sepal_length sepal_width petal_length  petal_width           class
+0      1            C           B            B          0.2     Iris-setosa
+1      2            C           C            B          0.2     Iris-setosa
+2      3            C           C            B          0.2     Iris-setosa
+3      4            C           C            B          0.2     Iris-setosa
+4      5            C           B            B          0.2     Iris-setosa
+..   ...          ...         ...          ...          ...             ...
+145  146            D           C            C          2.3  Iris-virginica
+146  147            D           A            C          1.9  Iris-virginica
+147  148            D           C            C          2.0  Iris-virginica
+148  149            D           B            D          2.3  Iris-virginica
+149  150            A           C            C          1.8  Iris-virginica
+
+[150 rows x 6 columns]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="mengganti-label-petal-width-menjadi-kategori-dengan-3-cluster">
+<h2>Mengganti Label Petal Width menjadi Kategori dengan 3 Cluster<a class="headerlink" href="#mengganti-label-petal-width-menjadi-kategori-dengan-3-cluster" title="Link to this heading">#</a></h2>
+<section id="id8">
+<h3>Mengambil Data IRIS<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Baca data</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;IRIS_Diskritisasi.csv&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data IRIS&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data IRIS
+   id sepal_length sepal_width petal_length  petal_width        class
+0   1            C           B            B          0.2  Iris-setosa
+1   2            C           C            B          0.2  Iris-setosa
+2   3            C           C            B          0.2  Iris-setosa
+3   4            C           C            B          0.2  Iris-setosa
+4   5            C           B            B          0.2  Iris-setosa
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="mengambil-label-petal-width">
+<h3>Mengambil label Petal Width<a class="headerlink" href="#mengambil-label-petal-width" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ambil hanya kolom petal_width untuk clustering</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="p">[[</span><span class="s1">&#39;petal_width&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Data IRIS Petal Width&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data IRIS Petal Width
+[[0.2]
+ [0.2]
+ [0.2]
+ [0.2]
+ [0.2]
+ [0.4]
+ [0.3]
+ [0.2]
+ [0.2]
+ [0.1]
+ [0.2]
+ [0.2]
+ [0.1]
+ [0.1]
+ [0.2]
+ [0.4]
+ [0.4]
+ [0.3]
+ [0.3]
+ [0.3]
+ [0.2]
+ [0.4]
+ [0.2]
+ [0.5]
+ [0.2]
+ [0.2]
+ [0.4]
+ [0.2]
+ [0.2]
+ [0.2]
+ [0.2]
+ [0.4]
+ [0.1]
+ [0.2]
+ [0.1]
+ [0.2]
+ [0.2]
+ [0.1]
+ [0.2]
+ [0.2]
+ [0.3]
+ [0.3]
+ [0.2]
+ [0.6]
+ [0.4]
+ [0.3]
+ [0.2]
+ [0.2]
+ [0.2]
+ [0.2]
+ [1.4]
+ [1.5]
+ [1.5]
+ [1.3]
+ [1.5]
+ [1.3]
+ [1.6]
+ [1. ]
+ [1.3]
+ [1.4]
+ [1. ]
+ [1.5]
+ [1. ]
+ [1.4]
+ [1.3]
+ [1.4]
+ [1.5]
+ [1. ]
+ [1.5]
+ [1.1]
+ [1.8]
+ [1.3]
+ [1.5]
+ [1.2]
+ [1.3]
+ [1.4]
+ [1.4]
+ [1.7]
+ [1.5]
+ [1. ]
+ [1.1]
+ [1. ]
+ [1.2]
+ [1.6]
+ [1.5]
+ [1.6]
+ [1.5]
+ [1.3]
+ [1.3]
+ [1.3]
+ [1.2]
+ [1.4]
+ [1.2]
+ [1. ]
+ [1.3]
+ [1.2]
+ [1.3]
+ [1.3]
+ [1.1]
+ [1.3]
+ [2.5]
+ [1.9]
+ [2.1]
+ [1.8]
+ [2.2]
+ [2.1]
+ [1.7]
+ [1.8]
+ [1.8]
+ [2.5]
+ [2. ]
+ [1.9]
+ [2.1]
+ [2. ]
+ [2.4]
+ [2.3]
+ [1.8]
+ [2.2]
+ [2.3]
+ [1.5]
+ [2.3]
+ [2. ]
+ [2. ]
+ [1.8]
+ [2.1]
+ [1.8]
+ [1.8]
+ [1.8]
+ [2.1]
+ [1.6]
+ [1.9]
+ [2. ]
+ [2.2]
+ [1.5]
+ [1.4]
+ [2.3]
+ [2.4]
+ [1.8]
+ [1.8]
+ [2.1]
+ [2.4]
+ [2.3]
+ [1.9]
+ [2.3]
+ [2.5]
+ [2.3]
+ [1.9]
+ [2. ]
+ [2.3]
+ [1.8]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id9">
+<h3>Melakukan Normalisasi Data<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Normalisasi</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">X_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Normalisasi data Petal Width&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X_scaled</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Normalisasi data Petal Width
+[[-1.31297673]
+ [-1.31297673]
+ [-1.31297673]
+ [-1.31297673]
+ [-1.31297673]
+ [-1.05003079]
+ [-1.18150376]
+ [-1.31297673]
+ [-1.31297673]
+ [-1.4444497 ]
+ [-1.31297673]
+ [-1.31297673]
+ [-1.4444497 ]
+ [-1.4444497 ]
+ [-1.31297673]
+ [-1.05003079]
+ [-1.05003079]
+ [-1.18150376]
+ [-1.18150376]
+ [-1.18150376]
+ [-1.31297673]
+ [-1.05003079]
+ [-1.31297673]
+ [-0.91855782]
+ [-1.31297673]
+ [-1.31297673]
+ [-1.05003079]
+ [-1.31297673]
+ [-1.31297673]
+ [-1.31297673]
+ [-1.31297673]
+ [-1.05003079]
+ [-1.4444497 ]
+ [-1.31297673]
+ [-1.4444497 ]
+ [-1.31297673]
+ [-1.31297673]
+ [-1.4444497 ]
+ [-1.31297673]
+ [-1.31297673]
+ [-1.18150376]
+ [-1.18150376]
+ [-1.31297673]
+ [-0.78708485]
+ [-1.05003079]
+ [-1.18150376]
+ [-1.31297673]
+ [-1.31297673]
+ [-1.31297673]
+ [-1.31297673]
+ [ 0.26469891]
+ [ 0.39617188]
+ [ 0.39617188]
+ [ 0.13322594]
+ [ 0.39617188]
+ [ 0.13322594]
+ [ 0.52764485]
+ [-0.26119297]
+ [ 0.13322594]
+ [ 0.26469891]
+ [-0.26119297]
+ [ 0.39617188]
+ [-0.26119297]
+ [ 0.26469891]
+ [ 0.13322594]
+ [ 0.26469891]
+ [ 0.39617188]
+ [-0.26119297]
+ [ 0.39617188]
+ [-0.12972   ]
+ [ 0.79059079]
+ [ 0.13322594]
+ [ 0.39617188]
+ [ 0.00175297]
+ [ 0.13322594]
+ [ 0.26469891]
+ [ 0.26469891]
+ [ 0.65911782]
+ [ 0.39617188]
+ [-0.26119297]
+ [-0.12972   ]
+ [-0.26119297]
+ [ 0.00175297]
+ [ 0.52764485]
+ [ 0.39617188]
+ [ 0.52764485]
+ [ 0.39617188]
+ [ 0.13322594]
+ [ 0.13322594]
+ [ 0.13322594]
+ [ 0.00175297]
+ [ 0.26469891]
+ [ 0.00175297]
+ [-0.26119297]
+ [ 0.13322594]
+ [ 0.00175297]
+ [ 0.13322594]
+ [ 0.13322594]
+ [-0.12972   ]
+ [ 0.13322594]
+ [ 1.71090158]
+ [ 0.92206376]
+ [ 1.1850097 ]
+ [ 0.79059079]
+ [ 1.31648267]
+ [ 1.1850097 ]
+ [ 0.65911782]
+ [ 0.79059079]
+ [ 0.79059079]
+ [ 1.71090158]
+ [ 1.05353673]
+ [ 0.92206376]
+ [ 1.1850097 ]
+ [ 1.05353673]
+ [ 1.57942861]
+ [ 1.44795564]
+ [ 0.79059079]
+ [ 1.31648267]
+ [ 1.44795564]
+ [ 0.39617188]
+ [ 1.44795564]
+ [ 1.05353673]
+ [ 1.05353673]
+ [ 0.79059079]
+ [ 1.1850097 ]
+ [ 0.79059079]
+ [ 0.79059079]
+ [ 0.79059079]
+ [ 1.1850097 ]
+ [ 0.52764485]
+ [ 0.92206376]
+ [ 1.05353673]
+ [ 1.31648267]
+ [ 0.39617188]
+ [ 0.26469891]
+ [ 1.44795564]
+ [ 1.57942861]
+ [ 0.79059079]
+ [ 0.79059079]
+ [ 1.1850097 ]
+ [ 1.57942861]
+ [ 1.44795564]
+ [ 0.92206376]
+ [ 1.44795564]
+ [ 1.71090158]
+ [ 1.44795564]
+ [ 0.92206376]
+ [ 1.05353673]
+ [ 1.44795564]
+ [ 0.79059079]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id10">
+<h3>Melakukan Clustering dengan 3 Cluster<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Clustering</span>
+<span class="n">kms</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_scaled</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Hasil label cluster (dengan angka):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">kms</span><span class="o">.</span><span class="n">labels_</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hasil label cluster (dengan angka):
+[2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+ 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0
+ 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1
+ 1 1 1 1 1 1 1 1 0 1 1 1 1 1 1 1 1 1 0 1 1 1 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1
+ 1 1]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id11">
+<h3>Mengubah Label Cluster menjadi angka<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mapping label angka → huruf</span>
+<span class="n">label_mapping</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span><span class="s1">&#39;D&#39;</span><span class="p">}</span>
+<span class="n">cluster_labels_named</span> <span class="o">=</span> <span class="p">[</span><span class="n">label_mapping</span><span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">kms</span><span class="o">.</span><span class="n">labels_</span><span class="p">]</span>
+<span class="n">cluster_labels_named_np</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">cluster_labels_named</span><span class="p">)</span>
+
+<span class="c1"># Cetak hasil label dalam bentuk huruf</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Hasil label cluster (dengan nama):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cluster_labels_named_np</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hasil label cluster (dengan nama):
+[&#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39;
+ &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39;
+ &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;C&#39; &#39;A&#39; &#39;A&#39; &#39;A&#39; &#39;A&#39;
+ &#39;A&#39; &#39;A&#39; &#39;A&#39; &#39;A&#39; &#39;A&#39; &#39;A&#39; &#39;A&#39; &#39;A&#39; &#39;A&#39; &#39;A&#39; &#39;A&#39; &#39;A&#39; &#39;A&#39; &#39;A&#39; &#39;A&#39; &#39;A&#39; &#39;B&#39; &#39;A&#39;
+ &#39;A&#39; &#39;A&#39; &#39;A&#39; &#39;A&#39; &#39;A&#39; &#39;B&#39; &#39;A&#39; &#39;A&#39; &#39;A&#39; &#39;A&#39; &#39;A&#39; &#39;A&#39; &#39;A&#39; &#39;A&#39; &#39;A&#39; &#39;A&#39; &#39;A&#39; &#39;A&#39;
+ &#39;A&#39; &#39;A&#39; &#39;A&#39; &#39;A&#39; &#39;A&#39; &#39;A&#39; &#39;A&#39; &#39;A&#39; &#39;A&#39; &#39;A&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39;
+ &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;A&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39;
+ &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;A&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;A&#39; &#39;A&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39;
+ &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="mengubah-data-petal-width-menjadi-cluster-yang-telah-dilakukan-sebelumnya-dan-disimpan-ke-csv">
+<h3>Mengubah Data Petal Width menjadi Cluster yang telah dilakukan sebelumnya dan disimpan ke CSV<a class="headerlink" href="#mengubah-data-petal-width-menjadi-cluster-yang-telah-dilakukan-sebelumnya-dan-disimpan-ke-csv" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ganti kolom petal_width dengan label huruf cluster</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;petal_width&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cluster_labels_named_np</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Data IRIS dengan &#39;petal_width&#39; diganti huruf cluster:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># Simpan ke CSV</span>
+<span class="n">data</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;IRIS_Diskritisasi.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data IRIS dengan &#39;petal_width&#39; diganti huruf cluster:
+      id sepal_length sepal_width petal_length petal_width           class
+0      1            C           B            B           C     Iris-setosa
+1      2            C           C            B           C     Iris-setosa
+2      3            C           C            B           C     Iris-setosa
+3      4            C           C            B           C     Iris-setosa
+4      5            C           B            B           C     Iris-setosa
+..   ...          ...         ...          ...         ...             ...
+145  146            D           C            C           B  Iris-virginica
+146  147            D           A            C           B  Iris-virginica
+147  148            D           C            C           B  Iris-virginica
+148  149            D           B            D           B  Iris-virginica
+149  150            A           C            C           B  Iris-virginica
+
+[150 rows x 6 columns]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="hasil-akhir-data-iris-yang-telah-di-diskritisasi">
+<h2>Hasil Akhir data IRIS yang telah di Diskritisasi<a class="headerlink" href="#hasil-akhir-data-iris-yang-telah-di-diskritisasi" title="Link to this heading">#</a></h2>
+<section id="dengan-class">
+<h3>Dengan Class<a class="headerlink" href="#dengan-class" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Baca data</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;IRIS_Diskritisasi.csv&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data IRIS Diskritisasi&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data IRIS Diskritisasi
+      id sepal_length sepal_width petal_length petal_width           class
+0      1            C           B            B           C     Iris-setosa
+1      2            C           C            B           C     Iris-setosa
+2      3            C           C            B           C     Iris-setosa
+3      4            C           C            B           C     Iris-setosa
+4      5            C           B            B           C     Iris-setosa
+..   ...          ...         ...          ...         ...             ...
+145  146            D           C            C           B  Iris-virginica
+146  147            D           A            C           B  Iris-virginica
+147  148            D           C            C           B  Iris-virginica
+148  149            D           B            D           B  Iris-virginica
+149  150            A           C            C           B  Iris-virginica
+
+[150 rows x 6 columns]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="tanpa-class">
+<h3>Tanpa Class<a class="headerlink" href="#tanpa-class" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Baca data</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;IRIS_Diskritisasi.csv&quot;</span><span class="p">)</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data IRIS Diskritisasi&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data IRIS Diskritisasi
+      id sepal_length sepal_width petal_length petal_width
+0      1            C           B            B           C
+1      2            C           C            B           C
+2      3            C           C            B           C
+3      4            C           C            B           C
+4      5            C           B            B           C
+..   ...          ...         ...          ...         ...
+145  146            D           C            C           B
+146  147            D           A            C           B
+147  148            D           C            C           B
+148  149            D           B            D           B
+149  150            A           C            C           B
+
+[150 rows x 5 columns]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="decisiontree.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Decision Tree</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengganti-label-sepal-length-menjadi-kategori-dengan-4-cluster">Mengganti Label Sepal Length menjadi Kategori dengan 4 Cluster</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-library">Import Library</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengambil-data-iris">Mengambil Data IRIS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengambil-label-sepal-length">Mengambil label Sepal Length</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#melakukan-normalisasi-data">Melakukan Normalisasi Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#melakukan-clustering-dengan-4-cluster">Melakukan Clustering dengan 4 Cluster</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengubah-label-cluster-menjadi-angka">Mengubah Label Cluster menjadi angka</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengubah-data-sepal-length-menjadi-cluster-yang-telah-dilakukan-sebelumnya-dan-disimpan-ke-csv">Mengubah Data Sepal Length menjadi Cluster yang telah dilakukan sebelumnya dan disimpan ke CSV</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengganti-label-sepal-width-menjadi-kategori-dengan-3-cluster">Mengganti Label Sepal Width menjadi Kategori dengan 3 Cluster</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Mengambil Data IRIS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengambil-label-sepal-width">Mengambil label Sepal Width</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Melakukan Normalisasi Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#melakukan-clustering-dengan-3-cluster">Melakukan Clustering dengan 3 Cluster</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Mengubah Label Cluster menjadi angka</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengubah-data-sepal-width-menjadi-cluster-yang-telah-dilakukan-sebelumnya-dan-disimpan-ke-csv">Mengubah Data Sepal Width menjadi Cluster yang telah dilakukan sebelumnya dan disimpan ke CSV</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengganti-label-petal-length-menjadi-kategori-dengan-4-cluster">Mengganti Label Petal Length menjadi Kategori dengan 4 Cluster</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Mengambil Data IRIS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengambil-label-petal-length">Mengambil label Petal Length</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Melakukan Normalisasi Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Melakukan Clustering dengan 4 Cluster</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Mengubah Label Cluster menjadi angka</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengubah-data-petal-length-menjadi-cluster-yang-telah-dilakukan-sebelumnya-dan-disimpan-ke-csv">Mengubah Data Petal Length menjadi Cluster yang telah dilakukan sebelumnya dan disimpan ke CSV</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengganti-label-petal-width-menjadi-kategori-dengan-3-cluster">Mengganti Label Petal Width menjadi Kategori dengan 3 Cluster</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Mengambil Data IRIS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengambil-label-petal-width">Mengambil label Petal Width</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Melakukan Normalisasi Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Melakukan Clustering dengan 3 Cluster</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Mengubah Label Cluster menjadi angka</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengubah-data-petal-width-menjadi-cluster-yang-telah-dilakukan-sebelumnya-dan-disimpan-ke-csv">Mengubah Data Petal Width menjadi Cluster yang telah dilakukan sebelumnya dan disimpan ke CSV</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-akhir-data-iris-yang-telah-di-diskritisasi">Hasil Akhir data IRIS yang telah di Diskritisasi</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dengan-class">Dengan Class</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tanpa-class">Tanpa Class</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Aqbil Baraka
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
