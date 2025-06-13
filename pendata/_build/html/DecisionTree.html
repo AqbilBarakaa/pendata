@@ -1,0 +1,930 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Decision Tree &#8212; Penambangan Data</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'DecisionTree';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Diskritisasi data (Binning) menggunakan K-Means Clustering dan melakukan Klasifikasi dengan model Naive Bayas dan Pohon Keputusan pada data yang sudah Diskritisasi dan data yang belum Diskritisasi" href="Diskritisasi_Data.html" />
+    <link rel="prev" title="K-Means Clustering dan Fuzzy C-Means" href="K-Means_Clustering_dan_Fuzzy_C-Means.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Penambangan Data - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Penambangan Data - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to MyPage
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Memahami_data.html">Memahami Data dalam Penambangan Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Klasifikasi_Naive_Bayas.html">Klasifikasi Naive Bayas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UTS.html"><strong>UJIAN TENGAH SEMESTER</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="K-Means_Clustering_dan_Fuzzy_C-Means.html">K-Means Clustering dan Fuzzy C-Means</a></li>
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Decision Tree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Diskritisasi_Data.html">Diskritisasi data (Binning) menggunakan K-Means Clustering dan melakukan Klasifikasi dengan model Naive Bayas dan Pohon Keputusan pada data yang sudah Diskritisasi dan data yang belum Diskritisasi</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FDecisionTree.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/DecisionTree.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Decision Tree</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apa-itu-decision-tree">1. Apa itu Decision Tree?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#entropy">2. Entropy</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rumus-entropy">Rumus Entropy:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh">Contoh:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#information-gain-ig">3. Information Gain (IG)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rumus-information-gain">Rumus Information Gain:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cara-kerja-decision-tree">4. Cara Kerja Decision Tree</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kelebihan-decision-tree">5. Kelebihan Decision Tree</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kekurangan-decision-tree">6. Kekurangan Decision Tree</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tugas-decision-tree"><strong>Tugas Decision Tree</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perhitungan-manual-menggunakan-information-gain-untuk-klasifikasi-dengan-jumlah-data-15-dengan-2-fitur-3-kelas">Perhitungan Manual Menggunakan Information Gain untuk Klasifikasi dengan Jumlah Data 15 dengan 2 Fitur 3 Kelas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perbandingan-hasil-dengan-menggunakan-library-sklearn-decisiontreeclassifier">Perbandingan Hasil dengan Menggunakan Library Sklearn DecisionTreeClassifier</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-pohon-keputusan-dengan-rulenya-dan-diuji-dengan-2-data-baru">Membuat Pohon Keputusan dengan Rulenya dan Diuji dengan 2 Data Baru</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="decision-tree">
+<h1>Decision Tree<a class="headerlink" href="#decision-tree" title="Link to this heading">#</a></h1>
+<section id="apa-itu-decision-tree">
+<h2>1. Apa itu Decision Tree?<a class="headerlink" href="#apa-itu-decision-tree" title="Link to this heading">#</a></h2>
+<p><strong>Decision Tree (Pohon Keputusan)</strong> adalah algoritma supervised learning yang digunakan untuk klasifikasi dan regresi. Algoritma ini membagi dataset ke dalam subset berdasarkan fitur, dengan tujuan memaksimalkan pemisahan antar kelas secara logis.</p>
+</section>
+<hr class="docutils" />
+<section id="entropy">
+<h2>2. Entropy<a class="headerlink" href="#entropy" title="Link to this heading">#</a></h2>
+<p>Entropy mengukur tingkat ketidakpastian atau impurity dalam sebuah dataset. Semakin murni (homogen) data, semakin rendah entropy-nya.</p>
+<section id="rumus-entropy">
+<h3>Rumus Entropy:<a class="headerlink" href="#rumus-entropy" title="Link to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+Entropy(S) = - \sum_{i=1}^{n} p_i \cdot \log_2(p_i)
+\]</div>
+<p>Di mana:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(p_i\)</span> adalah proporsi dari kelas ke-i dalam subset <span class="math notranslate nohighlight">\(S\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(n\)</span> adalah jumlah total kelas.</p></li>
+</ul>
+</section>
+<section id="contoh">
+<h3>Contoh:<a class="headerlink" href="#contoh" title="Link to this heading">#</a></h3>
+<p>Jika dalam satu subset terdapat:</p>
+<ul class="simple">
+<li><p>4 data kelas A.</p></li>
+<li><p>4 data kelas B.</p></li>
+</ul>
+<p>Maka:</p>
+<div class="math notranslate nohighlight">
+\[
+Entropy = -\left( \frac{4}{8} \cdot \log_2\left(\frac{4}{8}\right) + \frac{4}{8} \cdot \log_2\left(\frac{4}{8}\right) \right) = 1  
+\]</div>
+<p>Jika semua data dalam satu kelas:</p>
+<ul class="simple">
+<li><p>8 data kelas A.</p></li>
+</ul>
+<p>Maka:</p>
+<div class="math notranslate nohighlight">
+\[
+Entropy = -\left( 1 \cdot \log_2(1) \right) = 0  
+\]</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="information-gain-ig">
+<h2>3. Information Gain (IG)<a class="headerlink" href="#information-gain-ig" title="Link to this heading">#</a></h2>
+<p>Information Gain digunakan untuk memilih fitur terbaik yang digunakan sebagai node dalam pohon keputusan.</p>
+<section id="rumus-information-gain">
+<h3>Rumus Information Gain:<a class="headerlink" href="#rumus-information-gain" title="Link to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+Information\ Gain(S, A) = Entropy(S) - \sum_{v \in Values(A)} \frac{|S_v|}{|S|} \cdot Entropy(S_v)
+\]</div>
+<p>Keterangan:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(S\)</span> = keseluruhan dataset (parent)</p></li>
+<li><p><span class="math notranslate nohighlight">\(A\)</span> = atribut (fitur) yang diuji</p></li>
+<li><p><span class="math notranslate nohighlight">\(Values(A)\)</span> = semua nilai unik dari atribut <span class="math notranslate nohighlight">\(A\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(S_v\)</span> = subset dari <span class="math notranslate nohighlight">\(S\)</span> yang memiliki nilai <span class="math notranslate nohighlight">\(v\)</span> pada atribut <span class="math notranslate nohighlight">\(A\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(Entropy(S)\)</span> = entropy dari dataset sebelum split</p></li>
+<li><p><span class="math notranslate nohighlight">\(Entropy(S_v)\)</span> = entropy dari subset setelah split</p></li>
+<li><p><span class="math notranslate nohighlight">\(|S|\)</span> = jumlah total data</p></li>
+<li><p><span class="math notranslate nohighlight">\(|S_v|\)</span> = jumlah data pada subset <span class="math notranslate nohighlight">\(S_v\)</span></p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="cara-kerja-decision-tree">
+<h2>4. Cara Kerja Decision Tree<a class="headerlink" href="#cara-kerja-decision-tree" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Hitung <strong>entropy</strong> awal dari dataset.</p></li>
+<li><p>Untuk setiap fitur, bagi data berdasarkan nilai threshold tertentu.</p></li>
+<li><p>Hitung <strong>entropy</strong> dari masing-masing subset.</p></li>
+<li><p>Hitung <strong>average entropy</strong> dari subset tersebut.</p></li>
+<li><p>Hitung <strong>information gain</strong> = entropy awal - entropy rata-rata.</p></li>
+<li><p>Pilih fitur dengan <strong>information gain tertinggi</strong> sebagai node (akar atau cabang).</p></li>
+<li><p>Ulangi proses ini secara rekursif hingga:</p>
+<ul class="simple">
+<li><p>Data habis dibagi sempurna, atau</p></li>
+<li><p>Tidak ada lagi information gain yang signifikan, atau</p></li>
+<li><p>Tercapai depth maksimum pohon.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="kelebihan-decision-tree">
+<h2>5. Kelebihan Decision Tree<a class="headerlink" href="#kelebihan-decision-tree" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Mudah dipahami dan divisualisasikan.</p></li>
+<li><p>Tidak memerlukan normalisasi data.</p></li>
+<li><p>Dapat menangani data numerik dan kategorikal.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="kekurangan-decision-tree">
+<h2>6. Kekurangan Decision Tree<a class="headerlink" href="#kekurangan-decision-tree" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Rentan terhadap overfitting.</p></li>
+<li><p>Sensitif terhadap data yang tidak seimbang.</p></li>
+<li><p>Bisa tidak stabil (perubahan kecil di data bisa mengubah struktur pohon).</p></li>
+</ul>
+</section>
+<section id="tugas-decision-tree">
+<h2><strong>Tugas Decision Tree</strong><a class="headerlink" href="#tugas-decision-tree" title="Link to this heading">#</a></h2>
+<section id="perhitungan-manual-menggunakan-information-gain-untuk-klasifikasi-dengan-jumlah-data-15-dengan-2-fitur-3-kelas">
+<h3>Perhitungan Manual Menggunakan Information Gain untuk Klasifikasi dengan Jumlah Data 15 dengan 2 Fitur 3 Kelas<a class="headerlink" href="#perhitungan-manual-menggunakan-information-gain-untuk-klasifikasi-dengan-jumlah-data-15-dengan-2-fitur-3-kelas" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.google.com/spreadsheets/d/1qKp4-_3ZeC9pM5CTrOsfRcAMOVKEeeD6KPk535Tv1_w/edit?usp=sharing">https://docs.google.com/spreadsheets/d/1qKp4-_3ZeC9pM5CTrOsfRcAMOVKEeeD6KPk535Tv1_w/edit?usp=sharing</a></p></li>
+</ul>
+</section>
+<section id="perbandingan-hasil-dengan-menggunakan-library-sklearn-decisiontreeclassifier">
+<h3>Perbandingan Hasil dengan Menggunakan Library Sklearn DecisionTreeClassifier<a class="headerlink" href="#perbandingan-hasil-dengan-menggunakan-library-sklearn-decisiontreeclassifier" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">pip</span> install pandas
+<span class="o">%</span><span class="k">pip</span> install scikit-learn
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: pandas in /home/codespace/.local/lib/python3.12/site-packages (2.2.3)
+Requirement already satisfied: numpy&gt;=1.26.0 in /home/codespace/.local/lib/python3.12/site-packages (from pandas) (2.2.4)
+Requirement already satisfied: python-dateutil&gt;=2.8.2 in /home/codespace/.local/lib/python3.12/site-packages (from pandas) (2.9.0.post0)
+Requirement already satisfied: pytz&gt;=2020.1 in /home/codespace/.local/lib/python3.12/site-packages (from pandas) (2025.1)
+Requirement already satisfied: tzdata&gt;=2022.7 in /home/codespace/.local/lib/python3.12/site-packages (from pandas) (2025.1)
+Requirement already satisfied: six&gt;=1.5 in /home/codespace/.local/lib/python3.12/site-packages (from python-dateutil&gt;=2.8.2-&gt;pandas) (1.17.0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Note: you may need to restart the kernel to use updated packages.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: scikit-learn in /home/codespace/.local/lib/python3.12/site-packages (1.6.1)
+Requirement already satisfied: numpy&gt;=1.19.5 in /home/codespace/.local/lib/python3.12/site-packages (from scikit-learn) (2.2.4)
+Requirement already satisfied: scipy&gt;=1.6.0 in /home/codespace/.local/lib/python3.12/site-packages (from scikit-learn) (1.15.2)
+Requirement already satisfied: joblib&gt;=1.2.0 in /home/codespace/.local/lib/python3.12/site-packages (from scikit-learn) (1.4.2)
+Requirement already satisfied: threadpoolctl&gt;=3.1.0 in /home/codespace/.local/lib/python3.12/site-packages (from scikit-learn) (3.6.0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Note: you may need to restart the kernel to use updated packages.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.tree</span><span class="w"> </span><span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LabelEncoder</span>
+
+<span class="c1"># Data dari Excel</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Sepal Length&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">4.3</span><span class="p">,</span> <span class="mf">5.8</span><span class="p">,</span> <span class="mf">5.7</span><span class="p">,</span> <span class="mf">5.4</span><span class="p">,</span> <span class="mf">5.1</span><span class="p">,</span> <span class="mf">5.6</span><span class="p">,</span> <span class="mf">5.8</span><span class="p">,</span> <span class="mf">6.2</span><span class="p">,</span> <span class="mf">5.6</span><span class="p">,</span> <span class="mf">5.9</span><span class="p">,</span>
+                     <span class="mf">4.9</span><span class="p">,</span> <span class="mf">7.3</span><span class="p">,</span> <span class="mf">6.7</span><span class="p">,</span> <span class="mf">7.2</span><span class="p">,</span> <span class="mf">6.5</span><span class="p">],</span>
+    <span class="s1">&#39;Sepal Width&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">4.4</span><span class="p">,</span> <span class="mf">3.9</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">2.7</span><span class="p">,</span> <span class="mf">2.2</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mf">3.2</span><span class="p">,</span>
+                    <span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.9</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mf">3.6</span><span class="p">,</span> <span class="mf">3.2</span><span class="p">],</span>
+    <span class="s1">&#39;Class&#39;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s1">&#39;Iris-setosa&#39;</span><span class="p">,</span> <span class="s1">&#39;Iris-setosa&#39;</span><span class="p">,</span> <span class="s1">&#39;Iris-setosa&#39;</span><span class="p">,</span> <span class="s1">&#39;Iris-setosa&#39;</span><span class="p">,</span> <span class="s1">&#39;Iris-setosa&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Iris-versicolor&#39;</span><span class="p">,</span> <span class="s1">&#39;Iris-versicolor&#39;</span><span class="p">,</span> <span class="s1">&#39;Iris-versicolor&#39;</span><span class="p">,</span> <span class="s1">&#39;Iris-versicolor&#39;</span><span class="p">,</span> <span class="s1">&#39;Iris-versicolor&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Iris-virginica&#39;</span><span class="p">,</span> <span class="s1">&#39;Iris-virginica&#39;</span><span class="p">,</span> <span class="s1">&#39;Iris-virginica&#39;</span><span class="p">,</span> <span class="s1">&#39;Iris-virginica&#39;</span><span class="p">,</span> <span class="s1">&#39;Iris-virginica&#39;</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># Encode label kelas</span>
+<span class="n">le</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;ClassEncoded&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">le</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Class&#39;</span><span class="p">])</span>
+
+<span class="c1"># Threshold dari Excel</span>
+<span class="n">thresholds</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Sepal Length&#39;</span><span class="p">:</span> <span class="mf">5.45</span><span class="p">,</span> <span class="s1">&#39;Sepal Width&#39;</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">}</span>
+
+<span class="c1"># Ubah fitur jadi biner berdasarkan threshold</span>
+<span class="k">for</span> <span class="n">feature</span><span class="p">,</span> <span class="n">threshold</span> <span class="ow">in</span> <span class="n">thresholds</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">df</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">feature</span><span class="si">}</span><span class="s1">_binary&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+<span class="c1"># Analisis tiap fitur</span>
+<span class="n">results</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">for</span> <span class="n">feature</span><span class="p">,</span> <span class="n">threshold</span> <span class="ow">in</span> <span class="n">thresholds</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">feature</span><span class="si">}</span><span class="s1">_binary&#39;</span><span class="p">]]</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;ClassEncoded&#39;</span><span class="p">]</span>
+    
+    <span class="n">clf</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">criterion</span><span class="o">=</span><span class="s1">&#39;entropy&#39;</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+    <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+    <span class="n">tree</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">tree_</span>
+    <span class="n">n_total</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">n_node_samples</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">left_count</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">n_node_samples</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">right_count</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">n_node_samples</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+
+    <span class="n">e_root</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">impurity</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">e_left</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">impurity</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">e_right</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">impurity</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+    
+    <span class="n">avg_entropy</span> <span class="o">=</span> <span class="p">(</span><span class="n">left_count</span> <span class="o">/</span> <span class="n">n_total</span><span class="p">)</span> <span class="o">*</span> <span class="n">e_left</span> <span class="o">+</span> <span class="p">(</span><span class="n">right_count</span> <span class="o">/</span> <span class="n">n_total</span><span class="p">)</span> <span class="o">*</span> <span class="n">e_right</span>
+    <span class="n">info_gain</span> <span class="o">=</span> <span class="n">e_root</span> <span class="o">-</span> <span class="n">avg_entropy</span>
+
+    <span class="n">results</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;Threshold&#39;</span><span class="p">:</span> <span class="n">threshold</span><span class="p">,</span>
+        <span class="s1">&#39;Entropy Awal&#39;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">e_root</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+        <span class="s1">&#39;Entropy Kiri&#39;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">e_left</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+        <span class="s1">&#39;Entropy Kanan&#39;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">e_right</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+        <span class="s1">&#39;Entropy Rata2&#39;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">avg_entropy</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+        <span class="s1">&#39;Information Gain&#39;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">info_gain</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="p">}</span>
+
+<span class="c1"># Cetak hasil</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== Hasil Information Gain dengan sklearn (threshold tetap) ===</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">best_feature</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">best_ig</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+
+<span class="k">for</span> <span class="n">feature</span><span class="p">,</span> <span class="n">vals</span> <span class="ow">in</span> <span class="n">results</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fitur: </span><span class="si">{</span><span class="n">feature</span><span class="si">}</span><span class="s2"> (Threshold = </span><span class="si">{</span><span class="n">vals</span><span class="p">[</span><span class="s1">&#39;Threshold&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Entropy Awal     : </span><span class="si">{</span><span class="n">vals</span><span class="p">[</span><span class="s1">&#39;Entropy Awal&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Entropy Kiri     : </span><span class="si">{</span><span class="n">vals</span><span class="p">[</span><span class="s1">&#39;Entropy Kiri&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Entropy Kanan    : </span><span class="si">{</span><span class="n">vals</span><span class="p">[</span><span class="s1">&#39;Entropy Kanan&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Entropy Rata2    : </span><span class="si">{</span><span class="n">vals</span><span class="p">[</span><span class="s1">&#39;Entropy Rata2&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Information Gain : </span><span class="si">{</span><span class="n">vals</span><span class="p">[</span><span class="s1">&#39;Information Gain&#39;</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Cek fitur dengan IG tertinggi</span>
+    <span class="k">if</span> <span class="n">vals</span><span class="p">[</span><span class="s1">&#39;Information Gain&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">best_ig</span><span class="p">:</span>
+        <span class="n">best_ig</span> <span class="o">=</span> <span class="n">vals</span><span class="p">[</span><span class="s1">&#39;Information Gain&#39;</span><span class="p">]</span>
+        <span class="n">best_feature</span> <span class="o">=</span> <span class="n">feature</span>
+
+<span class="c1"># Tampilkan fitur terbaik</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fitur terbaik berdasarkan Information Gain tertinggi adalah: **</span><span class="si">{</span><span class="n">best_feature</span><span class="si">}</span><span class="s2">** (IG = </span><span class="si">{</span><span class="n">best_ig</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Hasil Information Gain dengan sklearn (threshold tetap) ===
+
+Fitur: Sepal Length (Threshold = 5.45)
+  Entropy Awal     : 1.58
+  Entropy Kiri     : 0.81
+  Entropy Kanan    : 1.49
+  Entropy Rata2    : 1.31
+  Information Gain : 0.27
+
+Fitur: Sepal Width (Threshold = 3.0)
+  Entropy Awal     : 1.58
+  Entropy Kiri     : 1.41
+  Entropy Kanan    : 1.38
+  Entropy Rata2    : 1.39
+  Information Gain : 0.19
+
+Fitur terbaik berdasarkan Information Gain tertinggi adalah: **Sepal Length** (IG = 0.27)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="membuat-pohon-keputusan-dengan-rulenya-dan-diuji-dengan-2-data-baru">
+<h3>Membuat Pohon Keputusan dengan Rulenya dan Diuji dengan 2 Data Baru<a class="headerlink" href="#membuat-pohon-keputusan-dengan-rulenya-dan-diuji-dengan-2-data-baru" title="Link to this heading">#</a></h3>
+<p>Data Baru:<br />
+Data 1:</p>
+<ul class="simple">
+<li><p>Sepal Length = 6.0</p></li>
+<li><p>Sepal Width  = 2.8</p></li>
+</ul>
+<p>Data 2:</p>
+<ul class="simple">
+<li><p>Sepal Length = 4.9</p></li>
+<li><p>Sepal Width  = 3.5</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.tree</span><span class="w"> </span><span class="kn">import</span> <span class="n">DecisionTreeClassifier</span><span class="p">,</span> <span class="n">export_text</span><span class="p">,</span> <span class="n">plot_tree</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LabelEncoder</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># 1. Dataset</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Sepal Length&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">4.3</span><span class="p">,</span> <span class="mf">5.8</span><span class="p">,</span> <span class="mf">5.7</span><span class="p">,</span> <span class="mf">5.4</span><span class="p">,</span> <span class="mf">5.1</span><span class="p">,</span> <span class="mf">5.6</span><span class="p">,</span> <span class="mf">5.8</span><span class="p">,</span> <span class="mf">6.2</span><span class="p">,</span> <span class="mf">5.6</span><span class="p">,</span> <span class="mf">5.9</span><span class="p">,</span>
+                     <span class="mf">4.9</span><span class="p">,</span> <span class="mf">7.3</span><span class="p">,</span> <span class="mf">6.7</span><span class="p">,</span> <span class="mf">7.2</span><span class="p">,</span> <span class="mf">6.5</span><span class="p">],</span>
+    <span class="s1">&#39;Sepal Width&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">4.4</span><span class="p">,</span> <span class="mf">3.9</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">2.7</span><span class="p">,</span> <span class="mf">2.2</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mf">3.2</span><span class="p">,</span>
+                    <span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.9</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mf">3.6</span><span class="p">,</span> <span class="mf">3.2</span><span class="p">],</span>
+    <span class="s1">&#39;Class&#39;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s1">&#39;Iris-setosa&#39;</span><span class="p">,</span> <span class="s1">&#39;Iris-setosa&#39;</span><span class="p">,</span> <span class="s1">&#39;Iris-setosa&#39;</span><span class="p">,</span> <span class="s1">&#39;Iris-setosa&#39;</span><span class="p">,</span> <span class="s1">&#39;Iris-setosa&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Iris-versicolor&#39;</span><span class="p">,</span> <span class="s1">&#39;Iris-versicolor&#39;</span><span class="p">,</span> <span class="s1">&#39;Iris-versicolor&#39;</span><span class="p">,</span> <span class="s1">&#39;Iris-versicolor&#39;</span><span class="p">,</span> <span class="s1">&#39;Iris-versicolor&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Iris-virginica&#39;</span><span class="p">,</span> <span class="s1">&#39;Iris-virginica&#39;</span><span class="p">,</span> <span class="s1">&#39;Iris-virginica&#39;</span><span class="p">,</span> <span class="s1">&#39;Iris-virginica&#39;</span><span class="p">,</span> <span class="s1">&#39;Iris-virginica&#39;</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># 2. Encode class</span>
+<span class="n">le</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;ClassEncoded&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">le</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Class&#39;</span><span class="p">])</span>
+
+<span class="c1"># 3. Manual threshold binarisasi (mengikuti Excel)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Sepal Length_bin&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Sepal Length&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">5.45</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Sepal Width_bin&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Sepal Width&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">3.0</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+<span class="c1"># 4. Training</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;Sepal Length_bin&#39;</span><span class="p">,</span> <span class="s1">&#39;Sepal Width_bin&#39;</span><span class="p">]]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;ClassEncoded&#39;</span><span class="p">]</span>
+
+<span class="n">clf</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">criterion</span><span class="o">=</span><span class="s1">&#39;entropy&#39;</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># 5. Aturan Pohon</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== Aturan dari Decision Tree ===</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">rules</span> <span class="o">=</span> <span class="n">export_text</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Sepal Length_bin&#39;</span><span class="p">,</span> <span class="s1">&#39;Sepal Width_bin&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">rules</span><span class="p">)</span>
+
+<span class="c1"># 6. Prediksi Data Baru</span>
+<span class="n">new_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Sepal Length&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">6.0</span><span class="p">,</span> <span class="mf">4.9</span><span class="p">],</span>
+    <span class="s1">&#39;Sepal Width&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">2.8</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">]</span>
+<span class="p">})</span>
+<span class="n">new_data</span><span class="p">[</span><span class="s1">&#39;Sepal Length_bin&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">new_data</span><span class="p">[</span><span class="s1">&#39;Sepal Length&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">5.45</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">new_data</span><span class="p">[</span><span class="s1">&#39;Sepal Width_bin&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="p">(</span><span class="n">new_data</span><span class="p">[</span><span class="s1">&#39;Sepal Width&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">3.0</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+<span class="n">pred_encoded</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">new_data</span><span class="p">[[</span><span class="s1">&#39;Sepal Length_bin&#39;</span><span class="p">,</span> <span class="s1">&#39;Sepal Width_bin&#39;</span><span class="p">]])</span>
+<span class="n">pred_labels</span> <span class="o">=</span> <span class="n">le</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">pred_encoded</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== Hasil Prediksi 2 Data Baru ===</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">pred_labels</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Data ke-</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Sepal Length = </span><span class="si">{</span><span class="n">new_data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;Sepal Length&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Sepal Width  = </span><span class="si">{</span><span class="n">new_data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;Sepal Width&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Prediksi Kelas: </span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># 7. Visualisasi Pohon</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plot_tree</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span>
+          <span class="n">feature_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Sepal Length_bin&#39;</span><span class="p">,</span> <span class="s1">&#39;Sepal Width_bin&#39;</span><span class="p">],</span>
+          <span class="n">class_names</span><span class="o">=</span><span class="n">le</span><span class="o">.</span><span class="n">classes_</span><span class="p">,</span>
+          <span class="n">filled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+          <span class="n">rounded</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Visualisasi Pohon Keputusan&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Aturan dari Decision Tree ===
+
+|--- Sepal Length_bin &lt;= 0.50
+|   |--- Sepal Width_bin &lt;= 0.50
+|   |   |--- class: 0
+|   |--- Sepal Width_bin &gt;  0.50
+|   |   |--- class: 0
+|--- Sepal Length_bin &gt;  0.50
+|   |--- Sepal Width_bin &lt;= 0.50
+|   |   |--- class: 1
+|   |--- Sepal Width_bin &gt;  0.50
+|   |   |--- class: 0
+
+
+=== Hasil Prediksi 2 Data Baru ===
+
+Data ke-1:
+  Sepal Length = 6.0
+  Sepal Width  = 2.8
+  Prediksi Kelas: Iris-versicolor
+
+Data ke-2:
+  Sepal Length = 4.9
+  Sepal Width  = 3.5
+  Prediksi Kelas: Iris-setosa
+</pre></div>
+</div>
+<img alt="_images/ca3dee006820ea68940476966a07a5d9b43cd1468e908029be675b117218ab30.png" src="_images/ca3dee006820ea68940476966a07a5d9b43cd1468e908029be675b117218ab30.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="K-Means_Clustering_dan_Fuzzy_C-Means.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">K-Means Clustering dan Fuzzy C-Means</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Diskritisasi_Data.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Diskritisasi data (Binning) menggunakan K-Means Clustering dan melakukan Klasifikasi dengan model Naive Bayas dan Pohon Keputusan pada data yang sudah Diskritisasi dan data yang belum Diskritisasi</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apa-itu-decision-tree">1. Apa itu Decision Tree?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#entropy">2. Entropy</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rumus-entropy">Rumus Entropy:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh">Contoh:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#information-gain-ig">3. Information Gain (IG)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rumus-information-gain">Rumus Information Gain:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cara-kerja-decision-tree">4. Cara Kerja Decision Tree</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kelebihan-decision-tree">5. Kelebihan Decision Tree</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kekurangan-decision-tree">6. Kekurangan Decision Tree</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tugas-decision-tree"><strong>Tugas Decision Tree</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perhitungan-manual-menggunakan-information-gain-untuk-klasifikasi-dengan-jumlah-data-15-dengan-2-fitur-3-kelas">Perhitungan Manual Menggunakan Information Gain untuk Klasifikasi dengan Jumlah Data 15 dengan 2 Fitur 3 Kelas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perbandingan-hasil-dengan-menggunakan-library-sklearn-decisiontreeclassifier">Perbandingan Hasil dengan Menggunakan Library Sklearn DecisionTreeClassifier</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-pohon-keputusan-dengan-rulenya-dan-diuji-dengan-2-data-baru">Membuat Pohon Keputusan dengan Rulenya dan Diuji dengan 2 Data Baru</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Aqbil Baraka
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
