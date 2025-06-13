@@ -187,9 +187,6 @@
 
 <li class="toctree-l1"><a class="reference internal" href="decisiontree.html">Decision Tree</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Diskritisasi data (Binning) menggunakan K-Means Clustering dan melakukan Klasifikasi dengan model Naive Bayas dan Pohon Keputusan pada data yang sudah Diskritisasi dan data yang belum Diskritisasi</a></li>
-
-
-
 </ul>
 
     </div>
@@ -385,68 +382,26 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Diskritisasi data (Binning) menggunakan K-Means Clustering dan melakukan Klasifikasi dengan model Naive Bayas dan Pohon Keputusan pada data yang sudah Diskritisasi dan data yang belum Diskritisasi</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#melakukan-diskritisasi-data-menggunakan-k-means-clustering">Melakukan Diskritisasi data menggunakan K-Means Clustering</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengganti-label-sepal-length-menjadi-kategori-dengan-4-cluster">Mengganti Label Sepal Length menjadi Kategori dengan 4 Cluster</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-library">Import Library</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengambil-data-iris">Mengambil Data IRIS</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengambil-label-sepal-length">Mengambil label Sepal Length</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#melakukan-normalisasi-data">Melakukan Normalisasi Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#melakukan-clustering-dengan-4-cluster">Melakukan Clustering dengan 4 Cluster</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengubah-label-cluster-menjadi-angka">Mengubah Label Cluster menjadi angka</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengubah-data-sepal-length-menjadi-cluster-yang-telah-dilakukan-sebelumnya-dan-disimpan-ke-csv">Mengubah Data Sepal Length menjadi Cluster yang telah dilakukan sebelumnya dan disimpan ke CSV</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#melakukan-diskritisasi-data-menggunakan-k-means-clustering">Melakukan Diskritisasi data menggunakan K-Means Clustering</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengganti-label-sepal-length-menjadi-kategori-dengan-4-cluster">Mengganti Label Sepal Length menjadi Kategori dengan 4 Cluster</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengganti-label-sepal-width-menjadi-kategori-dengan-3-cluster">Mengganti Label Sepal Width menjadi Kategori dengan 3 Cluster</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengganti-label-petal-length-menjadi-kategori-dengan-4-cluster">Mengganti Label Petal Length menjadi Kategori dengan 4 Cluster</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengganti-label-petal-width-menjadi-kategori-dengan-3-cluster">Mengganti Label Petal Width menjadi Kategori dengan 3 Cluster</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-akhir-data-iris-yang-telah-di-diskritisasi">Hasil Akhir data IRIS yang telah di Diskritisasi</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengganti-label-sepal-width-menjadi-kategori-dengan-3-cluster">Mengganti Label Sepal Width menjadi Kategori dengan 3 Cluster</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Mengambil Data IRIS</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengambil-label-sepal-width">Mengambil label Sepal Width</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Melakukan Normalisasi Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#melakukan-clustering-dengan-3-cluster">Melakukan Clustering dengan 3 Cluster</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Mengubah Label Cluster menjadi angka</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengubah-data-sepal-width-menjadi-cluster-yang-telah-dilakukan-sebelumnya-dan-disimpan-ke-csv">Mengubah Data Sepal Width menjadi Cluster yang telah dilakukan sebelumnya dan disimpan ke CSV</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengganti-label-petal-length-menjadi-kategori-dengan-4-cluster">Mengganti Label Petal Length menjadi Kategori dengan 4 Cluster</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Mengambil Data IRIS</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengambil-label-petal-length">Mengambil label Petal Length</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Melakukan Normalisasi Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Melakukan Clustering dengan 4 Cluster</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Mengubah Label Cluster menjadi angka</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengubah-data-petal-length-menjadi-cluster-yang-telah-dilakukan-sebelumnya-dan-disimpan-ke-csv">Mengubah Data Petal Length menjadi Cluster yang telah dilakukan sebelumnya dan disimpan ke CSV</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengganti-label-petal-width-menjadi-kategori-dengan-3-cluster">Mengganti Label Petal Width menjadi Kategori dengan 3 Cluster</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Mengambil Data IRIS</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengambil-label-petal-width">Mengambil label Petal Width</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Melakukan Normalisasi Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Melakukan Clustering dengan 3 Cluster</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Mengubah Label Cluster menjadi angka</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengubah-data-petal-width-menjadi-cluster-yang-telah-dilakukan-sebelumnya-dan-disimpan-ke-csv">Mengubah Data Petal Width menjadi Cluster yang telah dilakukan sebelumnya dan disimpan ke CSV</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-akhir-data-iris-yang-telah-di-diskritisasi">Hasil Akhir data IRIS yang telah di Diskritisasi</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dengan-class">Dengan Class</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tanpa-class">Tanpa Class</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#melakukan-klasifikasi-dengan-model-naive-bayas-menggunakan-data-yang-sudah-di-diskritisasi">Melakukan Klasifikasi dengan model Naive Bayas menggunakan data yang sudah di Diskritisasi</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-naive-bayes">Implementasi Naive Bayes</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Import Library</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#melakukan-klasifikasi-dengan-model-naive-bayas-menggunakan-data-yang-sudah-di-diskritisasi">Melakukan Klasifikasi dengan model Naive Bayas menggunakan data yang sudah di Diskritisasi</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-naive-bayes">Implementasi Naive Bayes</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-menggunakan-outlier-removal-penghapusan-manual-berdasarkan-sepal-width">Implementasi Menggunakan Outlier Removal (penghapusan manual berdasarkan sepal_width)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-tanpa-menggunakan-outlier">Implementasi Tanpa Menggunakan Outlier</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#melakukan-klasifikasi-dengan-model-naive-bayas-menggunakan-data-yang-belum-di-diskritisasi">Melakukan Klasifikasi dengan model Naive Bayas menggunakan data yang belum di Diskritisasi</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-dengan-outlier-removal">Implementasi Dengan Outlier Removal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Implementasi Tanpa Menggunakan Outlier</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#melakukan-klasifikasi-dengan-model-naive-bayas-menggunakan-data-yang-belum-di-diskritisasi">Melakukan Klasifikasi dengan model Naive Bayas menggunakan data yang belum di Diskritisasi</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-dengan-outlier-removal">Implementasi Dengan Outlier Removal</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Implementasi Tanpa Menggunakan Outlier</a></li>
 </ul>
-</li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -459,13 +414,11 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="diskritisasi-data-binning-menggunakan-k-means-clustering-dan-melakukan-klasifikasi-dengan-model-naive-bayas-dan-pohon-keputusan-pada-data-yang-sudah-diskritisasi-dan-data-yang-belum-diskritisasi">
 <h1>Diskritisasi data (Binning) menggunakan K-Means Clustering dan melakukan Klasifikasi dengan model Naive Bayas dan Pohon Keputusan pada data yang sudah Diskritisasi dan data yang belum Diskritisasi<a class="headerlink" href="#diskritisasi-data-binning-menggunakan-k-means-clustering-dan-melakukan-klasifikasi-dengan-model-naive-bayas-dan-pohon-keputusan-pada-data-yang-sudah-diskritisasi-dan-data-yang-belum-diskritisasi" title="Link to this heading">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="melakukan-diskritisasi-data-menggunakan-k-means-clustering">
-<h1>Melakukan Diskritisasi data menggunakan K-Means Clustering<a class="headerlink" href="#melakukan-diskritisasi-data-menggunakan-k-means-clustering" title="Link to this heading">#</a></h1>
+<section id="melakukan-diskritisasi-data-menggunakan-k-means-clustering">
+<h2>Melakukan Diskritisasi data menggunakan K-Means Clustering<a class="headerlink" href="#melakukan-diskritisasi-data-menggunakan-k-means-clustering" title="Link to this heading">#</a></h2>
 <section id="mengganti-label-sepal-length-menjadi-kategori-dengan-4-cluster">
-<h2>Mengganti Label Sepal Length menjadi Kategori dengan 4 Cluster<a class="headerlink" href="#mengganti-label-sepal-length-menjadi-kategori-dengan-4-cluster" title="Link to this heading">#</a></h2>
-<section id="import-library">
-<h3>Import Library<a class="headerlink" href="#import-library" title="Link to this heading">#</a></h3>
+<h3>Mengganti Label Sepal Length menjadi Kategori dengan 4 Cluster<a class="headerlink" href="#mengganti-label-sepal-length-menjadi-kategori-dengan-4-cluster" title="Link to this heading">#</a></h3>
+<p>Import Library</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">pip</span> install scikit-learn
@@ -489,9 +442,7 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </div>
 </div>
-</section>
-<section id="mengambil-data-iris">
-<h3>Mengambil Data IRIS<a class="headerlink" href="#mengambil-data-iris" title="Link to this heading">#</a></h3>
+<p>Mengambil Data IRIS</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Baca data</span>
@@ -504,19 +455,17 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data IRIS
-   id  sepal_length  sepal_width  petal_length  petal_width        class
-0   1           5.1          3.5           1.4          0.2  Iris-setosa
-1   2           4.9          3.0           1.4          0.2  Iris-setosa
-2   3           4.7          3.2           1.3          0.2  Iris-setosa
-3   4           4.6          3.1           1.5          0.2  Iris-setosa
-4   5           5.0          3.6           1.4          0.2  Iris-setosa
+   id sepal_length sepal_width petal_length petal_width        class
+0   1            C           B            B           C  Iris-setosa
+1   2            C           C            B           C  Iris-setosa
+2   3            C           C            B           C  Iris-setosa
+3   4            C           C            B           C  Iris-setosa
+4   5            C           B            B           C  Iris-setosa
 </pre></div>
 </div>
 </div>
 </div>
-</section>
-<section id="mengambil-label-sepal-length">
-<h3>Mengambil label Sepal Length<a class="headerlink" href="#mengambil-label-sepal-length" title="Link to this heading">#</a></h3>
+<p>Mengambil label Sepal Length</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ambil hanya kolom sepal_length untuk clustering</span>
@@ -529,163 +478,161 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data IRIS Sepal Length
-[[5.1]
- [4.9]
- [4.7]
- [4.6]
- [5. ]
- [5.4]
- [4.6]
- [5. ]
- [4.4]
- [4.9]
- [5.4]
- [4.8]
- [4.8]
- [4.3]
- [5.8]
- [5.7]
- [5.4]
- [5.1]
- [5.7]
- [5.1]
- [5.4]
- [5.1]
- [4.6]
- [5.1]
- [4.8]
- [5. ]
- [5. ]
- [5.2]
- [5.2]
- [4.7]
- [4.8]
- [5.4]
- [5.2]
- [5.5]
- [4.9]
- [5. ]
- [5.5]
- [4.9]
- [4.4]
- [5.1]
- [5. ]
- [4.5]
- [4.4]
- [5. ]
- [5.1]
- [4.8]
- [5.1]
- [4.6]
- [5.3]
- [5. ]
- [7. ]
- [6.4]
- [6.9]
- [5.5]
- [6.5]
- [5.7]
- [6.3]
- [4.9]
- [6.6]
- [5.2]
- [5. ]
- [5.9]
- [6. ]
- [6.1]
- [5.6]
- [6.7]
- [5.6]
- [5.8]
- [6.2]
- [5.6]
- [5.9]
- [6.1]
- [6.3]
- [6.1]
- [6.4]
- [6.6]
- [6.8]
- [6.7]
- [6. ]
- [5.7]
- [5.5]
- [5.5]
- [5.8]
- [6. ]
- [5.4]
- [6. ]
- [6.7]
- [6.3]
- [5.6]
- [5.5]
- [5.5]
- [6.1]
- [5.8]
- [5. ]
- [5.6]
- [5.7]
- [5.7]
- [6.2]
- [5.1]
- [5.7]
- [6.3]
- [5.8]
- [7.1]
- [6.3]
- [6.5]
- [7.6]
- [4.9]
- [7.3]
- [6.7]
- [7.2]
- [6.5]
- [6.4]
- [6.8]
- [5.7]
- [5.8]
- [6.4]
- [6.5]
- [7.7]
- [7.7]
- [6. ]
- [6.9]
- [5.6]
- [7.7]
- [6.3]
- [6.7]
- [7.2]
- [6.2]
- [6.1]
- [6.4]
- [7.2]
- [7.4]
- [7.9]
- [6.4]
- [6.3]
- [6.1]
- [7.7]
- [6.3]
- [6.4]
- [6. ]
- [6.9]
- [6.7]
- [6.9]
- [5.8]
- [6.8]
- [6.7]
- [6.7]
- [6.3]
- [6.5]
- [6.2]
- [5.9]]
+[[&#39;C&#39;]
+ [&#39;C&#39;]
+ [&#39;C&#39;]
+ [&#39;C&#39;]
+ [&#39;C&#39;]
+ [&#39;A&#39;]
+ [&#39;C&#39;]
+ [&#39;C&#39;]
+ [&#39;C&#39;]
+ [&#39;C&#39;]
+ [&#39;A&#39;]
+ [&#39;C&#39;]
+ [&#39;C&#39;]
+ [&#39;C&#39;]
+ [&#39;A&#39;]
+ [&#39;A&#39;]
+ [&#39;A&#39;]
+ [&#39;C&#39;]
+ [&#39;A&#39;]
+ [&#39;C&#39;]
+ [&#39;A&#39;]
+ [&#39;C&#39;]
+ [&#39;C&#39;]
+ [&#39;C&#39;]
+ [&#39;C&#39;]
+ [&#39;C&#39;]
+ [&#39;C&#39;]
+ [&#39;C&#39;]
+ [&#39;C&#39;]
+ [&#39;C&#39;]
+ [&#39;C&#39;]
+ [&#39;A&#39;]
+ [&#39;C&#39;]
+ [&#39;A&#39;]
+ [&#39;C&#39;]
+ [&#39;C&#39;]
+ [&#39;A&#39;]
+ [&#39;C&#39;]
+ [&#39;C&#39;]
+ [&#39;C&#39;]
+ [&#39;C&#39;]
+ [&#39;C&#39;]
+ [&#39;C&#39;]
+ [&#39;C&#39;]
+ [&#39;C&#39;]
+ [&#39;C&#39;]
+ [&#39;C&#39;]
+ [&#39;C&#39;]
+ [&#39;A&#39;]
+ [&#39;C&#39;]
+ [&#39;B&#39;]
+ [&#39;D&#39;]
+ [&#39;B&#39;]
+ [&#39;A&#39;]
+ [&#39;D&#39;]
+ [&#39;A&#39;]
+ [&#39;D&#39;]
+ [&#39;C&#39;]
+ [&#39;D&#39;]
+ [&#39;C&#39;]
+ [&#39;C&#39;]
+ [&#39;A&#39;]
+ [&#39;A&#39;]
+ [&#39;D&#39;]
+ [&#39;A&#39;]
+ [&#39;D&#39;]
+ [&#39;A&#39;]
+ [&#39;A&#39;]
+ [&#39;D&#39;]
+ [&#39;A&#39;]
+ [&#39;A&#39;]
+ [&#39;D&#39;]
+ [&#39;D&#39;]
+ [&#39;D&#39;]
+ [&#39;D&#39;]
+ [&#39;D&#39;]
+ [&#39;D&#39;]
+ [&#39;D&#39;]
+ [&#39;A&#39;]
+ [&#39;A&#39;]
+ [&#39;A&#39;]
+ [&#39;A&#39;]
+ [&#39;A&#39;]
+ [&#39;A&#39;]
+ [&#39;A&#39;]
+ [&#39;A&#39;]
+ [&#39;D&#39;]
+ [&#39;D&#39;]
+ [&#39;A&#39;]
+ [&#39;A&#39;]
+ [&#39;A&#39;]
+ [&#39;D&#39;]
+ [&#39;A&#39;]
+ [&#39;C&#39;]
+ [&#39;A&#39;]
+ [&#39;A&#39;]
+ [&#39;A&#39;]
+ [&#39;D&#39;]
+ [&#39;C&#39;]
+ [&#39;A&#39;]
+ [&#39;D&#39;]
+ [&#39;A&#39;]
+ [&#39;B&#39;]
+ [&#39;D&#39;]
+ [&#39;D&#39;]
+ [&#39;B&#39;]
+ [&#39;C&#39;]
+ [&#39;B&#39;]
+ [&#39;D&#39;]
+ [&#39;B&#39;]
+ [&#39;D&#39;]
+ [&#39;D&#39;]
+ [&#39;D&#39;]
+ [&#39;A&#39;]
+ [&#39;A&#39;]
+ [&#39;D&#39;]
+ [&#39;D&#39;]
+ [&#39;B&#39;]
+ [&#39;B&#39;]
+ [&#39;A&#39;]
+ [&#39;B&#39;]
+ [&#39;A&#39;]
+ [&#39;B&#39;]
+ [&#39;D&#39;]
+ [&#39;D&#39;]
+ [&#39;B&#39;]
+ [&#39;D&#39;]
+ [&#39;D&#39;]
+ [&#39;D&#39;]
+ [&#39;B&#39;]
+ [&#39;B&#39;]
+ [&#39;B&#39;]
+ [&#39;D&#39;]
+ [&#39;D&#39;]
+ [&#39;D&#39;]
+ [&#39;B&#39;]
+ [&#39;D&#39;]
+ [&#39;D&#39;]
+ [&#39;A&#39;]
+ [&#39;B&#39;]
+ [&#39;D&#39;]
+ [&#39;B&#39;]
+ [&#39;A&#39;]
+ [&#39;D&#39;]
+ [&#39;D&#39;]
+ [&#39;D&#39;]
+ [&#39;D&#39;]
+ [&#39;D&#39;]
+ [&#39;D&#39;]
+ [&#39;A&#39;]]
 </pre></div>
 </div>
 </div>
 </div>
-</section>
-<section id="melakukan-normalisasi-data">
-<h3>Melakukan Normalisasi Data<a class="headerlink" href="#melakukan-normalisasi-data" title="Link to this heading">#</a></h3>
+<p>Melakukan Normalisasi Data</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Normalisasi</span>
@@ -697,164 +644,101 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Normalisasi data Sepal Length
-[[-0.90068117]
- [-1.14301691]
- [-1.38535265]
- [-1.50652052]
- [-1.02184904]
- [-0.53717756]
- [-1.50652052]
- [-1.02184904]
- [-1.74885626]
- [-1.14301691]
- [-0.53717756]
- [-1.26418478]
- [-1.26418478]
- [-1.87002413]
- [-0.05250608]
- [-0.17367395]
- [-0.53717756]
- [-0.90068117]
- [-0.17367395]
- [-0.90068117]
- [-0.53717756]
- [-0.90068117]
- [-1.50652052]
- [-0.90068117]
- [-1.26418478]
- [-1.02184904]
- [-1.02184904]
- [-0.7795133 ]
- [-0.7795133 ]
- [-1.38535265]
- [-1.26418478]
- [-0.53717756]
- [-0.7795133 ]
- [-0.41600969]
- [-1.14301691]
- [-1.02184904]
- [-0.41600969]
- [-1.14301691]
- [-1.74885626]
- [-0.90068117]
- [-1.02184904]
- [-1.62768839]
- [-1.74885626]
- [-1.02184904]
- [-0.90068117]
- [-1.26418478]
- [-0.90068117]
- [-1.50652052]
- [-0.65834543]
- [-1.02184904]
- [ 1.40150837]
- [ 0.67450115]
- [ 1.2803405 ]
- [-0.41600969]
- [ 0.79566902]
- [-0.17367395]
- [ 0.55333328]
- [-1.14301691]
- [ 0.91683689]
- [-0.7795133 ]
- [-1.02184904]
- [ 0.06866179]
- [ 0.18982966]
- [ 0.31099753]
- [-0.29484182]
- [ 1.03800476]
- [-0.29484182]
- [-0.05250608]
- [ 0.4321654 ]
- [-0.29484182]
- [ 0.06866179]
- [ 0.31099753]
- [ 0.55333328]
- [ 0.31099753]
- [ 0.67450115]
- [ 0.91683689]
- [ 1.15917263]
- [ 1.03800476]
- [ 0.18982966]
- [-0.17367395]
- [-0.41600969]
- [-0.41600969]
- [-0.05250608]
- [ 0.18982966]
- [-0.53717756]
- [ 0.18982966]
- [ 1.03800476]
- [ 0.55333328]
- [-0.29484182]
- [-0.41600969]
- [-0.41600969]
- [ 0.31099753]
- [-0.05250608]
- [-1.02184904]
- [-0.29484182]
- [-0.17367395]
- [-0.17367395]
- [ 0.4321654 ]
- [-0.90068117]
- [-0.17367395]
- [ 0.55333328]
- [-0.05250608]
- [ 1.52267624]
- [ 0.55333328]
- [ 0.79566902]
- [ 2.12851559]
- [-1.14301691]
- [ 1.76501198]
- [ 1.03800476]
- [ 1.64384411]
- [ 0.79566902]
- [ 0.67450115]
- [ 1.15917263]
- [-0.17367395]
- [-0.05250608]
- [ 0.67450115]
- [ 0.79566902]
- [ 2.24968346]
- [ 2.24968346]
- [ 0.18982966]
- [ 1.2803405 ]
- [-0.29484182]
- [ 2.24968346]
- [ 0.55333328]
- [ 1.03800476]
- [ 1.64384411]
- [ 0.4321654 ]
- [ 0.31099753]
- [ 0.67450115]
- [ 1.64384411]
- [ 1.88617985]
- [ 2.4920192 ]
- [ 0.67450115]
- [ 0.55333328]
- [ 0.31099753]
- [ 2.24968346]
- [ 0.55333328]
- [ 0.67450115]
- [ 0.18982966]
- [ 1.2803405 ]
- [ 1.03800476]
- [ 1.2803405 ]
- [-0.05250608]
- [ 1.15917263]
- [ 1.03800476]
- [ 1.03800476]
- [ 0.55333328]
- [ 0.79566902]
- [ 0.4321654 ]
- [ 0.06866179]]
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Normalisasi</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">X_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Normalisasi data Sepal Length&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="nb">print</span><span class="p">(</span><span class="n">X_scaled</span><span class="p">)</span>
+
+<span class="nn">File c:\PROJEK_SMST_4\pendata\.venv\Lib\site-packages\sklearn\utils\_set_output.py:316,</span> in <span class="ni">_wrap_method_output.&lt;locals&gt;.wrapped</span><span class="nt">(self, X, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">314</span> <span class="nd">@wraps</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">315</span> <span class="k">def</span><span class="w"> </span><span class="nf">wrapped</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">316</span>     <span class="n">data_to_wrap</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">317</span>     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data_to_wrap</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">318</span>         <span class="c1"># only wrap the first output for cross decomposition</span>
+<span class="g g-Whitespace">    </span><span class="mi">319</span>         <span class="n">return_tuple</span> <span class="o">=</span> <span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">320</span>             <span class="n">_wrap_data_with_container</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">data_to_wrap</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">,</span> <span class="bp">self</span><span class="p">),</span>
+<span class="g g-Whitespace">    </span><span class="mi">321</span>             <span class="o">*</span><span class="n">data_to_wrap</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span>
+<span class="g g-Whitespace">    </span><span class="mi">322</span>         <span class="p">)</span>
+
+<span class="nn">File c:\PROJEK_SMST_4\pendata\.venv\Lib\site-packages\sklearn\base.py:892,</span> in <span class="ni">TransformerMixin.fit_transform</span><span class="nt">(self, X, y, **fit_params)</span>
+<span class="g g-Whitespace">    </span><span class="mi">877</span>         <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">878</span>             <span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">879</span>                 <span class="sa">f</span><span class="s2">&quot;This object (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">) has a `transform`&quot;</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>    <span class="mi">887</span>             <span class="ne">UserWarning</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">888</span>         <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">890</span> <span class="k">if</span> <span class="n">y</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">891</span>     <span class="c1"># fit method of arity 1 (unsupervised transformation)</span>
+<span class="ne">--&gt; </span><span class="mi">892</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="o">**</span><span class="n">fit_params</span><span class="p">)</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">893</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">894</span>     <span class="c1"># fit method of arity 2 (supervised transformation)</span>
+<span class="g g-Whitespace">    </span><span class="mi">895</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">fit_params</span><span class="p">)</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="nn">File c:\PROJEK_SMST_4\pendata\.venv\Lib\site-packages\sklearn\preprocessing\_data.py:907,</span> in <span class="ni">StandardScaler.fit</span><span class="nt">(self, X, y, sample_weight)</span>
+<span class="g g-Whitespace">    </span><span class="mi">905</span> <span class="c1"># Reset internal state before fitting</span>
+<span class="g g-Whitespace">    </span><span class="mi">906</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reset</span><span class="p">()</span>
+<span class="ne">--&gt; </span><span class="mi">907</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">partial_fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">sample_weight</span><span class="p">)</span>
+
+<span class="nn">File c:\PROJEK_SMST_4\pendata\.venv\Lib\site-packages\sklearn\base.py:1363,</span> in <span class="ni">_fit_context.&lt;locals&gt;.decorator.&lt;locals&gt;.wrapper</span><span class="nt">(estimator, *args, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1356</span>     <span class="n">estimator</span><span class="o">.</span><span class="n">_validate_params</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1358</span> <span class="k">with</span> <span class="n">config_context</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1359</span>     <span class="n">skip_parameter_validation</span><span class="o">=</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1360</span>         <span class="n">prefer_skip_nested_validation</span> <span class="ow">or</span> <span class="n">global_skip_validation</span>
+<span class="g g-Whitespace">   </span><span class="mi">1361</span>     <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1362</span> <span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">1363</span>     <span class="k">return</span> <span class="n">fit_method</span><span class="p">(</span><span class="n">estimator</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File c:\PROJEK_SMST_4\pendata\.venv\Lib\site-packages\sklearn\preprocessing\_data.py:943,</span> in <span class="ni">StandardScaler.partial_fit</span><span class="nt">(self, X, y, sample_weight)</span>
+<span class="g g-Whitespace">    </span><span class="mi">911</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Online computation of mean and std on X for later scaling.</span>
+<span class="g g-Whitespace">    </span><span class="mi">912</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">913</span><span class="sd"> All of X is processed as a single batch. This is intended for cases</span>
+<span class="sd">   (...)    940     Fitted scaler.</span>
+<span class="g g-Whitespace">    </span><span class="mi">941</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">942</span> <span class="n">first_call</span> <span class="o">=</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;n_samples_seen_&quot;</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">943</span> <span class="n">X</span> <span class="o">=</span> <span class="n">validate_data</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">944</span>     <span class="bp">self</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">945</span>     <span class="n">X</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">946</span>     <span class="n">accept_sparse</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;csr&quot;</span><span class="p">,</span> <span class="s2">&quot;csc&quot;</span><span class="p">),</span>
+<span class="g g-Whitespace">    </span><span class="mi">947</span>     <span class="n">dtype</span><span class="o">=</span><span class="n">FLOAT_DTYPES</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">948</span>     <span class="n">ensure_all_finite</span><span class="o">=</span><span class="s2">&quot;allow-nan&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">949</span>     <span class="n">reset</span><span class="o">=</span><span class="n">first_call</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">950</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">951</span> <span class="n">n_features</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">953</span> <span class="k">if</span> <span class="n">sample_weight</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+
+<span class="nn">File c:\PROJEK_SMST_4\pendata\.venv\Lib\site-packages\sklearn\utils\validation.py:2954,</span> in <span class="ni">validate_data</span><span class="nt">(_estimator, X, y, reset, validate_separately, skip_check_array, **check_params)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2952</span>         <span class="n">out</span> <span class="o">=</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span>
+<span class="g g-Whitespace">   </span><span class="mi">2953</span> <span class="k">elif</span> <span class="ow">not</span> <span class="n">no_val_X</span> <span class="ow">and</span> <span class="n">no_val_y</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">2954</span>     <span class="n">out</span> <span class="o">=</span> <span class="n">check_array</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">input_name</span><span class="o">=</span><span class="s2">&quot;X&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">check_params</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2955</span> <span class="k">elif</span> <span class="n">no_val_X</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">no_val_y</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">2956</span>     <span class="n">out</span> <span class="o">=</span> <span class="n">_check_y</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">check_params</span><span class="p">)</span>
+
+<span class="nn">File c:\PROJEK_SMST_4\pendata\.venv\Lib\site-packages\sklearn\utils\validation.py:1053,</span> in <span class="ni">check_array</span><span class="nt">(array, accept_sparse, accept_large_sparse, dtype, order, copy, force_writeable, force_all_finite, ensure_all_finite, ensure_non_negative, ensure_2d, allow_nd, ensure_min_samples, ensure_min_features, estimator, input_name)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1051</span>         <span class="n">array</span> <span class="o">=</span> <span class="n">xp</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1052</span>     <span class="k">else</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1053</span>         <span class="n">array</span> <span class="o">=</span> <span class="n">_asarray_with_order</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span> <span class="n">xp</span><span class="o">=</span><span class="n">xp</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1054</span> <span class="k">except</span> <span class="n">ComplexWarning</span> <span class="k">as</span> <span class="n">complex_warning</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1055</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1056</span>         <span class="s2">&quot;Complex data not supported</span><span class="se">\n</span><span class="si">{}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1057</span>     <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">complex_warning</span>
+
+<span class="nn">File c:\PROJEK_SMST_4\pendata\.venv\Lib\site-packages\sklearn\utils\_array_api.py:757,</span> in <span class="ni">_asarray_with_order</span><span class="nt">(array, dtype, order, copy, xp, device)</span>
+<span class="g g-Whitespace">    </span><span class="mi">755</span>     <span class="n">array</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">756</span> <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">757</span>     <span class="n">array</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">759</span> <span class="c1"># At this point array is a NumPy ndarray. We convert it to an array</span>
+<span class="g g-Whitespace">    </span><span class="mi">760</span> <span class="c1"># container that is consistent with the input&#39;s namespace.</span>
+<span class="g g-Whitespace">    </span><span class="mi">761</span> <span class="k">return</span> <span class="n">xp</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
+
+<span class="ne">ValueError</span>: could not convert string to float: &#39;C&#39;
 </pre></div>
 </div>
 </div>
 </div>
-</section>
-<section id="melakukan-clustering-dengan-4-cluster">
-<h3>Melakukan Clustering dengan 4 Cluster<a class="headerlink" href="#melakukan-clustering-dengan-4-cluster" title="Link to this heading">#</a></h3>
+<p>Melakukan Clustering dengan 4 Cluster</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Clustering</span>
@@ -875,9 +759,7 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </div>
 </div>
-</section>
-<section id="mengubah-label-cluster-menjadi-angka">
-<h3>Mengubah Label Cluster menjadi angka<a class="headerlink" href="#mengubah-label-cluster-menjadi-angka" title="Link to this heading">#</a></h3>
+<p>Mengubah Label Cluster menjadi angka</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mapping label angka → huruf</span>
@@ -906,9 +788,7 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </div>
 </div>
-</section>
-<section id="mengubah-data-sepal-length-menjadi-cluster-yang-telah-dilakukan-sebelumnya-dan-disimpan-ke-csv">
-<h3>Mengubah Data Sepal Length menjadi Cluster yang telah dilakukan sebelumnya dan disimpan ke CSV<a class="headerlink" href="#mengubah-data-sepal-length-menjadi-cluster-yang-telah-dilakukan-sebelumnya-dan-disimpan-ke-csv" title="Link to this heading">#</a></h3>
+<p>Mengubah Data Sepal Length menjadi Cluster yang telah dilakukan sebelumnya dan disimpan ke CSV</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ganti kolom sepal_length dengan label huruf cluster</span>
@@ -942,11 +822,9 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </div>
 </section>
-</section>
 <section id="mengganti-label-sepal-width-menjadi-kategori-dengan-3-cluster">
-<h2>Mengganti Label Sepal Width menjadi Kategori dengan 3 Cluster<a class="headerlink" href="#mengganti-label-sepal-width-menjadi-kategori-dengan-3-cluster" title="Link to this heading">#</a></h2>
-<section id="id1">
-<h3>Mengambil Data IRIS<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<h3>Mengganti Label Sepal Width menjadi Kategori dengan 3 Cluster<a class="headerlink" href="#mengganti-label-sepal-width-menjadi-kategori-dengan-3-cluster" title="Link to this heading">#</a></h3>
+<p>Mengambil Data IRIS</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Baca data</span>
@@ -969,9 +847,7 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </div>
 </div>
-</section>
-<section id="mengambil-label-sepal-width">
-<h3>Mengambil label Sepal Width<a class="headerlink" href="#mengambil-label-sepal-width" title="Link to this heading">#</a></h3>
+<p>Mengambil label Sepal Width</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ambil hanya kolom sepal_width untuk clustering</span>
@@ -1138,9 +1014,7 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </div>
 </div>
-</section>
-<section id="id2">
-<h3>Melakukan Normalisasi Data<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<p>Melakukan Normalisasi Data</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Normalisasi</span>
@@ -1307,9 +1181,7 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </div>
 </div>
-</section>
-<section id="melakukan-clustering-dengan-3-cluster">
-<h3>Melakukan Clustering dengan 3 Cluster<a class="headerlink" href="#melakukan-clustering-dengan-3-cluster" title="Link to this heading">#</a></h3>
+<p>Melakukan Clustering dengan 3 Cluster</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Clustering</span>
@@ -1330,9 +1202,7 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </div>
 </div>
-</section>
-<section id="id3">
-<h3>Mengubah Label Cluster menjadi angka<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p>Mengubah Label Cluster menjadi angka</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mapping label angka → huruf</span>
@@ -1361,9 +1231,7 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </div>
 </div>
-</section>
-<section id="mengubah-data-sepal-width-menjadi-cluster-yang-telah-dilakukan-sebelumnya-dan-disimpan-ke-csv">
-<h3>Mengubah Data Sepal Width menjadi Cluster yang telah dilakukan sebelumnya dan disimpan ke CSV<a class="headerlink" href="#mengubah-data-sepal-width-menjadi-cluster-yang-telah-dilakukan-sebelumnya-dan-disimpan-ke-csv" title="Link to this heading">#</a></h3>
+<p>Mengubah Data Sepal Width menjadi Cluster yang telah dilakukan sebelumnya dan disimpan ke CSV</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ganti kolom sepal_width dengan label huruf cluster</span>
@@ -1397,11 +1265,9 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </div>
 </section>
-</section>
 <section id="mengganti-label-petal-length-menjadi-kategori-dengan-4-cluster">
-<h2>Mengganti Label Petal Length menjadi Kategori dengan 4 Cluster<a class="headerlink" href="#mengganti-label-petal-length-menjadi-kategori-dengan-4-cluster" title="Link to this heading">#</a></h2>
-<section id="id4">
-<h3>Mengambil Data IRIS<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<h3>Mengganti Label Petal Length menjadi Kategori dengan 4 Cluster<a class="headerlink" href="#mengganti-label-petal-length-menjadi-kategori-dengan-4-cluster" title="Link to this heading">#</a></h3>
+<p>Mengambil Data IRIS</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Baca data</span>
@@ -1424,9 +1290,7 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </div>
 </div>
-</section>
-<section id="mengambil-label-petal-length">
-<h3>Mengambil label Petal Length<a class="headerlink" href="#mengambil-label-petal-length" title="Link to this heading">#</a></h3>
+<p>Mengambil label Petal Length</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ambil hanya kolom petal_length untuk clustering</span>
@@ -1593,9 +1457,7 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </div>
 </div>
-</section>
-<section id="id5">
-<h3>Melakukan Normalisasi Data<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p>Melakukan Normalisasi Data</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Normalisasi</span>
@@ -1762,9 +1624,7 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </div>
 </div>
-</section>
-<section id="id6">
-<h3>Melakukan Clustering dengan 4 Cluster<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<p>Melakukan Clustering dengan 4 Cluster</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Clustering</span>
@@ -1785,9 +1645,7 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </div>
 </div>
-</section>
-<section id="id7">
-<h3>Mengubah Label Cluster menjadi angka<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<p>Mengubah Label Cluster menjadi angka</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mapping label angka → huruf</span>
@@ -1816,9 +1674,7 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </div>
 </div>
-</section>
-<section id="mengubah-data-petal-length-menjadi-cluster-yang-telah-dilakukan-sebelumnya-dan-disimpan-ke-csv">
-<h3>Mengubah Data Petal Length menjadi Cluster yang telah dilakukan sebelumnya dan disimpan ke CSV<a class="headerlink" href="#mengubah-data-petal-length-menjadi-cluster-yang-telah-dilakukan-sebelumnya-dan-disimpan-ke-csv" title="Link to this heading">#</a></h3>
+<p>Mengubah Data Petal Length menjadi Cluster yang telah dilakukan sebelumnya dan disimpan ke CSV</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ganti kolom petal_length dengan label huruf cluster</span>
@@ -1852,11 +1708,9 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </div>
 </section>
-</section>
 <section id="mengganti-label-petal-width-menjadi-kategori-dengan-3-cluster">
-<h2>Mengganti Label Petal Width menjadi Kategori dengan 3 Cluster<a class="headerlink" href="#mengganti-label-petal-width-menjadi-kategori-dengan-3-cluster" title="Link to this heading">#</a></h2>
-<section id="id8">
-<h3>Mengambil Data IRIS<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<h3>Mengganti Label Petal Width menjadi Kategori dengan 3 Cluster<a class="headerlink" href="#mengganti-label-petal-width-menjadi-kategori-dengan-3-cluster" title="Link to this heading">#</a></h3>
+<p>Mengambil Data IRIS</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Baca data</span>
@@ -1879,9 +1733,7 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </div>
 </div>
-</section>
-<section id="mengambil-label-petal-width">
-<h3>Mengambil label Petal Width<a class="headerlink" href="#mengambil-label-petal-width" title="Link to this heading">#</a></h3>
+<p>Mengambil label Petal Width</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ambil hanya kolom petal_width untuk clustering</span>
@@ -2048,9 +1900,7 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </div>
 </div>
-</section>
-<section id="id9">
-<h3>Melakukan Normalisasi Data<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<p>Melakukan Normalisasi Data</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Normalisasi</span>
@@ -2217,9 +2067,7 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </div>
 </div>
-</section>
-<section id="id10">
-<h3>Melakukan Clustering dengan 3 Cluster<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
+<p>Melakukan Clustering dengan 3 Cluster</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Clustering</span>
@@ -2240,9 +2088,7 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </div>
 </div>
-</section>
-<section id="id11">
-<h3>Mengubah Label Cluster menjadi angka<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
+<p>Mengubah Label Cluster menjadi angka</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mapping label angka → huruf</span>
@@ -2271,9 +2117,7 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </div>
 </div>
-</section>
-<section id="mengubah-data-petal-width-menjadi-cluster-yang-telah-dilakukan-sebelumnya-dan-disimpan-ke-csv">
-<h3>Mengubah Data Petal Width menjadi Cluster yang telah dilakukan sebelumnya dan disimpan ke CSV<a class="headerlink" href="#mengubah-data-petal-width-menjadi-cluster-yang-telah-dilakukan-sebelumnya-dan-disimpan-ke-csv" title="Link to this heading">#</a></h3>
+<p>Mengubah Data Petal Width menjadi Cluster yang telah dilakukan sebelumnya dan disimpan ke CSV</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ganti kolom petal_width dengan label huruf cluster</span>
@@ -2307,11 +2151,9 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </div>
 </section>
-</section>
 <section id="hasil-akhir-data-iris-yang-telah-di-diskritisasi">
-<h2>Hasil Akhir data IRIS yang telah di Diskritisasi<a class="headerlink" href="#hasil-akhir-data-iris-yang-telah-di-diskritisasi" title="Link to this heading">#</a></h2>
-<section id="dengan-class">
-<h3>Dengan Class<a class="headerlink" href="#dengan-class" title="Link to this heading">#</a></h3>
+<h3>Hasil Akhir data IRIS yang telah di Diskritisasi<a class="headerlink" href="#hasil-akhir-data-iris-yang-telah-di-diskritisasi" title="Link to this heading">#</a></h3>
+<p>Dengan Class</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Baca data</span>
@@ -2342,9 +2184,7 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </div>
 </div>
-</section>
-<section id="tanpa-class">
-<h3>Tanpa Class<a class="headerlink" href="#tanpa-class" title="Link to this heading">#</a></h3>
+<p>Tanpa Class</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Baca data</span>
@@ -2359,9 +2199,7 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data IRIS Diskritisasi
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      id sepal_length sepal_width petal_length petal_width
+      id sepal_length sepal_width petal_length petal_width
 0      1            C           B            B           C
 1      2            C           C            B           C
 2      3            C           C            B           C
@@ -2381,13 +2219,11 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </section>
 </section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="melakukan-klasifikasi-dengan-model-naive-bayas-menggunakan-data-yang-sudah-di-diskritisasi">
-<h1>Melakukan Klasifikasi dengan model Naive Bayas menggunakan data yang sudah di Diskritisasi<a class="headerlink" href="#melakukan-klasifikasi-dengan-model-naive-bayas-menggunakan-data-yang-sudah-di-diskritisasi" title="Link to this heading">#</a></h1>
+<section id="melakukan-klasifikasi-dengan-model-naive-bayas-menggunakan-data-yang-sudah-di-diskritisasi">
+<h2>Melakukan Klasifikasi dengan model Naive Bayas menggunakan data yang sudah di Diskritisasi<a class="headerlink" href="#melakukan-klasifikasi-dengan-model-naive-bayas-menggunakan-data-yang-sudah-di-diskritisasi" title="Link to this heading">#</a></h2>
 <section id="implementasi-naive-bayes">
-<h2>Implementasi Naive Bayes<a class="headerlink" href="#implementasi-naive-bayes" title="Link to this heading">#</a></h2>
-<section id="id12">
-<h3>Import Library<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
+<h3>Implementasi Naive Bayes<a class="headerlink" href="#implementasi-naive-bayes" title="Link to this heading">#</a></h3>
+<p>Import Library</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import Library</span>
@@ -2734,7 +2570,7 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><style>#sk-container-id-1 {
+<div class="output text_html"><style>#sk-container-id-10 {
   /* Definition of color scheme common for light and dark mode */
   --sklearn-color-text: #000;
   --sklearn-color-text-muted: #666;
@@ -2765,15 +2601,15 @@ Note: you may need to restart the kernel to use updated packages.
   }
 }
 
-#sk-container-id-1 {
+#sk-container-id-10 {
   color: var(--sklearn-color-text);
 }
 
-#sk-container-id-1 pre {
+#sk-container-id-10 pre {
   padding: 0;
 }
 
-#sk-container-id-1 input.sk-hidden--visually {
+#sk-container-id-10 input.sk-hidden--visually {
   border: 0;
   clip: rect(1px 1px 1px 1px);
   clip: rect(1px, 1px, 1px, 1px);
@@ -2785,7 +2621,7 @@ Note: you may need to restart the kernel to use updated packages.
   width: 1px;
 }
 
-#sk-container-id-1 div.sk-dashed-wrapped {
+#sk-container-id-10 div.sk-dashed-wrapped {
   border: 1px dashed var(--sklearn-color-line);
   margin: 0 0.4em 0.5em 0.4em;
   box-sizing: border-box;
@@ -2793,7 +2629,7 @@ Note: you may need to restart the kernel to use updated packages.
   background-color: var(--sklearn-color-background);
 }
 
-#sk-container-id-1 div.sk-container {
+#sk-container-id-10 div.sk-container {
   /* jupyter's `normalize.less` sets `[hidden] { display: none; }`
      but bootstrap.min.css set `[hidden] { display: none !important; }`
      so we also need the `!important` here to be able to override the
@@ -2803,7 +2639,7 @@ Note: you may need to restart the kernel to use updated packages.
   position: relative;
 }
 
-#sk-container-id-1 div.sk-text-repr-fallback {
+#sk-container-id-10 div.sk-text-repr-fallback {
   display: none;
 }
 
@@ -2819,14 +2655,14 @@ div.sk-item {
 
 /* Parallel-specific style estimator block */
 
-#sk-container-id-1 div.sk-parallel-item::after {
+#sk-container-id-10 div.sk-parallel-item::after {
   content: "";
   width: 100%;
   border-bottom: 2px solid var(--sklearn-color-text-on-default-background);
   flex-grow: 1;
 }
 
-#sk-container-id-1 div.sk-parallel {
+#sk-container-id-10 div.sk-parallel {
   display: flex;
   align-items: stretch;
   justify-content: center;
@@ -2834,28 +2670,28 @@ div.sk-item {
   position: relative;
 }
 
-#sk-container-id-1 div.sk-parallel-item {
+#sk-container-id-10 div.sk-parallel-item {
   display: flex;
   flex-direction: column;
 }
 
-#sk-container-id-1 div.sk-parallel-item:first-child::after {
+#sk-container-id-10 div.sk-parallel-item:first-child::after {
   align-self: flex-end;
   width: 50%;
 }
 
-#sk-container-id-1 div.sk-parallel-item:last-child::after {
+#sk-container-id-10 div.sk-parallel-item:last-child::after {
   align-self: flex-start;
   width: 50%;
 }
 
-#sk-container-id-1 div.sk-parallel-item:only-child::after {
+#sk-container-id-10 div.sk-parallel-item:only-child::after {
   width: 0;
 }
 
 /* Serial-specific style estimator block */
 
-#sk-container-id-1 div.sk-serial {
+#sk-container-id-10 div.sk-serial {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -2873,14 +2709,14 @@ clickable and can be expanded/collapsed.
 
 /* Pipeline and ColumnTransformer style (default) */
 
-#sk-container-id-1 div.sk-toggleable {
+#sk-container-id-10 div.sk-toggleable {
   /* Default theme specific background. It is overwritten whether we have a
   specific estimator or a Pipeline/ColumnTransformer */
   background-color: var(--sklearn-color-background);
 }
 
 /* Toggleable label */
-#sk-container-id-1 label.sk-toggleable__label {
+#sk-container-id-10 label.sk-toggleable__label {
   cursor: pointer;
   display: flex;
   width: 100%;
@@ -2893,13 +2729,13 @@ clickable and can be expanded/collapsed.
   gap: 0.5em;
 }
 
-#sk-container-id-1 label.sk-toggleable__label .caption {
+#sk-container-id-10 label.sk-toggleable__label .caption {
   font-size: 0.6rem;
   font-weight: lighter;
   color: var(--sklearn-color-text-muted);
 }
 
-#sk-container-id-1 label.sk-toggleable__label-arrow:before {
+#sk-container-id-10 label.sk-toggleable__label-arrow:before {
   /* Arrow on the left of the label */
   content: "▸";
   float: left;
@@ -2907,25 +2743,27 @@ clickable and can be expanded/collapsed.
   color: var(--sklearn-color-icon);
 }
 
-#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {
+#sk-container-id-10 label.sk-toggleable__label-arrow:hover:before {
   color: var(--sklearn-color-text);
 }
 
 /* Toggleable content - dropdown */
 
-#sk-container-id-1 div.sk-toggleable__content {
-  display: none;
+#sk-container-id-10 div.sk-toggleable__content {
+  max-height: 0;
+  max-width: 0;
+  overflow: hidden;
   text-align: left;
   /* unfitted */
   background-color: var(--sklearn-color-unfitted-level-0);
 }
 
-#sk-container-id-1 div.sk-toggleable__content.fitted {
+#sk-container-id-10 div.sk-toggleable__content.fitted {
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-0);
 }
 
-#sk-container-id-1 div.sk-toggleable__content pre {
+#sk-container-id-10 div.sk-toggleable__content pre {
   margin: 0.2em;
   border-radius: 0.25em;
   color: var(--sklearn-color-text);
@@ -2933,79 +2771,79 @@ clickable and can be expanded/collapsed.
   background-color: var(--sklearn-color-unfitted-level-0);
 }
 
-#sk-container-id-1 div.sk-toggleable__content.fitted pre {
+#sk-container-id-10 div.sk-toggleable__content.fitted pre {
   /* unfitted */
   background-color: var(--sklearn-color-fitted-level-0);
 }
 
-#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {
+#sk-container-id-10 input.sk-toggleable__control:checked~div.sk-toggleable__content {
   /* Expand drop-down */
-  display: block;
-  width: 100%;
-  overflow: visible;
+  max-height: 200px;
+  max-width: 100%;
+  overflow: auto;
 }
 
-#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
+#sk-container-id-10 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
   content: "▾";
 }
 
 /* Pipeline/ColumnTransformer-specific style */
 
-#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
+#sk-container-id-10 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
   color: var(--sklearn-color-text);
   background-color: var(--sklearn-color-unfitted-level-2);
 }
 
-#sk-container-id-1 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+#sk-container-id-10 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
   background-color: var(--sklearn-color-fitted-level-2);
 }
 
 /* Estimator-specific style */
 
 /* Colorize estimator box */
-#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
+#sk-container-id-10 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
   /* unfitted */
   background-color: var(--sklearn-color-unfitted-level-2);
 }
 
-#sk-container-id-1 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+#sk-container-id-10 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-2);
 }
 
-#sk-container-id-1 div.sk-label label.sk-toggleable__label,
-#sk-container-id-1 div.sk-label label {
+#sk-container-id-10 div.sk-label label.sk-toggleable__label,
+#sk-container-id-10 div.sk-label label {
   /* The background is the default theme color */
   color: var(--sklearn-color-text-on-default-background);
 }
 
 /* On hover, darken the color of the background */
-#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {
+#sk-container-id-10 div.sk-label:hover label.sk-toggleable__label {
   color: var(--sklearn-color-text);
   background-color: var(--sklearn-color-unfitted-level-2);
 }
 
 /* Label box, darken color on hover, fitted */
-#sk-container-id-1 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
+#sk-container-id-10 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
   color: var(--sklearn-color-text);
   background-color: var(--sklearn-color-fitted-level-2);
 }
 
 /* Estimator label */
 
-#sk-container-id-1 div.sk-label label {
+#sk-container-id-10 div.sk-label label {
   font-family: monospace;
   font-weight: bold;
   display: inline-block;
   line-height: 1.2em;
 }
 
-#sk-container-id-1 div.sk-label-container {
+#sk-container-id-10 div.sk-label-container {
   text-align: center;
 }
 
 /* Estimator-specific */
-#sk-container-id-1 div.sk-estimator {
+#sk-container-id-10 div.sk-estimator {
   font-family: monospace;
   border: 1px dotted var(--sklearn-color-border-box);
   border-radius: 0.25em;
@@ -3015,18 +2853,18 @@ clickable and can be expanded/collapsed.
   background-color: var(--sklearn-color-unfitted-level-0);
 }
 
-#sk-container-id-1 div.sk-estimator.fitted {
+#sk-container-id-10 div.sk-estimator.fitted {
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-0);
 }
 
 /* on hover */
-#sk-container-id-1 div.sk-estimator:hover {
+#sk-container-id-10 div.sk-estimator:hover {
   /* unfitted */
   background-color: var(--sklearn-color-unfitted-level-2);
 }
 
-#sk-container-id-1 div.sk-estimator.fitted:hover {
+#sk-container-id-10 div.sk-estimator.fitted:hover {
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-2);
 }
@@ -3114,7 +2952,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 
 /* "?"-specific style due to the `<a>` HTML tag */
 
-#sk-container-id-1 a.estimator_doc_link {
+#sk-container-id-10 a.estimator_doc_link {
   float: right;
   font-size: 1rem;
   line-height: 1em;
@@ -3129,191 +2967,25 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
   border: var(--sklearn-color-unfitted-level-1) 1pt solid;
 }
 
-#sk-container-id-1 a.estimator_doc_link.fitted {
+#sk-container-id-10 a.estimator_doc_link.fitted {
   /* fitted */
   border: var(--sklearn-color-fitted-level-1) 1pt solid;
   color: var(--sklearn-color-fitted-level-1);
 }
 
 /* On hover */
-#sk-container-id-1 a.estimator_doc_link:hover {
+#sk-container-id-10 a.estimator_doc_link:hover {
   /* unfitted */
   background-color: var(--sklearn-color-unfitted-level-3);
   color: var(--sklearn-color-background);
   text-decoration: none;
 }
 
-#sk-container-id-1 a.estimator_doc_link.fitted:hover {
+#sk-container-id-10 a.estimator_doc_link.fitted:hover {
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-3);
 }
-
-.estimator-table summary {
-    padding: .5rem;
-    font-family: monospace;
-    cursor: pointer;
-}
-
-.estimator-table details[open] {
-    padding-left: 0.1rem;
-    padding-right: 0.1rem;
-    padding-bottom: 0.3rem;
-}
-
-.estimator-table .parameters-table {
-    margin-left: auto !important;
-    margin-right: auto !important;
-}
-
-.estimator-table .parameters-table tr:nth-child(odd) {
-    background-color: #fff;
-}
-
-.estimator-table .parameters-table tr:nth-child(even) {
-    background-color: #f6f6f6;
-}
-
-.estimator-table .parameters-table tr:hover {
-    background-color: #e0e0e0;
-}
-
-.estimator-table table td {
-    border: 1px solid rgba(106, 105, 104, 0.232);
-}
-
-.user-set td {
-    color:rgb(255, 94, 0);
-    text-align: left;
-}
-
-.user-set td.value pre {
-    color:rgb(255, 94, 0) !important;
-    background-color: transparent !important;
-}
-
-.default td {
-    color: black;
-    text-align: left;
-}
-
-.user-set td i,
-.default td i {
-    color: black;
-}
-
-.copy-paste-icon {
-    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0NDggNTEyIj48IS0tIUZvbnQgQXdlc29tZSBGcmVlIDYuNy4yIGJ5IEBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlL2ZyZWUgQ29weXJpZ2h0IDIwMjUgRm9udGljb25zLCBJbmMuLS0+PHBhdGggZD0iTTIwOCAwTDMzMi4xIDBjMTIuNyAwIDI0LjkgNS4xIDMzLjkgMTQuMWw2Ny45IDY3LjljOSA5IDE0LjEgMjEuMiAxNC4xIDMzLjlMNDQ4IDMzNmMwIDI2LjUtMjEuNSA0OC00OCA0OGwtMTkyIDBjLTI2LjUgMC00OC0yMS41LTQ4LTQ4bDAtMjg4YzAtMjYuNSAyMS41LTQ4IDQ4LTQ4ek00OCAxMjhsODAgMCAwIDY0LTY0IDAgMCAyNTYgMTkyIDAgMC0zMiA2NCAwIDAgNDhjMCAyNi41LTIxLjUgNDgtNDggNDhMNDggNTEyYy0yNi41IDAtNDgtMjEuNS00OC00OEwwIDE3NmMwLTI2LjUgMjEuNS00OCA0OC00OHoiLz48L3N2Zz4=);
-    background-repeat: no-repeat;
-    background-size: 14px 14px;
-    background-position: 0;
-    display: inline-block;
-    width: 14px;
-    height: 14px;
-    cursor: pointer;
-}
-</style><body><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>CategoricalNB()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked><label for="sk-estimator-id-1" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>CategoricalNB</div></div><div><a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.7/modules/generated/sklearn.naive_bayes.CategoricalNB.html">?<span>Documentation for CategoricalNB</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></div></label><div class="sk-toggleable__content fitted" data-param-prefix="">
-        <div class="estimator-table">
-            <details>
-                <summary>Parameters</summary>
-                <table class="parameters-table">
-                  <tbody>
-                    
-        <tr class="default">
-            <td><i class="copy-paste-icon"
-                 onclick="copyToClipboard('alpha',
-                          this.parentElement.nextElementSibling)"
-            ></i></td>
-            <td class="param">alpha&nbsp;</td>
-            <td class="value">1.0</td>
-        </tr>
-    
-
-        <tr class="default">
-            <td><i class="copy-paste-icon"
-                 onclick="copyToClipboard('force_alpha',
-                          this.parentElement.nextElementSibling)"
-            ></i></td>
-            <td class="param">force_alpha&nbsp;</td>
-            <td class="value">True</td>
-        </tr>
-    
-
-        <tr class="default">
-            <td><i class="copy-paste-icon"
-                 onclick="copyToClipboard('fit_prior',
-                          this.parentElement.nextElementSibling)"
-            ></i></td>
-            <td class="param">fit_prior&nbsp;</td>
-            <td class="value">True</td>
-        </tr>
-    
-
-        <tr class="default">
-            <td><i class="copy-paste-icon"
-                 onclick="copyToClipboard('class_prior',
-                          this.parentElement.nextElementSibling)"
-            ></i></td>
-            <td class="param">class_prior&nbsp;</td>
-            <td class="value">None</td>
-        </tr>
-    
-
-        <tr class="default">
-            <td><i class="copy-paste-icon"
-                 onclick="copyToClipboard('min_categories',
-                          this.parentElement.nextElementSibling)"
-            ></i></td>
-            <td class="param">min_categories&nbsp;</td>
-            <td class="value">None</td>
-        </tr>
-    
-                  </tbody>
-                </table>
-            </details>
-        </div>
-    </div></div></div></div></div><script>function copyToClipboard(text, element) {
-    // Get the parameter prefix from the closest toggleable content
-    const toggleableContent = element.closest('.sk-toggleable__content');
-    const paramPrefix = toggleableContent ? toggleableContent.dataset.paramPrefix : '';
-    const fullParamName = paramPrefix ? `${paramPrefix}${text}` : text;
-
-    const originalStyle = element.style;
-    const computedStyle = window.getComputedStyle(element);
-    const originalWidth = computedStyle.width;
-    const originalHTML = element.innerHTML.replace('Copied!', '');
-
-    navigator.clipboard.writeText(fullParamName)
-        .then(() => {
-            element.style.width = originalWidth;
-            element.style.color = 'green';
-            element.innerHTML = "Copied!";
-
-            setTimeout(() => {
-                element.innerHTML = originalHTML;
-                element.style = originalStyle;
-            }, 2000);
-        })
-        .catch(err => {
-            console.error('Failed to copy:', err);
-            element.style.color = 'red';
-            element.innerHTML = "Failed!";
-            setTimeout(() => {
-                element.innerHTML = originalHTML;
-                element.style = originalStyle;
-            }, 2000);
-        });
-    return false;
-}
-
-document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
-    const toggleableContent = element.closest('.sk-toggleable__content');
-    const paramPrefix = toggleableContent ? toggleableContent.dataset.paramPrefix : '';
-    const paramName = element.parentElement.nextElementSibling.textContent.trim();
-    const fullParamName = paramPrefix ? `${paramPrefix}${paramName}` : paramName;
-
-    element.setAttribute('title', fullParamName);
-});
-</script></body></div></div>
+</style><div id="sk-container-id-10" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>CategoricalNB()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-10" type="checkbox" checked><label for="sk-estimator-id-10" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>CategoricalNB</div></div><div><a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.6/modules/generated/sklearn.naive_bayes.CategoricalNB.html">?<span>Documentation for CategoricalNB</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></div></label><div class="sk-toggleable__content fitted"><pre>CategoricalNB()</pre></div> </div></div></div></div></div></div>
 </div>
 <p>Melakukan prediksi terhadap data uji.</p>
 <div class="cell docutils container">
@@ -3693,7 +3365,7 @@ Confusion Matrix:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><style>#sk-container-id-2 {
+<div class="output text_html"><style>#sk-container-id-13 {
   /* Definition of color scheme common for light and dark mode */
   --sklearn-color-text: #000;
   --sklearn-color-text-muted: #666;
@@ -3724,15 +3396,15 @@ Confusion Matrix:
   }
 }
 
-#sk-container-id-2 {
+#sk-container-id-13 {
   color: var(--sklearn-color-text);
 }
 
-#sk-container-id-2 pre {
+#sk-container-id-13 pre {
   padding: 0;
 }
 
-#sk-container-id-2 input.sk-hidden--visually {
+#sk-container-id-13 input.sk-hidden--visually {
   border: 0;
   clip: rect(1px 1px 1px 1px);
   clip: rect(1px, 1px, 1px, 1px);
@@ -3744,7 +3416,7 @@ Confusion Matrix:
   width: 1px;
 }
 
-#sk-container-id-2 div.sk-dashed-wrapped {
+#sk-container-id-13 div.sk-dashed-wrapped {
   border: 1px dashed var(--sklearn-color-line);
   margin: 0 0.4em 0.5em 0.4em;
   box-sizing: border-box;
@@ -3752,7 +3424,7 @@ Confusion Matrix:
   background-color: var(--sklearn-color-background);
 }
 
-#sk-container-id-2 div.sk-container {
+#sk-container-id-13 div.sk-container {
   /* jupyter's `normalize.less` sets `[hidden] { display: none; }`
      but bootstrap.min.css set `[hidden] { display: none !important; }`
      so we also need the `!important` here to be able to override the
@@ -3762,7 +3434,7 @@ Confusion Matrix:
   position: relative;
 }
 
-#sk-container-id-2 div.sk-text-repr-fallback {
+#sk-container-id-13 div.sk-text-repr-fallback {
   display: none;
 }
 
@@ -3778,14 +3450,14 @@ div.sk-item {
 
 /* Parallel-specific style estimator block */
 
-#sk-container-id-2 div.sk-parallel-item::after {
+#sk-container-id-13 div.sk-parallel-item::after {
   content: "";
   width: 100%;
   border-bottom: 2px solid var(--sklearn-color-text-on-default-background);
   flex-grow: 1;
 }
 
-#sk-container-id-2 div.sk-parallel {
+#sk-container-id-13 div.sk-parallel {
   display: flex;
   align-items: stretch;
   justify-content: center;
@@ -3793,28 +3465,28 @@ div.sk-item {
   position: relative;
 }
 
-#sk-container-id-2 div.sk-parallel-item {
+#sk-container-id-13 div.sk-parallel-item {
   display: flex;
   flex-direction: column;
 }
 
-#sk-container-id-2 div.sk-parallel-item:first-child::after {
+#sk-container-id-13 div.sk-parallel-item:first-child::after {
   align-self: flex-end;
   width: 50%;
 }
 
-#sk-container-id-2 div.sk-parallel-item:last-child::after {
+#sk-container-id-13 div.sk-parallel-item:last-child::after {
   align-self: flex-start;
   width: 50%;
 }
 
-#sk-container-id-2 div.sk-parallel-item:only-child::after {
+#sk-container-id-13 div.sk-parallel-item:only-child::after {
   width: 0;
 }
 
 /* Serial-specific style estimator block */
 
-#sk-container-id-2 div.sk-serial {
+#sk-container-id-13 div.sk-serial {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -3832,14 +3504,14 @@ clickable and can be expanded/collapsed.
 
 /* Pipeline and ColumnTransformer style (default) */
 
-#sk-container-id-2 div.sk-toggleable {
+#sk-container-id-13 div.sk-toggleable {
   /* Default theme specific background. It is overwritten whether we have a
   specific estimator or a Pipeline/ColumnTransformer */
   background-color: var(--sklearn-color-background);
 }
 
 /* Toggleable label */
-#sk-container-id-2 label.sk-toggleable__label {
+#sk-container-id-13 label.sk-toggleable__label {
   cursor: pointer;
   display: flex;
   width: 100%;
@@ -3852,13 +3524,13 @@ clickable and can be expanded/collapsed.
   gap: 0.5em;
 }
 
-#sk-container-id-2 label.sk-toggleable__label .caption {
+#sk-container-id-13 label.sk-toggleable__label .caption {
   font-size: 0.6rem;
   font-weight: lighter;
   color: var(--sklearn-color-text-muted);
 }
 
-#sk-container-id-2 label.sk-toggleable__label-arrow:before {
+#sk-container-id-13 label.sk-toggleable__label-arrow:before {
   /* Arrow on the left of the label */
   content: "▸";
   float: left;
@@ -3866,25 +3538,27 @@ clickable and can be expanded/collapsed.
   color: var(--sklearn-color-icon);
 }
 
-#sk-container-id-2 label.sk-toggleable__label-arrow:hover:before {
+#sk-container-id-13 label.sk-toggleable__label-arrow:hover:before {
   color: var(--sklearn-color-text);
 }
 
 /* Toggleable content - dropdown */
 
-#sk-container-id-2 div.sk-toggleable__content {
-  display: none;
+#sk-container-id-13 div.sk-toggleable__content {
+  max-height: 0;
+  max-width: 0;
+  overflow: hidden;
   text-align: left;
   /* unfitted */
   background-color: var(--sklearn-color-unfitted-level-0);
 }
 
-#sk-container-id-2 div.sk-toggleable__content.fitted {
+#sk-container-id-13 div.sk-toggleable__content.fitted {
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-0);
 }
 
-#sk-container-id-2 div.sk-toggleable__content pre {
+#sk-container-id-13 div.sk-toggleable__content pre {
   margin: 0.2em;
   border-radius: 0.25em;
   color: var(--sklearn-color-text);
@@ -3892,79 +3566,79 @@ clickable and can be expanded/collapsed.
   background-color: var(--sklearn-color-unfitted-level-0);
 }
 
-#sk-container-id-2 div.sk-toggleable__content.fitted pre {
+#sk-container-id-13 div.sk-toggleable__content.fitted pre {
   /* unfitted */
   background-color: var(--sklearn-color-fitted-level-0);
 }
 
-#sk-container-id-2 input.sk-toggleable__control:checked~div.sk-toggleable__content {
+#sk-container-id-13 input.sk-toggleable__control:checked~div.sk-toggleable__content {
   /* Expand drop-down */
-  display: block;
-  width: 100%;
-  overflow: visible;
+  max-height: 200px;
+  max-width: 100%;
+  overflow: auto;
 }
 
-#sk-container-id-2 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
+#sk-container-id-13 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
   content: "▾";
 }
 
 /* Pipeline/ColumnTransformer-specific style */
 
-#sk-container-id-2 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
+#sk-container-id-13 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
   color: var(--sklearn-color-text);
   background-color: var(--sklearn-color-unfitted-level-2);
 }
 
-#sk-container-id-2 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+#sk-container-id-13 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
   background-color: var(--sklearn-color-fitted-level-2);
 }
 
 /* Estimator-specific style */
 
 /* Colorize estimator box */
-#sk-container-id-2 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
+#sk-container-id-13 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
   /* unfitted */
   background-color: var(--sklearn-color-unfitted-level-2);
 }
 
-#sk-container-id-2 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+#sk-container-id-13 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-2);
 }
 
-#sk-container-id-2 div.sk-label label.sk-toggleable__label,
-#sk-container-id-2 div.sk-label label {
+#sk-container-id-13 div.sk-label label.sk-toggleable__label,
+#sk-container-id-13 div.sk-label label {
   /* The background is the default theme color */
   color: var(--sklearn-color-text-on-default-background);
 }
 
 /* On hover, darken the color of the background */
-#sk-container-id-2 div.sk-label:hover label.sk-toggleable__label {
+#sk-container-id-13 div.sk-label:hover label.sk-toggleable__label {
   color: var(--sklearn-color-text);
   background-color: var(--sklearn-color-unfitted-level-2);
 }
 
 /* Label box, darken color on hover, fitted */
-#sk-container-id-2 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
+#sk-container-id-13 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
   color: var(--sklearn-color-text);
   background-color: var(--sklearn-color-fitted-level-2);
 }
 
 /* Estimator label */
 
-#sk-container-id-2 div.sk-label label {
+#sk-container-id-13 div.sk-label label {
   font-family: monospace;
   font-weight: bold;
   display: inline-block;
   line-height: 1.2em;
 }
 
-#sk-container-id-2 div.sk-label-container {
+#sk-container-id-13 div.sk-label-container {
   text-align: center;
 }
 
 /* Estimator-specific */
-#sk-container-id-2 div.sk-estimator {
+#sk-container-id-13 div.sk-estimator {
   font-family: monospace;
   border: 1px dotted var(--sklearn-color-border-box);
   border-radius: 0.25em;
@@ -3974,18 +3648,18 @@ clickable and can be expanded/collapsed.
   background-color: var(--sklearn-color-unfitted-level-0);
 }
 
-#sk-container-id-2 div.sk-estimator.fitted {
+#sk-container-id-13 div.sk-estimator.fitted {
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-0);
 }
 
 /* on hover */
-#sk-container-id-2 div.sk-estimator:hover {
+#sk-container-id-13 div.sk-estimator:hover {
   /* unfitted */
   background-color: var(--sklearn-color-unfitted-level-2);
 }
 
-#sk-container-id-2 div.sk-estimator.fitted:hover {
+#sk-container-id-13 div.sk-estimator.fitted:hover {
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-2);
 }
@@ -4073,7 +3747,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 
 /* "?"-specific style due to the `<a>` HTML tag */
 
-#sk-container-id-2 a.estimator_doc_link {
+#sk-container-id-13 a.estimator_doc_link {
   float: right;
   font-size: 1rem;
   line-height: 1em;
@@ -4088,191 +3762,25 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
   border: var(--sklearn-color-unfitted-level-1) 1pt solid;
 }
 
-#sk-container-id-2 a.estimator_doc_link.fitted {
+#sk-container-id-13 a.estimator_doc_link.fitted {
   /* fitted */
   border: var(--sklearn-color-fitted-level-1) 1pt solid;
   color: var(--sklearn-color-fitted-level-1);
 }
 
 /* On hover */
-#sk-container-id-2 a.estimator_doc_link:hover {
+#sk-container-id-13 a.estimator_doc_link:hover {
   /* unfitted */
   background-color: var(--sklearn-color-unfitted-level-3);
   color: var(--sklearn-color-background);
   text-decoration: none;
 }
 
-#sk-container-id-2 a.estimator_doc_link.fitted:hover {
+#sk-container-id-13 a.estimator_doc_link.fitted:hover {
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-3);
 }
-
-.estimator-table summary {
-    padding: .5rem;
-    font-family: monospace;
-    cursor: pointer;
-}
-
-.estimator-table details[open] {
-    padding-left: 0.1rem;
-    padding-right: 0.1rem;
-    padding-bottom: 0.3rem;
-}
-
-.estimator-table .parameters-table {
-    margin-left: auto !important;
-    margin-right: auto !important;
-}
-
-.estimator-table .parameters-table tr:nth-child(odd) {
-    background-color: #fff;
-}
-
-.estimator-table .parameters-table tr:nth-child(even) {
-    background-color: #f6f6f6;
-}
-
-.estimator-table .parameters-table tr:hover {
-    background-color: #e0e0e0;
-}
-
-.estimator-table table td {
-    border: 1px solid rgba(106, 105, 104, 0.232);
-}
-
-.user-set td {
-    color:rgb(255, 94, 0);
-    text-align: left;
-}
-
-.user-set td.value pre {
-    color:rgb(255, 94, 0) !important;
-    background-color: transparent !important;
-}
-
-.default td {
-    color: black;
-    text-align: left;
-}
-
-.user-set td i,
-.default td i {
-    color: black;
-}
-
-.copy-paste-icon {
-    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0NDggNTEyIj48IS0tIUZvbnQgQXdlc29tZSBGcmVlIDYuNy4yIGJ5IEBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlL2ZyZWUgQ29weXJpZ2h0IDIwMjUgRm9udGljb25zLCBJbmMuLS0+PHBhdGggZD0iTTIwOCAwTDMzMi4xIDBjMTIuNyAwIDI0LjkgNS4xIDMzLjkgMTQuMWw2Ny45IDY3LjljOSA5IDE0LjEgMjEuMiAxNC4xIDMzLjlMNDQ4IDMzNmMwIDI2LjUtMjEuNSA0OC00OCA0OGwtMTkyIDBjLTI2LjUgMC00OC0yMS41LTQ4LTQ4bDAtMjg4YzAtMjYuNSAyMS41LTQ4IDQ4LTQ4ek00OCAxMjhsODAgMCAwIDY0LTY0IDAgMCAyNTYgMTkyIDAgMC0zMiA2NCAwIDAgNDhjMCAyNi41LTIxLjUgNDgtNDggNDhMNDggNTEyYy0yNi41IDAtNDgtMjEuNS00OC00OEwwIDE3NmMwLTI2LjUgMjEuNS00OCA0OC00OHoiLz48L3N2Zz4=);
-    background-repeat: no-repeat;
-    background-size: 14px 14px;
-    background-position: 0;
-    display: inline-block;
-    width: 14px;
-    height: 14px;
-    cursor: pointer;
-}
-</style><body><div id="sk-container-id-2" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>CategoricalNB()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-2" type="checkbox" checked><label for="sk-estimator-id-2" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>CategoricalNB</div></div><div><a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.7/modules/generated/sklearn.naive_bayes.CategoricalNB.html">?<span>Documentation for CategoricalNB</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></div></label><div class="sk-toggleable__content fitted" data-param-prefix="">
-        <div class="estimator-table">
-            <details>
-                <summary>Parameters</summary>
-                <table class="parameters-table">
-                  <tbody>
-                    
-        <tr class="default">
-            <td><i class="copy-paste-icon"
-                 onclick="copyToClipboard('alpha',
-                          this.parentElement.nextElementSibling)"
-            ></i></td>
-            <td class="param">alpha&nbsp;</td>
-            <td class="value">1.0</td>
-        </tr>
-    
-
-        <tr class="default">
-            <td><i class="copy-paste-icon"
-                 onclick="copyToClipboard('force_alpha',
-                          this.parentElement.nextElementSibling)"
-            ></i></td>
-            <td class="param">force_alpha&nbsp;</td>
-            <td class="value">True</td>
-        </tr>
-    
-
-        <tr class="default">
-            <td><i class="copy-paste-icon"
-                 onclick="copyToClipboard('fit_prior',
-                          this.parentElement.nextElementSibling)"
-            ></i></td>
-            <td class="param">fit_prior&nbsp;</td>
-            <td class="value">True</td>
-        </tr>
-    
-
-        <tr class="default">
-            <td><i class="copy-paste-icon"
-                 onclick="copyToClipboard('class_prior',
-                          this.parentElement.nextElementSibling)"
-            ></i></td>
-            <td class="param">class_prior&nbsp;</td>
-            <td class="value">None</td>
-        </tr>
-    
-
-        <tr class="default">
-            <td><i class="copy-paste-icon"
-                 onclick="copyToClipboard('min_categories',
-                          this.parentElement.nextElementSibling)"
-            ></i></td>
-            <td class="param">min_categories&nbsp;</td>
-            <td class="value">None</td>
-        </tr>
-    
-                  </tbody>
-                </table>
-            </details>
-        </div>
-    </div></div></div></div></div><script>function copyToClipboard(text, element) {
-    // Get the parameter prefix from the closest toggleable content
-    const toggleableContent = element.closest('.sk-toggleable__content');
-    const paramPrefix = toggleableContent ? toggleableContent.dataset.paramPrefix : '';
-    const fullParamName = paramPrefix ? `${paramPrefix}${text}` : text;
-
-    const originalStyle = element.style;
-    const computedStyle = window.getComputedStyle(element);
-    const originalWidth = computedStyle.width;
-    const originalHTML = element.innerHTML.replace('Copied!', '');
-
-    navigator.clipboard.writeText(fullParamName)
-        .then(() => {
-            element.style.width = originalWidth;
-            element.style.color = 'green';
-            element.innerHTML = "Copied!";
-
-            setTimeout(() => {
-                element.innerHTML = originalHTML;
-                element.style = originalStyle;
-            }, 2000);
-        })
-        .catch(err => {
-            console.error('Failed to copy:', err);
-            element.style.color = 'red';
-            element.innerHTML = "Failed!";
-            setTimeout(() => {
-                element.innerHTML = originalHTML;
-                element.style = originalStyle;
-            }, 2000);
-        });
-    return false;
-}
-
-document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
-    const toggleableContent = element.closest('.sk-toggleable__content');
-    const paramPrefix = toggleableContent ? toggleableContent.dataset.paramPrefix : '';
-    const paramName = element.parentElement.nextElementSibling.textContent.trim();
-    const fullParamName = paramPrefix ? `${paramPrefix}${paramName}` : paramName;
-
-    element.setAttribute('title', fullParamName);
-});
-</script></body></div></div>
+</style><div id="sk-container-id-13" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>CategoricalNB()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-13" type="checkbox" checked><label for="sk-estimator-id-13" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>CategoricalNB</div></div><div><a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.6/modules/generated/sklearn.naive_bayes.CategoricalNB.html">?<span>Documentation for CategoricalNB</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></div></label><div class="sk-toggleable__content fitted"><pre>CategoricalNB()</pre></div> </div></div></div></div></div></div>
 </div>
 <p>Melakukan prediksi terhadap data uji.</p>
 <div class="cell docutils container">
@@ -4515,11 +4023,10 @@ Confusion Matrix:
 </div>
 </section>
 </section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="melakukan-klasifikasi-dengan-model-naive-bayas-menggunakan-data-yang-belum-di-diskritisasi">
-<h1>Melakukan Klasifikasi dengan model Naive Bayas menggunakan data yang belum di Diskritisasi<a class="headerlink" href="#melakukan-klasifikasi-dengan-model-naive-bayas-menggunakan-data-yang-belum-di-diskritisasi" title="Link to this heading">#</a></h1>
+<section id="melakukan-klasifikasi-dengan-model-naive-bayas-menggunakan-data-yang-belum-di-diskritisasi">
+<h2>Melakukan Klasifikasi dengan model Naive Bayas menggunakan data yang belum di Diskritisasi<a class="headerlink" href="#melakukan-klasifikasi-dengan-model-naive-bayas-menggunakan-data-yang-belum-di-diskritisasi" title="Link to this heading">#</a></h2>
 <section id="implementasi-dengan-outlier-removal">
-<h2>Implementasi Dengan Outlier Removal<a class="headerlink" href="#implementasi-dengan-outlier-removal" title="Link to this heading">#</a></h2>
+<h3>Implementasi Dengan Outlier Removal<a class="headerlink" href="#implementasi-dengan-outlier-removal" title="Link to this heading">#</a></h3>
 <p>Import Library.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -4863,7 +4370,7 @@ Confusion Matrix:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><style>#sk-container-id-3 {
+<div class="output text_html"><style>#sk-container-id-14 {
   /* Definition of color scheme common for light and dark mode */
   --sklearn-color-text: #000;
   --sklearn-color-text-muted: #666;
@@ -4894,15 +4401,15 @@ Confusion Matrix:
   }
 }
 
-#sk-container-id-3 {
+#sk-container-id-14 {
   color: var(--sklearn-color-text);
 }
 
-#sk-container-id-3 pre {
+#sk-container-id-14 pre {
   padding: 0;
 }
 
-#sk-container-id-3 input.sk-hidden--visually {
+#sk-container-id-14 input.sk-hidden--visually {
   border: 0;
   clip: rect(1px 1px 1px 1px);
   clip: rect(1px, 1px, 1px, 1px);
@@ -4914,7 +4421,7 @@ Confusion Matrix:
   width: 1px;
 }
 
-#sk-container-id-3 div.sk-dashed-wrapped {
+#sk-container-id-14 div.sk-dashed-wrapped {
   border: 1px dashed var(--sklearn-color-line);
   margin: 0 0.4em 0.5em 0.4em;
   box-sizing: border-box;
@@ -4922,7 +4429,7 @@ Confusion Matrix:
   background-color: var(--sklearn-color-background);
 }
 
-#sk-container-id-3 div.sk-container {
+#sk-container-id-14 div.sk-container {
   /* jupyter's `normalize.less` sets `[hidden] { display: none; }`
      but bootstrap.min.css set `[hidden] { display: none !important; }`
      so we also need the `!important` here to be able to override the
@@ -4932,7 +4439,7 @@ Confusion Matrix:
   position: relative;
 }
 
-#sk-container-id-3 div.sk-text-repr-fallback {
+#sk-container-id-14 div.sk-text-repr-fallback {
   display: none;
 }
 
@@ -4948,14 +4455,14 @@ div.sk-item {
 
 /* Parallel-specific style estimator block */
 
-#sk-container-id-3 div.sk-parallel-item::after {
+#sk-container-id-14 div.sk-parallel-item::after {
   content: "";
   width: 100%;
   border-bottom: 2px solid var(--sklearn-color-text-on-default-background);
   flex-grow: 1;
 }
 
-#sk-container-id-3 div.sk-parallel {
+#sk-container-id-14 div.sk-parallel {
   display: flex;
   align-items: stretch;
   justify-content: center;
@@ -4963,28 +4470,28 @@ div.sk-item {
   position: relative;
 }
 
-#sk-container-id-3 div.sk-parallel-item {
+#sk-container-id-14 div.sk-parallel-item {
   display: flex;
   flex-direction: column;
 }
 
-#sk-container-id-3 div.sk-parallel-item:first-child::after {
+#sk-container-id-14 div.sk-parallel-item:first-child::after {
   align-self: flex-end;
   width: 50%;
 }
 
-#sk-container-id-3 div.sk-parallel-item:last-child::after {
+#sk-container-id-14 div.sk-parallel-item:last-child::after {
   align-self: flex-start;
   width: 50%;
 }
 
-#sk-container-id-3 div.sk-parallel-item:only-child::after {
+#sk-container-id-14 div.sk-parallel-item:only-child::after {
   width: 0;
 }
 
 /* Serial-specific style estimator block */
 
-#sk-container-id-3 div.sk-serial {
+#sk-container-id-14 div.sk-serial {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -5002,14 +4509,14 @@ clickable and can be expanded/collapsed.
 
 /* Pipeline and ColumnTransformer style (default) */
 
-#sk-container-id-3 div.sk-toggleable {
+#sk-container-id-14 div.sk-toggleable {
   /* Default theme specific background. It is overwritten whether we have a
   specific estimator or a Pipeline/ColumnTransformer */
   background-color: var(--sklearn-color-background);
 }
 
 /* Toggleable label */
-#sk-container-id-3 label.sk-toggleable__label {
+#sk-container-id-14 label.sk-toggleable__label {
   cursor: pointer;
   display: flex;
   width: 100%;
@@ -5022,13 +4529,13 @@ clickable and can be expanded/collapsed.
   gap: 0.5em;
 }
 
-#sk-container-id-3 label.sk-toggleable__label .caption {
+#sk-container-id-14 label.sk-toggleable__label .caption {
   font-size: 0.6rem;
   font-weight: lighter;
   color: var(--sklearn-color-text-muted);
 }
 
-#sk-container-id-3 label.sk-toggleable__label-arrow:before {
+#sk-container-id-14 label.sk-toggleable__label-arrow:before {
   /* Arrow on the left of the label */
   content: "▸";
   float: left;
@@ -5036,25 +4543,27 @@ clickable and can be expanded/collapsed.
   color: var(--sklearn-color-icon);
 }
 
-#sk-container-id-3 label.sk-toggleable__label-arrow:hover:before {
+#sk-container-id-14 label.sk-toggleable__label-arrow:hover:before {
   color: var(--sklearn-color-text);
 }
 
 /* Toggleable content - dropdown */
 
-#sk-container-id-3 div.sk-toggleable__content {
-  display: none;
+#sk-container-id-14 div.sk-toggleable__content {
+  max-height: 0;
+  max-width: 0;
+  overflow: hidden;
   text-align: left;
   /* unfitted */
   background-color: var(--sklearn-color-unfitted-level-0);
 }
 
-#sk-container-id-3 div.sk-toggleable__content.fitted {
+#sk-container-id-14 div.sk-toggleable__content.fitted {
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-0);
 }
 
-#sk-container-id-3 div.sk-toggleable__content pre {
+#sk-container-id-14 div.sk-toggleable__content pre {
   margin: 0.2em;
   border-radius: 0.25em;
   color: var(--sklearn-color-text);
@@ -5062,79 +4571,79 @@ clickable and can be expanded/collapsed.
   background-color: var(--sklearn-color-unfitted-level-0);
 }
 
-#sk-container-id-3 div.sk-toggleable__content.fitted pre {
+#sk-container-id-14 div.sk-toggleable__content.fitted pre {
   /* unfitted */
   background-color: var(--sklearn-color-fitted-level-0);
 }
 
-#sk-container-id-3 input.sk-toggleable__control:checked~div.sk-toggleable__content {
+#sk-container-id-14 input.sk-toggleable__control:checked~div.sk-toggleable__content {
   /* Expand drop-down */
-  display: block;
-  width: 100%;
-  overflow: visible;
+  max-height: 200px;
+  max-width: 100%;
+  overflow: auto;
 }
 
-#sk-container-id-3 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
+#sk-container-id-14 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
   content: "▾";
 }
 
 /* Pipeline/ColumnTransformer-specific style */
 
-#sk-container-id-3 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
+#sk-container-id-14 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
   color: var(--sklearn-color-text);
   background-color: var(--sklearn-color-unfitted-level-2);
 }
 
-#sk-container-id-3 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+#sk-container-id-14 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
   background-color: var(--sklearn-color-fitted-level-2);
 }
 
 /* Estimator-specific style */
 
 /* Colorize estimator box */
-#sk-container-id-3 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
+#sk-container-id-14 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
   /* unfitted */
   background-color: var(--sklearn-color-unfitted-level-2);
 }
 
-#sk-container-id-3 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+#sk-container-id-14 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-2);
 }
 
-#sk-container-id-3 div.sk-label label.sk-toggleable__label,
-#sk-container-id-3 div.sk-label label {
+#sk-container-id-14 div.sk-label label.sk-toggleable__label,
+#sk-container-id-14 div.sk-label label {
   /* The background is the default theme color */
   color: var(--sklearn-color-text-on-default-background);
 }
 
 /* On hover, darken the color of the background */
-#sk-container-id-3 div.sk-label:hover label.sk-toggleable__label {
+#sk-container-id-14 div.sk-label:hover label.sk-toggleable__label {
   color: var(--sklearn-color-text);
   background-color: var(--sklearn-color-unfitted-level-2);
 }
 
 /* Label box, darken color on hover, fitted */
-#sk-container-id-3 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
+#sk-container-id-14 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
   color: var(--sklearn-color-text);
   background-color: var(--sklearn-color-fitted-level-2);
 }
 
 /* Estimator label */
 
-#sk-container-id-3 div.sk-label label {
+#sk-container-id-14 div.sk-label label {
   font-family: monospace;
   font-weight: bold;
   display: inline-block;
   line-height: 1.2em;
 }
 
-#sk-container-id-3 div.sk-label-container {
+#sk-container-id-14 div.sk-label-container {
   text-align: center;
 }
 
 /* Estimator-specific */
-#sk-container-id-3 div.sk-estimator {
+#sk-container-id-14 div.sk-estimator {
   font-family: monospace;
   border: 1px dotted var(--sklearn-color-border-box);
   border-radius: 0.25em;
@@ -5144,18 +4653,18 @@ clickable and can be expanded/collapsed.
   background-color: var(--sklearn-color-unfitted-level-0);
 }
 
-#sk-container-id-3 div.sk-estimator.fitted {
+#sk-container-id-14 div.sk-estimator.fitted {
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-0);
 }
 
 /* on hover */
-#sk-container-id-3 div.sk-estimator:hover {
+#sk-container-id-14 div.sk-estimator:hover {
   /* unfitted */
   background-color: var(--sklearn-color-unfitted-level-2);
 }
 
-#sk-container-id-3 div.sk-estimator.fitted:hover {
+#sk-container-id-14 div.sk-estimator.fitted:hover {
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-2);
 }
@@ -5243,7 +4752,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 
 /* "?"-specific style due to the `<a>` HTML tag */
 
-#sk-container-id-3 a.estimator_doc_link {
+#sk-container-id-14 a.estimator_doc_link {
   float: right;
   font-size: 1rem;
   line-height: 1em;
@@ -5258,161 +4767,25 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
   border: var(--sklearn-color-unfitted-level-1) 1pt solid;
 }
 
-#sk-container-id-3 a.estimator_doc_link.fitted {
+#sk-container-id-14 a.estimator_doc_link.fitted {
   /* fitted */
   border: var(--sklearn-color-fitted-level-1) 1pt solid;
   color: var(--sklearn-color-fitted-level-1);
 }
 
 /* On hover */
-#sk-container-id-3 a.estimator_doc_link:hover {
+#sk-container-id-14 a.estimator_doc_link:hover {
   /* unfitted */
   background-color: var(--sklearn-color-unfitted-level-3);
   color: var(--sklearn-color-background);
   text-decoration: none;
 }
 
-#sk-container-id-3 a.estimator_doc_link.fitted:hover {
+#sk-container-id-14 a.estimator_doc_link.fitted:hover {
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-3);
 }
-
-.estimator-table summary {
-    padding: .5rem;
-    font-family: monospace;
-    cursor: pointer;
-}
-
-.estimator-table details[open] {
-    padding-left: 0.1rem;
-    padding-right: 0.1rem;
-    padding-bottom: 0.3rem;
-}
-
-.estimator-table .parameters-table {
-    margin-left: auto !important;
-    margin-right: auto !important;
-}
-
-.estimator-table .parameters-table tr:nth-child(odd) {
-    background-color: #fff;
-}
-
-.estimator-table .parameters-table tr:nth-child(even) {
-    background-color: #f6f6f6;
-}
-
-.estimator-table .parameters-table tr:hover {
-    background-color: #e0e0e0;
-}
-
-.estimator-table table td {
-    border: 1px solid rgba(106, 105, 104, 0.232);
-}
-
-.user-set td {
-    color:rgb(255, 94, 0);
-    text-align: left;
-}
-
-.user-set td.value pre {
-    color:rgb(255, 94, 0) !important;
-    background-color: transparent !important;
-}
-
-.default td {
-    color: black;
-    text-align: left;
-}
-
-.user-set td i,
-.default td i {
-    color: black;
-}
-
-.copy-paste-icon {
-    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0NDggNTEyIj48IS0tIUZvbnQgQXdlc29tZSBGcmVlIDYuNy4yIGJ5IEBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlL2ZyZWUgQ29weXJpZ2h0IDIwMjUgRm9udGljb25zLCBJbmMuLS0+PHBhdGggZD0iTTIwOCAwTDMzMi4xIDBjMTIuNyAwIDI0LjkgNS4xIDMzLjkgMTQuMWw2Ny45IDY3LjljOSA5IDE0LjEgMjEuMiAxNC4xIDMzLjlMNDQ4IDMzNmMwIDI2LjUtMjEuNSA0OC00OCA0OGwtMTkyIDBjLTI2LjUgMC00OC0yMS41LTQ4LTQ4bDAtMjg4YzAtMjYuNSAyMS41LTQ4IDQ4LTQ4ek00OCAxMjhsODAgMCAwIDY0LTY0IDAgMCAyNTYgMTkyIDAgMC0zMiA2NCAwIDAgNDhjMCAyNi41LTIxLjUgNDgtNDggNDhMNDggNTEyYy0yNi41IDAtNDgtMjEuNS00OC00OEwwIDE3NmMwLTI2LjUgMjEuNS00OCA0OC00OHoiLz48L3N2Zz4=);
-    background-repeat: no-repeat;
-    background-size: 14px 14px;
-    background-position: 0;
-    display: inline-block;
-    width: 14px;
-    height: 14px;
-    cursor: pointer;
-}
-</style><body><div id="sk-container-id-3" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>GaussianNB()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-3" type="checkbox" checked><label for="sk-estimator-id-3" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>GaussianNB</div></div><div><a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.7/modules/generated/sklearn.naive_bayes.GaussianNB.html">?<span>Documentation for GaussianNB</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></div></label><div class="sk-toggleable__content fitted" data-param-prefix="">
-        <div class="estimator-table">
-            <details>
-                <summary>Parameters</summary>
-                <table class="parameters-table">
-                  <tbody>
-                    
-        <tr class="default">
-            <td><i class="copy-paste-icon"
-                 onclick="copyToClipboard('priors',
-                          this.parentElement.nextElementSibling)"
-            ></i></td>
-            <td class="param">priors&nbsp;</td>
-            <td class="value">None</td>
-        </tr>
-    
-
-        <tr class="default">
-            <td><i class="copy-paste-icon"
-                 onclick="copyToClipboard('var_smoothing',
-                          this.parentElement.nextElementSibling)"
-            ></i></td>
-            <td class="param">var_smoothing&nbsp;</td>
-            <td class="value">1e-09</td>
-        </tr>
-    
-                  </tbody>
-                </table>
-            </details>
-        </div>
-    </div></div></div></div></div><script>function copyToClipboard(text, element) {
-    // Get the parameter prefix from the closest toggleable content
-    const toggleableContent = element.closest('.sk-toggleable__content');
-    const paramPrefix = toggleableContent ? toggleableContent.dataset.paramPrefix : '';
-    const fullParamName = paramPrefix ? `${paramPrefix}${text}` : text;
-
-    const originalStyle = element.style;
-    const computedStyle = window.getComputedStyle(element);
-    const originalWidth = computedStyle.width;
-    const originalHTML = element.innerHTML.replace('Copied!', '');
-
-    navigator.clipboard.writeText(fullParamName)
-        .then(() => {
-            element.style.width = originalWidth;
-            element.style.color = 'green';
-            element.innerHTML = "Copied!";
-
-            setTimeout(() => {
-                element.innerHTML = originalHTML;
-                element.style = originalStyle;
-            }, 2000);
-        })
-        .catch(err => {
-            console.error('Failed to copy:', err);
-            element.style.color = 'red';
-            element.innerHTML = "Failed!";
-            setTimeout(() => {
-                element.innerHTML = originalHTML;
-                element.style = originalStyle;
-            }, 2000);
-        });
-    return false;
-}
-
-document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
-    const toggleableContent = element.closest('.sk-toggleable__content');
-    const paramPrefix = toggleableContent ? toggleableContent.dataset.paramPrefix : '';
-    const paramName = element.parentElement.nextElementSibling.textContent.trim();
-    const fullParamName = paramPrefix ? `${paramPrefix}${paramName}` : paramName;
-
-    element.setAttribute('title', fullParamName);
-});
-</script></body></div></div>
+</style><div id="sk-container-id-14" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>GaussianNB()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-14" type="checkbox" checked><label for="sk-estimator-id-14" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>GaussianNB</div></div><div><a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.6/modules/generated/sklearn.naive_bayes.GaussianNB.html">?<span>Documentation for GaussianNB</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></div></label><div class="sk-toggleable__content fitted"><pre>GaussianNB()</pre></div> </div></div></div></div></div></div>
 </div>
 <p>Melakukan prediksi terhadap data uji.</p>
 <div class="cell docutils container">
@@ -5647,8 +5020,8 @@ Confusion Matrix:
 </div></div></div>
 </div>
 </section>
-<section id="id13">
-<h2>Implementasi Tanpa Menggunakan Outlier<a class="headerlink" href="#id13" title="Link to this heading">#</a></h2>
+<section id="id1">
+<h3>Implementasi Tanpa Menggunakan Outlier<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <p>Mengambil data IRIS asli.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -5833,7 +5206,7 @@ Confusion Matrix:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><style>#sk-container-id-4 {
+<div class="output text_html"><style>#sk-container-id-15 {
   /* Definition of color scheme common for light and dark mode */
   --sklearn-color-text: #000;
   --sklearn-color-text-muted: #666;
@@ -5864,15 +5237,15 @@ Confusion Matrix:
   }
 }
 
-#sk-container-id-4 {
+#sk-container-id-15 {
   color: var(--sklearn-color-text);
 }
 
-#sk-container-id-4 pre {
+#sk-container-id-15 pre {
   padding: 0;
 }
 
-#sk-container-id-4 input.sk-hidden--visually {
+#sk-container-id-15 input.sk-hidden--visually {
   border: 0;
   clip: rect(1px 1px 1px 1px);
   clip: rect(1px, 1px, 1px, 1px);
@@ -5884,7 +5257,7 @@ Confusion Matrix:
   width: 1px;
 }
 
-#sk-container-id-4 div.sk-dashed-wrapped {
+#sk-container-id-15 div.sk-dashed-wrapped {
   border: 1px dashed var(--sklearn-color-line);
   margin: 0 0.4em 0.5em 0.4em;
   box-sizing: border-box;
@@ -5892,7 +5265,7 @@ Confusion Matrix:
   background-color: var(--sklearn-color-background);
 }
 
-#sk-container-id-4 div.sk-container {
+#sk-container-id-15 div.sk-container {
   /* jupyter's `normalize.less` sets `[hidden] { display: none; }`
      but bootstrap.min.css set `[hidden] { display: none !important; }`
      so we also need the `!important` here to be able to override the
@@ -5902,7 +5275,7 @@ Confusion Matrix:
   position: relative;
 }
 
-#sk-container-id-4 div.sk-text-repr-fallback {
+#sk-container-id-15 div.sk-text-repr-fallback {
   display: none;
 }
 
@@ -5918,14 +5291,14 @@ div.sk-item {
 
 /* Parallel-specific style estimator block */
 
-#sk-container-id-4 div.sk-parallel-item::after {
+#sk-container-id-15 div.sk-parallel-item::after {
   content: "";
   width: 100%;
   border-bottom: 2px solid var(--sklearn-color-text-on-default-background);
   flex-grow: 1;
 }
 
-#sk-container-id-4 div.sk-parallel {
+#sk-container-id-15 div.sk-parallel {
   display: flex;
   align-items: stretch;
   justify-content: center;
@@ -5933,28 +5306,28 @@ div.sk-item {
   position: relative;
 }
 
-#sk-container-id-4 div.sk-parallel-item {
+#sk-container-id-15 div.sk-parallel-item {
   display: flex;
   flex-direction: column;
 }
 
-#sk-container-id-4 div.sk-parallel-item:first-child::after {
+#sk-container-id-15 div.sk-parallel-item:first-child::after {
   align-self: flex-end;
   width: 50%;
 }
 
-#sk-container-id-4 div.sk-parallel-item:last-child::after {
+#sk-container-id-15 div.sk-parallel-item:last-child::after {
   align-self: flex-start;
   width: 50%;
 }
 
-#sk-container-id-4 div.sk-parallel-item:only-child::after {
+#sk-container-id-15 div.sk-parallel-item:only-child::after {
   width: 0;
 }
 
 /* Serial-specific style estimator block */
 
-#sk-container-id-4 div.sk-serial {
+#sk-container-id-15 div.sk-serial {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -5972,14 +5345,14 @@ clickable and can be expanded/collapsed.
 
 /* Pipeline and ColumnTransformer style (default) */
 
-#sk-container-id-4 div.sk-toggleable {
+#sk-container-id-15 div.sk-toggleable {
   /* Default theme specific background. It is overwritten whether we have a
   specific estimator or a Pipeline/ColumnTransformer */
   background-color: var(--sklearn-color-background);
 }
 
 /* Toggleable label */
-#sk-container-id-4 label.sk-toggleable__label {
+#sk-container-id-15 label.sk-toggleable__label {
   cursor: pointer;
   display: flex;
   width: 100%;
@@ -5992,13 +5365,13 @@ clickable and can be expanded/collapsed.
   gap: 0.5em;
 }
 
-#sk-container-id-4 label.sk-toggleable__label .caption {
+#sk-container-id-15 label.sk-toggleable__label .caption {
   font-size: 0.6rem;
   font-weight: lighter;
   color: var(--sklearn-color-text-muted);
 }
 
-#sk-container-id-4 label.sk-toggleable__label-arrow:before {
+#sk-container-id-15 label.sk-toggleable__label-arrow:before {
   /* Arrow on the left of the label */
   content: "▸";
   float: left;
@@ -6006,25 +5379,27 @@ clickable and can be expanded/collapsed.
   color: var(--sklearn-color-icon);
 }
 
-#sk-container-id-4 label.sk-toggleable__label-arrow:hover:before {
+#sk-container-id-15 label.sk-toggleable__label-arrow:hover:before {
   color: var(--sklearn-color-text);
 }
 
 /* Toggleable content - dropdown */
 
-#sk-container-id-4 div.sk-toggleable__content {
-  display: none;
+#sk-container-id-15 div.sk-toggleable__content {
+  max-height: 0;
+  max-width: 0;
+  overflow: hidden;
   text-align: left;
   /* unfitted */
   background-color: var(--sklearn-color-unfitted-level-0);
 }
 
-#sk-container-id-4 div.sk-toggleable__content.fitted {
+#sk-container-id-15 div.sk-toggleable__content.fitted {
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-0);
 }
 
-#sk-container-id-4 div.sk-toggleable__content pre {
+#sk-container-id-15 div.sk-toggleable__content pre {
   margin: 0.2em;
   border-radius: 0.25em;
   color: var(--sklearn-color-text);
@@ -6032,79 +5407,79 @@ clickable and can be expanded/collapsed.
   background-color: var(--sklearn-color-unfitted-level-0);
 }
 
-#sk-container-id-4 div.sk-toggleable__content.fitted pre {
+#sk-container-id-15 div.sk-toggleable__content.fitted pre {
   /* unfitted */
   background-color: var(--sklearn-color-fitted-level-0);
 }
 
-#sk-container-id-4 input.sk-toggleable__control:checked~div.sk-toggleable__content {
+#sk-container-id-15 input.sk-toggleable__control:checked~div.sk-toggleable__content {
   /* Expand drop-down */
-  display: block;
-  width: 100%;
-  overflow: visible;
+  max-height: 200px;
+  max-width: 100%;
+  overflow: auto;
 }
 
-#sk-container-id-4 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
+#sk-container-id-15 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
   content: "▾";
 }
 
 /* Pipeline/ColumnTransformer-specific style */
 
-#sk-container-id-4 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
+#sk-container-id-15 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
   color: var(--sklearn-color-text);
   background-color: var(--sklearn-color-unfitted-level-2);
 }
 
-#sk-container-id-4 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+#sk-container-id-15 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
   background-color: var(--sklearn-color-fitted-level-2);
 }
 
 /* Estimator-specific style */
 
 /* Colorize estimator box */
-#sk-container-id-4 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
+#sk-container-id-15 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
   /* unfitted */
   background-color: var(--sklearn-color-unfitted-level-2);
 }
 
-#sk-container-id-4 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+#sk-container-id-15 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-2);
 }
 
-#sk-container-id-4 div.sk-label label.sk-toggleable__label,
-#sk-container-id-4 div.sk-label label {
+#sk-container-id-15 div.sk-label label.sk-toggleable__label,
+#sk-container-id-15 div.sk-label label {
   /* The background is the default theme color */
   color: var(--sklearn-color-text-on-default-background);
 }
 
 /* On hover, darken the color of the background */
-#sk-container-id-4 div.sk-label:hover label.sk-toggleable__label {
+#sk-container-id-15 div.sk-label:hover label.sk-toggleable__label {
   color: var(--sklearn-color-text);
   background-color: var(--sklearn-color-unfitted-level-2);
 }
 
 /* Label box, darken color on hover, fitted */
-#sk-container-id-4 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
+#sk-container-id-15 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
   color: var(--sklearn-color-text);
   background-color: var(--sklearn-color-fitted-level-2);
 }
 
 /* Estimator label */
 
-#sk-container-id-4 div.sk-label label {
+#sk-container-id-15 div.sk-label label {
   font-family: monospace;
   font-weight: bold;
   display: inline-block;
   line-height: 1.2em;
 }
 
-#sk-container-id-4 div.sk-label-container {
+#sk-container-id-15 div.sk-label-container {
   text-align: center;
 }
 
 /* Estimator-specific */
-#sk-container-id-4 div.sk-estimator {
+#sk-container-id-15 div.sk-estimator {
   font-family: monospace;
   border: 1px dotted var(--sklearn-color-border-box);
   border-radius: 0.25em;
@@ -6114,18 +5489,18 @@ clickable and can be expanded/collapsed.
   background-color: var(--sklearn-color-unfitted-level-0);
 }
 
-#sk-container-id-4 div.sk-estimator.fitted {
+#sk-container-id-15 div.sk-estimator.fitted {
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-0);
 }
 
 /* on hover */
-#sk-container-id-4 div.sk-estimator:hover {
+#sk-container-id-15 div.sk-estimator:hover {
   /* unfitted */
   background-color: var(--sklearn-color-unfitted-level-2);
 }
 
-#sk-container-id-4 div.sk-estimator.fitted:hover {
+#sk-container-id-15 div.sk-estimator.fitted:hover {
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-2);
 }
@@ -6213,7 +5588,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 
 /* "?"-specific style due to the `<a>` HTML tag */
 
-#sk-container-id-4 a.estimator_doc_link {
+#sk-container-id-15 a.estimator_doc_link {
   float: right;
   font-size: 1rem;
   line-height: 1em;
@@ -6228,161 +5603,25 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
   border: var(--sklearn-color-unfitted-level-1) 1pt solid;
 }
 
-#sk-container-id-4 a.estimator_doc_link.fitted {
+#sk-container-id-15 a.estimator_doc_link.fitted {
   /* fitted */
   border: var(--sklearn-color-fitted-level-1) 1pt solid;
   color: var(--sklearn-color-fitted-level-1);
 }
 
 /* On hover */
-#sk-container-id-4 a.estimator_doc_link:hover {
+#sk-container-id-15 a.estimator_doc_link:hover {
   /* unfitted */
   background-color: var(--sklearn-color-unfitted-level-3);
   color: var(--sklearn-color-background);
   text-decoration: none;
 }
 
-#sk-container-id-4 a.estimator_doc_link.fitted:hover {
+#sk-container-id-15 a.estimator_doc_link.fitted:hover {
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-3);
 }
-
-.estimator-table summary {
-    padding: .5rem;
-    font-family: monospace;
-    cursor: pointer;
-}
-
-.estimator-table details[open] {
-    padding-left: 0.1rem;
-    padding-right: 0.1rem;
-    padding-bottom: 0.3rem;
-}
-
-.estimator-table .parameters-table {
-    margin-left: auto !important;
-    margin-right: auto !important;
-}
-
-.estimator-table .parameters-table tr:nth-child(odd) {
-    background-color: #fff;
-}
-
-.estimator-table .parameters-table tr:nth-child(even) {
-    background-color: #f6f6f6;
-}
-
-.estimator-table .parameters-table tr:hover {
-    background-color: #e0e0e0;
-}
-
-.estimator-table table td {
-    border: 1px solid rgba(106, 105, 104, 0.232);
-}
-
-.user-set td {
-    color:rgb(255, 94, 0);
-    text-align: left;
-}
-
-.user-set td.value pre {
-    color:rgb(255, 94, 0) !important;
-    background-color: transparent !important;
-}
-
-.default td {
-    color: black;
-    text-align: left;
-}
-
-.user-set td i,
-.default td i {
-    color: black;
-}
-
-.copy-paste-icon {
-    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0NDggNTEyIj48IS0tIUZvbnQgQXdlc29tZSBGcmVlIDYuNy4yIGJ5IEBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlL2ZyZWUgQ29weXJpZ2h0IDIwMjUgRm9udGljb25zLCBJbmMuLS0+PHBhdGggZD0iTTIwOCAwTDMzMi4xIDBjMTIuNyAwIDI0LjkgNS4xIDMzLjkgMTQuMWw2Ny45IDY3LjljOSA5IDE0LjEgMjEuMiAxNC4xIDMzLjlMNDQ4IDMzNmMwIDI2LjUtMjEuNSA0OC00OCA0OGwtMTkyIDBjLTI2LjUgMC00OC0yMS41LTQ4LTQ4bDAtMjg4YzAtMjYuNSAyMS41LTQ4IDQ4LTQ4ek00OCAxMjhsODAgMCAwIDY0LTY0IDAgMCAyNTYgMTkyIDAgMC0zMiA2NCAwIDAgNDhjMCAyNi41LTIxLjUgNDgtNDggNDhMNDggNTEyYy0yNi41IDAtNDgtMjEuNS00OC00OEwwIDE3NmMwLTI2LjUgMjEuNS00OCA0OC00OHoiLz48L3N2Zz4=);
-    background-repeat: no-repeat;
-    background-size: 14px 14px;
-    background-position: 0;
-    display: inline-block;
-    width: 14px;
-    height: 14px;
-    cursor: pointer;
-}
-</style><body><div id="sk-container-id-4" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>GaussianNB()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-4" type="checkbox" checked><label for="sk-estimator-id-4" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>GaussianNB</div></div><div><a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.7/modules/generated/sklearn.naive_bayes.GaussianNB.html">?<span>Documentation for GaussianNB</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></div></label><div class="sk-toggleable__content fitted" data-param-prefix="">
-        <div class="estimator-table">
-            <details>
-                <summary>Parameters</summary>
-                <table class="parameters-table">
-                  <tbody>
-                    
-        <tr class="default">
-            <td><i class="copy-paste-icon"
-                 onclick="copyToClipboard('priors',
-                          this.parentElement.nextElementSibling)"
-            ></i></td>
-            <td class="param">priors&nbsp;</td>
-            <td class="value">None</td>
-        </tr>
-    
-
-        <tr class="default">
-            <td><i class="copy-paste-icon"
-                 onclick="copyToClipboard('var_smoothing',
-                          this.parentElement.nextElementSibling)"
-            ></i></td>
-            <td class="param">var_smoothing&nbsp;</td>
-            <td class="value">1e-09</td>
-        </tr>
-    
-                  </tbody>
-                </table>
-            </details>
-        </div>
-    </div></div></div></div></div><script>function copyToClipboard(text, element) {
-    // Get the parameter prefix from the closest toggleable content
-    const toggleableContent = element.closest('.sk-toggleable__content');
-    const paramPrefix = toggleableContent ? toggleableContent.dataset.paramPrefix : '';
-    const fullParamName = paramPrefix ? `${paramPrefix}${text}` : text;
-
-    const originalStyle = element.style;
-    const computedStyle = window.getComputedStyle(element);
-    const originalWidth = computedStyle.width;
-    const originalHTML = element.innerHTML.replace('Copied!', '');
-
-    navigator.clipboard.writeText(fullParamName)
-        .then(() => {
-            element.style.width = originalWidth;
-            element.style.color = 'green';
-            element.innerHTML = "Copied!";
-
-            setTimeout(() => {
-                element.innerHTML = originalHTML;
-                element.style = originalStyle;
-            }, 2000);
-        })
-        .catch(err => {
-            console.error('Failed to copy:', err);
-            element.style.color = 'red';
-            element.innerHTML = "Failed!";
-            setTimeout(() => {
-                element.innerHTML = originalHTML;
-                element.style = originalStyle;
-            }, 2000);
-        });
-    return false;
-}
-
-document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
-    const toggleableContent = element.closest('.sk-toggleable__content');
-    const paramPrefix = toggleableContent ? toggleableContent.dataset.paramPrefix : '';
-    const paramName = element.parentElement.nextElementSibling.textContent.trim();
-    const fullParamName = paramPrefix ? `${paramPrefix}${paramName}` : paramName;
-
-    element.setAttribute('title', fullParamName);
-});
-</script></body></div></div>
+</style><div id="sk-container-id-15" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>GaussianNB()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-15" type="checkbox" checked><label for="sk-estimator-id-15" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>GaussianNB</div></div><div><a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.6/modules/generated/sklearn.naive_bayes.GaussianNB.html">?<span>Documentation for GaussianNB</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></div></label><div class="sk-toggleable__content fitted"><pre>GaussianNB()</pre></div> </div></div></div></div></div></div>
 </div>
 <p>Melakukan prediksi terhadap data uji.</p>
 <div class="cell docutils container">
@@ -6457,8 +5696,8 @@ Confusion Matrix:
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Nilai Asli</th>
-      <th>Nilai Prediksi</th>
+      <th>Real Values</th>
+      <th>Predicted Values</th>
     </tr>
   </thead>
   <tbody>
@@ -6618,6 +5857,7 @@ Confusion Matrix:
 </div>
 </section>
 </section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -6674,68 +5914,26 @@ Confusion Matrix:
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Diskritisasi data (Binning) menggunakan K-Means Clustering dan melakukan Klasifikasi dengan model Naive Bayas dan Pohon Keputusan pada data yang sudah Diskritisasi dan data yang belum Diskritisasi</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#melakukan-diskritisasi-data-menggunakan-k-means-clustering">Melakukan Diskritisasi data menggunakan K-Means Clustering</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengganti-label-sepal-length-menjadi-kategori-dengan-4-cluster">Mengganti Label Sepal Length menjadi Kategori dengan 4 Cluster</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-library">Import Library</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengambil-data-iris">Mengambil Data IRIS</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengambil-label-sepal-length">Mengambil label Sepal Length</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#melakukan-normalisasi-data">Melakukan Normalisasi Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#melakukan-clustering-dengan-4-cluster">Melakukan Clustering dengan 4 Cluster</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengubah-label-cluster-menjadi-angka">Mengubah Label Cluster menjadi angka</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengubah-data-sepal-length-menjadi-cluster-yang-telah-dilakukan-sebelumnya-dan-disimpan-ke-csv">Mengubah Data Sepal Length menjadi Cluster yang telah dilakukan sebelumnya dan disimpan ke CSV</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#melakukan-diskritisasi-data-menggunakan-k-means-clustering">Melakukan Diskritisasi data menggunakan K-Means Clustering</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengganti-label-sepal-length-menjadi-kategori-dengan-4-cluster">Mengganti Label Sepal Length menjadi Kategori dengan 4 Cluster</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengganti-label-sepal-width-menjadi-kategori-dengan-3-cluster">Mengganti Label Sepal Width menjadi Kategori dengan 3 Cluster</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengganti-label-petal-length-menjadi-kategori-dengan-4-cluster">Mengganti Label Petal Length menjadi Kategori dengan 4 Cluster</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengganti-label-petal-width-menjadi-kategori-dengan-3-cluster">Mengganti Label Petal Width menjadi Kategori dengan 3 Cluster</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-akhir-data-iris-yang-telah-di-diskritisasi">Hasil Akhir data IRIS yang telah di Diskritisasi</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengganti-label-sepal-width-menjadi-kategori-dengan-3-cluster">Mengganti Label Sepal Width menjadi Kategori dengan 3 Cluster</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Mengambil Data IRIS</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengambil-label-sepal-width">Mengambil label Sepal Width</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Melakukan Normalisasi Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#melakukan-clustering-dengan-3-cluster">Melakukan Clustering dengan 3 Cluster</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Mengubah Label Cluster menjadi angka</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengubah-data-sepal-width-menjadi-cluster-yang-telah-dilakukan-sebelumnya-dan-disimpan-ke-csv">Mengubah Data Sepal Width menjadi Cluster yang telah dilakukan sebelumnya dan disimpan ke CSV</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengganti-label-petal-length-menjadi-kategori-dengan-4-cluster">Mengganti Label Petal Length menjadi Kategori dengan 4 Cluster</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Mengambil Data IRIS</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengambil-label-petal-length">Mengambil label Petal Length</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Melakukan Normalisasi Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Melakukan Clustering dengan 4 Cluster</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Mengubah Label Cluster menjadi angka</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengubah-data-petal-length-menjadi-cluster-yang-telah-dilakukan-sebelumnya-dan-disimpan-ke-csv">Mengubah Data Petal Length menjadi Cluster yang telah dilakukan sebelumnya dan disimpan ke CSV</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengganti-label-petal-width-menjadi-kategori-dengan-3-cluster">Mengganti Label Petal Width menjadi Kategori dengan 3 Cluster</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Mengambil Data IRIS</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengambil-label-petal-width">Mengambil label Petal Width</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Melakukan Normalisasi Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Melakukan Clustering dengan 3 Cluster</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Mengubah Label Cluster menjadi angka</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengubah-data-petal-width-menjadi-cluster-yang-telah-dilakukan-sebelumnya-dan-disimpan-ke-csv">Mengubah Data Petal Width menjadi Cluster yang telah dilakukan sebelumnya dan disimpan ke CSV</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-akhir-data-iris-yang-telah-di-diskritisasi">Hasil Akhir data IRIS yang telah di Diskritisasi</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dengan-class">Dengan Class</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tanpa-class">Tanpa Class</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#melakukan-klasifikasi-dengan-model-naive-bayas-menggunakan-data-yang-sudah-di-diskritisasi">Melakukan Klasifikasi dengan model Naive Bayas menggunakan data yang sudah di Diskritisasi</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-naive-bayes">Implementasi Naive Bayes</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Import Library</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#melakukan-klasifikasi-dengan-model-naive-bayas-menggunakan-data-yang-sudah-di-diskritisasi">Melakukan Klasifikasi dengan model Naive Bayas menggunakan data yang sudah di Diskritisasi</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-naive-bayes">Implementasi Naive Bayes</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-menggunakan-outlier-removal-penghapusan-manual-berdasarkan-sepal-width">Implementasi Menggunakan Outlier Removal (penghapusan manual berdasarkan sepal_width)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-tanpa-menggunakan-outlier">Implementasi Tanpa Menggunakan Outlier</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#melakukan-klasifikasi-dengan-model-naive-bayas-menggunakan-data-yang-belum-di-diskritisasi">Melakukan Klasifikasi dengan model Naive Bayas menggunakan data yang belum di Diskritisasi</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-dengan-outlier-removal">Implementasi Dengan Outlier Removal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Implementasi Tanpa Menggunakan Outlier</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#melakukan-klasifikasi-dengan-model-naive-bayas-menggunakan-data-yang-belum-di-diskritisasi">Melakukan Klasifikasi dengan model Naive Bayas menggunakan data yang belum di Diskritisasi</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-dengan-outlier-removal">Implementasi Dengan Outlier Removal</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Implementasi Tanpa Menggunakan Outlier</a></li>
 </ul>
-</li>
-</ul>
-
   </nav></div>
 
 </div></div>
