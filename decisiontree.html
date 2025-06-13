@@ -59,9 +59,10 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'decisiontree';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'DecisionTree';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Diskritisasi data (Binning) menggunakan K-Means Clustering dan melakukan Klasifikasi dengan model Naive Bayas dan Pohon Keputusan pada data yang sudah Diskritisasi dan data yang belum Diskritisasi" href="Diskritisasi_Data.html" />
     <link rel="prev" title="K-Means Clustering dan Fuzzy C-Means" href="K-Means_Clustering_dan_Fuzzy_C-Means.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -188,6 +189,7 @@
 
 
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Decision Tree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Diskritisasi_Data.html">Diskritisasi data (Binning) menggunakan K-Means Clustering dan melakukan Klasifikasi dengan model Naive Bayas dan Pohon Keputusan pada data yang sudah Diskritisasi dan data yang belum Diskritisasi</a></li>
 </ul>
 
     </div>
@@ -259,7 +261,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fdecisiontree.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FDecisionTree.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -289,7 +291,7 @@
       
       
       
-      <li><a href="_sources/decisiontree.ipynb" target="_blank"
+      <li><a href="_sources/DecisionTree.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -545,97 +547,12 @@ Requirement already satisfied: six&gt;=1.5 in c:\projek_smst_4\pendata\.venv\lib
 Note: you may need to restart the kernel to use updated packages.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>^C
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Note: you may need to restart the kernel to use updated packages.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting scikit-learn
-  Using cached scikit_learn-1.7.0-cp313-cp313-win_amd64.whl.metadata (14 kB)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: scikit-learn in c:\projek_smst_4\pendata\.venv\lib\site-packages (1.7.0)
 Requirement already satisfied: numpy&gt;=1.22.0 in c:\projek_smst_4\pendata\.venv\lib\site-packages (from scikit-learn) (2.3.0)
-Collecting scipy&gt;=1.8.0 (from scikit-learn)
-  Using cached scipy-1.15.3-cp313-cp313-win_amd64.whl.metadata (60 kB)
-Collecting joblib&gt;=1.2.0 (from scikit-learn)
-  Using cached joblib-1.5.1-py3-none-any.whl.metadata (5.6 kB)
-Collecting threadpoolctl&gt;=3.1.0 (from scikit-learn)
-  Using cached threadpoolctl-3.6.0-py3-none-any.whl.metadata (13 kB)
-Downloading scikit_learn-1.7.0-cp313-cp313-win_amd64.whl (10.7 MB)
-   ---------------------------------------- 0.0/10.7 MB ? eta -:--:--
-   ---------------------------------------- 0.0/10.7 MB ? eta -:--:--
-   ---------------------------------------- 0.0/10.7 MB ? eta -:--:--
-   ---------------------------------------- 0.0/10.7 MB ? eta -:--:--
-   ---------------------------------------- 0.0/10.7 MB ? eta -:--:--
-   ---------------------------------------- 0.0/10.7 MB ? eta -:--:--
-   ---------------------------------------- 0.0/10.7 MB ? eta -:--:--
-   ---------------------------------------- 0.0/10.7 MB ? eta -:--:--
-    --------------------------------------- 0.3/10.7 MB ? eta -:--:--
-    --------------------------------------- 0.3/10.7 MB ? eta -:--:--
-    --------------------------------------- 0.3/10.7 MB ? eta -:--:--
-    --------------------------------------- 0.3/10.7 MB ? eta -:--:--
-    --------------------------------------- 0.3/10.7 MB ? eta -:--:--
-   - -------------------------------------- 0.5/10.7 MB 266.2 kB/s eta 0:00:39
-   - -------------------------------------- 0.5/10.7 MB 266.2 kB/s eta 0:00:39
-   - -------------------------------------- 0.5/10.7 MB 266.2 kB/s eta 0:00:39
-   - -------------------------------------- 0.5/10.7 MB 266.2 kB/s eta 0:00:39
-   - -------------------------------------- 0.5/10.7 MB 266.2 kB/s eta 0:00:39
-   - -------------------------------------- 0.5/10.7 MB 266.2 kB/s eta 0:00:39
-   - -------------------------------------- 0.5/10.7 MB 266.2 kB/s eta 0:00:39
-   - -------------------------------------- 0.5/10.7 MB 266.2 kB/s eta 0:00:39
-   - -------------------------------------- 0.5/10.7 MB 266.2 kB/s eta 0:00:39
-   -- ------------------------------------- 0.8/10.7 MB 174.5 kB/s eta 0:00:57
-   -- ------------------------------------- 0.8/10.7 MB 174.5 kB/s eta 0:00:57
-   -- ------------------------------------- 0.8/10.7 MB 174.5 kB/s eta 0:00:57
-   -- ------------------------------------- 0.8/10.7 MB 174.5 kB/s eta 0:00:57
-   -- ------------------------------------- 0.8/10.7 MB 174.5 kB/s eta 0:00:57
-   -- ------------------------------------- 0.8/10.7 MB 174.5 kB/s eta 0:00:57
-   -- ------------------------------------- 0.8/10.7 MB 174.5 kB/s eta 0:00:57
-   -- ------------------------------------- 0.8/10.7 MB 174.5 kB/s eta 0:00:57
-   -- ------------------------------------- 0.8/10.7 MB 174.5 kB/s eta 0:00:57
-   -- ------------------------------------- 0.8/10.7 MB 174.5 kB/s eta 0:00:57
-   -- ------------------------------------- 0.8/10.7 MB 174.5 kB/s eta 0:00:57
-   -- ------------------------------------- 0.8/10.7 MB 174.5 kB/s eta 0:00:57
-   -- ------------------------------------- 0.8/10.7 MB 174.5 kB/s eta 0:00:57
-   --- ------------------------------------ 1.0/10.7 MB 135.5 kB/s eta 0:01:11
-   --- ------------------------------------ 1.0/10.7 MB 135.5 kB/s eta 0:01:11
-   --- ------------------------------------ 1.0/10.7 MB 135.5 kB/s eta 0:01:11
-   ---- ----------------------------------- 1.3/10.7 MB 163.2 kB/s eta 0:00:58
-   ---- ----------------------------------- 1.3/10.7 MB 163.2 kB/s eta 0:00:58
-   ---- ----------------------------------- 1.3/10.7 MB 163.2 kB/s eta 0:00:58
-   ----- ---------------------------------- 1.6/10.7 MB 187.7 kB/s eta 0:00:49
-   ----- ---------------------------------- 1.6/10.7 MB 187.7 kB/s eta 0:00:49
-   ----- ---------------------------------- 1.6/10.7 MB 187.7 kB/s eta 0:00:49
-   ------ --------------------------------- 1.8/10.7 MB 204.4 kB/s eta 0:00:44
-   ------ --------------------------------- 1.8/10.7 MB 204.4 kB/s eta 0:00:44
-   ------- -------------------------------- 2.1/10.7 MB 229.8 kB/s eta 0:00:38
-   ------- -------------------------------- 2.1/10.7 MB 229.8 kB/s eta 0:00:38
-   ------- -------------------------------- 2.1/10.7 MB 229.8 kB/s eta 0:00:38
-   ------- -------------------------------- 2.1/10.7 MB 229.8 kB/s eta 0:00:38
-   ------- -------------------------------- 2.1/10.7 MB 229.8 kB/s eta 0:00:38
-   ------- -------------------------------- 2.1/10.7 MB 229.8 kB/s eta 0:00:38
-   ------- -------------------------------- 2.1/10.7 MB 229.8 kB/s eta 0:00:38
-   -------- ------------------------------- 2.4/10.7 MB 220.0 kB/s eta 0:00:38
-   -------- ------------------------------- 2.4/10.7 MB 220.0 kB/s eta 0:00:38
-   --------- ------------------------------ 2.6/10.7 MB 237.2 kB/s eta 0:00:34
-   --------- ------------------------------ 2.6/10.7 MB 237.2 kB/s eta 0:00:34
-   --------- ------------------------------ 2.6/10.7 MB 237.2 kB/s eta 0:00:34
-   ----------- ---------------------------- 3.1/10.7 MB 270.9 kB/s eta 0:00:28
-   ------------- -------------------------- 3.7/10.7 MB 314.4 kB/s eta 0:00:23
-   ---------------- ----------------------- 4.5/10.7 MB 382.5 kB/s eta 0:00:17
-   ------------------- -------------------- 5.2/10.7 MB 439.9 kB/s eta 0:00:13
-   ------------------- -------------------- 5.2/10.7 MB 439.9 kB/s eta 0:00:13
-   -------------------- ------------------- 5.5/10.7 MB 452.3 kB/s eta 0:00:12
-   ------------------------ --------------- 6.6/10.7 MB 524.8 kB/s eta 0:00:08
-   ------------------------- -------------- 6.8/10.7 MB 545.7 kB/s eta 0:00:08
-   ------------------------- -------------- 6.8/10.7 MB 545.7 kB/s eta 0:00:08
-   ----------------------------- ---------- 7.9/10.7 MB 601.9 kB/s eta 0:00:05
-   ------------------------------------ --- 9.7/10.7 MB 736.0 kB/s eta 0:00:02
-   ---------------------------------------  10.5/10.7 MB 792.2 kB/s eta 0:00:01
-   ---------------------------------------- 10.7/10.7 MB 791.2 kB/s eta 0:00:00
-Downloading joblib-1.5.1-py3-none-any.whl (307 kB)
-Using cached scipy-1.15.3-cp313-cp313-win_amd64.whl (41.0 MB)
-Using cached threadpoolctl-3.6.0-py3-none-any.whl (18 kB)
-Installing collected packages: threadpoolctl, scipy, joblib, scikit-learn
+Requirement already satisfied: scipy&gt;=1.8.0 in c:\projek_smst_4\pendata\.venv\lib\site-packages (from scikit-learn) (1.15.3)
+Requirement already satisfied: joblib&gt;=1.2.0 in c:\projek_smst_4\pendata\.venv\lib\site-packages (from scikit-learn) (1.5.1)
+Requirement already satisfied: threadpoolctl&gt;=3.1.0 in c:\projek_smst_4\pendata\.venv\lib\site-packages (from scikit-learn) (3.6.0)
+Note: you may need to restart the kernel to use updated packages.
 </pre></div>
 </div>
 </div>
@@ -907,6 +824,15 @@ Data ke-2:
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">K-Means Clustering dan Fuzzy C-Means</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="Diskritisasi_Data.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Diskritisasi data (Binning) menggunakan K-Means Clustering dan melakukan Klasifikasi dengan model Naive Bayas dan Pohon Keputusan pada data yang sudah Diskritisasi dan data yang belum Diskritisasi</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
