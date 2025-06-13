@@ -30,26 +30,108 @@ Traceback (most recent call last):
     await self.async_execute_cell(
         cell, index, execution_count=self.code_cells_executed + 1
     )
-  File "c:\PROJEK_SMST_4\pendata\.venv\Lib\site-packages\nbclient\client.py", line 1005, in async_execute_cell
-    exec_reply = await self.task_poll_for_reply
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "c:\PROJEK_SMST_4\pendata\.venv\Lib\site-packages\nbclient\client.py", line 806, in _async_poll_for_reply
-    error_on_timeout_execute_reply = await self._async_handle_timeout(timeout, cell)
-                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "c:\PROJEK_SMST_4\pendata\.venv\Lib\site-packages\nbclient\client.py", line 856, in _async_handle_timeout
-    raise CellTimeoutError.error_from_timeout_and_cell(
-        "Cell execution timed out", timeout, cell
-    )
-nbclient.exceptions.CellTimeoutError: A cell timed out while it was being executed, after 30 seconds.
-The message was: Cell execution timed out.
-Here is a preview of the cell contents:
--------------------
-%pip install scikit-learn
+  File "c:\PROJEK_SMST_4\pendata\.venv\Lib\site-packages\nbclient\client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "c:\PROJEK_SMST_4\pendata\.venv\Lib\site-packages\nbclient\client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# Normalisasi
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+print("\nNormalisasi data Sepal Length")
+print(X_scaled)
+------------------
 
 
-import pandas as pd
-import numpy as np
-from sklearn.preprocessing import StandardScaler
-from sklearn.cluster import KMeans
--------------------
+[31m---------------------------------------------------------------------------[39m
+[31mValueError[39m                                Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[4][39m[32m, line 3[39m
+[32m      1[39m [38;5;66;03m# Normalisasi[39;00m
+[32m      2[39m scaler = StandardScaler()
+[32m----> [39m[32m3[39m X_scaled = [43mscaler[49m[43m.[49m[43mfit_transform[49m[43m([49m[43mX[49m[43m)[49m
+[32m      4[39m [38;5;28mprint[39m([33m"[39m[38;5;130;01m\n[39;00m[33mNormalisasi data Sepal Length[39m[33m"[39m)
+[32m      5[39m [38;5;28mprint[39m(X_scaled)
+
+[36mFile [39m[32mc:\PROJEK_SMST_4\pendata\.venv\Lib\site-packages\sklearn\utils\_set_output.py:316[39m, in [36m_wrap_method_output.<locals>.wrapped[39m[34m(self, X, *args, **kwargs)[39m
+[32m    314[39m [38;5;129m@wraps[39m(f)
+[32m    315[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34mwrapped[39m([38;5;28mself[39m, X, *args, **kwargs):
+[32m--> [39m[32m316[39m     data_to_wrap = [43mf[49m[43m([49m[38;5;28;43mself[39;49m[43m,[49m[43m [49m[43mX[49m[43m,[49m[43m [49m[43m*[49m[43margs[49m[43m,[49m[43m [49m[43m*[49m[43m*[49m[43mkwargs[49m[43m)[49m
+[32m    317[39m     [38;5;28;01mif[39;00m [38;5;28misinstance[39m(data_to_wrap, [38;5;28mtuple[39m):
+[32m    318[39m         [38;5;66;03m# only wrap the first output for cross decomposition[39;00m
+[32m    319[39m         return_tuple = (
+[32m    320[39m             _wrap_data_with_container(method, data_to_wrap[[32m0[39m], X, [38;5;28mself[39m),
+[32m    321[39m             *data_to_wrap[[32m1[39m:],
+[32m    322[39m         )
+
+[36mFile [39m[32mc:\PROJEK_SMST_4\pendata\.venv\Lib\site-packages\sklearn\base.py:892[39m, in [36mTransformerMixin.fit_transform[39m[34m(self, X, y, **fit_params)[39m
+[32m    877[39m         warnings.warn(
+[32m    878[39m             (
+[32m    879[39m                 [33mf[39m[33m"[39m[33mThis object ([39m[38;5;132;01m{[39;00m[38;5;28mself[39m.[34m__class__[39m.[34m__name__[39m[38;5;132;01m}[39;00m[33m) has a `transform`[39m[33m"[39m
+[32m   (...)[39m[32m    887[39m             [38;5;167;01mUserWarning[39;00m,
+[32m    888[39m         )
+[32m    890[39m [38;5;28;01mif[39;00m y [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
+[32m    891[39m     [38;5;66;03m# fit method of arity 1 (unsupervised transformation)[39;00m
+[32m--> [39m[32m892[39m     [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[43m.[49m[43mfit[49m[43m([49m[43mX[49m[43m,[49m[43m [49m[43m*[49m[43m*[49m[43mfit_params[49m[43m)[49m.transform(X)
+[32m    893[39m [38;5;28;01melse[39;00m:
+[32m    894[39m     [38;5;66;03m# fit method of arity 2 (supervised transformation)[39;00m
+[32m    895[39m     [38;5;28;01mreturn[39;00m [38;5;28mself[39m.fit(X, y, **fit_params).transform(X)
+
+[36mFile [39m[32mc:\PROJEK_SMST_4\pendata\.venv\Lib\site-packages\sklearn\preprocessing\_data.py:907[39m, in [36mStandardScaler.fit[39m[34m(self, X, y, sample_weight)[39m
+[32m    905[39m [38;5;66;03m# Reset internal state before fitting[39;00m
+[32m    906[39m [38;5;28mself[39m._reset()
+[32m--> [39m[32m907[39m [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[43m.[49m[43mpartial_fit[49m[43m([49m[43mX[49m[43m,[49m[43m [49m[43my[49m[43m,[49m[43m [49m[43msample_weight[49m[43m)[49m
+
+[36mFile [39m[32mc:\PROJEK_SMST_4\pendata\.venv\Lib\site-packages\sklearn\base.py:1363[39m, in [36m_fit_context.<locals>.decorator.<locals>.wrapper[39m[34m(estimator, *args, **kwargs)[39m
+[32m   1356[39m     estimator._validate_params()
+[32m   1358[39m [38;5;28;01mwith[39;00m config_context(
+[32m   1359[39m     skip_parameter_validation=(
+[32m   1360[39m         prefer_skip_nested_validation [38;5;129;01mor[39;00m global_skip_validation
+[32m   1361[39m     )
+[32m   1362[39m ):
+[32m-> [39m[32m1363[39m     [38;5;28;01mreturn[39;00m [43mfit_method[49m[43m([49m[43mestimator[49m[43m,[49m[43m [49m[43m*[49m[43margs[49m[43m,[49m[43m [49m[43m*[49m[43m*[49m[43mkwargs[49m[43m)[49m
+
+[36mFile [39m[32mc:\PROJEK_SMST_4\pendata\.venv\Lib\site-packages\sklearn\preprocessing\_data.py:943[39m, in [36mStandardScaler.partial_fit[39m[34m(self, X, y, sample_weight)[39m
+[32m    911[39m [38;5;250m[39m[33;03m"""Online computation of mean and std on X for later scaling.[39;00m
+[32m    912[39m 
+[32m    913[39m [33;03mAll of X is processed as a single batch. This is intended for cases[39;00m
+[32m   (...)[39m[32m    940[39m [33;03m    Fitted scaler.[39;00m
+[32m    941[39m [33;03m"""[39;00m
+[32m    942[39m first_call = [38;5;129;01mnot[39;00m [38;5;28mhasattr[39m([38;5;28mself[39m, [33m"[39m[33mn_samples_seen_[39m[33m"[39m)
+[32m--> [39m[32m943[39m X = [43mvalidate_data[49m[43m([49m
+[32m    944[39m [43m    [49m[38;5;28;43mself[39;49m[43m,[49m
+[32m    945[39m [43m    [49m[43mX[49m[43m,[49m
+[32m    946[39m [43m    [49m[43maccept_sparse[49m[43m=[49m[43m([49m[33;43m"[39;49m[33;43mcsr[39;49m[33;43m"[39;49m[43m,[49m[43m [49m[33;43m"[39;49m[33;43mcsc[39;49m[33;43m"[39;49m[43m)[49m[43m,[49m
+[32m    947[39m [43m    [49m[43mdtype[49m[43m=[49m[43mFLOAT_DTYPES[49m[43m,[49m
+[32m    948[39m [43m    [49m[43mensure_all_finite[49m[43m=[49m[33;43m"[39;49m[33;43mallow-nan[39;49m[33;43m"[39;49m[43m,[49m
+[32m    949[39m [43m    [49m[43mreset[49m[43m=[49m[43mfirst_call[49m[43m,[49m
+[32m    950[39m [43m[49m[43m)[49m
+[32m    951[39m n_features = X.shape[[32m1[39m]
+[32m    953[39m [38;5;28;01mif[39;00m sample_weight [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m:
+
+[36mFile [39m[32mc:\PROJEK_SMST_4\pendata\.venv\Lib\site-packages\sklearn\utils\validation.py:2954[39m, in [36mvalidate_data[39m[34m(_estimator, X, y, reset, validate_separately, skip_check_array, **check_params)[39m
+[32m   2952[39m         out = X, y
+[32m   2953[39m [38;5;28;01melif[39;00m [38;5;129;01mnot[39;00m no_val_X [38;5;129;01mand[39;00m no_val_y:
+[32m-> [39m[32m2954[39m     out = [43mcheck_array[49m[43m([49m[43mX[49m[43m,[49m[43m [49m[43minput_name[49m[43m=[49m[33;43m"[39;49m[33;43mX[39;49m[33;43m"[39;49m[43m,[49m[43m [49m[43m*[49m[43m*[49m[43mcheck_params[49m[43m)[49m
+[32m   2955[39m [38;5;28;01melif[39;00m no_val_X [38;5;129;01mand[39;00m [38;5;129;01mnot[39;00m no_val_y:
+[32m   2956[39m     out = _check_y(y, **check_params)
+
+[36mFile [39m[32mc:\PROJEK_SMST_4\pendata\.venv\Lib\site-packages\sklearn\utils\validation.py:1053[39m, in [36mcheck_array[39m[34m(array, accept_sparse, accept_large_sparse, dtype, order, copy, force_writeable, force_all_finite, ensure_all_finite, ensure_non_negative, ensure_2d, allow_nd, ensure_min_samples, ensure_min_features, estimator, input_name)[39m
+[32m   1051[39m         array = xp.astype(array, dtype, copy=[38;5;28;01mFalse[39;00m)
+[32m   1052[39m     [38;5;28;01melse[39;00m:
+[32m-> [39m[32m1053[39m         array = [43m_asarray_with_order[49m[43m([49m[43marray[49m[43m,[49m[43m [49m[43morder[49m[43m=[49m[43morder[49m[43m,[49m[43m [49m[43mdtype[49m[43m=[49m[43mdtype[49m[43m,[49m[43m [49m[43mxp[49m[43m=[49m[43mxp[49m[43m)[49m
+[32m   1054[39m [38;5;28;01mexcept[39;00m ComplexWarning [38;5;28;01mas[39;00m complex_warning:
+[32m   1055[39m     [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m(
+[32m   1056[39m         [33m"[39m[33mComplex data not supported[39m[38;5;130;01m\n[39;00m[38;5;132;01m{}[39;00m[38;5;130;01m\n[39;00m[33m"[39m.format(array)
+[32m   1057[39m     ) [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mcomplex_warning[39;00m
+
+[36mFile [39m[32mc:\PROJEK_SMST_4\pendata\.venv\Lib\site-packages\sklearn\utils\_array_api.py:757[39m, in [36m_asarray_with_order[39m[34m(array, dtype, order, copy, xp, device)[39m
+[32m    755[39m     array = numpy.array(array, order=order, dtype=dtype)
+[32m    756[39m [38;5;28;01melse[39;00m:
+[32m--> [39m[32m757[39m     array = [43mnumpy[49m[43m.[49m[43masarray[49m[43m([49m[43marray[49m[43m,[49m[43m [49m[43morder[49m[43m=[49m[43morder[49m[43m,[49m[43m [49m[43mdtype[49m[43m=[49m[43mdtype[49m[43m)[49m
+[32m    759[39m [38;5;66;03m# At this point array is a NumPy ndarray. We convert it to an array[39;00m
+[32m    760[39m [38;5;66;03m# container that is consistent with the input's namespace.[39;00m
+[32m    761[39m [38;5;28;01mreturn[39;00m xp.asarray(array)
+
+[31mValueError[39m: could not convert string to float: 'C'
 
