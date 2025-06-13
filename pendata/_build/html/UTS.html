@@ -872,7 +872,17 @@ Name: count, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/80bcfe6ea940457a8151465beff30e861e8d5a4bb57d253479a5663bf535dd76.png" src="_images/80bcfe6ea940457a8151465beff30e861e8d5a4bb57d253479a5663bf535dd76.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># Histogram untuk kolom &#39;Age&#39;</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;seaborn&#39;
+</pre></div>
+</div>
 </div>
 </div>
 </section>
@@ -886,16 +896,8 @@ Name: count, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting ace_tools
-  Downloading ace_tools-0.0-py3-none-any.whl.metadata (300 bytes)
-Downloading ace_tools-0.0-py3-none-any.whl (1.1 kB)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Installing collected packages: ace_tools
-Successfully installed ace_tools-0.0
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Note: you may need to restart the kernel to use updated packages.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: ace_tools in /home/codespace/.python/current/lib/python3.12/site-packages (0.0)
+Note: you may need to restart the kernel to use updated packages.
 </pre></div>
 </div>
 </div>
@@ -1243,9 +1245,7 @@ dtype: object
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Logistic Regression model trained.
 Decision Tree model trained.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Random Forest model trained.
+Random Forest model trained.
 KNN model trained.
 SVM model trained.
 </pre></div>
@@ -1299,27 +1299,27 @@ F1-Score: 0.58
   _warn_prf(average, modifier, f&quot;{metric.capitalize()} is&quot;, len(result))
 </pre></div>
 </div>
-<img alt="_images/f12cbb3f6ee4b0977d003c9962c182219b25a31d10ed62920e6cd65f1e45f666.png" src="_images/f12cbb3f6ee4b0977d003c9962c182219b25a31d10ed62920e6cd65f1e45f666.png" />
+<img alt="_images/38bde8627ec4a86422d84b266947e6e25638c19139298c4b52fec46dcacec0dd.png" src="_images/38bde8627ec4a86422d84b266947e6e25638c19139298c4b52fec46dcacec0dd.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>🔍 Evaluasi untuk Decision Tree:
-Akurasi: 0.77
-Precision: 0.64
-Recall: 0.61
-F1-Score: 0.62
+Akurasi: 0.80
+Precision: 0.66
+Recall: 0.63
+F1-Score: 0.64
 </pre></div>
 </div>
-<img alt="_images/a806cf5a64080715f3021e0dcd805d85c73898de3213091cb0910c6b45a33224.png" src="_images/a806cf5a64080715f3021e0dcd805d85c73898de3213091cb0910c6b45a33224.png" />
+<img alt="_images/48ff70d84e2f10a2db49ba2a71971257a54887491827dbcffa479ad264880cb9.png" src="_images/48ff70d84e2f10a2db49ba2a71971257a54887491827dbcffa479ad264880cb9.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>🔍 Evaluasi untuk Random Forest:
-Akurasi: 0.80
-Precision: 0.53
-Recall: 0.55
-F1-Score: 0.54
+Akurasi: 0.81
+Precision: 0.54
+Recall: 0.56
+F1-Score: 0.55
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/codespace/.local/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
   _warn_prf(average, modifier, f&quot;{metric.capitalize()} is&quot;, len(result))
 </pre></div>
 </div>
-<img alt="_images/eb326becb663dd08d2b8a45924d480049cd041ac25d24f5379c939da9a268c0b.png" src="_images/eb326becb663dd08d2b8a45924d480049cd041ac25d24f5379c939da9a268c0b.png" />
+<img alt="_images/b9db7837d466223c24ccf00a7729540a46fed212ea6beda33385110715df1046.png" src="_images/b9db7837d466223c24ccf00a7729540a46fed212ea6beda33385110715df1046.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>🔍 Evaluasi untuk KNN:
 Akurasi: 0.77
 Precision: 0.54
@@ -1331,7 +1331,7 @@ F1-Score: 0.52
   _warn_prf(average, modifier, f&quot;{metric.capitalize()} is&quot;, len(result))
 </pre></div>
 </div>
-<img alt="_images/920441547cbd99ee8181a4a0eb308f5d6800fc769a5c2260b3591fea88df0e21.png" src="_images/920441547cbd99ee8181a4a0eb308f5d6800fc769a5c2260b3591fea88df0e21.png" />
+<img alt="_images/99264be70c89cdb57ba07408facfb8e07fd017ea5bab85fbda05b57115228c1c.png" src="_images/99264be70c89cdb57ba07408facfb8e07fd017ea5bab85fbda05b57115228c1c.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>🔍 Evaluasi untuk SVM:
 Akurasi: 0.80
 Precision: 0.54
@@ -1343,7 +1343,7 @@ F1-Score: 0.54
   _warn_prf(average, modifier, f&quot;{metric.capitalize()} is&quot;, len(result))
 </pre></div>
 </div>
-<img alt="_images/ca05d1cffe0267edf3ca275f6660ab78f0e9b79a199d90f2bd36873c49d45b5f.png" src="_images/ca05d1cffe0267edf3ca275f6660ab78f0e9b79a199d90f2bd36873c49d45b5f.png" />
+<img alt="_images/0151824195297b8cda17850065bdaa10b3e3749f626aa5173cdcf3f77c8c8ea9.png" src="_images/0151824195297b8cda17850065bdaa10b3e3749f626aa5173cdcf3f77c8c8ea9.png" />
 </div>
 </div>
 </section>

@@ -36,23 +36,25 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
 
-# Membaca dataset
-df = pd.read_csv("cirrhosis.csv")
-
-# Menampilkan 5 baris pertama
-df.head()
-
+# Histogram untuk kolom 'Age'
+sns.histplot(df['Age'], bins=30, kde=True)
+plt.title('Distribusi Umur Pasien')
+plt.xlabel('Umur')
+plt.ylabel('Frekuensi')
+plt.show()
 ------------------
 
 
 [31m---------------------------------------------------------------------------[39m
 [31mModuleNotFoundError[39m                       Traceback (most recent call last)
-[36mCell[39m[36m [39m[32mIn[1][39m[32m, line 1[39m
-[32m----> [39m[32m1[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mpandas[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[34;01mpd[39;00m
-[32m      3[39m [38;5;66;03m# Membaca dataset[39;00m
-[32m      4[39m df = pd.read_csv([33m"[39m[33mcirrhosis.csv[39m[33m"[39m)
+[36mCell[39m[36m [39m[32mIn[5][39m[32m, line 2[39m
+[32m      1[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mmatplotlib[39;00m[34;01m.[39;00m[34;01mpyplot[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[34;01mplt[39;00m
+[32m----> [39m[32m2[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mseaborn[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[34;01msns[39;00m
+[32m      4[39m [38;5;66;03m# Histogram untuk kolom 'Age'[39;00m
+[32m      5[39m sns.histplot(df[[33m'[39m[33mAge[39m[33m'[39m], bins=[32m30[39m, kde=[38;5;28;01mTrue[39;00m)
 
-[31mModuleNotFoundError[39m: No module named 'pandas'
+[31mModuleNotFoundError[39m: No module named 'seaborn'
 

@@ -532,6 +532,20 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span> 
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.cluster</span><span class="w"> </span><span class="kn">import</span> <span class="n">KMeans</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.decomposition</span><span class="w"> </span><span class="kn">import</span> <span class="n">PCA</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;seaborn&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <p>Loading &amp; Read the Dataset</p>
 <div class="cell docutils container">
@@ -1014,9 +1028,7 @@ For a guide to updating your code to use the new functions, please see
 https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 
   func(*plot_args, **plot_kwargs)
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/codespace/.local/lib/python3.12/site-packages/seaborn/axisgrid.py:854: UserWarning: 
+/home/codespace/.local/lib/python3.12/site-packages/seaborn/axisgrid.py:854: UserWarning: 
 
 `distplot` is a deprecated function and will be removed in seaborn v0.14.0.
 
@@ -1040,12 +1052,12 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
   func(*plot_args, **plot_kwargs)
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x78b143d21790&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7300f45e33b0&gt;
 </pre></div>
 </div>
-<img alt="_images/881c3b6559631643866f903d8c79c8c6ddaf1eae9ed8e31a34a731e37aa20db8.png" src="_images/881c3b6559631643866f903d8c79c8c6ddaf1eae9ed8e31a34a731e37aa20db8.png" />
-<img alt="_images/ac3164e8f2cd9bda14d4c860f7d596aafbd62d033f942e15cf8a7187212b3829.png" src="_images/ac3164e8f2cd9bda14d4c860f7d596aafbd62d033f942e15cf8a7187212b3829.png" />
-<img alt="_images/eabd3bed4ec8ab2cd05bd310ee37cafdab04d0446c90692d7471912302fd1ee3.png" src="_images/eabd3bed4ec8ab2cd05bd310ee37cafdab04d0446c90692d7471912302fd1ee3.png" />
+<img alt="_images/3f1ebb80d724d412e8ce9c3f6afc0d46bb78bbb46b4b695db4b2f84ca2ae7e67.png" src="_images/3f1ebb80d724d412e8ce9c3f6afc0d46bb78bbb46b4b695db4b2f84ca2ae7e67.png" />
+<img alt="_images/f3fdcd852e1b5d3a3a2e1600d4cef48073e3e0464f3fe6771312cb0ca1e7545a.png" src="_images/f3fdcd852e1b5d3a3a2e1600d4cef48073e3e0464f3fe6771312cb0ca1e7545a.png" />
+<img alt="_images/efc740c2c3f8188f2f0ad915725a4b5f80cb46b01e38202c3cc633b8b0d0b2b7.png" src="_images/efc740c2c3f8188f2f0ad915725a4b5f80cb46b01e38202c3cc633b8b0d0b2b7.png" />
 </div>
 </div>
 <p>heatmap korelasi</p>
@@ -1059,7 +1071,7 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
 </pre></div>
 </div>
-<img alt="_images/5c22bdb72ce1467a7660d7b8f0ff2747af9b39f157f074c2d7810a3479ac32e8.png" src="_images/5c22bdb72ce1467a7660d7b8f0ff2747af9b39f157f074c2d7810a3479ac32e8.png" />
+<img alt="_images/223bf4a078297b0f42e56b7dbe11c16042cfb1f9f9f1652677b15f72de96fa5f.png" src="_images/223bf4a078297b0f42e56b7dbe11c16042cfb1f9f9f1652677b15f72de96fa5f.png" />
 </div>
 </div>
 <p>box plot</p>
@@ -1071,7 +1083,7 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/07e8fb2a0e3f93e1164891373acb0aa10eec944f3315a0b8a27f6ce3c42bb759.png" src="_images/07e8fb2a0e3f93e1164891373acb0aa10eec944f3315a0b8a27f6ce3c42bb759.png" />
+<img alt="_images/99f9dbe21ff31ae535eb5c0d3e4a8092e84a0a898e392f054f96710b27cd3931.png" src="_images/99f9dbe21ff31ae535eb5c0d3e4a8092e84a0a898e392f054f96710b27cd3931.png" />
 </div>
 </div>
 <p>violin plot</p>
@@ -1083,7 +1095,7 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/532f69f1279109f7f74f3f2d58adf298d8fc6251f83c528554046d6f33cf4253.png" src="_images/532f69f1279109f7f74f3f2d58adf298d8fc6251f83c528554046d6f33cf4253.png" />
+<img alt="_images/ec931e3a8ef84f4e8453c68f0c40cf53426cbe06a6dee93d7ee5f1e57b216c77.png" src="_images/ec931e3a8ef84f4e8453c68f0c40cf53426cbe06a6dee93d7ee5f1e57b216c77.png" />
 </div>
 </div>
 <p>Scatter plot</p>
@@ -1100,7 +1112,7 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
   warnings.warn(msg, UserWarning)
 </pre></div>
 </div>
-<img alt="_images/0dafdcc7ee97f94c64d6cc4200177092ef372cb0ed7f6754cf3e1e5c1e7cfdaf.png" src="_images/0dafdcc7ee97f94c64d6cc4200177092ef372cb0ed7f6754cf3e1e5c1e7cfdaf.png" />
+<img alt="_images/50463c4341a4395b005488808b617eaa8f0f7814c5c6f79609d62d9af3248622.png" src="_images/50463c4341a4395b005488808b617eaa8f0f7814c5c6f79609d62d9af3248622.png" />
 </div>
 </div>
 </section>
@@ -1498,7 +1510,7 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e666ed55e936811965e401a2eb08ba999f9e2aa6964f1026943965bbda6f4a25.png" src="_images/e666ed55e936811965e401a2eb08ba999f9e2aa6964f1026943965bbda6f4a25.png" />
+<img alt="_images/85a382fcc35111c3a12d5f6a05af3319d7e646f1eeff963fbd64fff4488624bc.png" src="_images/85a382fcc35111c3a12d5f6a05af3319d7e646f1eeff963fbd64fff4488624bc.png" />
 </div>
 </div>
 <p>nilai sse untuk cluster 2-4</p>
@@ -1535,7 +1547,7 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ae4d1542298f3a3a80ed0aee8711c419948cfc7c42354760b0d73674149cd5d6.png" src="_images/ae4d1542298f3a3a80ed0aee8711c419948cfc7c42354760b0d73674149cd5d6.png" />
+<img alt="_images/7b8550d75fa8b6ec01e74bbeb680a0c8ef6d5cd834a0cbe5a9aee4d6a370dc05.png" src="_images/7b8550d75fa8b6ec01e74bbeb680a0c8ef6d5cd834a0cbe5a9aee4d6a370dc05.png" />
 </div>
 </div>
 <p>nilai silhouette untuk cluster 2-4</p>
@@ -1554,7 +1566,7 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.6808136202936816, 0.5525919445499757, 0.49511999553021513]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.6808136202936816, 0.5509643746707443, 0.49699284998335724]
 </pre></div>
 </div>
 </div>
@@ -1963,7 +1975,7 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8aa3277a9a3f5301182a85829befd84f4a81338302702bff541a0662c339758a.png" src="_images/8aa3277a9a3f5301182a85829befd84f4a81338302702bff541a0662c339758a.png" />
+<img alt="_images/6118aff6e8fefebd1a03e7634774ce35626fd91af73ee4cbf7ab5648eaff03a3.png" src="_images/6118aff6e8fefebd1a03e7634774ce35626fd91af73ee4cbf7ab5648eaff03a3.png" />
 </div>
 </div>
 <p>nilai sse dengan 2 centroid</p>
@@ -2051,7 +2063,7 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/35fd742c7fd9d44edc1ac79382c92f761811c5e20874157856235c98fc4ee619.png" src="_images/35fd742c7fd9d44edc1ac79382c92f761811c5e20874157856235c98fc4ee619.png" />
+<img alt="_images/a8f8b489995bfe1ada7cf8d55d43f8ba47ed8e6da88125d86e8948410b3b84ca.png" src="_images/a8f8b489995bfe1ada7cf8d55d43f8ba47ed8e6da88125d86e8948410b3b84ca.png" />
 </div>
 </div>
 <p>nilai sse dengan 3 centroid</p>
@@ -2140,7 +2152,7 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b5e47d842c541e6e22e9f140bd1bdd74ef2e5f27c077aaa7df80b0cc740ca102.png" src="_images/b5e47d842c541e6e22e9f140bd1bdd74ef2e5f27c077aaa7df80b0cc740ca102.png" />
+<img alt="_images/3289afb6728bef2d70d373a8c54dd46fdc51f94f76346478ef9732b1fc7d42f4.png" src="_images/3289afb6728bef2d70d373a8c54dd46fdc51f94f76346478ef9732b1fc7d42f4.png" />
 </div>
 </div>
 <p>nilai sse dengan 4 centroid</p>
@@ -2598,7 +2610,7 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/f0d08127685562b9799ac072811109a4fbe98b29885768f8be131c07ec58ac46.png" src="_images/f0d08127685562b9799ac072811109a4fbe98b29885768f8be131c07ec58ac46.png" />
+<img alt="_images/7b21afb213306bd7f0c61c59db916d8987333a5f5ee8ccbcdf7b31fad1b151c1.png" src="_images/7b21afb213306bd7f0c61c59db916d8987333a5f5ee8ccbcdf7b31fad1b151c1.png" />
 </div>
 </div>
 </section>
@@ -2682,7 +2694,7 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/624c7dfff4b775f14befa77024c2f6a794852d7cec5e33ff1e524fb1707037cc.png" src="_images/624c7dfff4b775f14befa77024c2f6a794852d7cec5e33ff1e524fb1707037cc.png" />
+<img alt="_images/e534b46e480c41745d33d95d4429f582372a63231fc99ba3776bcc8f1874e1ab.png" src="_images/e534b46e480c41745d33d95d4429f582372a63231fc99ba3776bcc8f1874e1ab.png" />
 </div>
 </div>
 </section>
@@ -2771,7 +2783,7 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c34d321ec993a4126c749bc565dcf57e1154c85fbedc62dcd89aac42caf0aef5.png" src="_images/c34d321ec993a4126c749bc565dcf57e1154c85fbedc62dcd89aac42caf0aef5.png" />
+<img alt="_images/0b219b483553cb72761876f7d751de6eddbfe735f744de0bd3fea24835072afe.png" src="_images/0b219b483553cb72761876f7d751de6eddbfe735f744de0bd3fea24835072afe.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2799,7 +2811,7 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d7302a6f5a4bad091fc38c17512278f1156906b9515c0808ea25160ce7c70908.png" src="_images/d7302a6f5a4bad091fc38c17512278f1156906b9515c0808ea25160ce7c70908.png" />
+<img alt="_images/eb3bc110395ca816ba8749956e7ee35c5143c6e45c84c66862f887f264b9919f.png" src="_images/eb3bc110395ca816ba8749956e7ee35c5143c6e45c84c66862f887f264b9919f.png" />
 </div>
 </div>
 </section>
@@ -3086,7 +3098,7 @@ Data-5   7   8
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Konvergen terkecil di Iterasi 6
 </pre></div>
 </div>
-<img alt="_images/63927de2e0959fa31bbf1cadbcb0048e7067f5f6617fe15cc2de81282970454b.png" src="_images/63927de2e0959fa31bbf1cadbcb0048e7067f5f6617fe15cc2de81282970454b.png" />
+<img alt="_images/262882b64aa887534473cd796cc6372f08a2aae99201ebe3bf22ddef64742bfb.png" src="_images/262882b64aa887534473cd796cc6372f08a2aae99201ebe3bf22ddef64742bfb.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iterasi 1:
 Derajat Keanggotaan:
 [[0.6 0.4]
@@ -3100,7 +3112,7 @@ Nilai Centroid:
 Nilai Konvergen: 0.438628
 </pre></div>
 </div>
-<img alt="_images/b0b9f4542fb24f91efb600a584887d7185b8b41798a7731eca12bb44ae852e37.png" src="_images/b0b9f4542fb24f91efb600a584887d7185b8b41798a7731eca12bb44ae852e37.png" />
+<img alt="_images/68040ea4b40755c035ac5f3857586d6469ebc93ea9d9d65920df878dbea03159.png" src="_images/68040ea4b40755c035ac5f3857586d6469ebc93ea9d9d65920df878dbea03159.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iterasi 2:
 Derajat Keanggotaan:
 [[0.59388413 0.40611587]
@@ -3114,7 +3126,7 @@ Nilai Centroid:
 Nilai Konvergen: 0.264734
 </pre></div>
 </div>
-<img alt="_images/72340ca927d39119149687ceac10ec34fc3707fc6326397d2b688741525817e5.png" src="_images/72340ca927d39119149687ceac10ec34fc3707fc6326397d2b688741525817e5.png" />
+<img alt="_images/b3484cb78aa10abbb323a4741ce0e2b7459537e67d4c14cce84aad0615b8c81a.png" src="_images/b3484cb78aa10abbb323a4741ce0e2b7459537e67d4c14cce84aad0615b8c81a.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iterasi 3:
 Derajat Keanggotaan:
 [[8.02504282e-01 1.97495718e-01]
@@ -3128,7 +3140,7 @@ Nilai Centroid:
 Nilai Konvergen: 0.181094
 </pre></div>
 </div>
-<img alt="_images/21be5c664cb4d4866dd48ffa32d38dfa249874aed91989b669764e09ee926010.png" src="_images/21be5c664cb4d4866dd48ffa32d38dfa249874aed91989b669764e09ee926010.png" />
+<img alt="_images/23ca55f00b595d7dd07dcb560fc13fddb8cec597d6e63bfe1979c33fe108a6b0.png" src="_images/23ca55f00b595d7dd07dcb560fc13fddb8cec597d6e63bfe1979c33fe108a6b0.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iterasi 4:
 Derajat Keanggotaan:
 [[0.94741114 0.05258886]
@@ -3142,7 +3154,7 @@ Nilai Centroid:
 Nilai Konvergen: 0.025071
 </pre></div>
 </div>
-<img alt="_images/0394bc4666251ac334e75f4e541dcb230afe64ab06c0ca99bd7cfa3682ed349f.png" src="_images/0394bc4666251ac334e75f4e541dcb230afe64ab06c0ca99bd7cfa3682ed349f.png" />
+<img alt="_images/ba48ee86312c4ef88606b9e17a427fb990378a9a38d18be0a97ac1c2bed39d20.png" src="_images/ba48ee86312c4ef88606b9e17a427fb990378a9a38d18be0a97ac1c2bed39d20.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iterasi 5:
 Derajat Keanggotaan:
 [[9.67627070e-01 3.23729305e-02]
@@ -3156,7 +3168,7 @@ Nilai Centroid:
 Nilai Konvergen: 0.004020
 </pre></div>
 </div>
-<img alt="_images/309c85e0b00c03f2346cf65c777c12491fd1ea8ef2250d1f0b6c4ba3f5fdd3e0.png" src="_images/309c85e0b00c03f2346cf65c777c12491fd1ea8ef2250d1f0b6c4ba3f5fdd3e0.png" />
+<img alt="_images/f90cd1412f2f5df6cee711d9ba6e2a295ffc9356bb6d7b7861b74d712c60cba1.png" src="_images/f90cd1412f2f5df6cee711d9ba6e2a295ffc9356bb6d7b7861b74d712c60cba1.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iterasi 6:
 Derajat Keanggotaan:
 [[9.69656524e-01 3.03434758e-02]
@@ -3185,7 +3197,7 @@ Riwayat Nilai Konvergen:
 [np.float64(0.4386277226278892), np.float64(0.2647342853049488), np.float64(0.18109432054359187), np.float64(0.025071185646415195), np.float64(0.004020470707437454), np.float64(0.000602935614064326)]
 </pre></div>
 </div>
-<img alt="_images/d38936a9419f3f6ece24ed8ba8e9444ec73759e89154dbd6b73784cd7bafc115.png" src="_images/d38936a9419f3f6ece24ed8ba8e9444ec73759e89154dbd6b73784cd7bafc115.png" />
+<img alt="_images/2f5c5eaccf806dd5591e25cd2ab57cf098aa1c569577990d9c4cbe8c83034afb.png" src="_images/2f5c5eaccf806dd5591e25cd2ab57cf098aa1c569577990d9c4cbe8c83034afb.png" />
 </div>
 </div>
 </section>
@@ -3201,18 +3213,6 @@ Riwayat Nilai Konvergen:
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">silhouette_score</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">60</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span><span class="w"> </span><span class="nn">pymysql</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span><span class="w"> </span><span class="nn">psycopg2</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;pymysql&#39;
 </pre></div>
 </div>
 </div>
