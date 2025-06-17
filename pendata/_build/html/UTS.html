@@ -859,7 +859,9 @@ Name: count, dtype: int64
 <p><strong>Visualisasi Distribusi Fitur</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">pip</span> install seaborn
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
 
 <span class="c1"># Histogram untuk kolom &#39;Age&#39;</span>
@@ -872,17 +874,27 @@ Name: count, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># Histogram untuk kolom &#39;Age&#39;</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;seaborn&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: seaborn in c:\users\acer\appdata\local\programs\python\python39\lib\site-packages (0.13.2)
+Requirement already satisfied: numpy!=1.24.0,&gt;=1.20 in c:\users\acer\appdata\local\programs\python\python39\lib\site-packages (from seaborn) (2.0.2)
+Requirement already satisfied: pandas&gt;=1.2 in c:\users\acer\appdata\local\programs\python\python39\lib\site-packages (from seaborn) (2.2.3)
+Requirement already satisfied: matplotlib!=3.6.1,&gt;=3.4 in c:\users\acer\appdata\local\programs\python\python39\lib\site-packages (from seaborn) (3.9.4)
+Requirement already satisfied: contourpy&gt;=1.0.1 in c:\users\acer\appdata\local\programs\python\python39\lib\site-packages (from matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn) (1.3.0)
+Requirement already satisfied: cycler&gt;=0.10 in c:\users\acer\appdata\local\programs\python\python39\lib\site-packages (from matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn) (0.12.1)
+Requirement already satisfied: fonttools&gt;=4.22.0 in c:\users\acer\appdata\local\programs\python\python39\lib\site-packages (from matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn) (4.57.0)
+Requirement already satisfied: kiwisolver&gt;=1.3.1 in c:\users\acer\appdata\local\programs\python\python39\lib\site-packages (from matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn) (1.4.7)
+Requirement already satisfied: packaging&gt;=20.0 in c:\users\acer\appdata\local\programs\python\python39\lib\site-packages (from matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn) (24.2)
+Requirement already satisfied: pillow&gt;=8 in c:\users\acer\appdata\local\programs\python\python39\lib\site-packages (from matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn) (11.2.1)
+Requirement already satisfied: pyparsing&gt;=2.3.1 in c:\users\acer\appdata\local\programs\python\python39\lib\site-packages (from matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn) (3.2.3)
+Requirement already satisfied: python-dateutil&gt;=2.7 in c:\users\acer\appdata\roaming\python\python39\site-packages (from matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn) (2.9.0.post0)
+Requirement already satisfied: importlib-resources&gt;=3.2.0 in c:\users\acer\appdata\local\programs\python\python39\lib\site-packages (from matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn) (6.5.2)
+Requirement already satisfied: zipp&gt;=3.1.0 in c:\users\acer\appdata\roaming\python\python39\site-packages (from importlib-resources&gt;=3.2.0-&gt;matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn) (3.21.0)
+Requirement already satisfied: pytz&gt;=2020.1 in c:\users\acer\appdata\local\programs\python\python39\lib\site-packages (from pandas&gt;=1.2-&gt;seaborn) (2025.2)
+Requirement already satisfied: tzdata&gt;=2022.7 in c:\users\acer\appdata\local\programs\python\python39\lib\site-packages (from pandas&gt;=1.2-&gt;seaborn) (2025.2)
+Requirement already satisfied: six&gt;=1.5 in c:\users\acer\appdata\roaming\python\python39\site-packages (from python-dateutil&gt;=2.7-&gt;matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn) (1.17.0)
+Note: you may need to restart the kernel to use updated packages.
 </pre></div>
 </div>
+<img alt="_images/122579f7385c711ddab899cc4b4f09d34681575193a2bde894dd5c9c57400d63.png" src="_images/122579f7385c711ddab899cc4b4f09d34681575193a2bde894dd5c9c57400d63.png" />
 </div>
 </div>
 </section>
@@ -896,7 +908,7 @@ Name: count, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: ace_tools in /home/codespace/.python/current/lib/python3.12/site-packages (0.0)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: ace_tools in c:\users\acer\appdata\local\programs\python\python39\lib\site-packages (0.0)
 Note: you may need to restart the kernel to use updated packages.
 </pre></div>
 </div>
@@ -1245,7 +1257,9 @@ dtype: object
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Logistic Regression model trained.
 Decision Tree model trained.
-Random Forest model trained.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Random Forest model trained.
 KNN model trained.
 SVM model trained.
 </pre></div>
@@ -1295,31 +1309,31 @@ Recall: 0.59
 F1-Score: 0.58
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/codespace/.local/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\acer\AppData\Local\Programs\Python\Python39\lib\site-packages\sklearn\metrics\_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
   _warn_prf(average, modifier, f&quot;{metric.capitalize()} is&quot;, len(result))
 </pre></div>
 </div>
-<img alt="_images/38bde8627ec4a86422d84b266947e6e25638c19139298c4b52fec46dcacec0dd.png" src="_images/38bde8627ec4a86422d84b266947e6e25638c19139298c4b52fec46dcacec0dd.png" />
+<img alt="_images/6ab480c19b3266cc9426a8ef6f5d1c637a002c52c93ea02a266e638ad2cb2b54.png" src="_images/6ab480c19b3266cc9426a8ef6f5d1c637a002c52c93ea02a266e638ad2cb2b54.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>🔍 Evaluasi untuk Decision Tree:
-Akurasi: 0.80
-Precision: 0.66
-Recall: 0.63
-F1-Score: 0.64
+Akurasi: 0.79
+Precision: 0.65
+Recall: 0.62
+F1-Score: 0.63
 </pre></div>
 </div>
-<img alt="_images/48ff70d84e2f10a2db49ba2a71971257a54887491827dbcffa479ad264880cb9.png" src="_images/48ff70d84e2f10a2db49ba2a71971257a54887491827dbcffa479ad264880cb9.png" />
+<img alt="_images/eaa090149b15471225f0d59ccdf78186214b5f14cf530c58e331a3786baa958f.png" src="_images/eaa090149b15471225f0d59ccdf78186214b5f14cf530c58e331a3786baa958f.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>🔍 Evaluasi untuk Random Forest:
-Akurasi: 0.81
-Precision: 0.54
-Recall: 0.56
-F1-Score: 0.55
+Akurasi: 0.82
+Precision: 0.55
+Recall: 0.57
+F1-Score: 0.56
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/codespace/.local/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\acer\AppData\Local\Programs\Python\Python39\lib\site-packages\sklearn\metrics\_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
   _warn_prf(average, modifier, f&quot;{metric.capitalize()} is&quot;, len(result))
 </pre></div>
 </div>
-<img alt="_images/b9db7837d466223c24ccf00a7729540a46fed212ea6beda33385110715df1046.png" src="_images/b9db7837d466223c24ccf00a7729540a46fed212ea6beda33385110715df1046.png" />
+<img alt="_images/08f42365cadab9d410eff4a91c8c909148c2520e3340c627520d58a0aeb924ee.png" src="_images/08f42365cadab9d410eff4a91c8c909148c2520e3340c627520d58a0aeb924ee.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>🔍 Evaluasi untuk KNN:
 Akurasi: 0.77
 Precision: 0.54
@@ -1327,11 +1341,11 @@ Recall: 0.53
 F1-Score: 0.52
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/codespace/.local/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\acer\AppData\Local\Programs\Python\Python39\lib\site-packages\sklearn\metrics\_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
   _warn_prf(average, modifier, f&quot;{metric.capitalize()} is&quot;, len(result))
 </pre></div>
 </div>
-<img alt="_images/99264be70c89cdb57ba07408facfb8e07fd017ea5bab85fbda05b57115228c1c.png" src="_images/99264be70c89cdb57ba07408facfb8e07fd017ea5bab85fbda05b57115228c1c.png" />
+<img alt="_images/0f4832ede629379a54b7db72befb44c51654b455cc9bb43925ee5d7fddb2f521.png" src="_images/0f4832ede629379a54b7db72befb44c51654b455cc9bb43925ee5d7fddb2f521.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>🔍 Evaluasi untuk SVM:
 Akurasi: 0.80
 Precision: 0.54
@@ -1339,11 +1353,11 @@ Recall: 0.55
 F1-Score: 0.54
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/codespace/.local/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\acer\AppData\Local\Programs\Python\Python39\lib\site-packages\sklearn\metrics\_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
   _warn_prf(average, modifier, f&quot;{metric.capitalize()} is&quot;, len(result))
 </pre></div>
 </div>
-<img alt="_images/0151824195297b8cda17850065bdaa10b3e3749f626aa5173cdcf3f77c8c8ea9.png" src="_images/0151824195297b8cda17850065bdaa10b3e3749f626aa5173cdcf3f77c8c8ea9.png" />
+<img alt="_images/4c40f39f6bb72f23e5a32ca311fb8080e26216629282373cf7f43317960f6d54.png" src="_images/4c40f39f6bb72f23e5a32ca311fb8080e26216629282373cf7f43317960f6d54.png" />
 </div>
 </div>
 </section>
