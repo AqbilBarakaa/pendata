@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Prediksi Kebakaran Hutan Berdasarkan Data Meteorologi &#8212; Penambangan Data</title>
+    <title>PraUAS &#8212; Penambangan Data</title>
   
   
   
@@ -189,7 +189,8 @@
 
 <li class="toctree-l1"><a class="reference internal" href="DecisionTree.html">Decision Tree</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Diskritisasi_Data.html">Diskritisasi data (Binning) menggunakan K-Means Clustering dan melakukan Klasifikasi dengan model Naive Bayas dan Pohon Keputusan pada data yang sudah Diskritisasi dan data yang belum Diskritisasi</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Prediksi Kebakaran Hutan Berdasarkan Data Meteorologi</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">PraUAS</a></li>
+
 </ul>
 
     </div>
@@ -375,7 +376,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Prediksi Kebakaran Hutan Berdasarkan Data Meteorologi</h1>
+    <h1>PraUAS</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -385,6 +386,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">PraUAS</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#prediksi-kebakaran-hutan-berdasarkan-data-meteorologi">Prediksi Kebakaran Hutan Berdasarkan Data Meteorologi</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pendahuluan">Pendahuluan</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-understanding">Data Understanding</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sumber-data">Sumber Data</a></li>
@@ -412,9 +415,17 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#imputasi-missing-value-dengan-metode-knn">Imputasi Missing Value dengan Metode KNN</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normalisasi">Normalisasi</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pendeteksian-outlier">Pendeteksian Outlier</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metrik-evaluasi-untuk-klasifikasi">Metrik Evaluasi untuk Klasifikasi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#persiapan-data-untuk-pemodelan-klasifikasi">Persiapan Data untuk Pemodelan Klasifikasi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-naive-bayes">1. Gaussian Naive Bayes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#support-vector-machine-svm">2. Support Vector Machine (SVM)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-tree-classifier">3. Decision Tree Classifier</a></li>
 </ul>
 </li>
 </ul>
+</li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -425,7 +436,10 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="prediksi-kebakaran-hutan-berdasarkan-data-meteorologi">
+  <section class="tex2jax_ignore mathjax_ignore" id="prauas">
+<h1>PraUAS<a class="headerlink" href="#prauas" title="Link to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="prediksi-kebakaran-hutan-berdasarkan-data-meteorologi">
 <h1>Prediksi Kebakaran Hutan Berdasarkan Data Meteorologi<a class="headerlink" href="#prediksi-kebakaran-hutan-berdasarkan-data-meteorologi" title="Link to this heading">#</a></h1>
 <section id="pendahuluan">
 <h2>Pendahuluan<a class="headerlink" href="#pendahuluan" title="Link to this heading">#</a></h2>
@@ -455,8 +469,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting ucimlrepo
-  Using cached ucimlrepo-0.0.7-py3-none-any.whl.metadata (5.5 kB)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: ucimlrepo in c:\users\acer\appdata\local\programs\python\python39\lib\site-packages (0.0.7)
 Requirement already satisfied: pandas&gt;=1.0.0 in c:\users\acer\appdata\local\programs\python\python39\lib\site-packages (from ucimlrepo) (2.2.3)
 Requirement already satisfied: certifi&gt;=2020.12.5 in c:\users\acer\appdata\local\programs\python\python39\lib\site-packages (from ucimlrepo) (2025.4.26)
 Requirement already satisfied: numpy&gt;=1.22.4 in c:\users\acer\appdata\local\programs\python\python39\lib\site-packages (from pandas&gt;=1.0.0-&gt;ucimlrepo) (2.0.2)
@@ -464,9 +477,6 @@ Requirement already satisfied: python-dateutil&gt;=2.8.2 in c:\users\acer\appdat
 Requirement already satisfied: pytz&gt;=2020.1 in c:\users\acer\appdata\local\programs\python\python39\lib\site-packages (from pandas&gt;=1.0.0-&gt;ucimlrepo) (2025.2)
 Requirement already satisfied: tzdata&gt;=2022.7 in c:\users\acer\appdata\local\programs\python\python39\lib\site-packages (from pandas&gt;=1.0.0-&gt;ucimlrepo) (2025.2)
 Requirement already satisfied: six&gt;=1.5 in c:\users\acer\appdata\roaming\python\python39\site-packages (from python-dateutil&gt;=2.8.2-&gt;pandas&gt;=1.0.0-&gt;ucimlrepo) (1.17.0)
-Using cached ucimlrepo-0.0.7-py3-none-any.whl (8.0 kB)
-Installing collected packages: ucimlrepo
-Successfully installed ucimlrepo-0.0.7
 Note: you may need to restart the kernel to use updated packages.
 </pre></div>
 </div>
@@ -871,7 +881,7 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\acer\AppData\Local\Temp\ipykernel_5956\1453521144.py:8: FutureWarning: 
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\acer\AppData\Local\Temp\ipykernel_6712\1453521144.py:8: FutureWarning: 
 
 Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
 
@@ -1200,7 +1210,7 @@ dtype: int64
 19  Tidak Ada Kebakaran                       0
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\acer\AppData\Local\Temp\ipykernel_5956\1162243235.py:4: FutureWarning: Downcasting behavior in `replace` is deprecated and will be removed in a future version. To retain the old behavior, explicitly call `result.infer_objects(copy=False)`. To opt-in to the future behavior, set `pd.set_option(&#39;future.no_silent_downcasting&#39;, True)`
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\acer\AppData\Local\Temp\ipykernel_6712\1162243235.py:4: FutureWarning: Downcasting behavior in `replace` is deprecated and will be removed in a future version. To retain the old behavior, explicitly call `result.infer_objects(copy=False)`. To opt-in to the future behavior, set `pd.set_option(&#39;future.no_silent_downcasting&#39;, True)`
   data_demonstrasi[&#39;status_kembali_numerik&#39;] = data_demonstrasi[&#39;status_label&#39;].replace({
 </pre></div>
 </div>
@@ -2093,6 +2103,271 @@ Data yang terdeteksi sebagai Outlier (diurutkan dari yang paling ekstrem):
 <p><strong>Analisis:</strong><br />
 Dari hasil kode dan visualisasi, kita dapat melihat bahwa LOF berhasil mengidentifikasi sejumlah titik data sebagai outlier (ditandai dengan ‘X’ merah). Titik-titik ini adalah data yang memiliki kombinasi fitur cuaca yang tidak biasa atau sangat berbeda dari data di sekitarnya. Contohnya, baris 238 memiliki nilai FFMC, DMC, DC, dan ISI yang nol, yang sangat tidak lazim dan membuatnya menjadi outlier paling ekstrem. Penanganan outlier ini (misalnya dengan menghapus atau memeriksanya lebih lanjut) akan menjadi langkah selanjutnya sebelum membangun model.</p>
 </section>
+<section id="metrik-evaluasi-untuk-klasifikasi">
+<h3>Metrik Evaluasi untuk Klasifikasi<a class="headerlink" href="#metrik-evaluasi-untuk-klasifikasi" title="Link to this heading">#</a></h3>
+<p>Untuk mengevaluasi model klasifikasi, kita menggunakan metrik yang berbeda dari regresi:</p>
+<ul class="simple">
+<li><p>Accuracy: Persentase prediksi yang benar secara keseluruhan.</p></li>
+<li><p>Precision: Dari semua yang diprediksi sebagai ‘Positif’ (Terjadi Kebakaran), berapa persen yang benar-benar ‘Positif’? (Ukuran ketepatan prediksi positif).</p></li>
+<li><p>Recall (Sensitivity): Dari semua kasus ‘Positif’ yang sebenarnya, berapa persen yang berhasil diprediksi oleh model? (Ukuran kemampuan model menemukan semua kasus positif).</p></li>
+<li><p>F1-Score: Rata-rata harmonik dari Precision dan Recall. Memberikan skor tunggal yang menyeimbangkan kedua metrik tersebut.</p></li>
+<li><p>Confusion Matrix: Sebuah tabel yang merangkum hasil prediksi, menunjukkan True Positive, True Negative, False Positive, dan False Negative.</p></li>
+</ul>
+</section>
+<section id="persiapan-data-untuk-pemodelan-klasifikasi">
+<h3>Persiapan Data untuk Pemodelan Klasifikasi<a class="headerlink" href="#persiapan-data-untuk-pemodelan-klasifikasi" title="Link to this heading">#</a></h3>
+<p>Langkah pertama tetap sama: memisahkan fitur (X) dan target (y), lalu membaginya menjadi set pelatihan dan pengujian. Perbedaannya adalah pada kolom target yang kita gunakan.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LabelEncoder</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">confusion_matrix</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># Memuat data yang telah dinormalisasi</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;forest_fires_normalized.csv&#39;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;File &#39;forest_fires_normalized.csv&#39; tidak ditemukan. Jalankan langkah Normalisasi terlebih dahulu.&quot;</span><span class="p">)</span>
+    <span class="n">exit</span><span class="p">()</span>
+
+<span class="c1"># ============================ PERBAIKAN DI SINI ============================</span>
+<span class="c1"># Kita hanya menghapus kolom &#39;area&#39;, karena kolom outlier tidak ada di file yang dimuat.</span>
+<span class="c1"># &#39;Status_Kebakaran&#39; adalah turunan dari &#39;area&#39;, jadi &#39;area&#39; harus dihapus untuk menghindari kebocoran data.</span>
+<span class="n">data_for_modeling</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;area&#39;</span><span class="p">])</span>
+<span class="c1"># =========================================================================</span>
+
+
+<span class="c1"># Memisahkan fitur (X) dan target (y)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">data_for_modeling</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Status_Kebakaran&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">y_text</span> <span class="o">=</span> <span class="n">data_for_modeling</span><span class="p">[</span><span class="s1">&#39;Status_Kebakaran&#39;</span><span class="p">]</span>
+
+<span class="c1"># Mengubah label teks menjadi numerik (0 dan 1)</span>
+<span class="n">le</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">le</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">y_text</span><span class="p">)</span>
+<span class="c1"># le.classes_ akan menunjukkan urutannya, misal: [&#39;Tidak Ada Kebakaran&#39;, &#39;Terjadi Kebakaran&#39;] -&gt; [0, 1]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Label &#39;</span><span class="si">{</span><span class="n">le</span><span class="o">.</span><span class="n">classes_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">&#39; diubah menjadi 0&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Label &#39;</span><span class="si">{</span><span class="n">le</span><span class="o">.</span><span class="n">classes_</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">&#39; diubah menjadi 1&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># Membagi data menjadi 80% data latih dan 20% data uji</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Bentuk data latih (X_train): </span><span class="si">{</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Bentuk data uji (X_test): </span><span class="si">{</span><span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Label &#39;Terjadi Kebakaran&#39; diubah menjadi 0
+Label &#39;Tidak Ada Kebakaran&#39; diubah menjadi 1
+
+Bentuk data latih (X_train): (413, 27)
+Bentuk data uji (X_test): (104, 27)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="gaussian-naive-bayes">
+<h3>1. Gaussian Naive Bayes<a class="headerlink" href="#gaussian-naive-bayes" title="Link to this heading">#</a></h3>
+<p>Gaussian Naive Bayes adalah algoritma klasifikasi probabilistik berdasarkan Teorema Bayes. Disebut ‘naive’ (lugu) karena memiliki asumsi kuat bahwa semua fitur bersifat independen satu sama lain. Disebut ‘Gaussian’ karena mengasumsikan bahwa nilai-nilai pada setiap fitur untuk setiap kelas terdistribusi secara normal (Gaussian).</p>
+<p><strong>Rumus</strong><br />
+Teorema Bayes adalah inti dari model ini:<br />
+$<span class="math notranslate nohighlight">\( 
+P(y∣X)= 
+P(X)
+P(X∣y)P(y)
+​\)</span>$</p>
+<ul class="simple">
+<li><p>P(y∣X) : Probabilitas kelas y terjadi, diketahui fitur X. Ini yang ingin kita cari (posterior).</p></li>
+<li><p>P(X∣y) : Probabilitas fitur X terjadi, diketahui kelas y (likelihood). Untuk Gaussian NB, ini dihitung menggunakan fungsi densitas probabilitas Gaussian.</p></li>
+<li><p>P(y) : Probabilitas kelas y secara umum (prior).</p></li>
+<li><p>P(X) : Probabilitas fitur X terjadi.</p></li>
+</ul>
+<p><strong>Implementasi &amp; Evaluasi</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.naive_bayes</span><span class="w"> </span><span class="kn">import</span> <span class="n">GaussianNB</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">confusion_matrix</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># 1. Inisialisasi dan latih model</span>
+<span class="n">gnb</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
+<span class="n">gnb</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># 2. Lakukan prediksi</span>
+<span class="n">y_pred_gnb</span> <span class="o">=</span> <span class="n">gnb</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1"># 3. Evaluasi model</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- Hasil Evaluasi Gaussian Naive Bayes ---&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_gnb</span><span class="p">,</span> <span class="n">target_names</span><span class="o">=</span><span class="n">le</span><span class="o">.</span><span class="n">classes_</span><span class="p">))</span>
+
+<span class="c1"># Visualisasi Confusion Matrix</span>
+<span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_gnb</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">cm</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues&#39;</span><span class="p">,</span> <span class="n">xticklabels</span><span class="o">=</span><span class="n">le</span><span class="o">.</span><span class="n">classes_</span><span class="p">,</span> <span class="n">yticklabels</span><span class="o">=</span><span class="n">le</span><span class="o">.</span><span class="n">classes_</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Confusion Matrix - Gaussian NB&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Prediksi&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Aktual&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Hasil Evaluasi Gaussian Naive Bayes ---
+                     precision    recall  f1-score   support
+
+  Terjadi Kebakaran       0.47      0.44      0.46        54
+Tidak Ada Kebakaran       0.43      0.46      0.45        50
+
+           accuracy                           0.45       104
+          macro avg       0.45      0.45      0.45       104
+       weighted avg       0.45      0.45      0.45       104
+</pre></div>
+</div>
+<img alt="_images/b4d39bd034ad07d7801ed26e4b6054248e3a42a01ac4959cf15d49e4d7aaa1d5.png" src="_images/b4d39bd034ad07d7801ed26e4b6054248e3a42a01ac4959cf15d49e4d7aaa1d5.png" />
+</div>
+</div>
+<p>Analisis: Gaussian Naive Bayes memberikan kinerja yang sangat baik dengan akurasi 45%. Model ini mampu membedakan kedua kelas dengan baik, terlihat dari nilai F1-score yang seimbang untuk kedua kelas.</p>
+</section>
+<section id="support-vector-machine-svm">
+<h3>2. Support Vector Machine (SVM)<a class="headerlink" href="#support-vector-machine-svm" title="Link to this heading">#</a></h3>
+<p><strong>Penjelasan Konseptual</strong><br />
+Support Vector Machine (untuk klasifikasi, disebut juga SVC) bekerja dengan mencari hyperplane (garis atau bidang) terbaik yang dapat memisahkan data ke dalam kelas-kelas yang berbeda. Hyperplane terbaik adalah yang memiliki margin atau jarak terbesar antara dirinya dengan titik data terdekat dari setiap kelas (support vectors).</p>
+<p><strong>Rumus</strong><br />
+Tujuan optimisasi dari SVM adalah untuk memaksimalkan margin <span class="math notranslate nohighlight">\((2/∣∣w∣∣)\)</span><span class="math notranslate nohighlight">\(, yang setara dengan meminimalkan \)</span>∣∣w∣∣
+2<span class="math notranslate nohighlight">\(
+ .
+\)</span><span class="math notranslate nohighlight">\( Minimalkan 
+2
+1
+​
+ ∣∣w∣∣ 
+2
+ Denganbatasanbahwasetiaptitikdatadiklasifikasikandenganbenar:y 
+i
+​
+ (w⋅x 
+i
+​
+ −b)≥1
+\)</span>$</p>
+<ul class="simple">
+<li><p>w,b : Parameter yang mendefinisikan hyperplane.</p></li>
+<li><p>y_i : Label kelas dari titik ke-i (+1 atau -1).</p></li>
+<li><p>x_i : Vektor fitur dari titik ke-i.</p></li>
+</ul>
+<p><strong>Implementasi &amp; Evaluasi</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.svm</span><span class="w"> </span><span class="kn">import</span> <span class="n">SVC</span>
+
+<span class="c1"># 1. Inisialisasi dan latih model</span>
+<span class="n">svc</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;rbf&#39;</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span> <span class="c1"># Kernel RBF adalah pilihan default yang kuat</span>
+<span class="n">svc</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># 2. Lakukan prediksi</span>
+<span class="n">y_pred_svc</span> <span class="o">=</span> <span class="n">svc</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1"># 3. Evaluasi model</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- Hasil Evaluasi Support Vector Machine (SVM) ---&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_svc</span><span class="p">,</span> <span class="n">target_names</span><span class="o">=</span><span class="n">le</span><span class="o">.</span><span class="n">classes_</span><span class="p">))</span>
+
+<span class="c1"># Visualisasi Confusion Matrix</span>
+<span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_svc</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">cm</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues&#39;</span><span class="p">,</span> <span class="n">xticklabels</span><span class="o">=</span><span class="n">le</span><span class="o">.</span><span class="n">classes_</span><span class="p">,</span> <span class="n">yticklabels</span><span class="o">=</span><span class="n">le</span><span class="o">.</span><span class="n">classes_</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Confusion Matrix - SVM&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Prediksi&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Aktual&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Hasil Evaluasi Support Vector Machine (SVM) ---
+                     precision    recall  f1-score   support
+
+  Terjadi Kebakaran       0.51      0.76      0.61        54
+Tidak Ada Kebakaran       0.43      0.20      0.27        50
+
+           accuracy                           0.49       104
+          macro avg       0.47      0.48      0.44       104
+       weighted avg       0.47      0.49      0.45       104
+</pre></div>
+</div>
+<img alt="_images/da18e8c473199dece5a06bf8b2accc9745b06bb3c397976295de9f145bf1fc6c.png" src="_images/da18e8c473199dece5a06bf8b2accc9745b06bb3c397976295de9f145bf1fc6c.png" />
+</div>
+</div>
+<p>Analisis: SVM memberikan akurasi sebesar 49%. Model ini masih menunjukkan kemampuan klasifikasi yang layak. Kinerjanya mungkin dapat ditingkatkan lebih lanjut dengan tuning hyperparameter (seperti C dan gamma).</p>
+</section>
+<section id="decision-tree-classifier">
+<h3>3. Decision Tree Classifier<a class="headerlink" href="#decision-tree-classifier" title="Link to this heading">#</a></h3>
+<p>Penjelasan Konseptual<br />
+Decision Tree (Pohon Keputusan) adalah model yang memprediksi kelas target dengan mempelajari aturan-aturan keputusan sederhana yang disimpulkan dari fitur data. Model ini membangun struktur seperti pohon di mana setiap simpul internal merepresentasikan “tes” pada sebuah fitur, setiap cabang merepresentasikan hasil tes, dan setiap simpul daun merepresentasikan label kelas.</p>
+<p>Rumus<br />
+Decision Tree tidak memiliki satu rumus prediksi seperti regresi. Prosesnya bersifat algoritmik, yaitu secara berulang memecah data menggunakan fitur dan nilai ambang terbaik. Pemecahan terbaik dipilih berdasarkan kriteria yang memaksimalkan kemurnian simpul anak, seperti Gini Impurity.<br />
+$<span class="math notranslate nohighlight">\(
+Gini(E)=1− 
+i=1
+∑
+c
+​
+ (p 
+i
+​
+ ) 
+2
+\)</span>$</p>
+<ul class="simple">
+<li><p>E : Sebuah set data (simpul).</p></li>
+<li><p>c : Jumlah kelas.</p></li>
+<li><p>p_i : Proporsi sampel kelas i dalam set data E. Nilai Gini 0 berarti simpul tersebut murni (semua sampel milik satu kelas). Tujuannya adalah mencari pemecahan yang menghasilkan Gini terendah.</p></li>
+</ul>
+<p><strong>Implementasi &amp; Evaluasi</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.tree</span><span class="w"> </span><span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+
+<span class="c1"># 1. Inisialisasi dan latih model</span>
+<span class="n">dtc</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">dtc</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># 2. Lakukan prediksi</span>
+<span class="n">y_pred_dtc</span> <span class="o">=</span> <span class="n">dtc</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1"># 3. Evaluasi model</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- Hasil Evaluasi Decision Tree ---&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_dtc</span><span class="p">,</span> <span class="n">target_names</span><span class="o">=</span><span class="n">le</span><span class="o">.</span><span class="n">classes_</span><span class="p">))</span>
+
+<span class="c1"># Visualisasi Confusion Matrix</span>
+<span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_dtc</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">cm</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues&#39;</span><span class="p">,</span> <span class="n">xticklabels</span><span class="o">=</span><span class="n">le</span><span class="o">.</span><span class="n">classes_</span><span class="p">,</span> <span class="n">yticklabels</span><span class="o">=</span><span class="n">le</span><span class="o">.</span><span class="n">classes_</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Confusion Matrix - Decision Tree&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Prediksi&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Aktual&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Hasil Evaluasi Decision Tree ---
+                     precision    recall  f1-score   support
+
+  Terjadi Kebakaran       0.59      0.61      0.60        54
+Tidak Ada Kebakaran       0.56      0.54      0.55        50
+
+           accuracy                           0.58       104
+          macro avg       0.58      0.58      0.58       104
+       weighted avg       0.58      0.58      0.58       104
+</pre></div>
+</div>
+<img alt="_images/11cc766c39f8bf622f4957de38da0540531e923e4ccd1c3d8265e675b6926b4c.png" src="_images/11cc766c39f8bf622f4957de38da0540531e923e4ccd1c3d8265e675b6926b4c.png" />
+</div>
+</div>
+</section>
 </section>
 </section>
 
@@ -2151,6 +2426,8 @@ Dari hasil kode dan visualisasi, kita dapat melihat bahwa LOF berhasil mengident
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">PraUAS</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#prediksi-kebakaran-hutan-berdasarkan-data-meteorologi">Prediksi Kebakaran Hutan Berdasarkan Data Meteorologi</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pendahuluan">Pendahuluan</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-understanding">Data Understanding</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sumber-data">Sumber Data</a></li>
@@ -2178,9 +2455,17 @@ Dari hasil kode dan visualisasi, kita dapat melihat bahwa LOF berhasil mengident
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#imputasi-missing-value-dengan-metode-knn">Imputasi Missing Value dengan Metode KNN</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normalisasi">Normalisasi</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pendeteksian-outlier">Pendeteksian Outlier</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metrik-evaluasi-untuk-klasifikasi">Metrik Evaluasi untuk Klasifikasi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#persiapan-data-untuk-pemodelan-klasifikasi">Persiapan Data untuk Pemodelan Klasifikasi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-naive-bayes">1. Gaussian Naive Bayes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#support-vector-machine-svm">2. Support Vector Machine (SVM)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-tree-classifier">3. Decision Tree Classifier</a></li>
 </ul>
 </li>
 </ul>
+</li>
+</ul>
+
   </nav></div>
 
 </div></div>
