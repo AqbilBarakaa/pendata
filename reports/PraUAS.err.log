@@ -1,15 +1,4 @@
 Traceback (most recent call last):
-  File "C:\Users\acer\AppData\Local\Programs\Python\Python39\lib\site-packages\nbclient\client.py", line 782, in _async_poll_for_reply
-    msg = await ensure_async(self.kc.shell_channel.get_msg(timeout=new_timeout))
-  File "C:\Users\acer\AppData\Roaming\Python\Python39\site-packages\jupyter_core\utils\__init__.py", line 198, in ensure_async
-    result = await obj
-  File "C:\Users\acer\AppData\Roaming\Python\Python39\site-packages\jupyter_client\channels.py", line 313, in get_msg
-    raise Empty
-_queue.Empty
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
   File "C:\Users\acer\AppData\Local\Programs\Python\Python39\lib\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
     executenb(
   File "C:\Users\acer\AppData\Local\Programs\Python\Python39\lib\site-packages\nbclient\client.py", line 1319, in execute
@@ -20,16 +9,76 @@ Traceback (most recent call last):
     return future.result()
   File "C:\Users\acer\AppData\Local\Programs\Python\Python39\lib\site-packages\nbclient\client.py", line 709, in async_execute
     await self.async_execute_cell(
-  File "C:\Users\acer\AppData\Local\Programs\Python\Python39\lib\site-packages\nbclient\client.py", line 1005, in async_execute_cell
-    exec_reply = await self.task_poll_for_reply
-  File "C:\Users\acer\AppData\Local\Programs\Python\Python39\lib\site-packages\nbclient\client.py", line 806, in _async_poll_for_reply
-    error_on_timeout_execute_reply = await self._async_handle_timeout(timeout, cell)
-  File "C:\Users\acer\AppData\Local\Programs\Python\Python39\lib\site-packages\nbclient\client.py", line 856, in _async_handle_timeout
-    raise CellTimeoutError.error_from_timeout_and_cell(
-nbclient.exceptions.CellTimeoutError: A cell timed out while it was being executed, after 30 seconds.
-The message was: Cell execution timed out.
-Here is a preview of the cell contents:
--------------------
-%pip install ucimlrepo
--------------------
+  File "C:\Users\acer\AppData\Local\Programs\Python\Python39\lib\site-packages\nbclient\client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "C:\Users\acer\AppData\Local\Programs\Python\Python39\lib\site-packages\nbclient\client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import pandas as pd
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.model_selection import cross_val_score, train_test_split
+from sklearn.preprocessing import LabelEncoder
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Kita gunakan data yang sudah di-one-hot-encode dari tahap preprocessing
+# Pastikan variabel 'data_processed' sudah ada dari langkah sebelumnya
+df = data_processed.copy()
+
+# Memisahkan fitur (X) dan label (y)
+# Label kita untuk demonstrasi ini adalah 'Status_Kebakaran'
+# Kita hapus kolom target asli ('area') dan label teksnya
+X = df.drop(['area', 'Status_Kebakaran'], axis=1)
+y_text = df['Status_Kebakaran']
+
+# Mengubah label teks menjadi numerik (0 dan 1)
+le = LabelEncoder()
+y = le.fit_transform(y_text)
+
+# Membagi data menjadi data latih dan data uji
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+# Membuat list k untuk diuji
+k_list = list(range(1, 50, 2))
+print(f"Nilai K yang akan diuji = {k_list}")
+
+cv_scores = []
+# Melakukan 10-fold cross validation
+for k in k_list:
+    knn = KNeighborsClassifier(n_neighbors=k)
+    scores = cross_val_score(knn, X_train, y_train, cv=10, scoring='accuracy')
+    cv_scores.append(scores.mean())
+
+# Menghitung Misclassification Error (1 - akurasi)
+MSE = [1 - x for x in cv_scores]
+
+# Plotting hasil untuk menemukan K optimal
+plt.figure(figsize=(15, 8))
+plt.title('Mencari Jumlah Tetangga (K) Optimal', fontsize=20, fontweight='bold')
+plt.xlabel('Jumlah Tetangga (K)', fontsize=15)
+plt.ylabel('Misclassification Error', fontsize=15)
+sns.set_style("whitegrid")
+plt.plot(k_list, MSE)
+plt.show()
+
+# Menemukan nilai k terbaik dari hasil cross-validation
+best_k = k_list[MSE.index(min(MSE))]
+print("Jumlah tetangga (K) optimal berdasarkan plot adalah %d." % best_k)
+------------------
+
+
+[1;31m---------------------------------------------------------------------------[0m
+[1;31mNameError[0m                                 Traceback (most recent call last)
+Cell [1;32mIn[16], line 10[0m
+[0;32m      6[0m [38;5;28;01mimport[39;00m[38;5;250m [39m[38;5;21;01mseaborn[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[38;5;21;01msns[39;00m
+[0;32m      8[0m [38;5;66;03m# Kita gunakan data yang sudah di-one-hot-encode dari tahap preprocessing[39;00m
+[0;32m      9[0m [38;5;66;03m# Pastikan variabel 'data_processed' sudah ada dari langkah sebelumnya[39;00m
+[1;32m---> 10[0m df [38;5;241m=[39m [43mdata_processed[49m[38;5;241m.[39mcopy()
+[0;32m     12[0m [38;5;66;03m# Memisahkan fitur (X) dan label (y)[39;00m
+[0;32m     13[0m [38;5;66;03m# Label kita untuk demonstrasi ini adalah 'Status_Kebakaran'[39;00m
+[0;32m     14[0m [38;5;66;03m# Kita hapus kolom target asli ('area') dan label teksnya[39;00m
+[0;32m     15[0m X [38;5;241m=[39m df[38;5;241m.[39mdrop([[38;5;124m'[39m[38;5;124marea[39m[38;5;124m'[39m, [38;5;124m'[39m[38;5;124mStatus_Kebakaran[39m[38;5;124m'[39m], axis[38;5;241m=[39m[38;5;241m1[39m)
+
+[1;31mNameError[0m: name 'data_processed' is not defined
 
