@@ -1,0 +1,2213 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Prediksi Kebakaran Hutan Berdasarkan Data Meteorologi &#8212; Penambangan Data</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'PraUAS';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Penambangan Data - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Penambangan Data - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to MyPage
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Memahami_data.html">Memahami Data dalam Penambangan Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Klasifikasi_Naive_Bayas.html">Klasifikasi Naive Bayas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UTS.html"><strong>UJIAN TENGAH SEMESTER</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="K-Means_Clustering_dan_Fuzzy_C-Means.html">K-Means Clustering dan Fuzzy C-Means</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="DecisionTree.html">Decision Tree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Diskritisasi_Data.html">Diskritisasi data (Binning) menggunakan K-Means Clustering dan melakukan Klasifikasi dengan model Naive Bayas dan Pohon Keputusan pada data yang sudah Diskritisasi dan data yang belum Diskritisasi</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FPraUAS.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/PraUAS.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Prediksi Kebakaran Hutan Berdasarkan Data Meteorologi</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pendahuluan">Pendahuluan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-understanding">Data Understanding</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sumber-data">Sumber Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan">Tujuan</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integrasi-data">Integrasi Data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eksplorasi-data">Eksplorasi Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-data">Visualisasi Data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#struktur-dataset">Struktur Dataset</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fitur-dan-label">Fitur dan Label</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distribusi-kejadian-kebakaran">Distribusi Kejadian Kebakaran</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#identifikasi-kualitas-dataset">Identifikasi Kualitas Dataset</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deteksi-missing-value">Deteksi Missing Value</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing-data">Preprocessing Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tranformasi-data">Tranformasi Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#imputasi-missing-value">Imputasi Missing Value</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menyimpan-dataset-hasil-preprocessing-dengan-metode-mean">Menyimpan Dataset Hasil Preprocessing dengan Metode Mean</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#imputasi-missing-value-dengan-metode-knn">Imputasi Missing Value dengan Metode KNN</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normalisasi">Normalisasi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pendeteksian-outlier">Pendeteksian Outlier</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="prediksi-kebakaran-hutan-berdasarkan-data-meteorologi">
+<h1>Prediksi Kebakaran Hutan Berdasarkan Data Meteorologi<a class="headerlink" href="#prediksi-kebakaran-hutan-berdasarkan-data-meteorologi" title="Link to this heading">#</a></h1>
+<section id="pendahuluan">
+<h2>Pendahuluan<a class="headerlink" href="#pendahuluan" title="Link to this heading">#</a></h2>
+<p>Kebakaran hutan merupakan bencana ekologis yang serius, menyebabkan kerusakan lingkungan yang luas, kerugian ekonomi yang signifikan, dan ancaman terhadap keanekaragaman hayati serta kehidupan manusia. Memprediksi luas area terbakar akibat kebakaran hutan adalah langkah krusial dalam upaya mitigasi dan penanggulangan bencana. Dengan model prediksi yang akurat, pihak berwenang dapat mengalokasikan sumber daya secara lebih efektif, merencanakan tindakan preventif, dan memberikan peringatan dini kepada masyarakat yang berisiko.</p>
+<p>Analisis prediktif ini menggunakan data meteorologi dan indeks dari sistem Fire Weather Index (FWI) untuk memperkirakan luas area yang terbakar. Karakteristik seperti suhu, kelembapan relatif, kecepatan angin, dan beberapa indeks dari sistem FWI menjadi faktor penting yang dianalisis untuk memahami dan memodelkan tingkat keparahan kebakaran hutan.</p>
+</section>
+<section id="data-understanding">
+<h2>Data Understanding<a class="headerlink" href="#data-understanding" title="Link to this heading">#</a></h2>
+<section id="sumber-data">
+<h3>Sumber Data<a class="headerlink" href="#sumber-data" title="Link to this heading">#</a></h3>
+<p>Dataset yang digunakan dalam analisis ini adalah “Forest Fires Data Set” yang bersumber dari UCI Machine Learning Repository. Data ini dikumpulkan dari wilayah Montesinho, sebuah taman alam yang terletak di timur laut Portugal.</p>
+<p><strong>Anda dapat menemukan dataset ini pada tautan berikut:</strong><br />
+<a class="reference external" href="https://archive.ics.uci.edu/dataset/162/forest+fires">https://archive.ics.uci.edu/dataset/162/forest+fires</a></p>
+</section>
+<section id="tujuan">
+<h3>Tujuan<a class="headerlink" href="#tujuan" title="Link to this heading">#</a></h3>
+<p>Tujuan utama dari dataset ini adalah untuk mendukung penelitian dalam pengembangan model regresi yang dapat memprediksi luas area hutan yang terbakar. Dengan menggunakan atribut-atribut meteorologi, dataset ini memungkinkan para peneliti dan praktisi untuk membangun sistem prediksi yang dapat membantu dalam manajemen dan pencegahan kebakaran hutan.</p>
+</section>
+<section id="integrasi-data">
+<h3>Integrasi Data<a class="headerlink" href="#integrasi-data" title="Link to this heading">#</a></h3>
+<p>Untuk mengambil dan mengolah data dari UCI Machine Learning Repository, kita perlu menginstal package khusus yang memfasilitasi proses tersebut. Instalasi ini memungkinkan kita untuk menarik dataset langsung dari repositori ke dalam lingkungan kerja kita di Python.</p>
+<p>Perintah untuk mengambil data dapat ditemukan pada halaman dataset di situs UCI dengan menekan tombol “Import in Python”. Ikuti petunjuk yang diberikan untuk memastikan data dapat diimpor dengan benar. Contoh pengambilan data “Forest Fires” dapat dilihat pada gambar dan cuplikan kode di bawah ini.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">pip</span> install ucimlrepo
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>^C
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by &#39;NewConnectionError(&#39;&lt;pip._vendor.urllib3.connection.HTTPSConnection object at 0x000001B0842517C0&gt;: Failed to establish a new connection: [Errno 11001] getaddrinfo failed&#39;)&#39;: /simple/ucimlrepo/
+WARNING: Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by &#39;NewConnectionError(&#39;&lt;pip._vendor.urllib3.connection.HTTPSConnection object at 0x000001B084251AF0&gt;: Failed to establish a new connection: [Errno 11001] getaddrinfo failed&#39;)&#39;: /simple/ucimlrepo/
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Note: you may need to restart the kernel to use updated packages.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ucimlrepo</span><span class="w"> </span><span class="kn">import</span> <span class="n">fetch_ucirepo</span> 
+  
+<span class="c1"># fetch dataset </span>
+<span class="n">forest_fires</span> <span class="o">=</span> <span class="n">fetch_ucirepo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">162</span><span class="p">)</span> 
+  
+<span class="c1"># data (as pandas dataframes) </span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">forest_fires</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">features</span> 
+<span class="n">y</span> <span class="o">=</span> <span class="n">forest_fires</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">targets</span> 
+
+<span class="c1">## data (as pandas dataframes) </span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">forest_fires</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">features</span> 
+  <span class="c1"># menyimpan hasil komputasi ke dalam csv</span>
+<span class="n">data</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;forest_fires.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># metadata </span>
+<span class="nb">print</span><span class="p">(</span><span class="n">forest_fires</span><span class="o">.</span><span class="n">metadata</span><span class="p">)</span> 
+  
+<span class="c1"># variable information </span>
+<span class="nb">print</span><span class="p">(</span><span class="n">forest_fires</span><span class="o">.</span><span class="n">variables</span><span class="p">)</span> 
+
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">info</span><span class="p">())</span> <span class="c1">#untuk menampilkan info fitur-fitur yang ada di tabel</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">())</span> <span class="c1">#untuk menampilkan 5 baris pertama</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;uci_id&#39;: 162, &#39;name&#39;: &#39;Forest Fires&#39;, &#39;repository_url&#39;: &#39;https://archive.ics.uci.edu/dataset/162/forest+fires&#39;, &#39;data_url&#39;: &#39;https://archive.ics.uci.edu/static/public/162/data.csv&#39;, &#39;abstract&#39;: &#39;This is a difficult regression task, where the aim is to predict the burned area of forest fires, in the northeast region of Portugal, by using meteorological and other data (see details at: http://www.dsi.uminho.pt/~pcortez/forestfires).&#39;, &#39;area&#39;: &#39;Climate and Environment&#39;, &#39;tasks&#39;: [&#39;Regression&#39;], &#39;characteristics&#39;: [&#39;Multivariate&#39;], &#39;num_instances&#39;: 517, &#39;num_features&#39;: 12, &#39;feature_types&#39;: [&#39;Real&#39;], &#39;demographics&#39;: [], &#39;target_col&#39;: [&#39;area&#39;], &#39;index_col&#39;: None, &#39;has_missing_values&#39;: &#39;no&#39;, &#39;missing_values_symbol&#39;: None, &#39;year_of_dataset_creation&#39;: 2007, &#39;last_updated&#39;: &#39;Thu Jan 11 2024&#39;, &#39;dataset_doi&#39;: &#39;10.24432/C5D88D&#39;, &#39;creators&#39;: [&#39;Paulo Cortez&#39;, &#39;Anbal Morais&#39;], &#39;intro_paper&#39;: {&#39;ID&#39;: 368, &#39;type&#39;: &#39;NATIVE&#39;, &#39;title&#39;: &#39;A data mining approach to predict forest fires using meteorological data&#39;, &#39;authors&#39;: &#39;P. Cortez, Aníbal de Jesus Raimundo Morais&#39;, &#39;venue&#39;: &#39;New Trends in Artificial Intelligence, Proceedings of the 13th EPIA 2007 - Portuguese Conference on Artificial Intelligence&#39;, &#39;year&#39;: 2007, &#39;journal&#39;: None, &#39;DOI&#39;: None, &#39;URL&#39;: &#39;https://www.semanticscholar.org/paper/A-data-mining-approach-to-predict-forest-fires-data-Cortez-Morais/0f529dc2b2b2bad22394454d4cba79e2c319f0b0&#39;, &#39;sha&#39;: None, &#39;corpus&#39;: None, &#39;arxiv&#39;: None, &#39;mag&#39;: None, &#39;acl&#39;: None, &#39;pmid&#39;: None, &#39;pmcid&#39;: None}, &#39;additional_info&#39;: {&#39;summary&#39;: &quot;In [Cortez and Morais, 2007], the output &#39;area&#39; was first transformed with a ln(x+1) function.\r\n   Then, several Data Mining methods were applied. After fitting the models, the outputs were\r\n   post-processed with the inverse of the ln(x+1) transform. Four different input setups were\r\n   used. The experiments were conducted using a 10-fold (cross-validation) x 30 runs. Two\r\n   regression metrics were measured: MAD and RMSE. A Gaussian support vector machine (SVM) fed\r\n   with only 4 direct weather conditions (temp, RH, wind and rain) obtained the best MAD value:\r\n   12.71 +- 0.01 (mean and confidence interval within 95% using a t-student distribution). The\r\n   best RMSE was attained by the naive mean predictor. An analysis to the regression error curve\r\n   (REC) shows that the SVM model predicts more examples within a lower admitted error. In effect,\r\n   the SVM model predicts better small fires, which are the majority. &quot;, &#39;purpose&#39;: None, &#39;funded_by&#39;: None, &#39;instances_represent&#39;: None, &#39;recommended_data_splits&#39;: None, &#39;sensitive_data&#39;: None, &#39;preprocessing_description&#39;: None, &#39;variable_info&#39;: &quot;For more information, read [Cortez and Morais, 2007].\r\n   1. X - x-axis spatial coordinate within the Montesinho park map: 1 to 9\r\n   2. Y - y-axis spatial coordinate within the Montesinho park map: 2 to 9\r\n   3. month - month of the year: &#39;jan&#39; to &#39;dec&#39; \r\n   4. day - day of the week: &#39;mon&#39; to &#39;sun&#39;\r\n   5. FFMC - FFMC index from the FWI system: 18.7 to 96.20\r\n   6. DMC - DMC index from the FWI system: 1.1 to 291.3 \r\n   7. DC - DC index from the FWI system: 7.9 to 860.6 \r\n   8. ISI - ISI index from the FWI system: 0.0 to 56.10\r\n   9. temp - temperature in Celsius degrees: 2.2 to 33.30\r\n   10. RH - relative humidity in %: 15.0 to 100\r\n   11. wind - wind speed in km/h: 0.40 to 9.40 \r\n   12. rain - outside rain in mm/m2 : 0.0 to 6.4 \r\n   13. area - the burned area of the forest (in ha): 0.00 to 1090.84 \r\n   (this output variable is very skewed towards 0.0, thus it may make\r\n    sense to model with the logarithm transform).&quot;, &#39;citation&#39;: None}}
+     name     role         type demographic  \
+0       X  Feature      Integer        None   
+1       Y  Feature      Integer        None   
+2   month  Feature  Categorical        None   
+3     day  Feature  Categorical        None   
+4    FFMC  Feature   Continuous        None   
+5     DMC  Feature      Integer        None   
+6      DC  Feature   Continuous        None   
+7     ISI  Feature   Continuous        None   
+8    temp  Feature   Continuous        None   
+9      RH  Feature      Integer        None   
+10   wind  Feature   Continuous        None   
+11   rain  Feature      Integer        None   
+12   area   Target      Integer        None   
+
+                                          description            units  \
+0   x-axis spatial coordinate within the Montesinh...             None   
+1   y-axis spatial coordinate within the Montesinh...             None   
+2                  month of the year: &#39;jan&#39; to &#39;dec&#39;              None   
+3                     day of the week: &#39;mon&#39; to &#39;sun&#39;             None   
+4       FFMC index from the FWI system: 18.7 to 96.20             None   
+5        DMC index from the FWI system: 1.1 to 291.3              None   
+6          DC index from the FWI system: 7.9 to 860.6             None   
+7         ISI index from the FWI system: 0.0 to 56.10             None   
+8                           temperature: 2.2 to 33.30  Celsius degrees   
+9                      relative humidity: 15.0 to 100                %   
+10                           wind speed: 0.40 to 9.40             km/h   
+11                          outside rain: 0.0 to 6.4             mm/m2   
+12  the burned area of the forest: 0.00 to 1090.84...               ha   
+
+   missing_values  
+0              no  
+1              no  
+2              no  
+3              no  
+4              no  
+5              no  
+6              no  
+7              no  
+8              no  
+9              no  
+10             no  
+11             no  
+12             no  
+&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 517 entries, 0 to 516
+Data columns (total 12 columns):
+ #   Column  Non-Null Count  Dtype  
+---  ------  --------------  -----  
+ 0   X       517 non-null    int64  
+ 1   Y       517 non-null    int64  
+ 2   month   517 non-null    object 
+ 3   day     517 non-null    object 
+ 4   FFMC    517 non-null    float64
+ 5   DMC     517 non-null    float64
+ 6   DC      517 non-null    float64
+ 7   ISI     517 non-null    float64
+ 8   temp    517 non-null    float64
+ 9   RH      517 non-null    int64  
+ 10  wind    517 non-null    float64
+ 11  rain    517 non-null    float64
+dtypes: float64(7), int64(3), object(2)
+memory usage: 48.6+ KB
+None
+   X  Y month  day  FFMC   DMC     DC  ISI  temp  RH  wind  rain
+0  7  5   mar  fri  86.2  26.2   94.3  5.1   8.2  51   6.7   0.0
+1  7  4   oct  tue  90.6  35.4  669.1  6.7  18.0  33   0.9   0.0
+2  7  4   oct  sat  90.6  43.7  686.9  6.7  14.6  33   1.3   0.0
+3  8  6   mar  fri  91.7  33.3   77.5  9.0   8.3  97   4.0   0.2
+4  8  6   mar  sun  89.3  51.3  102.2  9.6  11.4  99   1.8   0.0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="eksplorasi-data">
+<h2>Eksplorasi Data<a class="headerlink" href="#eksplorasi-data" title="Link to this heading">#</a></h2>
+<section id="visualisasi-data">
+<h3>Visualisasi Data<a class="headerlink" href="#visualisasi-data" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="c1">#display dataset</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>X</th>
+      <th>Y</th>
+      <th>month</th>
+      <th>day</th>
+      <th>FFMC</th>
+      <th>DMC</th>
+      <th>DC</th>
+      <th>ISI</th>
+      <th>temp</th>
+      <th>RH</th>
+      <th>wind</th>
+      <th>rain</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>7</td>
+      <td>5</td>
+      <td>mar</td>
+      <td>fri</td>
+      <td>86.2</td>
+      <td>26.2</td>
+      <td>94.3</td>
+      <td>5.1</td>
+      <td>8.2</td>
+      <td>51</td>
+      <td>6.7</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>7</td>
+      <td>4</td>
+      <td>oct</td>
+      <td>tue</td>
+      <td>90.6</td>
+      <td>35.4</td>
+      <td>669.1</td>
+      <td>6.7</td>
+      <td>18.0</td>
+      <td>33</td>
+      <td>0.9</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>7</td>
+      <td>4</td>
+      <td>oct</td>
+      <td>sat</td>
+      <td>90.6</td>
+      <td>43.7</td>
+      <td>686.9</td>
+      <td>6.7</td>
+      <td>14.6</td>
+      <td>33</td>
+      <td>1.3</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>8</td>
+      <td>6</td>
+      <td>mar</td>
+      <td>fri</td>
+      <td>91.7</td>
+      <td>33.3</td>
+      <td>77.5</td>
+      <td>9.0</td>
+      <td>8.3</td>
+      <td>97</td>
+      <td>4.0</td>
+      <td>0.2</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>8</td>
+      <td>6</td>
+      <td>mar</td>
+      <td>sun</td>
+      <td>89.3</td>
+      <td>51.3</td>
+      <td>102.2</td>
+      <td>9.6</td>
+      <td>11.4</td>
+      <td>99</td>
+      <td>1.8</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>512</th>
+      <td>4</td>
+      <td>3</td>
+      <td>aug</td>
+      <td>sun</td>
+      <td>81.6</td>
+      <td>56.7</td>
+      <td>665.6</td>
+      <td>1.9</td>
+      <td>27.8</td>
+      <td>32</td>
+      <td>2.7</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>513</th>
+      <td>2</td>
+      <td>4</td>
+      <td>aug</td>
+      <td>sun</td>
+      <td>81.6</td>
+      <td>56.7</td>
+      <td>665.6</td>
+      <td>1.9</td>
+      <td>21.9</td>
+      <td>71</td>
+      <td>5.8</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>514</th>
+      <td>7</td>
+      <td>4</td>
+      <td>aug</td>
+      <td>sun</td>
+      <td>81.6</td>
+      <td>56.7</td>
+      <td>665.6</td>
+      <td>1.9</td>
+      <td>21.2</td>
+      <td>70</td>
+      <td>6.7</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>515</th>
+      <td>1</td>
+      <td>4</td>
+      <td>aug</td>
+      <td>sat</td>
+      <td>94.4</td>
+      <td>146.0</td>
+      <td>614.7</td>
+      <td>11.3</td>
+      <td>25.6</td>
+      <td>42</td>
+      <td>4.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>516</th>
+      <td>6</td>
+      <td>3</td>
+      <td>nov</td>
+      <td>tue</td>
+      <td>79.5</td>
+      <td>3.0</td>
+      <td>106.7</td>
+      <td>1.1</td>
+      <td>11.8</td>
+      <td>31</td>
+      <td>4.5</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>517 rows × 12 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">pip</span> install seaborn
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: seaborn in c:\laragon\bin\python\python-3.13\lib\site-packages (0.13.2)Note: you may need to restart the kernel to use updated packages.
+
+Requirement already satisfied: numpy!=1.24.0,&gt;=1.20 in c:\users\acer\appdata\roaming\python\python313\site-packages (from seaborn) (2.2.3)
+Requirement already satisfied: pandas&gt;=1.2 in c:\users\acer\appdata\roaming\python\python313\site-packages (from seaborn) (2.2.3)
+Requirement already satisfied: matplotlib!=3.6.1,&gt;=3.4 in c:\laragon\bin\python\python-3.13\lib\site-packages (from seaborn) (3.10.3)
+Requirement already satisfied: contourpy&gt;=1.0.1 in c:\laragon\bin\python\python-3.13\lib\site-packages (from matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn) (1.3.2)
+Requirement already satisfied: cycler&gt;=0.10 in c:\laragon\bin\python\python-3.13\lib\site-packages (from matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn) (0.12.1)
+Requirement already satisfied: fonttools&gt;=4.22.0 in c:\laragon\bin\python\python-3.13\lib\site-packages (from matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn) (4.58.2)
+Requirement already satisfied: kiwisolver&gt;=1.3.1 in c:\laragon\bin\python\python-3.13\lib\site-packages (from matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn) (1.4.8)
+Requirement already satisfied: packaging&gt;=20.0 in c:\users\acer\appdata\roaming\python\python313\site-packages (from matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn) (24.2)
+Requirement already satisfied: pillow&gt;=8 in c:\laragon\bin\python\python-3.13\lib\site-packages (from matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn) (11.2.1)
+Requirement already satisfied: pyparsing&gt;=2.3.1 in c:\laragon\bin\python\python-3.13\lib\site-packages (from matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn) (3.2.3)
+Requirement already satisfied: python-dateutil&gt;=2.7 in c:\users\acer\appdata\roaming\python\python313\site-packages (from matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn) (2.9.0.post0)
+Requirement already satisfied: pytz&gt;=2020.1 in c:\users\acer\appdata\roaming\python\python313\site-packages (from pandas&gt;=1.2-&gt;seaborn) (2025.2)
+Requirement already satisfied: tzdata&gt;=2022.7 in c:\users\acer\appdata\roaming\python\python313\site-packages (from pandas&gt;=1.2-&gt;seaborn) (2025.2)
+Requirement already satisfied: six&gt;=1.5 in c:\users\acer\appdata\roaming\python\python313\site-packages (from python-dateutil&gt;=2.7-&gt;matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn) (1.17.0)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import library yang diperlukan</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ucimlrepo</span><span class="w"> </span><span class="kn">import</span> <span class="n">fetch_ucirepo</span>
+
+<span class="c1"># Mengambil dataset forest fires</span>
+<span class="n">forest_fires</span> <span class="o">=</span> <span class="n">fetch_ucirepo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">162</span><span class="p">)</span>
+
+<span class="c1"># Menggabungkan fitur dan target ke dalam satu DataFrame</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">forest_fires</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">features</span><span class="p">,</span> <span class="n">forest_fires</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">targets</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Mengganti nama kolom target (kolom terakhir) menjadi &#39;area&#39;</span>
+<span class="n">data</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span> <span class="s1">&#39;area&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Menampilkan 5 baris pertama data untuk memastikan semuanya benar</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   X  Y month  day  FFMC   DMC     DC  ISI  temp  RH  wind  rain  area
+0  7  5   mar  fri  86.2  26.2   94.3  5.1   8.2  51   6.7   0.0   0.0
+1  7  4   oct  tue  90.6  35.4  669.1  6.7  18.0  33   0.9   0.0   0.0
+2  7  4   oct  sat  90.6  43.7  686.9  6.7  14.6  33   1.3   0.0   0.0
+3  8  6   mar  fri  91.7  33.3   77.5  9.0   8.3  97   4.0   0.2   0.0
+4  8  6   mar  sun  89.3  51.3  102.2  9.6  11.4  99   1.8   0.0   0.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># Mengatur urutan bulan agar plot lebih rapi</span>
+<span class="n">month_order</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;jan&#39;</span><span class="p">,</span> <span class="s1">&#39;feb&#39;</span><span class="p">,</span> <span class="s1">&#39;mar&#39;</span><span class="p">,</span> <span class="s1">&#39;apr&#39;</span><span class="p">,</span> <span class="s1">&#39;may&#39;</span><span class="p">,</span> <span class="s1">&#39;jun&#39;</span><span class="p">,</span> <span class="s1">&#39;jul&#39;</span><span class="p">,</span> <span class="s1">&#39;aug&#39;</span><span class="p">,</span> <span class="s1">&#39;sep&#39;</span><span class="p">,</span> <span class="s1">&#39;oct&#39;</span><span class="p">,</span> <span class="s1">&#39;nov&#39;</span><span class="p">,</span> <span class="s1">&#39;dec&#39;</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;month&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">month_order</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Jumlah Catatan Kebakaran per Bulan&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Bulan&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Jumlah Catatan&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\acer\AppData\Local\Temp\ipykernel_14316\1453521144.py:8: FutureWarning: 
+
+Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
+
+  sns.countplot(x=&#39;month&#39;, data=data, palette=&#39;viridis&#39;, order=month_order)
+</pre></div>
+</div>
+<img alt="_images/65465dde0c5417b2f3ed4cd05b11812e12aa37f0f31a81d9659f1eba5efc1828.png" src="_images/65465dde0c5417b2f3ed4cd05b11812e12aa37f0f31a81d9659f1eba5efc1828.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Visualisasi distribusi semua fitur numerik dengan histogram</span>
+<span class="c1"># Kita memilih kolom numerik saja untuk di-plot</span>
+<span class="n">numeric_data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;float64&#39;</span><span class="p">,</span> <span class="s1">&#39;int64&#39;</span><span class="p">])</span>
+
+<span class="n">numeric_data</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orangered&#39;</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Distribusi Fitur-fitur Numerik&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">rect</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.92</span><span class="p">])</span> <span class="c1"># Menyesuaikan layout agar suptitle tidak tumpang tindih</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/14cb609cfebe2adff110bb649f7417f69636098deb06978044d5ef7356a32da2.png" src="_images/14cb609cfebe2adff110bb649f7417f69636098deb06978044d5ef7356a32da2.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="struktur-dataset">
+<h2>Struktur Dataset<a class="headerlink" href="#struktur-dataset" title="Link to this heading">#</a></h2>
+<section id="fitur-dan-label">
+<h3>Fitur dan Label<a class="headerlink" href="#fitur-dan-label" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">shape</span> <span class="c1">#untuk mengetahui bentuk dataset(baris &amp; kolom)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(517, 13)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Terdapat 517 baris dan 3 kolom.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">columns</span> <span class="c1">#untuk mengetahui kolom-kolom yang ada pada dataset</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;X&#39;, &#39;Y&#39;, &#39;month&#39;, &#39;day&#39;, &#39;FFMC&#39;, &#39;DMC&#39;, &#39;DC&#39;, &#39;ISI&#39;, &#39;temp&#39;, &#39;RH&#39;,
+       &#39;wind&#39;, &#39;rain&#39;, &#39;area&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Fitur adalah atribut atau variabel independen dalam dataset yang digunakan untuk membuat prediksi. Terdapat 12 fitur pada dataset ini:</p>
+<ul class="simple">
+<li><p>X: Koordinat spasial sumbu-x di dalam peta taman Montesinho.</p></li>
+<li><p>Y: Koordinat spasial sumbu-y di dalam peta taman Montesinho.</p></li>
+<li><p>month: Bulan kejadian kebakaran (januari hingga desember).</p></li>
+<li><p>day: Hari kejadian kebakaran (senin hingga minggu).</p></li>
+<li><p>FFMC: Fine Fuel Moisture Code, indeks dari sistem FWI yang mengukur tingkat kelembapan bahan bakar halus (misalnya daun kering, rumput).</p></li>
+<li><p>DMC: Duff Moisture Code, indeks dari sistem FWI yang mengukur tingkat kelembapan lapisan humus organik di bawah permukaan.</p></li>
+<li><p>DC: Drought Code, indeks dari sistem FWI yang mengukur tingkat kekeringan bahan bakar organik yang lebih dalam.</p></li>
+<li><p>ISI: Initial Spread Index, indeks dari sistem FWI yang mengukur kecepatan penyebaran api yang diprediksi.</p></li>
+<li><p>temp: Temperatur atau suhu udara dalam derajat Celsius.</p></li>
+<li><p>RH: Kelembapan relatif (Relative Humidity) dalam persen (%).</p></li>
+<li><p>wind: Kecepatan angin dalam km/jam.</p></li>
+<li><p>rain: Curah hujan dalam mm/m².</p></li>
+</ul>
+<p>Label adalah variabel dependen atau target yang ingin diprediksi. Label pada dataset ini bersifat numerik (regresi).</p>
+<ul class="simple">
+<li><p>area: Luas area hutan yang terbakar, dalam hektar (ha). Ini adalah nilai yang akan kita coba prediksi.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># untuk mengetahui tipe data dari masing-masing kolom</span>
+<span class="n">data</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>X          int64
+Y          int64
+month     object
+day       object
+FFMC     float64
+DMC      float64
+DC       float64
+ISI      float64
+temp     float64
+RH         int64
+wind     float64
+rain     float64
+area     float64
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>Penjelasan Tipe Data:</p>
+<ul class="simple">
+<li><p>X, Y (Numerik / Kategorikal Ordinal): Koordinat spasial (1-9).</p></li>
+<li><p>month (Kategorikal Nominal): Nama bulan dalam setahun.</p></li>
+<li><p>day (Kategorikal Nominal): Nama hari dalam seminggu.</p></li>
+<li><p>FFMC (Numerik): Indeks kelembapan bahan bakar halus.</p></li>
+<li><p>DMC (Numerik): Indeks kelembapan lapisan humus.</p></li>
+<li><p>DC (Numerik): Indeks kekeringan.</p></li>
+<li><p>ISI (Numerik): Indeks kecepatan penyebaran api.</p></li>
+<li><p>temp (Numerik): Suhu dalam Celsius.</p></li>
+<li><p>RH (Numerik): Kelembapan relatif dalam %.</p></li>
+<li><p>wind (Numerik): Kecepatan angin dalam km/jam.</p></li>
+<li><p>rain (Numerik): Curah hujan dalam mm/m².</p></li>
+<li><p>area (Numerik - Label): Luas area terbakar dalam hektar.</p></li>
+</ul>
+</section>
+<section id="distribusi-kejadian-kebakaran">
+<h3>Distribusi Kejadian Kebakaran<a class="headerlink" href="#distribusi-kejadian-kebakaran" title="Link to this heading">#</a></h3>
+<p>Meskipun target kita adalah numerik (area), kita bisa menganalisis berapa banyak kasus di mana kebakaran benar-benar terjadi (area &gt; 0) dibandingkan yang tidak (area == 0). Ini memberikan gambaran tentang keseimbangan data dari sudut pandang klasifikasi (terjadi/tidak terjadi).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Membuat kolom &#39;Status_Kebakaran&#39; untuk analisis</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;Status_Kebakaran&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;area&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s1">&#39;Terjadi Kebakaran&#39;</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="s1">&#39;Tidak Ada Kebakaran&#39;</span><span class="p">)</span>
+
+<span class="c1"># Mengetahui jumlah masing-masing kelas</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;Status_Kebakaran&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Status_Kebakaran
+Terjadi Kebakaran      270
+Tidak Ada Kebakaran    247
+Name: count, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Dari total 517 catatan, terdapat 270 kasus di mana terjadi kebakaran (luas area &gt; 0) dan 247 kasus di mana tidak tercatat adanya area yang terbakar. Ini menunjukkan bahwa dataset ini cukup seimbang antara kejadian kebakaran dan non-kebakaran.</p>
+</section>
+</section>
+<section id="identifikasi-kualitas-dataset">
+<h2>Identifikasi Kualitas Dataset<a class="headerlink" href="#identifikasi-kualitas-dataset" title="Link to this heading">#</a></h2>
+<section id="deteksi-missing-value">
+<h3>Deteksi Missing Value<a class="headerlink" href="#deteksi-missing-value" title="Link to this heading">#</a></h3>
+<p>Missing value merupakan data yang hilang pada suatu dataset. Hal ini bisa terjadi oleh beberapa faktor, di antaranya adalah :</p>
+<ul class="simple">
+<li><p>Interviewer recording error terjadi akibat kelalaian petugas pengumpul data (pewawancara), misalnya ada sejumlah pertanyaan yang terlewatkan.</p></li>
+<li><p>Respondent inability error terjadi akibat ketidakmampuan responden dalam memberikan jawaban akurat, misalnya karena tidak memahami pertanyaan, bosan atau kelelahan (respondent fatigue) akhirnya responden mengosongkan sejumlah pertanyaan atau berhenti mengisi kuesioner di tengah jalan.</p></li>
+<li><p>Unwillingness respondent error terjadi karena responden tidak berkenan memberikan jawaban yang akurat, misalnya pertanyaan soal penghasilan, usia, berat badan, pengalaman melakukan pelanggaran hukum, dll.</p></li>
+</ul>
+<p>Cara penanganan Missing Values :</p>
+<ul class="simple">
+<li><p>Mengabaikan dan membuang missing data.</p></li>
+<li><p>Estimasi parameter.</p></li>
+<li><p>Imputasi.</p></li>
+</ul>
+<p>Dalam modul kali ini, kita akan menangani missing values jika ada. Pertama, kita akan melakukan pendeteksian missing values pada masing-masing kolom.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># Mendeteksi baris yang memiliki nilai hilang</span>
+<span class="n">rows_with_missing</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span>
+
+<span class="c1"># Menampilkan baris dengan nilai yang hilang</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Baris dengan Missing Values:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">rows_with_missing</span><span class="p">)</span>
+
+<span class="c1"># Mendeteksi nilai yang hilang di seluruh dataset</span>
+<span class="n">missing_values</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span>
+
+<span class="c1"># Menghitung jumlah nilai yang hilang di setiap kolom</span>
+<span class="n">missing_counts</span> <span class="o">=</span> <span class="n">missing_values</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="c1"># Menampilkan jumlah nilai yang hilang per kolom</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Jumlah Missing Value per Kolom:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">missing_counts</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Baris dengan Missing Values:
+Empty DataFrame
+Columns: [X, Y, month, day, FFMC, DMC, DC, ISI, temp, RH, wind, rain, area, Status_Kebakaran]
+Index: []
+
+Jumlah Missing Value per Kolom:
+X                   0
+Y                   0
+month               0
+day                 0
+FFMC                0
+DMC                 0
+DC                  0
+ISI                 0
+temp                0
+RH                  0
+wind                0
+rain                0
+area                0
+Status_Kebakaran    0
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Analisis Hasil:</strong></p>
+<p>Berdasarkan proses pengecekan missing value di atas, didapatkan hasil sebagai berikut:</p>
+<ul class="simple">
+<li><p>Tidak ditemukan adanya baris yang memiliki data hilang (output “Empty DataFrame”).</p></li>
+<li><p>Setiap kolom memiliki 0 missing value.</p></li>
+</ul>
+<p>Ini menunjukkan bahwa dataset Forest Fires yang kita gunakan adalah dataset yang lengkap dan bersih dari data yang hilang. Kualitas data yang baik ini menyederhanakan proses selanjutnya, karena kita tidak perlu melakukan imputasi (mengisi data yang hilang) dengan metode seperti Mean atau KNN. Dataset ini siap untuk tahap preprocessing selanjutnya.</p>
+</section>
+</section>
+<section id="preprocessing-data">
+<h2>Preprocessing Data<a class="headerlink" href="#preprocessing-data" title="Link to this heading">#</a></h2>
+<p>Preprocessing data adalah tahap krusial dalam pipeline machine learning. Tujuannya adalah untuk membersihkan dan mengubah data mentah ke dalam format yang sesuai untuk diolah oleh model. Tahapan yang akan kita bahas adalah transformasi data dan imputasi missing value.</p>
+<section id="tranformasi-data">
+<h3>Tranformasi Data<a class="headerlink" href="#tranformasi-data" title="Link to this heading">#</a></h3>
+<p>Bagian ini bertujuan untuk menunjukkan bagaimana data label dapat diubah dari format numerik ke format teks (kategorikal) dan sebaliknya. Ini adalah langkah fundamental dalam persiapan data untuk analisis dan pemodelan.</p>
+<ol class="arabic simple">
+<li><p>Transformasi dari Numerik ke Teks (0/1 → ‘Tidak Ada Kebakaran’ / ‘Terjadi Kebakaran’)</p></li>
+</ol>
+<p>Pertama, kita akan membuat sebuah kolom numerik sementara (status_numeric) di mana 0 berarti tidak ada kebakaran dan 1 berarti ada kebakaran. Kemudian, kita akan mengubah kolom numerik ini menjadi label teks yang lebih deskriptif.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Asumsikan &#39;data&#39; adalah DataFrame forest_fires yang sudah kita siapkan</span>
+<span class="c1"># dari langkah-langkah sebelumnya.</span>
+
+<span class="c1"># 1. Buat kolom status numerik terlebih dahulu sebagai dasar</span>
+<span class="c1">#    Jika area &gt; 0, status = 1 (Terjadi Kebakaran), jika tidak, status = 0</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;status_numeric&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;area&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># 2. Buat salinan data untuk demonstrasi agar data asli tidak berubah</span>
+<span class="n">data_demonstrasi</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="c1"># 3. Ubah kolom numerik (0, 1) menjadi label Teks</span>
+<span class="n">data_demonstrasi</span><span class="p">[</span><span class="s1">&#39;status_label&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_demonstrasi</span><span class="p">[</span><span class="s1">&#39;status_numeric&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span>
+    <span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;Tidak Ada Kebakaran&#39;</span><span class="p">,</span> 
+    <span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;Terjadi Kebakaran&#39;</span>
+<span class="p">})</span>
+
+<span class="c1"># Tampilkan 20 baris pertama untuk melihat hasilnya</span>
+<span class="c1"># Kita sertakan kolom &#39;area&#39;, &#39;status_numeric&#39;, dan &#39;status_label&#39; untuk perbandingan</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hasil Transformasi Numerik ke Teks:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data_demonstrasi</span><span class="p">[[</span><span class="s1">&#39;area&#39;</span><span class="p">,</span> <span class="s1">&#39;status_numeric&#39;</span><span class="p">,</span> <span class="s1">&#39;status_label&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hasil Transformasi Numerik ke Teks:
+    area  status_numeric         status_label
+0    0.0               0  Tidak Ada Kebakaran
+1    0.0               0  Tidak Ada Kebakaran
+2    0.0               0  Tidak Ada Kebakaran
+3    0.0               0  Tidak Ada Kebakaran
+4    0.0               0  Tidak Ada Kebakaran
+5    0.0               0  Tidak Ada Kebakaran
+6    0.0               0  Tidak Ada Kebakaran
+7    0.0               0  Tidak Ada Kebakaran
+8    0.0               0  Tidak Ada Kebakaran
+9    0.0               0  Tidak Ada Kebakaran
+10   0.0               0  Tidak Ada Kebakaran
+11   0.0               0  Tidak Ada Kebakaran
+12   0.0               0  Tidak Ada Kebakaran
+13   0.0               0  Tidak Ada Kebakaran
+14   0.0               0  Tidak Ada Kebakaran
+15   0.0               0  Tidak Ada Kebakaran
+16   0.0               0  Tidak Ada Kebakaran
+17   0.0               0  Tidak Ada Kebakaran
+18   0.0               0  Tidak Ada Kebakaran
+19   0.0               0  Tidak Ada Kebakaran
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Transformasi dari Teks ke Numerik (‘Tidak Ada Kebakaran’ / ‘Terjadi Kebakaran’ → 0/1)</p></li>
+</ol>
+<p>Sekarang, kita akan melakukan proses sebaliknya. Ini adalah langkah yang paling umum dilakukan dalam preprocessing, karena model machine learning memerlukan input numerik. Kita akan mengubah kolom status_label yang berisi teks kembali menjadi angka 0 dan 1.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Menggunakan DataFrame &#39;data_demonstrasi&#39; dari langkah sebelumnya</span>
+
+<span class="c1"># Mengubah label Teks (&#39;Tidak Ada Kebakaran&#39;, &#39;Terjadi Kebakaran&#39;) kembali menjadi Numerik (0, 1)</span>
+<span class="n">data_demonstrasi</span><span class="p">[</span><span class="s1">&#39;status_kembali_numerik&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_demonstrasi</span><span class="p">[</span><span class="s1">&#39;status_label&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span>
+    <span class="s1">&#39;Tidak Ada Kebakaran&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> 
+    <span class="s1">&#39;Terjadi Kebakaran&#39;</span><span class="p">:</span> <span class="mi">1</span>
+<span class="p">})</span>
+
+<span class="c1"># Tampilkan 20 baris pertama untuk melihat hasilnya</span>
+<span class="c1"># Kita sertakan kolom &#39;status_label&#39; dan &#39;status_kembali_numerik&#39; untuk perbandingan</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hasil Transformasi Teks ke Numerik:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data_demonstrasi</span><span class="p">[[</span><span class="s1">&#39;status_label&#39;</span><span class="p">,</span> <span class="s1">&#39;status_kembali_numerik&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hasil Transformasi Teks ke Numerik:
+           status_label  status_kembali_numerik
+0   Tidak Ada Kebakaran                       0
+1   Tidak Ada Kebakaran                       0
+2   Tidak Ada Kebakaran                       0
+3   Tidak Ada Kebakaran                       0
+4   Tidak Ada Kebakaran                       0
+5   Tidak Ada Kebakaran                       0
+6   Tidak Ada Kebakaran                       0
+7   Tidak Ada Kebakaran                       0
+8   Tidak Ada Kebakaran                       0
+9   Tidak Ada Kebakaran                       0
+10  Tidak Ada Kebakaran                       0
+11  Tidak Ada Kebakaran                       0
+12  Tidak Ada Kebakaran                       0
+13  Tidak Ada Kebakaran                       0
+14  Tidak Ada Kebakaran                       0
+15  Tidak Ada Kebakaran                       0
+16  Tidak Ada Kebakaran                       0
+17  Tidak Ada Kebakaran                       0
+18  Tidak Ada Kebakaran                       0
+19  Tidak Ada Kebakaran                       0
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\acer\AppData\Local\Temp\ipykernel_14316\1162243235.py:4: FutureWarning: Downcasting behavior in `replace` is deprecated and will be removed in a future version. To retain the old behavior, explicitly call `result.infer_objects(copy=False)`. To opt-in to the future behavior, set `pd.set_option(&#39;future.no_silent_downcasting&#39;, True)`
+  data_demonstrasi[&#39;status_kembali_numerik&#39;] = data_demonstrasi[&#39;status_label&#39;].replace({
+</pre></div>
+</div>
+</div>
+</div>
+<p>Demonstrasi ini menunjukkan fleksibilitas dalam mengelola data label, mengubahnya sesuai kebutuhan baik untuk interpretasi manusia (format teks) maupun untuk pemrosesan oleh mesin (format numerik).</p>
+</section>
+<section id="imputasi-missing-value">
+<h3>Imputasi Missing Value<a class="headerlink" href="#imputasi-missing-value" title="Link to this heading">#</a></h3>
+<p>Setelah missing value terdeteksi, kita perlu untuk mengisi data yang kosong agar data dapat digunakan. Ada banyak cara untuk mengisi missing value, antara lain dengan menggunakan metode mean.</p>
+<p>Namun, berdasarkan analisis pada bagian “Identifikasi Kualitas Dataset” sebelumnya, kita telah menemukan bahwa dataset forest_fires ini tidak memiliki missing value sama sekali (semua kolom memiliki 0 nilai yang hilang).</p>
+<p>Oleh karena itu, tahap imputasi data tidak diperlukan untuk dataset ini. Ini merupakan pertanda kualitas data yang baik dan kita dapat langsung melanjutkan ke langkah berikutnya.</p>
+</section>
+<section id="menyimpan-dataset-hasil-preprocessing-dengan-metode-mean">
+<h3>Menyimpan Dataset Hasil Preprocessing dengan Metode Mean<a class="headerlink" href="#menyimpan-dataset-hasil-preprocessing-dengan-metode-mean" title="Link to this heading">#</a></h3>
+<p>Setelah missing value terdeteksi, salah satu cara untuk menanganinya adalah dengan imputasi, yaitu mengisi nilai yang kosong. Metode yang umum digunakan adalah mengisi nilai yang hilang dengan nilai rata-rata (mean) dari kolom tersebut.</p>
+<p>Berikut adalah demonstrasi langkah-langkah untuk melakukan imputasi dengan metode mean pada dataset kita.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Untuk demonstrasi, kita akan fokus pada kolom-kolom numerik saja</span>
+<span class="n">numeric_data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;float64&#39;</span><span class="p">,</span> <span class="s1">&#39;int64&#39;</span><span class="p">])</span>
+
+<span class="c1"># 1. Hitung nilai rata-rata (mean) untuk setiap kolom numerik</span>
+<span class="n">mean_values</span> <span class="o">=</span> <span class="n">numeric_data</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="c1"># 2. Isi nilai yang hilang (jika ada) dengan nilai rata-rata yang sudah dihitung</span>
+<span class="c1">#    Karena data kita tidak punya nilai hilang, data_filled akan identik dengan numeric_data</span>
+<span class="n">data_filled</span> <span class="o">=</span> <span class="n">numeric_data</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">mean_values</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- Ini Hasil Perhitungan Mean untuk Setiap Kolom ---&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mean_values</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- Pengecekan Missing Value Setelah Imputasi ---&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Jika output di bawah ini semua &#39;False&#39;, berarti sudah tidak ada missing value&quot;</span><span class="p">)</span>
+<span class="c1"># .isnull() akan menghasilkan DataFrame boolean. Kita tampilkan beberapa baris pertama.</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data_filled</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- Pengecekan per Kolom Secara Keseluruhan ---&quot;</span><span class="p">)</span>
+<span class="c1"># .any() akan memeriksa apakah ada setidaknya satu nilai &#39;True&#39; (missing) di setiap kolom</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data_filled</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+<span class="c1"># Menghitung kembali jumlah nilai yang hilang untuk konfirmasi akhir</span>
+<span class="n">missing_counts</span> <span class="o">=</span> <span class="n">data_filled</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- Jumlah Final Missing Value per Kolom ---&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">missing_counts</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Ini Hasil Perhitungan Mean untuk Setiap Kolom ---
+X                   4.669246
+Y                   4.299807
+FFMC               90.644681
+DMC               110.872340
+DC                547.940039
+ISI                 9.021663
+temp               18.889168
+RH                 44.288201
+wind                4.017602
+rain                0.021663
+area               12.847292
+status_numeric      0.522244
+dtype: float64
+
+--- Pengecekan Missing Value Setelah Imputasi ---
+Jika output di bawah ini semua &#39;False&#39;, berarti sudah tidak ada missing value
+       X      Y   FFMC    DMC     DC    ISI   temp     RH   wind   rain  \
+0  False  False  False  False  False  False  False  False  False  False   
+1  False  False  False  False  False  False  False  False  False  False   
+2  False  False  False  False  False  False  False  False  False  False   
+3  False  False  False  False  False  False  False  False  False  False   
+4  False  False  False  False  False  False  False  False  False  False   
+
+    area  status_numeric  
+0  False           False  
+1  False           False  
+2  False           False  
+3  False           False  
+4  False           False  
+
+--- Pengecekan per Kolom Secara Keseluruhan ---
+X                 False
+Y                 False
+FFMC              False
+DMC               False
+DC                False
+ISI               False
+temp              False
+RH                False
+wind              False
+rain              False
+area              False
+status_numeric    False
+dtype: bool
+
+--- Jumlah Final Missing Value per Kolom ---
+X                 0
+Y                 0
+FFMC              0
+DMC               0
+DC                0
+ISI               0
+temp              0
+RH                0
+wind              0
+rain              0
+area              0
+status_numeric    0
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Analisis Hasil Demonstrasi:</p>
+<ul class="simple">
+<li><p>Perhitungan Mean: Kode berhasil menghitung nilai rata-rata untuk semua kolom numerik. Nilai-nilai ini yang akan digunakan untuk mengisi data kosong.</p></li>
+<li><p>Pengecekan Pasca-Imputasi: Semua hasil pengecekan (.isnull().head(), .isnull().any(), dan .isnull().sum()) menunjukkan False atau 0. Ini mengonfirmasi bahwa setelah proses imputasi, tidak ada lagi nilai yang hilang di dalam dataset data_filled.</p></li>
+</ul>
+<p>Meskipun dalam kasus forest_fires kita tidak perlu melakukan imputasi, demonstrasi ini menunjukkan bahwa metode data.fillna(data.mean()) adalah cara yang efektif dan sederhana untuk menangani missing value.</p>
+</section>
+<section id="imputasi-missing-value-dengan-metode-knn">
+<h3>Imputasi Missing Value dengan Metode KNN<a class="headerlink" href="#imputasi-missing-value-dengan-metode-knn" title="Link to this heading">#</a></h3>
+<p>Pada tahapan ini kami akan melakukan imputasi missing value dengan metode KNN dengan perhitungan jarak menggunakan rumus euclidean distance.</p>
+<p>Langkah-langkah KNN:<br />
+. Tentukan jumlah tetangga (K) yang akan digunakan.
+2. Hitung jarak dari data yang nilainya hilang ke masing-masing data point lain.
+3. Ambil K tetangga terdekat, kemudian gunakan nilai rata-rata (atau modus) dari tetangga tersebut untuk mengisi nilai yang hilang.<br />
+$<span class="math notranslate nohighlight">\(
+d(x, y) = \sqrt{\sum_{i=1}^{n} (x_{i} - y_{i})^{2}}
+\)</span>$</p>
+<p>Untuk mencari nilai K yang baik, kami akan menggunakan Cross-validation.</p>
+<p><strong>K-Fold Cross Validation</strong></p>
+<p>K-Fold Cross Validation adalah salah satu teknik populer dalam evaluasi model. Dataset dibagi sebanyak K lipatan. Pada setiap iterasi, satu lipatan akan dipakai sebagai data uji dan sisanya sebagai data latih. Dengan menggunakan cross-validation, kita akan memperoleh hasil evaluasi yang lebih akurat karena model dievaluasi dengan seluruh data.</p>
+<ol class="arabic simple">
+<li><p>Menentukan Nilai K Optimal (untuk Klasifikasi)</p></li>
+</ol>
+<p>Untuk demonstrasi ini, kita akan mencoba membangun model KNeighborsClassifier untuk memprediksi Status_Kebakaran (Terjadi/Tidak Terjadi) dan mencari nilai K terbaik untuk model tersebut.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.neighbors</span><span class="w"> </span><span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">cross_val_score</span><span class="p">,</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LabelEncoder</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+
+<span class="c1"># Kita gunakan data yang sudah di-one-hot-encode dari tahap preprocessing</span>
+<span class="c1"># Pastikan variabel &#39;data_processed&#39; sudah ada dari langkah sebelumnya</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">data_processed</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="c1"># Memisahkan fitur (X) dan label (y)</span>
+<span class="c1"># Label kita untuk demonstrasi ini adalah &#39;Status_Kebakaran&#39;</span>
+<span class="c1"># Kita hapus kolom target asli (&#39;area&#39;) dan label teksnya</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;area&#39;</span><span class="p">,</span> <span class="s1">&#39;Status_Kebakaran&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">y_text</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Status_Kebakaran&#39;</span><span class="p">]</span>
+
+<span class="c1"># Mengubah label teks menjadi numerik (0 dan 1)</span>
+<span class="n">le</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">le</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">y_text</span><span class="p">)</span>
+
+<span class="c1"># Membagi data menjadi data latih dan data uji</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># Membuat list k untuk diuji</span>
+<span class="n">k_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Nilai K yang akan diuji = </span><span class="si">{</span><span class="n">k_list</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">cv_scores</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="c1"># Melakukan 10-fold cross validation</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">k_list</span><span class="p">:</span>
+    <span class="n">knn</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="n">k</span><span class="p">)</span>
+    <span class="n">scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">knn</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;accuracy&#39;</span><span class="p">)</span>
+    <span class="n">cv_scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">scores</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+
+<span class="c1"># Menghitung Misclassification Error (1 - akurasi)</span>
+<span class="n">MSE</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="o">-</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">cv_scores</span><span class="p">]</span>
+
+<span class="c1"># Plotting hasil untuk menemukan K optimal</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Mencari Jumlah Tetangga (K) Optimal&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Jumlah Tetangga (K)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Misclassification Error&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s2">&quot;whitegrid&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">k_list</span><span class="p">,</span> <span class="n">MSE</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Menemukan nilai k terbaik dari hasil cross-validation</span>
+<span class="n">best_k</span> <span class="o">=</span> <span class="n">k_list</span><span class="p">[</span><span class="n">MSE</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">MSE</span><span class="p">))]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Jumlah tetangga (K) optimal berdasarkan plot adalah </span><span class="si">%d</span><span class="s2">.&quot;</span> <span class="o">%</span> <span class="n">best_k</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Nilai K yang akan diuji = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31, 33, 35, 37, 39, 41, 43, 45, 47, 49]
+</pre></div>
+</div>
+<img alt="_images/5f6e5e899589b8edc54a0c22256242ce0552d221f893e9d0141ede53ffb74930.png" src="_images/5f6e5e899589b8edc54a0c22256242ce0552d221f893e9d0141ede53ffb74930.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jumlah tetangga (K) optimal berdasarkan plot adalah 13.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Berdasarkan hasil cross-validation pada model klasifikasi, nilai K=3 memberikan error terendah. Kita akan menggunakan nilai ini sebagai parameter n_neighbors untuk KNNImputer kita.</p>
+<ol class="arabic simple" start="2">
+<li><p>Melakukan Imputasi dengan KNNImputer</p></li>
+</ol>
+<p>Sekarang kita akan melakukan simulasi imputasi.</p>
+<ol class="arabic simple">
+<li><p>Kita ambil data numerik asli.</p></li>
+<li><p>Kita buat beberapa nilai hilang secara acak.</p></li>
+<li><p>Kita gunakan KNNImputer dengan k=3 untuk mengisi nilai-nilai yang hilang tersebut.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.impute</span><span class="w"> </span><span class="kn">import</span> <span class="n">KNNImputer</span>
+
+<span class="c1"># Ambil data numerik asli sebelum di-one-hot-encode</span>
+<span class="n">df_numeric</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">number</span><span class="p">)</span>
+
+<span class="c1"># --- Langkah Hipotetis: Membuat Missing Values ---</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data asli (5 baris pertama):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_numeric</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+
+<span class="n">df_missing</span> <span class="o">=</span> <span class="n">df_numeric</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="c1"># Secara acak, ubah sekitar 5% data di kolom FFMC dan DMC menjadi NaN (hilang)</span>
+<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;FFMC&#39;</span><span class="p">,</span> <span class="s1">&#39;DMC&#39;</span><span class="p">]:</span>
+    <span class="n">missing_indices</span> <span class="o">=</span> <span class="n">df_missing</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">frac</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span><span class="o">.</span><span class="n">index</span>
+    <span class="n">df_missing</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">missing_indices</span><span class="p">,</span> <span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Jumlah missing values SETELAH dibuat secara sengaja:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_missing</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+<span class="c1"># -----------------------------------------------</span>
+
+
+<span class="c1"># Inisialisasi KNNImputer dengan k=3</span>
+<span class="n">imputer</span> <span class="o">=</span> <span class="n">KNNImputer</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># Lakukan imputasi pada data yang sudah kita buat &#39;kotor&#39;</span>
+<span class="n">data_imputed_array</span> <span class="o">=</span> <span class="n">imputer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df_missing</span><span class="p">)</span>
+
+<span class="c1"># Konversi hasil imputasi (numpy array) kembali menjadi DataFrame</span>
+<span class="n">data_imputed_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data_imputed_array</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">df_numeric</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--------------------------- Pengecekan Setelah Imputasi ---------------------------&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Jumlah missing values setelah diimputasi dengan KNN:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data_imputed_df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--------------------------- Hasil Data yang Sudah Diimputasi ---------------------------&quot;</span><span class="p">)</span>
+<span class="c1"># Tampilkan beberapa baris yang sebelumnya memiliki nilai hilang untuk melihat hasil imputasi</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Contoh baris yang nilainya telah diisi kembali oleh KNNImputer:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data_imputed_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">missing_indices</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data asli (5 baris pertama):
+   X  Y  FFMC   DMC     DC  ISI  temp  RH  wind  rain  area  status_numeric
+0  7  5  86.2  26.2   94.3  5.1   8.2  51   6.7   0.0   0.0               0
+1  7  4  90.6  35.4  669.1  6.7  18.0  33   0.9   0.0   0.0               0
+2  7  4  90.6  43.7  686.9  6.7  14.6  33   1.3   0.0   0.0               0
+3  8  6  91.7  33.3   77.5  9.0   8.3  97   4.0   0.2   0.0               0
+4  8  6  89.3  51.3  102.2  9.6  11.4  99   1.8   0.0   0.0               0
+
+Jumlah missing values SETELAH dibuat secara sengaja:
+X                  0
+Y                  0
+FFMC              26
+DMC               26
+DC                 0
+ISI                0
+temp               0
+RH                 0
+wind               0
+rain               0
+area               0
+status_numeric     0
+dtype: int64
+
+--------------------------- Pengecekan Setelah Imputasi ---------------------------
+Jumlah missing values setelah diimputasi dengan KNN:
+X                 0
+Y                 0
+FFMC              0
+DMC               0
+DC                0
+ISI               0
+temp              0
+RH                0
+wind              0
+rain              0
+area              0
+status_numeric    0
+dtype: int64
+
+--------------------------- Hasil Data yang Sudah Diimputasi ---------------------------
+Contoh baris yang nilainya telah diisi kembali oleh KNNImputer:
+       X    Y       FFMC         DMC     DC   ISI  temp    RH  wind  rain  \
+304  6.0  5.0  90.300000   50.466667  113.8   3.5  11.3  94.0   4.9   0.0   
+501  7.0  5.0  94.733333  188.466667  671.2  14.3  21.6  65.0   4.9   0.8   
+441  8.0  6.0  89.666667  133.833333  672.6   8.2  25.5  29.0   1.8   0.0   
+153  5.0  4.0  93.933333  203.666667  692.3  15.9  20.1  47.0   4.9   0.0   
+503  2.0  4.0  94.400000  127.900000  689.1  20.0  29.2  30.0   4.9   0.0   
+
+     area  status_numeric  
+304  0.00             0.0  
+501  0.00             0.0  
+441  1.23             1.0  
+153  1.46             1.0  
+503  1.95             1.0  
+</pre></div>
+</div>
+</div>
+</div>
+<p>Setelah proses imputasi selesai dan tidak ada lagi missing value, kita dapat menyimpan hasilnya ke dalam file CSV untuk digunakan di tahap pemodelan.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Menyimpan dataframe hasil imputasi KNN ke dalam CSV</span>
+<span class="n">data_imputed_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;forest_fires_knn_imputed.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Dataset hasil imputasi KNN berhasil disimpan sebagai &#39;forest_fires_knn_imputed.csv&#39;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dataset hasil imputasi KNN berhasil disimpan sebagai &#39;forest_fires_knn_imputed.csv&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="normalisasi">
+<h3>Normalisasi<a class="headerlink" href="#normalisasi" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">MinMaxScaler</span>
+
+<span class="c1"># Memuat data yang sudah diproses (hasil dari one-hot encoding)</span>
+<span class="c1"># Pastikan file &#39;forest_fires_processed.csv&#39; ada dari langkah sebelumnya</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;forest_fires_processed.csv&#39;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;File &#39;forest_fires_processed.csv&#39; tidak ditemukan. Pastikan Anda sudah menjalankan langkah preprocessing sebelumnya.&quot;</span><span class="p">)</span>
+    <span class="c1"># Jika file tidak ada, kita buat ulang dari &#39;data_processed&#39; yang mungkin masih ada di memori</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">data_processed</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+
+<span class="c1"># Mengidentifikasi kolom-kolom numerik yang perlu dinormalisasi</span>
+<span class="c1"># Kita tidak menormalisasi kolom hasil one-hot encoding (karena sudah 0/1) dan target (&#39;area&#39;)</span>
+<span class="n">numerical_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="s1">&#39;Y&#39;</span><span class="p">,</span> <span class="s1">&#39;FFMC&#39;</span><span class="p">,</span> <span class="s1">&#39;DMC&#39;</span><span class="p">,</span> <span class="s1">&#39;DC&#39;</span><span class="p">,</span> <span class="s1">&#39;ISI&#39;</span><span class="p">,</span> <span class="s1">&#39;temp&#39;</span><span class="p">,</span> <span class="s1">&#39;RH&#39;</span><span class="p">,</span> <span class="s1">&#39;wind&#39;</span><span class="p">,</span> <span class="s1">&#39;rain&#39;</span><span class="p">]</span>
+
+<span class="c1"># Inisialisasi MinMaxScaler</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">()</span>
+
+<span class="c1"># Menerapkan normalisasi pada kolom-kolom numerik yang dipilih</span>
+<span class="n">data</span><span class="p">[</span><span class="n">numerical_cols</span><span class="p">]</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">numerical_cols</span><span class="p">])</span>
+
+<span class="c1"># Menyimpan data yang telah dinormalisasi ke dalam file CSV baru</span>
+<span class="n">data</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;forest_fires_normalized.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># Menampilkan 5 baris pertama data setelah normalisasi</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data setelah Normalisasi (Min-Max Scaling):&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>File &#39;forest_fires_processed.csv&#39; tidak ditemukan. Pastikan Anda sudah menjalankan langkah preprocessing sebelumnya.
+Data setelah Normalisasi (Min-Max Scaling):
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>X</th>
+      <th>Y</th>
+      <th>FFMC</th>
+      <th>DMC</th>
+      <th>DC</th>
+      <th>ISI</th>
+      <th>temp</th>
+      <th>RH</th>
+      <th>wind</th>
+      <th>rain</th>
+      <th>...</th>
+      <th>month_may</th>
+      <th>month_nov</th>
+      <th>month_oct</th>
+      <th>month_sep</th>
+      <th>day_mon</th>
+      <th>day_sat</th>
+      <th>day_sun</th>
+      <th>day_thu</th>
+      <th>day_tue</th>
+      <th>day_wed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.750</td>
+      <td>0.428571</td>
+      <td>0.870968</td>
+      <td>0.086492</td>
+      <td>0.101325</td>
+      <td>0.090909</td>
+      <td>0.192926</td>
+      <td>0.423529</td>
+      <td>0.700000</td>
+      <td>0.00000</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.750</td>
+      <td>0.285714</td>
+      <td>0.927742</td>
+      <td>0.118194</td>
+      <td>0.775419</td>
+      <td>0.119430</td>
+      <td>0.508039</td>
+      <td>0.211765</td>
+      <td>0.055556</td>
+      <td>0.00000</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.750</td>
+      <td>0.285714</td>
+      <td>0.927742</td>
+      <td>0.146795</td>
+      <td>0.796294</td>
+      <td>0.119430</td>
+      <td>0.398714</td>
+      <td>0.211765</td>
+      <td>0.100000</td>
+      <td>0.00000</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.875</td>
+      <td>0.571429</td>
+      <td>0.941935</td>
+      <td>0.110958</td>
+      <td>0.081623</td>
+      <td>0.160428</td>
+      <td>0.196141</td>
+      <td>0.964706</td>
+      <td>0.400000</td>
+      <td>0.03125</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.875</td>
+      <td>0.571429</td>
+      <td>0.910968</td>
+      <td>0.172984</td>
+      <td>0.110590</td>
+      <td>0.171123</td>
+      <td>0.295820</td>
+      <td>0.988235</td>
+      <td>0.155556</td>
+      <td>0.00000</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 29 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="pendeteksian-outlier">
+<h3>Pendeteksian Outlier<a class="headerlink" href="#pendeteksian-outlier" title="Link to this heading">#</a></h3>
+<p>Outlier atau pencilan merupakan data pada dataset yang menyimpang secara signifikan dari data lainnya. Mendeteksi outlier adalah langkah penting agar data yang diolah memberikan hasil yang baik pada model yang akan dibuat nantinya. Outlier dapat diidentifikasi dan ditangani dengan beberapa cara, dan yang akan kami gunakan kali ini adalah LOF (Local Outlier Factor).</p>
+<p>Konsep Local Outlier Factor</p>
+<p>Outlier adalah titik data yang berbeda atau jauh dari titik data lainnya. Local Outlier Factor (LOF) adalah algoritma yang mengidentifikasi outlier dengan mempertimbangkan kepadatan lingkungan lokalnya. Ketika suatu titik dianggap sebagai outlier berdasarkan lingkungan sekitarnya, maka titik tersebut disebut local outlier. LOF bekerja dengan baik ketika kepadatan data tidak sama di seluruh kumpulan data.</p>
+<p>Untuk memahami LOF, ada beberapa konsep yang harus dipelajari secara berurutan:</p>
+<ol class="arabic simple">
+<li><p>K-distance dan K-neighbors</p></li>
+<li><p>Reachability Distance (RD)</p></li>
+<li><p>Local Reachability Density (LRD)</p></li>
+<li><p>Local Outlier Factor (LOF)</p></li>
+<li><p>K-distance &amp; K-neighbors<br />
+K-distance dari sebuah titik A, ditulis sebagai <span class="math notranslate nohighlight">\(k
+text−distance(A)\)</span>, adalah jarak antara titik A ke tetangga terdekatnya yang ke-K. Himpunan dari K tetangga terdekat ini disebut <span class="math notranslate nohighlight">\(N_k(A)\)</span>.</p></li>
+<li><p>Reachability Distance (RD)<br />
+Jarak Jangkauan (Reachability Distance) dari titik A ke titik B didefinisikan sebagai nilai maksimum antara jarak K-distance dari B dan jarak Eucledian antara A dan B.</p></li>
+</ol>
+<p>Rumusnya adalah:<br />
+$<span class="math notranslate nohighlight">\(RD 
+k
+​
+ (A,B)=max{k-distance(B),d(A,B)}
+\)</span>$</p>
+<p>Secara sederhana, jika titik A berada sangat dekat dengan B (di dalam K-tetangganya), jarak jangkauannya “didorong” keluar hingga setara dengan K-distance dari B untuk menstabilkan hasil. Jika A jauh, maka digunakan jarak aslinya.</p>
+<ol class="arabic simple" start="3">
+<li><p>Local Reachability Density (LRD)<br />
+Kepadatan Jangkauan Lokal (LRD) dari sebuah titik A adalah kebalikan dari rata-rata jarak jangkauan dari A ke semua tetangganya di N_k(A). Nilai LRD yang tinggi berarti titik tersebut berada di area yang padat, sedangkan nilai yang rendah berarti titik tersebut berada di area yang lebih renggang.</p></li>
+</ol>
+<p>Rumusnya adalah:<br />
+$<span class="math notranslate nohighlight">\(
+LRD_k(A) = \frac{1}{\frac{\sum_{B \in N_k(A)} RD_k(A, B)}{|N_k(A)|}}
+\)</span>$</p>
+<ol class="arabic simple" start="4">
+<li><p>Local Outlier Factor (LOF)<br />
+Local Outlier Factor (LOF) dari titik A adalah rasio dari rata-rata LRD para tetangganya terhadap LRD dari titik A itu sendiri.</p></li>
+</ol>
+<p>Rumusnya adalah:<br />
+$<span class="math notranslate nohighlight">\(
+LOF_k(A) = \frac{\frac{\sum_{B \in N_k(A)} LRD_k(B)}{|N_k(A)|}}{LRD_k(A)}
+\)</span>$</p>
+<p>Jika LOF ≈ 1, berarti kepadatan titik A mirip dengan tetangganya (titik tersebut adalah inlier).
+Jika LOF &gt; 1, berarti kepadatan titik A lebih rendah dari tetangganya (titik tersebut berpotensi menjadi outlier). Semakin tinggi nilai LOF, semakin besar kemungkinan titik tersebut adalah outlier.</p>
+<p><strong>Implementasi LOF untuk Mendeteksi Outlier</strong></p>
+<p>Sekarang kita akan menerapkan algoritma LOF pada dataset forest_fires yang telah dinormalisasi untuk mengidentifikasi data pencilan.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.neighbors</span><span class="w"> </span><span class="kn">import</span> <span class="n">LocalOutlierFactor</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+
+<span class="c1"># Memuat data yang telah dinormalisasi dari langkah sebelumnya</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;forest_fires_normalized.csv&#39;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;File &#39;forest_fires_normalized.csv&#39; tidak ditemukan. Pastikan Anda sudah menjalankan langkah Normalisasi.&quot;</span><span class="p">)</span>
+    <span class="c1"># Exit atau handle error jika file tidak ada</span>
+    <span class="n">exit</span><span class="p">()</span>
+
+<span class="c1"># Untuk deteksi outlier, kita akan menggunakan fitur-fitur numerik utama.</span>
+<span class="c1"># Kita kecualikan sementara target (&#39;area&#39;) dan fitur kategorikal yang sudah di-encode.</span>
+<span class="n">features_for_outlier</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="s1">&#39;Y&#39;</span><span class="p">,</span> <span class="s1">&#39;FFMC&#39;</span><span class="p">,</span> <span class="s1">&#39;DMC&#39;</span><span class="p">,</span> <span class="s1">&#39;DC&#39;</span><span class="p">,</span> <span class="s1">&#39;ISI&#39;</span><span class="p">,</span> <span class="s1">&#39;temp&#39;</span><span class="p">,</span> <span class="s1">&#39;RH&#39;</span><span class="p">,</span> <span class="s1">&#39;wind&#39;</span><span class="p">,</span> <span class="s1">&#39;rain&#39;</span><span class="p">]</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">features_for_outlier</span><span class="p">]</span>
+
+<span class="c1"># Inisialisasi model LOF</span>
+<span class="c1"># n_neighbors (k) adalah parameter utama. Kita coba dengan k=20</span>
+<span class="c1"># contamination=&#39;auto&#39; adalah pengaturan default yang baik</span>
+<span class="n">lof</span> <span class="o">=</span> <span class="n">LocalOutlierFactor</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">contamination</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">)</span>
+
+<span class="c1"># Melakukan prediksi: 1 untuk inlier, -1 untuk outlier</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">lof</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="c1"># Menambahkan hasil prediksi dan skor LOF ke DataFrame untuk analisis</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;outlier_lof&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">y_pred</span>
+<span class="c1"># Skor LOF (semakin kecil nilainya/semakin negatif, semakin outlier)</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;lof_score&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">lof</span><span class="o">.</span><span class="n">negative_outlier_factor_</span>
+
+<span class="c1"># Menghitung jumlah outlier yang terdeteksi</span>
+<span class="n">n_outliers</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_pred</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Jumlah outlier yang terdeteksi: </span><span class="si">{</span><span class="n">n_outliers</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Menampilkan data yang teridentifikasi sebagai outlier</span>
+<span class="c1"># Diurutkan berdasarkan skor LOF untuk melihat yang paling ekstrem</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Data yang terdeteksi sebagai Outlier (diurutkan dari yang paling ekstrem):&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;outlier_lof&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;lof_score&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jumlah outlier yang terdeteksi: 7
+
+Data yang terdeteksi sebagai Outlier (diurutkan dari yang paling ekstrem):
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>X</th>
+      <th>Y</th>
+      <th>FFMC</th>
+      <th>DMC</th>
+      <th>DC</th>
+      <th>ISI</th>
+      <th>temp</th>
+      <th>RH</th>
+      <th>wind</th>
+      <th>rain</th>
+      <th>...</th>
+      <th>month_oct</th>
+      <th>month_sep</th>
+      <th>day_mon</th>
+      <th>day_sat</th>
+      <th>day_sun</th>
+      <th>day_thu</th>
+      <th>day_tue</th>
+      <th>day_wed</th>
+      <th>outlier_lof</th>
+      <th>lof_score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>499</th>
+      <td>0.750</td>
+      <td>0.428571</td>
+      <td>0.998710</td>
+      <td>0.620262</td>
+      <td>0.777882</td>
+      <td>0.254902</td>
+      <td>0.807074</td>
+      <td>0.564706</td>
+      <td>0.500000</td>
+      <td>1.0</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>-1</td>
+      <td>-2.687222</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>0.750</td>
+      <td>0.285714</td>
+      <td>0.975484</td>
+      <td>0.328050</td>
+      <td>0.225284</td>
+      <td>1.000000</td>
+      <td>0.604502</td>
+      <td>0.341176</td>
+      <td>0.455556</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>-1</td>
+      <td>-2.276207</td>
+    </tr>
+    <tr>
+      <th>379</th>
+      <td>0.375</td>
+      <td>0.428571</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.191744</td>
+      <td>0.000000</td>
+      <td>0.096463</td>
+      <td>1.000000</td>
+      <td>0.055556</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>-1</td>
+      <td>-2.027618</td>
+    </tr>
+    <tr>
+      <th>312</th>
+      <td>0.125</td>
+      <td>0.285714</td>
+      <td>0.409032</td>
+      <td>0.155410</td>
+      <td>0.819397</td>
+      <td>0.007130</td>
+      <td>0.321543</td>
+      <td>0.741176</td>
+      <td>0.655556</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>-1</td>
+      <td>-1.849962</td>
+    </tr>
+    <tr>
+      <th>76</th>
+      <td>1.000</td>
+      <td>1.000000</td>
+      <td>0.876129</td>
+      <td>0.041695</td>
+      <td>0.041163</td>
+      <td>0.094474</td>
+      <td>0.434084</td>
+      <td>0.329412</td>
+      <td>0.300000</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>-1</td>
+      <td>-1.674663</td>
+    </tr>
+    <tr>
+      <th>75</th>
+      <td>1.000</td>
+      <td>1.000000</td>
+      <td>0.845161</td>
+      <td>0.019642</td>
+      <td>0.021930</td>
+      <td>0.137255</td>
+      <td>0.144695</td>
+      <td>0.752941</td>
+      <td>0.300000</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>-1</td>
+      <td>-1.601643</td>
+    </tr>
+    <tr>
+      <th>475</th>
+      <td>0.125</td>
+      <td>0.428571</td>
+      <td>0.967742</td>
+      <td>0.415575</td>
+      <td>0.401431</td>
+      <td>0.320856</td>
+      <td>0.659164</td>
+      <td>0.294118</td>
+      <td>1.000000</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>-1</td>
+      <td>-1.587373</td>
+    </tr>
+  </tbody>
+</table>
+<p>7 rows × 31 columns</p>
+</div></div></div>
+</div>
+<p><strong>Visualisasi Outlier</strong></p>
+<p>Untuk mendapatkan intuisi visual, kita dapat membuat plot sebaran (scatter plot) dari dua fitur dan memberi warna yang berbeda pada titik-titik yang diidentifikasi sebagai outlier.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Membuat scatter plot untuk visualisasi</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="c1"># Plot antara suhu (temp) dan kelembapan (RH)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="s1">&#39;temp&#39;</span><span class="p">,</span> 
+    <span class="n">y</span><span class="o">=</span><span class="s1">&#39;RH&#39;</span><span class="p">,</span> 
+    <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> 
+    <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;outlier_lof&#39;</span><span class="p">,</span> <span class="c1"># Warna dibedakan berdasarkan status outlier</span>
+    <span class="n">palette</span><span class="o">=</span><span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;red&#39;</span><span class="p">},</span> <span class="c1"># inlier biru, outlier merah</span>
+    <span class="n">style</span><span class="o">=</span><span class="s1">&#39;outlier_lof&#39;</span><span class="p">,</span> <span class="c1"># Bentuk marker juga dibedakan</span>
+    <span class="n">markers</span><span class="o">=</span><span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;X&#39;</span><span class="p">},</span>
+    <span class="n">s</span><span class="o">=</span><span class="mi">100</span> <span class="c1"># Ukuran marker</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Deteksi Outlier Menggunakan LOF (temp vs RH)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Suhu (Normalisasi)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Kelembapan Relatif (Normalisasi)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Status&#39;</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Outlier&#39;</span><span class="p">,</span> <span class="s1">&#39;Inlier&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/04358a7d03a42f369de834e53da9ed4ba9db6ea157e34be7dc70af9268f3afce.png" src="_images/04358a7d03a42f369de834e53da9ed4ba9db6ea157e34be7dc70af9268f3afce.png" />
+</div>
+</div>
+<p><strong>Analisis:</strong><br />
+Dari hasil kode dan visualisasi, kita dapat melihat bahwa LOF berhasil mengidentifikasi sejumlah titik data sebagai outlier (ditandai dengan ‘X’ merah). Titik-titik ini adalah data yang memiliki kombinasi fitur cuaca yang tidak biasa atau sangat berbeda dari data di sekitarnya. Contohnya, baris 238 memiliki nilai FFMC, DMC, DC, dan ISI yang nol, yang sangat tidak lazim dan membuatnya menjadi outlier paling ekstrem. Penanganan outlier ini (misalnya dengan menghapus atau memeriksanya lebih lanjut) akan menjadi langkah selanjutnya sebelum membangun model.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pendahuluan">Pendahuluan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-understanding">Data Understanding</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sumber-data">Sumber Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan">Tujuan</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integrasi-data">Integrasi Data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eksplorasi-data">Eksplorasi Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-data">Visualisasi Data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#struktur-dataset">Struktur Dataset</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fitur-dan-label">Fitur dan Label</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distribusi-kejadian-kebakaran">Distribusi Kejadian Kebakaran</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#identifikasi-kualitas-dataset">Identifikasi Kualitas Dataset</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deteksi-missing-value">Deteksi Missing Value</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing-data">Preprocessing Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tranformasi-data">Tranformasi Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#imputasi-missing-value">Imputasi Missing Value</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menyimpan-dataset-hasil-preprocessing-dengan-metode-mean">Menyimpan Dataset Hasil Preprocessing dengan Metode Mean</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#imputasi-missing-value-dengan-metode-knn">Imputasi Missing Value dengan Metode KNN</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normalisasi">Normalisasi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pendeteksian-outlier">Pendeteksian Outlier</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Aqbil Baraka
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
